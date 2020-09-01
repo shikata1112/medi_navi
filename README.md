@@ -13,13 +13,13 @@
 　病院・クリニックを利用したいユーザー
 
 ### 主な利用シーン
-　通院したいがどこの病院が良いのか、病院の場所等の情報が分からない時
+　通院したいがどこの病院が良いのか、病院の場所等の情報が分からないとき
 
 ## 設計書
 
 
 ### 機能一覧
-<https://docs.google.com/spreadsheets/d/1UgK-6l38k5T81XjcTIn7CHnGRkB_sBXS5xQWAVhWmks/edit#gid=0>
+https://docs.google.com/spreadsheets/d/1QON6Tq3UOt7xvWTvUil9pjH0jcYtZlt6tWFRD3GqM68/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
