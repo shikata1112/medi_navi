@@ -1,0 +1,2 @@
+class Clinic < ApplicationRecord
+end

@@ -1,0 +1,53 @@
+doctype html
+html
+  head
+    title
+      | MediNavi
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    .container
+      - if admin_signed_in? 
+        header.admin_header
+          .header-content
+            = link_to 'Medi Navi', root_path, class: "logo" 
+            ul.nav.navbar-nav.navbar-right
+              li
+                = link_to '商品一覧', '#'
+              li
+                = link_to '会員一覧', '#'
+              li
+                = link_to '注文履歴一覧', '#'
+              li
+                = link_to 'ジャンル管理', '#'
+              li
+                = link_to 'ログアウト', '#', method: :delete
+      - elsif member_signed_in? 
+        header
+          .header-content
+            = link_to 'Medi Navi', root_path, class: "logo"
+            ul.nav.navbar-nav.navbar-right
+              li
+                = link_to 'マイページ', '#'
+              li
+                = link_to '商品一覧', '#'
+              li
+                = link_to 'カート', '#'
+              li
+                = link_to 'ログアウト', destroy_member_session_path, method: :delete
+      - else
+        header
+          .header-content
+            = link_to 'Medi Navi', root_path, class: "logo"
+            ul.nav.navbar-nav.navbar-right
+              li
+                = link_to 'メディナビとは', clinics_about_path
+              li
+                = link_to '新規登録',  new_member_registration_path
+              li
+                = link_to 'ログイン', new_member_session_path
+
+    = yield
+

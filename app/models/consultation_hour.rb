@@ -1,0 +1,2 @@
+class ConsultationHour < ApplicationRecord
+end
