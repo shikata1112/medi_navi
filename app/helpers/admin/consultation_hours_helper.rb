@@ -1,0 +1,2 @@
+module Admin::ConsultationHoursHelper
+end

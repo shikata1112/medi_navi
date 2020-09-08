@@ -1,2 +1,32 @@
-h1 Admin::Clinics#index
-p Find me in app/views/admin/clinics/index.html.slim
+
+.container
+  .row
+    h2 クリニック一覧
+    .add-clinic
+      = link_to "クリニックを追加する", new_admin_clinic_path, class:"btn btn-default" 
+    
+    .text-center
+      table.table.table-bordered.table-hover
+        thead
+          tr
+            th ID
+            th クリニック名
+            th 管理医師
+            th 所在地
+            th 電話番号
+            th ステータス
+            th
+            th
+
+        tbody
+          - @clinics.each do |clinic|
+            tr
+              td = clinic.id
+              td = clinic.name
+              td = clinic.doctor
+              td = clinic.address 
+              td = clinic.phone_number
+              td = clinic.is_active == true ? '開院中' : '閉院中'
+              td = link_to "編集", edit_admin_clinic_path(clinic), class:"btn btn-warning", data: {"turbolinks" => false}
+              td = link_to "削除", admin_clinic_path(clinic), class:"btn btn-danger", method: :delete
+

@@ -24,4 +24,15 @@ class Members::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  prepend_before_action :check_captcha, only: [:create]
+
+  def check_captcha
+    self.resource = resource_class.new sign_in_params
+    resource.validate
+    unless verify_recaptcha(model: resource)
+      respond_with_navigational(resource) { render :new }
+    end
+  end
+
 end

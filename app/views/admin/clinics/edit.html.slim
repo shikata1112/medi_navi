@@ -1,2 +1,119 @@
-h1 Admin::Clinics#edit
-p Find me in app/views/admin/clinics/edit.html.slim
+.container
+  .row
+    h1 クリニック編集画面
+
+    = form_with model: @clinic, url: admin_clinic_path(@clinic), local: true do |f| 
+
+      = f.label :クリニック名
+      = f.text_field :name
+      br
+      = f.label :クリニック紹介文
+      = f.text_area :explanation
+      br
+      = f.label :管理医師
+      = f.text_field :doctor
+      br
+      = f.label :医師イメージ
+      = f.attachment_field :image, placeholder: "画像"
+      br
+      = f.label :郵便番号
+      = f.text_field :postcode
+      br
+      = f.label :所在地
+      = f.text_field :address
+      br
+      = f.label :最寄駅
+      = f.text_field :nearest_station
+      br
+      = f.label :電話番号
+      = f.text_field :phone_number
+      br
+      = f.label :公式サイト
+      = f.text_field :official_site
+      br
+      = f.label :クリニックステータス
+      = f.select :is_active, [["開院", true], ["閉院", false]]
+      br
+      = f.label :クリニックイメージ
+      = f.file_field :images, multiple: true
+      br
+      .clinic-btn
+        = f.submit "更新", class:"btn btn-primary"
+        br
+        
+
+    h3
+      strong :診療時間
+    
+    .text-center
+      table.table.table-bordered
+        thead
+          tr
+            th 診療時間
+            th 月
+            th 火
+            th 水
+            th 木
+            th 金
+            th 土
+            th 日
+            th 祝
+            th
+      
+        - @clinic.consultation_hours.each do |consultation_hour|
+          tbody
+            tr
+              = form_with model:consultation_hour, url: admin_consultation_hour_path(consultation_hour.id) do |f|
+                td
+                  = f.select :start_time, time_list
+                  | 〜
+                  = f.select :finish_time, time_list
+                td 
+                  = f.select :mo_time, ConsultationHour.mo_times.keys
+                td
+                  = f.select :tu_time, ConsultationHour.tu_times.keys
+                td
+                  = f.select :we_time, ConsultationHour.we_times.keys
+                td
+                  = f.select :th_time, ConsultationHour.th_times.keys
+                td
+                  = f.select :fr_time, ConsultationHour.fr_times.keys
+                td
+                  = f.select :sa_time, ConsultationHour.sa_times.keys
+                td
+                  = f.select :su_time, ConsultationHour.su_times.keys
+                td
+                  = f.select :ho_time, ConsultationHour.ho_times.keys
+                td
+                  = f.submit "更新", class:"btn btn-warning"
+
+  
+        
+        tbody
+          tr
+            = form_with model: @new_clinic.consultation_hours, url: admin_consultation_hours_path, method: :post do |f|
+              td
+                = f.select :start_time, time_list
+                | 〜
+                = f.select :finish_time, time_list
+              td 
+                = f.select :mo_time, ConsultationHour.mo_times.keys
+              td
+                = f.select :tu_time, ConsultationHour.tu_times.keys
+              td
+                = f.select :we_time, ConsultationHour.we_times.keys
+              td
+                = f.select :th_time, ConsultationHour.th_times.keys
+              td
+                = f.select :fr_time, ConsultationHour.fr_times.keys
+              td
+                = f.select :sa_time, ConsultationHour.sa_times.keys
+              td
+                = f.select :su_time, ConsultationHour.su_times.keys
+              td
+                = f.select :ho_time, ConsultationHour.ho_times.keys
+
+                =f.hidden_field :clinic_id, :value => @clinic.id
+                
+              td
+                = f.submit "追加", class:"btn btn-primary"

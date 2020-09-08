@@ -1,0 +1,92 @@
+.container
+  .row
+    h1 クリニック新規登録画面
+
+    = form_with model: @clinic, url: admin_clinics_path, local: true do |f| 
+
+      = f.label :クリニック名
+      = f.text_field :name
+      br
+      = f.label :クリニック紹介文
+      = f.text_area :explanation
+      br
+      = f.label :管理医師
+      = f.text_field :doctor
+      br
+      = f.label :医師イメージ
+      = f.attachment_field :image, placeholder: "画像"
+      br
+      = f.label :郵便番号
+      = f.text_field :postcode
+      br
+      = f.label :所在地
+      = f.text_field :address
+      br
+      = f.label :最寄駅
+      = f.text_field :nearest_station
+      br
+      = f.label :電話番号
+      = f.text_field :phone_number
+      br
+      = f.label :公式サイト
+      = f.text_field :official_site
+      br
+      = f.label :クリニックステータス
+      = f.select :is_active, [["開院", true], ["閉院", false]]
+      br
+      = f.label :クリニックイメージ
+      = f.file_field :images, multiple: true
+      br
+
+      
+      h3 
+        strong :診療時間
+        .reset-btn
+          = f.remove_nested_fields_link 'リセット', class: 'btn btn-default btn-xs', role: 'button'
+      .clinic-create
+        .text-center
+          table.table.table-bordered
+            thead
+              tr
+                th.heading 診療時間
+                th 月
+                th 火
+                th 水
+                th 木
+                th 金
+                th 土
+                th 日
+                th 祝
+
+            = f.nested_fields_for :consultation_hours, @clinic.consultation_hours.build do |consultation_hour|
+              table.table.table-bordered
+                  tbody
+                    tr
+                      td.heading
+                        = consultation_hour.select :start_time, time_list
+                        | 〜
+                        = consultation_hour.select :finish_time, time_list
+                      td 
+                        = consultation_hour.select :mo_time, ConsultationHour.mo_times.keys
+                      td
+                        = consultation_hour.select :tu_time, ConsultationHour.tu_times.keys
+                      td
+                        = consultation_hour.select :we_time, ConsultationHour.we_times.keys
+                      td
+                        = consultation_hour.select :th_time, ConsultationHour.th_times.keys
+                      td
+                        = consultation_hour.select :fr_time, ConsultationHour.fr_times.keys
+                      td
+                        = consultation_hour.select :sa_time, ConsultationHour.sa_times.keys
+                      td
+                        = consultation_hour.select :su_time, ConsultationHour.su_times.keys
+                      td
+                        = consultation_hour.select :ho_time, ConsultationHour.ho_times.keys
+                      
+        = f.add_nested_fields_link :consultation_hours, '＋', class:"btn btn-default btn-xs"
+        
+        .clinic-create
+          = f.submit "新規登録", class:"btn btn-primary"
+          br
+
+

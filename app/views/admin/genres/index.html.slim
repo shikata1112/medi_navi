@@ -1,0 +1,23 @@
+
+.container
+  .row
+    h1 診療科目一覧
+    .add-medical_department
+      = link_to "追加する", new_admin_genre_path, class:"btn btn-default" 
+  
+    .text-center
+      table.table.table-bordered.table-hover
+        thead
+          tr
+            th ID
+            th 診療科目名
+            th 
+            th
+
+          tbody
+            - @genres.each do |genre|
+              tr
+                td = genre.id
+                td = genre.medical_department
+                td = link_to "編集", edit_admin_genre_path(genre), class:"btn btn-warning"
+                td = link_to "削除", admin_genre_path(genre), method: :delete, class:"btn btn-danger"
