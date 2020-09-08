@@ -59,4 +59,15 @@ class Members::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  prepend_before_action :check_captcha, only: [:create]
+
+  def check_captcha
+    self.resource = resource_class.new sign_up_params
+    resource.validate
+    unless verify_recaptcha(model: resource)
+      respond_with_navigational(resource) { render :new }
+    end
+  end
+
 end

@@ -1,0 +1,12 @@
+
+.container
+  .row
+    .new-medical_department.text-center
+      h2 診療科目名
+      = form_with model: @genre, url: admin_genre_path(@genre), local: true do |f| 
+
+        = f.text_field :medical_department
+        
+        .medical_department_btn
+          = f.submit '更新', class:"btn btn-warning"
+          br

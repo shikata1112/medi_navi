@@ -91,3 +91,12 @@ gem 'jp_prefecture'
 # 画像投稿
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+
+# 画像複数投稿
+gem 'carrierwave'
+gem 'mini_magick'
+
+# 月間登録者推移
+gem 'lazy_high_charts'
+
+gem 'nested_form_fields'

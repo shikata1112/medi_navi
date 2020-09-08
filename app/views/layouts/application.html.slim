@@ -8,22 +8,22 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    .container
+    .wrapper
       - if admin_signed_in? 
         header.admin_header
           .header-content
             = link_to 'Medi Navi', root_path, class: "logo" 
             ul.nav.navbar-nav.navbar-right
               li
-                = link_to '商品一覧', '#'
+                = link_to '管理者TOP', admin_members_top_path
               li
-                = link_to '会員一覧', '#'
+                = link_to '会員一覧', admin_members_path
               li
-                = link_to '注文履歴一覧', '#'
+                = link_to 'クリニック一覧', admin_clinics_path
               li
-                = link_to 'ジャンル管理', '#'
+                = link_to '診療科目一覧', admin_genres_path
               li
-                = link_to 'ログアウト', '#', method: :delete
+                = link_to 'ログアウト', destroy_admin_session_path, method: :delete
       - elsif member_signed_in? 
         header
           .header-content
@@ -49,5 +49,10 @@ html
               li
                 = link_to 'ログイン', new_member_session_path
 
-    = yield
+    
+
+      = yield
+
+      footer
+        .footer-content
 

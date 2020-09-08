@@ -1,0 +1,11 @@
+.container
+  .row
+    .new-medical_department.text-center
+      = form_with model: @genre, url: admin_genres_path, local: true do |f| 
+
+        = f.label :診療科目名
+        = f.text_field :medical_department
+        
+        .medical_department_btn
+          = f.submit '新規登録', class:"btn btn-primary"
+          br

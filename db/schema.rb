@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_04_040212) do
+ActiveRecord::Schema.define(version: 2020_09_06_111543) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -34,19 +34,24 @@ ActiveRecord::Schema.define(version: 2020_09_04_040212) do
     t.boolean "is_active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "explanation"
+    t.string "postcode"
+    t.json "images"
+    t.string "nearest_station"
   end
 
   create_table "consultation_hours", force: :cascade do |t|
     t.integer "clinic_id"
-    t.string "week_time"
-    t.string "mo_time"
-    t.string "tu_time"
-    t.string "we_time"
-    t.string "th_time"
-    t.string "fr_time"
-    t.string "sa_time"
-    t.string "su_time"
-    t.string "ho_time"
+    t.string "start_time"
+    t.string "finish_time"
+    t.integer "mo_time"
+    t.integer "tu_time"
+    t.integer "we_time"
+    t.integer "th_time"
+    t.integer "fr_time"
+    t.integer "sa_time"
+    t.integer "su_time"
+    t.integer "ho_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["clinic_id"], name: "index_consultation_hours_on_clinic_id"
@@ -67,8 +72,7 @@ ActiveRecord::Schema.define(version: 2020_09_04_040212) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name"
-    t.boolean "is_active", default: true
+    t.string "medical_department"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

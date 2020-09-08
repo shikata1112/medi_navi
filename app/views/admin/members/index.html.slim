@@ -1,2 +1,23 @@
-h1 Admin::Members#index
-p Find me in app/views/admin/members/index.html.slim
+
+.container
+  .row
+    h1 会員一覧
+  
+    .text-center
+      table.table.table-bordered.table-hover
+        thead
+          tr
+            th ID
+            th 氏名
+            th 性別
+            th メールアドレス
+            th 会員ステータス
+
+        tbody
+          - @members.each do |member|
+            tr
+              td = member.id
+              td = member.name
+              td = member.sex == true ? "男性" : "女性"
+              td = member.email
+              td = member.is_deleted == false ? "有効" : "無効"

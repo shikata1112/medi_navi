@@ -11,8 +11,14 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require jquery_ujs
 //= require activestorage
 //= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
+//= require highcharts/highcharts
+//= require highcharts/highcharts-more
+//= require highcharts/highstock
+//= require nested_form_fields
 //= require_tree .
+
