@@ -59,6 +59,7 @@
             th 日
             th 祝
             th
+            th
       
         - @clinic.consultation_hours.each do |consultation_hour|
           tbody
@@ -86,6 +87,8 @@
                   = f.select :ho_time, ConsultationHour.ho_times.keys
                 td
                   = f.submit "更新", class:"btn btn-warning"
+                td
+                  = link_to "削除", admin_consultation_hour_path(consultation_hour.id), method: :delete, class:"btn btn-danger" 
 
   
         
@@ -116,4 +119,4 @@
                 =f.hidden_field :clinic_id, :value => @clinic.id
                 
               td
-                = f.submit "追加", class:"btn btn-primary"
+                = f.submit "追加", class:"btn btn-default"

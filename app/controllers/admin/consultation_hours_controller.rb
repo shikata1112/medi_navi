@@ -12,6 +12,12 @@ class Admin::ConsultationHoursController < ApplicationController
     redirect_to edit_admin_clinic_path(@consultation_hour.clinic_id)
   end
 
+  def destroy
+    @consultation_hour = ConsultationHour.find(params[:id])
+    @consultation_hour.destroy
+    redirect_to edit_admin_clinic_path(@consultation_hour.clinic_id)
+  end
+
   private
 
   def consultation_hour_params

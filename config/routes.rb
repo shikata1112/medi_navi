@@ -21,8 +21,15 @@ Rails.application.routes.draw do
 
     resources :members, only: [:index, :show, :edit, :update]
     resources :clinics
+    resources :consultation_hours, only: [:create, :update, :destroy]
     resources :genres, except: [:show]
-    resources :consultation_hours, only: [:create, :update]
+    
+  end
+
+  namespace :member do
+    
+    resources :members, only: [:show, :edit, :update]
+    resources :clinics, only: [:show]
 
   end
 
