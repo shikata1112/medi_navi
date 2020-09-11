@@ -1,2 +1,25 @@
-h1 Member::Members#edit
-p Find me in app/views/member/members/edit.html.slim
+.container
+  .row
+    .col-xs-2
+    .col-xs-8
+      = form_with model: @member, url: member_member_path(@member) do |f|
+        = f.label :ニックネーム
+        = f.text_field :name
+        br
+        = f.label :生年月日
+        = f.text_field :birthday
+        br
+        = f.label "性別"
+        = f.radio_button :sex, value=true
+        = f.label "男性"
+        |       
+        = f.radio_button :sex, value=false
+        = f.label "女性"
+        br
+        = f.label :郵便番号
+        = f.text_field :postcode
+        br
+        = f.label :住所
+        = f.text_field :address
+        br
+        = f.submit "更新する", class: 'btn btn-primary'

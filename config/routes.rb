@@ -1,5 +1,5 @@
-Rails.application.routes.draw do
-  
+Rails.application.routes.draw do 
+
   devise_for :admins, controllers: {
     sessions:      'admins/sessions',
     passwords:     'admins/passwords',
@@ -26,10 +26,13 @@ Rails.application.routes.draw do
     
   end
 
+  get 'member/my_calendar', to: 'member/events#my_calendar'
+
   namespace :member do
     
     resources :members, only: [:show, :edit, :update]
-    resources :clinics, only: [:show]
+    resources :clinics, only: [:show, :index]
+    resources :events
 
   end
 

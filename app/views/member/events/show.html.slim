@@ -1,0 +1,40 @@
+.container
+  .row
+    .page-header
+      h3
+        | スケジュール管理
+
+  .row
+    #calendar
+    br
+
+  .row
+    table.table.table-bordered
+      tbody
+        tr
+          th.active
+            | スケジュール名
+          td
+            = @event.title
+        tr
+          th.active
+            | スケジュール内容
+          td
+            = @event.body
+        tr
+          th.active
+            | 開始日時
+          td
+            = @event.start_date.to_s(:datetime_jp)
+        tr
+          th.active
+            | 終了日時
+          td
+            = @event.end_date.to_s(:datetime_jp)
+
+  .row
+    - if @event.member === current_member
+      .pull-right
+        = link_to 'スケジュール登録', new_member_event_path, class: 'btn btn-success'
+        = link_to '編集', edit_member_event_path(@event), class: 'btn btn-primary'
+        = link_to '削除', member_event_path(@event), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger'

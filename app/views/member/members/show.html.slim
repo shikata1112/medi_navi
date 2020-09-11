@@ -1,2 +1,41 @@
-h1 Member::Members#show
-p Find me in app/views/member/members/show.html.slim
+.container
+  .row.my-profile
+    .col-xs-2
+
+    .col-xs-2
+      = attachment_image_tag @member, :profile_image, size:"185x185", fallback: "no-image.jpg"
+    
+    .col-xs-6
+      table.table
+        tr
+          th.th-color ニックネーム
+          td = @member.name
+        tr
+          th.th-color メール
+          td = @member.email
+        tr
+          th.th-color 生年月日
+          td = @member.birthday
+        tr
+          th.th-color 性別
+          td = @member.sex == true ? "男性" : "女性"
+        tr
+          th.th-color 住所
+          td = @member.address
+          
+  .row.edit-link
+    .col-xs-2
+    .col-xs-8
+      table.table
+        tr  
+          li
+            = link_to "登録内容を変更する", edit_member_member_path(@member)
+        tr 
+          li
+            = link_to "メールアドレスを変更する"
+        tr 
+          li
+            = link_to "パスワードを変更する"
+        tr 
+          li
+            = link_to "退会する"

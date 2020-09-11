@@ -99,4 +99,9 @@ gem 'mini_magick'
 # 月間登録者推移
 gem 'lazy_high_charts'
 
+# 親、子の同時登録
 gem 'nested_form_fields'
+
+# カレンダー機能
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
