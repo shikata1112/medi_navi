@@ -8,20 +8,29 @@
     .col-xs-6
       table.table
         tr
-          th.th-color ニックネーム
+          th.th-color
+            | ニックネーム
           td = @member.name
         tr
-          th.th-color メール
+          th.th-color 
+            | メール
           td = @member.email
         tr
-          th.th-color 生年月日
+          th.th-color 
+            | 生年月日
           td = @member.birthday
         tr
-          th.th-color 性別
+          th.th-color 
+            | 性別
           td = @member.sex == true ? "男性" : "女性"
         tr
-          th.th-color 住所
-          td = @member.address
+          th.th-color 
+            | 住所
+          td
+            | 〒
+            = @member.postcode
+            br
+            = @member.address
           
   .row.edit-link
     .col-xs-2
