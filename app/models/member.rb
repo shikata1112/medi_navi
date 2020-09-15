@@ -15,6 +15,11 @@ class Member < ApplicationRecord
   end     
 
   has_many :events, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :clinics, through: :favorites
+
+  has_many :reviews, dependent: :destroy
+  has_many :clinics, through: :reviews
 
   attachment :profile_image
   

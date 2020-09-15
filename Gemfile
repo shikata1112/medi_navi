@@ -105,3 +105,5 @@ gem 'nested_form_fields'
 # カレンダー機能
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+
+gem 'font-awesome-sass'

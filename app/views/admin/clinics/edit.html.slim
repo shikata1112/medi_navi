@@ -15,7 +15,8 @@
       = f.text_field :doctor
       br
       = f.label :genres, "診療科目(複数選択可)"
-      = f.collection_check_boxes :genre_ids, Genre.all, :id, :medical_department, include_hidden: false
+      = puts "fuga"
+      = f.collection_check_boxes(:genre_ids, @genres, :id, :medical_department, include_hidden: false)
       br
       = f.label :医師イメージ
       = f.attachment_field :image, placeholder: "画像"

@@ -22,5 +22,5 @@
 //= require nested_form_fields
 //= require moment
 //= require fullcalendar 
-//= require_tree .
+//= require_tree 
 

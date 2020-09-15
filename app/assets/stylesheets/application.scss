@@ -16,11 +16,17 @@
  */
 @import "bootstrap-sprockets";  
 @import "bootstrap"; 
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
 
 header {
   background-color: rgb(192, 248, 248);
   width: 100%;
   height: 70px;
+}
+
+.nav.navbar-nav.navbar-right {
+  margin: 10px 5px 0 0;
 }
 
 .btn-group {
@@ -124,6 +130,33 @@ thead {
 }
 
 .carousel-image {
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
 }
+
+.noborder {
+  border-style:none!important;
+}
+
+.favorite {
+  background-color: rgb(247, 247, 247);
+}
+
+.unfavorite {
+  background-color: rgb(255, 227, 104);
+}
+
+.clinic_consultation_hours {
+  width: 75%;
+  margin-top: 20px;
+  margin-bottom: -10px;
+}
+
+.clinic-boxes {
+  margin-top: 50px;
+}
+
+.review-btn, .review-show {
+  margin-top: 50px;
+}
+
