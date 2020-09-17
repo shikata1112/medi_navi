@@ -1,0 +1,12 @@
+.container
+  .row
+
+    - @clinic.reviews.each do |review|
+      table.table
+        tr
+          td
+            = review.title
+          td
+            = review.comment
+          td
+            = review.wating_time

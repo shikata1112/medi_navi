@@ -20,5 +20,7 @@
 //= require highcharts/highcharts-more
 //= require highcharts/highstock
 //= require nested_form_fields
-//= require_tree .
+//= require moment
+//= require fullcalendar 
+//= require_tree 
 

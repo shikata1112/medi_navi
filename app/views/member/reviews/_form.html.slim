@@ -1,0 +1,49 @@
+= form_with model: review, url: member_clinic_reviews_path, method: :post, local: true do |f|
+  = f.label :title, "タイトル"
+  br
+  = f.text_field :title
+  br
+  = f.label :comment, "本文"
+  br
+  = f.text_area :comment
+  br
+  = f.label "待ち時間"
+  br
+  = f.radio_button :wating_time, value = 0
+  = f.label "5分未満"
+  |       
+  = f.radio_button :wating_time, value = 1
+  = f.label "10分〜20分"
+  |       
+  = f.radio_button :wating_time, value = 2
+  = f.label "20分〜30分"
+  |       
+  = f.radio_button :wating_time, value = 3
+  = f.label "30分〜1時間"
+  |       
+  = f.radio_button :wating_time, value = 4
+  = f.label "1時間〜2時間"
+  |       
+  = f.radio_button :wating_time, value = 5
+  = f.label "2時間以上"
+  br
+  // できれば通院時期も選択できるようにする
+
+  = f.label :score, "評価"
+  br
+  / .main-rating
+  /   .ratings
+  /     span.far.fa-star id="star"
+  /     span.far.fa-star id="star"
+  /     span.far.fa-star id="star"
+  /     span.far.fa-star id="star"
+  /     span.far.fa-star id="star"
+  /   .rating-value-display 
+  /     span id="rating-value-display"
+  /       | 0
+  /     span
+  /       | /5
+  / = f.hidden_field :clinic_id, value: clinic.id
+  / = f.hidden_field :score, id: "rating-value" 
+
+  = f.submit "投稿"

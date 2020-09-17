@@ -12,4 +12,10 @@ module ApplicationHelper
     ]
   end
 
+  def waiting_time_list
+    [
+      []
+    ]
+  end
+
 end

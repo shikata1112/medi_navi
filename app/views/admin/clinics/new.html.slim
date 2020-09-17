@@ -1,43 +1,46 @@
 .container
   .row
-    h1 クリニック新規登録画面
+    .page-header
+      h2 クリニック新規登録画面
 
     = form_with model: @clinic, url: admin_clinics_path, local: true do |f| 
 
-      = f.label :クリニック名
+      = f.label :name, "クリニック名"
       = f.text_field :name
       br
-      = f.label :クリニック紹介文
+      = f.label :explanation, "クリニック紹介文"
       = f.text_area :explanation
       br
-      = f.label :管理医師
+      = f.label :doctor, "管理医師"
       = f.text_field :doctor
       br
-      = f.label :医師イメージ
-      = f.attachment_field :image, placeholder: "画像"
+      = f.label :genres, "診療科目(複数選択可)"
+      = f.collection_check_boxes(:genre_ids, @genres, :id, :medical_department, include_hidden: false)
       br
-      = f.label :郵便番号
+      = f.label :image, "医師イメージ"
+      = f.attachment_field :image
+      br
+      = f.label :postcode, "郵便番号"
       = f.text_field :postcode
       br
-      = f.label :所在地
+      = f.label :address, "所在地"
       = f.text_field :address
       br
-      = f.label :最寄駅
+      = f.label :nearest_station, "最寄駅"
       = f.text_field :nearest_station
       br
-      = f.label :電話番号
+      = f.label :phone_number, "電話番号"
       = f.text_field :phone_number
       br
-      = f.label :公式サイト
+      = f.label :official_site, "公式サイト"
       = f.text_field :official_site
       br
-      = f.label :クリニックステータス
+      = f.label :is_active, "クリニックステータス"
       = f.select :is_active, [["開院", true], ["閉院", false]]
       br
-      = f.label :クリニックイメージ
+      = f.label :images, "クリニックイメージ(複数可)"
       = f.file_field :images, multiple: true
       br
-
       
       h3 
         strong :診療時間

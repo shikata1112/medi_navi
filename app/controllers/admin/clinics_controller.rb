@@ -1,14 +1,21 @@
 class Admin::ClinicsController < ApplicationController
 
-
   def new
     @clinic = Clinic.new
     @clinic.consultation_hours.build
+    @genres = Genre.all
   end
 
   def create 
-    @clinic = Clinic.create(clinic_params)
-    redirect_to admin_clinics_path
+    if @clinic = Clinic.create(clinic_params)
+        clinic_params[:genre_ids].each do |genre_id|
+          genre_map = GenreMap.new(genre_id: genre_id,clinic_id:@clinic.id)
+          genre_map.save
+        end
+        redirect_to admin_clinics_path
+    else
+      render 'new'
+    end
   end
 
   def index
@@ -21,14 +28,24 @@ class Admin::ClinicsController < ApplicationController
 
   def edit
     @clinic = Clinic.find(params[:id])
+    @clinic.genre_ids = @clinic.genre_maps.pluck(:genre_id)
+    @genres = Genre.all
     @new_clinic = Clinic.new
     @new_clinic.consultation_hours.build
   end
 
   def update
     @clinic = Clinic.find(params[:id])
-    @clinic.update(clinic_params)
-    redirect_to edit_admin_clinic_path(@clinic)
+    if @clinic.update(clinic_params)
+      @clinic.genre_maps.destroy_all
+      clinic_params[:genre_ids].each do |genre_id|
+        genre_map = GenreMap.new(genre_id: genre_id,clinic_id:@clinic.id)
+        genre_map.save
+      end
+        redirect_to edit_admin_clinic_path(@clinic)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -52,6 +69,7 @@ class Admin::ClinicsController < ApplicationController
       :explanation,
       :is_active,
       { images: []},
+      genre_ids: [],
       consultation_hours_attributes:[
         :id,
         :clinic_id,

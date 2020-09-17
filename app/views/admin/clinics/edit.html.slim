@@ -1,8 +1,9 @@
 .container
   .row
-    h1 クリニック編集画面
+    .page-header
+      h2 クリニック編集画面
 
-    = form_with model: @clinic, url: admin_clinic_path(@clinic), local: true do |f| 
+    = form_with model: @clinic, url: admin_clinic_path(@clinic),method: :patch , local: true do |f| 
 
       = f.label :クリニック名
       = f.text_field :name
@@ -12,6 +13,10 @@
       br
       = f.label :管理医師
       = f.text_field :doctor
+      br
+      = f.label :genres, "診療科目(複数選択可)"
+      = puts "fuga"
+      = f.collection_check_boxes(:genre_ids, @genres, :id, :medical_department, include_hidden: false)
       br
       = f.label :医師イメージ
       = f.attachment_field :image, placeholder: "画像"

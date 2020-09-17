@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_06_111543) do
+ActiveRecord::Schema.define(version: 2020_09_15_012705) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -57,16 +57,26 @@ ActiveRecord::Schema.define(version: 2020_09_06_111543) do
     t.index ["clinic_id"], name: "index_consultation_hours_on_clinic_id"
   end
 
+  create_table "events", force: :cascade do |t|
+    t.integer "member_id"
+    t.string "title"
+    t.text "body"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favorites", force: :cascade do |t|
-    t.string "member_id"
-    t.string "clinic_id"
+    t.integer "member_id"
+    t.integer "clinic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "genre_maps", force: :cascade do |t|
-    t.string "clinic_id"
-    t.string "genre_id"
+    t.integer "clinic_id"
+    t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -92,6 +102,7 @@ ActiveRecord::Schema.define(version: 2020_09_06_111543) do
     t.boolean "sex"
     t.boolean "is_deleted", default: false
     t.integer "prefecture_code"
+    t.string "profile_image_id"
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
@@ -102,9 +113,9 @@ ActiveRecord::Schema.define(version: 2020_09_06_111543) do
     t.string "title"
     t.text "comment"
     t.integer "wating_time", default: 0
-    t.integer "score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "score", default: 0.0
   end
 
 end

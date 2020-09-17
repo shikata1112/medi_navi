@@ -1,0 +1,8 @@
+
+h2
+  | 病院一覧
+
+- @clinics.each do |clinic|
+  = link_to member_clinic_path(clinic) do
+    = clinic.name
+    br
