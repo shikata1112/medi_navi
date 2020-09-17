@@ -31,21 +31,19 @@
 
   = f.label :score, "評価"
   br
-  .main-rating
-    .ratings
-      span.far.fa-star id="star"
-      span.far.fa-star id="star"
-      span.far.fa-star id="star"
-      span.far.fa-star id="star"
-      span.far.fa-star id="star"
-    .rating-value-display 
-      span id="rating-value-display"
-        | 0
-      span
-        | /5
-  = f.hidden_field :clinic_id, value: clinic.id
-  = f.hidden_field :score, id: "rating-value" 
+  / .main-rating
+  /   .ratings
+  /     span.far.fa-star id="star"
+  /     span.far.fa-star id="star"
+  /     span.far.fa-star id="star"
+  /     span.far.fa-star id="star"
+  /     span.far.fa-star id="star"
+  /   .rating-value-display 
+  /     span id="rating-value-display"
+  /       | 0
+  /     span
+  /       | /5
+  / = f.hidden_field :clinic_id, value: clinic.id
+  / = f.hidden_field :score, id: "rating-value" 
 
   = f.submit "投稿"
-
-  = javascript_include_tag 'member/reviews.js'

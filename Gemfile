@@ -107,3 +107,5 @@ gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 
 gem 'font-awesome-sass'
+
+gem 'ransack'
