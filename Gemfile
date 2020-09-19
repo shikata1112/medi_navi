@@ -82,9 +82,6 @@ gem 'pry-rails'
 # reCAPTCHA
 gem 'recaptcha', require: "recaptcha/rails"
 
-# 環境変数
-gem 'dotenv-rails', require: 'dotenv/rails-now'
-
 # 住所自動入力
 gem 'jp_prefecture'
 
@@ -108,4 +105,7 @@ gem 'momentjs-rails'
 
 gem 'font-awesome-sass'
 
-gem 'ransack'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
