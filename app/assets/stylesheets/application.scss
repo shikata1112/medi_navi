@@ -20,9 +20,13 @@
 @import 'font-awesome';
 
 header {
-  background-color: rgb(192, 248, 248);
+  background-color: rgba(243, 243, 243, 0.801);
   width: 100%;
   height: 70px;
+}
+
+body {
+  background-color: rgb(255, 255, 255);
 }
 
 .nav.navbar-nav.navbar-right {
@@ -31,14 +35,14 @@ header {
 
 .btn-group {
   float: right;
-  margin-right: 15px;
-  margin-top: 5px;
+  margin-right: 20px;
+  margin-top: 25px;
   cursor: pointer;
 }
 
 .dropdown-menu.pull-right {
   margin-top: 25px;
-  margin-right: -15px;
+  margin-right: -20px;
 }
 
 .nav-list {
@@ -53,7 +57,7 @@ header {
 }
 
 footer {
-  background-color: rgb(204, 204, 204);
+  background-color: rgb(209, 209, 209);
   width: 100%;
   height: 250px;
   margin-top: 25px;
@@ -158,5 +162,19 @@ thead {
 
 .review-btn, .review-show {
   margin-top: 50px;
+}
+
+.dropdown-menu.genre-search.pull-right {
+  margin-right: 0px;
+}
+
+.genre-list {
+  margin-left: 15px;
+  margin-bottom: 5px;
+}
+
+.navi-logo {
+  margin-top: 4px;
+  margin-left: 25px;
 }
 

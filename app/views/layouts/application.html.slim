@@ -12,7 +12,8 @@ html
       - if admin_signed_in? 
         header.admin_header
           .header-content
-            = link_to 'Medi Navi', root_path, class: "logo" 
+            = link_to root_path do
+              = image_tag  "logo.jpg", size: "180x60", class: "navi-logo"
             ul.nav.navbar-nav.navbar-right
               li
                 = link_to '管理者TOP', admin_members_top_path
@@ -27,44 +28,52 @@ html
       - elsif member_signed_in? 
         header
           .header-content
-            = link_to 'Medi Navi', root_path, class: "logo"
-          .btn-group
-            .dropdown-toggle data-toggle="dropdown"
-              | アカウント
-              span.caret
-            ul.dropdown-menu.pull-right role="menu"
-              li.nav-list role="presentation"
-                = link_to member_member_path(current_member) do
-                  span.glyphicon.glyphicon-user aria-hidden="true"
-                  |  マイページ
-              li.nav-list role="presentation"
-                = link_to root_path do
-                  span.glyphicon.glyphicon-bell aria-hidden="true"
-                  |  通知
-              li.nav-list role="presentation"
-                = link_to root_path do
-                  span.glyphicon.glyphicon-envelope aria-hidden="true"
-                  |  メッセージ
-              li.nav-list role="presentation"
-                = link_to root_path do
-                  span.glyphicon.glyphicon-star aria-hidden="true"
-                  |  お気に入りクリニック
-              li.nav-list role="presentation"
-                = link_to member_my_calendar_path, 'data-turbolinks': false
-                  span.glyphicon.glyphicon-calendar aria-hidden="true"
-                  |  Myカレンダー
-              li.nav-list role="presentation"
-                = link_to edit_member_member_path(current_member) do
-                  span.glyphicon.glyphicon-cog aria-hidden="true"
-                  |  プロフィール編集
-              li.nav-list role="presentation"
-                = link_to destroy_member_session_path, method: :delete do
-                  span.glyphicon.glyphicon-log-out aria-hidden="true"
-                  |  ログアウト
+            = link_to root_path do
+              = image_tag  "logo.jpg", size: "180x60", class: "navi-logo"
+            .btn-group
+              .dropdown-toggle data-toggle="dropdown"
+                | アカウント
+                span.caret
+              ul.dropdown-menu.pull-right role="menu"
+                li.nav-list role="presentation"
+                  = link_to member_member_path(current_member) do
+                    span.glyphicon.glyphicon-user aria-hidden="true"
+                    |  マイページ
+                li.nav-list role="presentation"
+                  = link_to root_path do
+                    span.glyphicon.glyphicon-bell aria-hidden="true"
+                    |  通知
+                li.nav-list role="presentation"
+                  = link_to my_favorite_path do
+                    span.glyphicon.glyphicon-star aria-hidden="true"
+                    |  お気に入りクリニック
+                li.nav-list role="presentation"
+                  = link_to my_calendar_path, 'data-turbolinks': false
+                    span.glyphicon.glyphicon-calendar aria-hidden="true"
+                    |  Myカレンダー
+                li.nav-list role="presentation"
+                  = link_to edit_member_member_path(current_member) do
+                    span.glyphicon.glyphicon-cog aria-hidden="true"
+                    |  プロフィール編集
+                li.nav-list role="presentation"
+                  = link_to destroy_member_session_path, method: :delete do
+                    span.glyphicon.glyphicon-log-out aria-hidden="true"
+                    |  ログアウト
+
+            .btn-group
+              .dropdown-toggle data-toggle="dropdown"
+                | 診療科目から検索する
+                span.caret
+              ul.dropdown-menu.genre-search.pull-right role="menu"
+                - Genre.all.each do |genre|
+                  = link_to clinics_genre_search_path(genre_id: genre.id) do
+                    li.genre-list role="presentation"
+                      = genre.medical_department
       - else
         header
           .header-content
-            = link_to 'Medi Navi', root_path, class: "logo"
+            = link_to root_path do
+              = image_tag  "logo.jpg", size: "180x60", class: "navi-logo"
             ul.nav.navbar-nav.navbar-right
               li
                 = link_to 'メディナビとは', clinics_about_path
@@ -72,8 +81,6 @@ html
                 = link_to '新規登録',  new_member_registration_path
               li
                 = link_to 'ログイン', new_member_session_path
-
-    
 
       = yield
 

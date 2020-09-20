@@ -1,6 +1,5 @@
 .container
   .row
-
     - @clinic.reviews.each do |review|
       table.table
         tr
@@ -10,3 +9,5 @@
             = review.comment
           td
             = review.wating_time
+          td
+            = review.score

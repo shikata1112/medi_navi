@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require jquery_ujs
 //= require activestorage
 //= require turbolinks
 //= require jquery
@@ -24,3 +23,11 @@
 //= require fullcalendar 
 //= require_tree 
 
+$(function () {
+  $('#star').raty({　　　
+    size: 50,
+    starOff: "/assets/star-off.png",
+    starOn: "/assets/star-on.png",
+    scoreName: "score"
+  });
+});

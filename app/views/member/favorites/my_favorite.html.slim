@@ -1,0 +1,7 @@
+.container
+  .row
+    .text-center
+      - @clinics.each do |clinic|
+        = link_to member_clinic_path(clinic) do
+          = clinic.name
+          br

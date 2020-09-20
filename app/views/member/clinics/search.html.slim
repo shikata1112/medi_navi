@@ -1,0 +1,21 @@
+.container
+  .row
+    .text-center
+      - if params[:search].blank?
+        h3
+          | 該当するクリニックが見つかりませんでした。
+        .top-link
+          = link_to "TOPに戻る", root_path, class: "btn btn-default"
+      - else
+        - if @clinics.blank?
+          h3
+            | 該当するクリニックが見つかりませんでした。
+          .top-link
+            = link_to "TOPに戻る", root_path, class: "btn btn-default"
+        - else
+          h2
+            | クリニックの検索結果
+          - @clinics.each do |clinic|
+            = link_to member_clinic_path(clinic) do
+              = clinic.name
+            br

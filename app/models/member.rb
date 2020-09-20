@@ -1,6 +1,5 @@
 class Member < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
   include JpPrefecture
@@ -15,6 +14,7 @@ class Member < ApplicationRecord
   end     
 
   has_many :events, dependent: :destroy
+
   has_many :favorites, dependent: :destroy
   has_many :clinics, through: :favorites
 

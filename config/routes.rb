@@ -1,7 +1,6 @@
 Rails.application.routes.draw do 
 
-
-  # -------------------- devise -----------------------------------------------
+  # -------------------- devise ------------------------------------------------
     devise_for :admins, controllers: {
       sessions:      'admins/sessions',
       passwords:     'admins/passwords',
@@ -13,15 +12,12 @@ Rails.application.routes.draw do
       passwords:     'members/passwords',
       registrations: 'members/registrations'
     }
-  # -------------------- devise -----------------------------------------------
+  # -------------------- devise ------------------------------------------------
 
-  # -------------------- admin ------------------------------------------------
-    root to: 'member/clinics#top'
-    get 'clinics/about', to: 'member/clinics#about', as: 'clinics_about'
-
-    get 'admin/top', to: 'admin/members#top', as: 'admin_members_top'
-
+  # -------------------- admsin ------------------------------------------------
     namespace :admin do
+
+      get 'top', to: 'members#top', as: 'members_top'
 
       resources :members, only: [:index, :show, :edit, :update]
       resources :clinics
@@ -32,7 +28,17 @@ Rails.application.routes.draw do
   # -------------------- admin ------------------------------------------------
   
   # -------------------- member -----------------------------------------------
-    get 'member/my_calendar', to: 'member/events#my_calendar'
+    root to: 'member/clinics#top'
+
+    get 'clinics/about', to: 'member/clinics#about'
+
+    get 'clinics/search', to: 'member/clinics#search'
+
+    get 'clinics/genre_search', to: 'member/clinics#genre_search'
+
+    get 'my_favorite', to: 'member/favorites#my_favorite'
+
+    get 'my_calendar', to: 'member/events#my_calendar'
 
     namespace :member do
       

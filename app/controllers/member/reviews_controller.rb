@@ -13,6 +13,7 @@ class Member::ReviewsController < ApplicationController
     @clinic = Clinic.find(params[:clinic_id])
     @review = @clinic.reviews.build(review_params)
     @review.member_id = current_member.id 
+    @review.score = params[:score]
     @review.save
     redirect_to member_clinic_reviews_path
   end
