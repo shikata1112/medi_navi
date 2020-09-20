@@ -1,3 +1,22 @@
 // Place all the styles related to the member::clinics controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.text-center.search-form {
+  margin-top: 35px;
+}
+
+.search-field {
+  width: 500px;
+  height: 35px;
+}
+
+.search-submit{
+  margin-left: 10px;
+  height: 35px;
+}
+
+.top-image.text-center, .top-link {
+  margin-top: 20px;
+}
+

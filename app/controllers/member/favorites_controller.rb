@@ -10,4 +10,9 @@ class Member::FavoritesController < ApplicationController
     @favorite.destroy 
     redirect_back(fallback_location: root_path)
   end
+
+  def my_favorite
+    @clinics = Clinic.joins(:favorites).where(favorites:{member_id: current_member.id})
+  end
+  
 end
