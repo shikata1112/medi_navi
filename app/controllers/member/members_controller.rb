@@ -14,6 +14,19 @@ class Member::MembersController < ApplicationController
     redirect_to member_member_path(@member)
   end
 
+  def resignation
+    @member = Member.find(current_member.id)
+  end
+
+  def quit
+    @member = Member.find(current_member.id)
+    #is_deletedカラムにフラグを立てる(defaultはfalse)
+    @member.update(is_deleted: true)
+    reset_session
+    flash[:notice] = "◆退会処理が完了しました。またのご利用を心よりお待ちしております。"
+    redirect_to root_path
+  end
+
   private
 
   def member_params

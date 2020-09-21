@@ -1,4 +1,8 @@
 .container
+
+  - if flash[:error]
+    .alert.alert-danger
+      = flash[:error]
   .col-xs-2
   .col-xs-8    
     h1

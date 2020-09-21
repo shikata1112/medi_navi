@@ -40,6 +40,9 @@ Rails.application.routes.draw do
 
     get 'my_calendar', to: 'member/events#my_calendar'
 
+    get 'resignation', to: 'member/members#resignation'
+    patch 'quit', to: 'member/members#quit'
+
     namespace :member do
       
       resources :members, only: [:show, :edit, :update]

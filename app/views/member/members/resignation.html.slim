@@ -1,0 +1,16 @@
+
+.container
+  .row
+
+    h3
+      | 本当に退会しますか？
+    p
+      | 退会すると、会員登録情報や
+      br
+      | これまでの購入履歴が閲覧できなくなります。
+      br
+      | 退会する場合は、「退会する」をクリックしてください。
+      br
+
+    - if member_signed_in?
+      = link_to "退会する", quit_path(@member), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn-sm btn-danger"
