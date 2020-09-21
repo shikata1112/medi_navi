@@ -24,7 +24,7 @@
 //= require_tree 
 
 $(function () {
-  $('#star').raty({　　　
+  $('#star').raty({
     size: 50,
     starOff: "/assets/star-off.png",
     starOn: "/assets/star-on.png",

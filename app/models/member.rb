@@ -22,5 +22,10 @@ class Member < ApplicationRecord
   has_many :clinics, through: :reviews
 
   attachment :profile_image
-  
+
+  # 会員論理削除機能
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+
 end
