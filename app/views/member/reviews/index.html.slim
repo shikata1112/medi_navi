@@ -1,13 +1,25 @@
 .container
   .row
-    - @clinic.reviews.each do |review|
-      table.table
+    table.table
+      - @clinic.reviews.each do |review|
         tr
           td
             = review.title
           td
             = review.comment
           td
-            = review.wating_time
+            - case review.wating_time
+            - when 0
+              | 5分未満
+            - when 1
+              | 10分〜20分
+            - when 2
+              | 20分〜30分
+            - when 3
+              | 30分〜1時間
+            - when 4
+              | 1時間〜2時間
+            - when 5
+              | 2時間以上
           td
             = review.score

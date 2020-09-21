@@ -1,7 +1,6 @@
 class Admin::MembersController < ApplicationController
 
   def top 
-    @members = Member.all
     days = (Date.today.beginning_of_month..Date.today).to_a
     members = days.map { |item| Member.where(created_at: item.beginning_of_day..item.end_of_day).count }
     @graph = LazyHighCharts::HighChart.new('graph') do |f|
