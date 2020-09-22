@@ -11,8 +11,10 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
- *= require_self
+ *= require jquery.tagit 
+ *= require tagit.ui-zendesk 
  *= require fullcalendar
+ *= require_self
  */
 @import "bootstrap-sprockets";  
 @import "bootstrap"; 
@@ -20,13 +22,13 @@
 @import 'font-awesome';
 
 header {
-  background-color: rgba(243, 243, 243, 0.801);
+  background-color: rgb(255, 255, 255);
   width: 100%;
   height: 70px;
 }
 
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(250, 248, 243, 0.808);
 }
 
 .nav.navbar-nav.navbar-right {
@@ -164,9 +166,10 @@ thead {
   margin-top: 50px;
 }
 
-.dropdown-menu.genre-search.pull-right {
-  margin-right: 0px;
-}
+// .dropdown-menu.genre-search.pull-right {
+//   margin-right: 0px;
+// }
+
 
 .genre-list {
   margin-left: 15px;
@@ -178,3 +181,12 @@ thead {
   margin-left: 25px;
 }
 
+.dropdown-menu.prefecture-search.pull-right {
+  width: 340px;
+}
+
+.prefecture-list {
+  padding-left: 2px;
+  margin: 10px;
+  display: inline-block;
+}

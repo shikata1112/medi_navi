@@ -7,6 +7,7 @@ html
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
+    //script src="js/tag-it.js" type="text/javascript" charset="utf-8"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .wrapper
@@ -63,13 +64,23 @@ html
 
             .btn-group
               .dropdown-toggle data-toggle="dropdown"
-                | 診療科目から検索する
+                | 診療科目から探す
                 span.caret
               ul.dropdown-menu.genre-search.pull-right role="menu"
                 - Genre.all.each do |genre|
                   = link_to clinics_genre_search_path(genre_id: genre.id) do
                     li.genre-list role="presentation"
                       = genre.medical_department
+
+            .btn-group
+              .dropdown-toggle data-toggle="dropdown"
+                | 都道府県から探す
+                span.caret
+              ul.dropdown-menu.prefecture-search.pull-right role="menu"
+                - Prefecture.all.each do |prefecture|
+                  = link_to clinics_prefecture_search_path(name: prefecture.name) do
+                    li.prefecture-list role="presentation"
+                      = prefecture.name
       - else
         header
           .header-content

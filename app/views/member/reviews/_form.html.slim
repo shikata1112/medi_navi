@@ -27,10 +27,15 @@
   = f.radio_button :wating_time, value = 5
   = f.label "2時間以上"
   br
-  // できれば通院時期も選択できるようにする
+
+  = f.label :tag_list, 'タグ'
+  br
+  = f.text_field :tag_list, value: @review.tag_list.join(','), id: 'tags'
+  br
 
   = f.label :score, "評価"
     script src="/assets/jquery.raty.js"
     #star
     br
+    
   = f.submit "投稿"

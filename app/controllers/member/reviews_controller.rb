@@ -24,6 +24,6 @@ class Member::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:comment, :title, :score, :wating_time, :clinic_id)
+    params.require(:review).permit(:comment, :title, :score, :wating_time, :clinic_id, :tag_list)
   end
 end

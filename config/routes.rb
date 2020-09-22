@@ -36,6 +36,8 @@ Rails.application.routes.draw do
 
     get 'clinics/genre_search', to: 'member/clinics#genre_search'
 
+    get 'clinics/prefecture_search', to: 'member/clinics#prefecture_search'
+
     get 'my_favorite', to: 'member/favorites#my_favorite'
 
     get 'my_calendar', to: 'member/events#my_calendar'

@@ -20,4 +20,8 @@ class Member::ClinicsController < ApplicationController
     # @clinics = Genre.find(params[:genre_id]).clinics
   end
 
+  def prefecture_search
+    @clinics = Clinic.where("address LIKE?","#{params[:name]}%")
+  end
+
 end

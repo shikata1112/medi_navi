@@ -22,4 +22,8 @@
             - when 5
               | 2時間以上
           td
+            - review.tag_list.each do |tag|
+              span.label.label-default style='margin-right: 10px;'
+                = tag
+          td
             = review.score

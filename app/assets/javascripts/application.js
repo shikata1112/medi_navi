@@ -14,7 +14,9 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery
+//= require jquery-ui
 //= require bootstrap-sprockets
+//= require tag-it
 //= require highcharts/highcharts
 //= require highcharts/highcharts-more
 //= require nested_form_fields
@@ -30,3 +32,7 @@ $(function () {
     scoreName: "score"
   });
 });
+
+$(document).on('ready page:load', function(){
+  $('#tags').tagit()
+})

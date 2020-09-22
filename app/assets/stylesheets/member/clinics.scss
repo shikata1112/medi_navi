@@ -7,7 +7,7 @@
 }
 
 .search-field {
-  width: 500px;
+  width: 700px;
   height: 35px;
 }
 
@@ -16,7 +16,10 @@
   height: 35px;
 }
 
-.top-image.text-center, .top-link {
-  margin-top: 20px;
+.top-image.text-center {
+  background-image: url("/images/clinic.jpeg");
+  height: 550px;
+  background-size: cover;
+  background-position: center; 
 }
 
