@@ -1,95 +1,121 @@
 .container
-  .row
-    
-    .page-header
-      h2.clinic-name
-        = @clinic.name
-        
-    .text-right
-      - if @clinic.favorited_by?(current_member)
-        = link_to member_clinic_favorites_path(@clinic), method: :delete do
-          .btn.btn-default.unfavorite
-            | お気に入り済み
-      - else
-        = link_to member_clinic_favorites_path(@clinic), method: :post do
-          .btn.btn-default.favorite
-            | お気に入り登録
-    
+  .row.clinic-info
+    .col-xs-8
+      .row
+        .page-header
+          h3.clinic-head
+            .clinic-name
+              = @clinic.name
+            
+            .favorite-button
+              - if @clinic.favorited_by?(current_member)
+                = link_to member_clinic_favorites_path(@clinic), method: :delete do
+                  .btn.btn-default.btn-sm.unfavorite
+                    | お気に入り済み
+              - else
+                = link_to member_clinic_favorites_path(@clinic), method: :post do
+                  .btn.btn-default.btn-sm.favorite
+                    | お気に入り登録
       
+      .row
+        .col-xs-3
+          .clinic-image
+            = attachment_image_tag @clinic, :image, size: "130x130", fallback: "no-image.jpg"
 
-
-    .col-xs-2
-      = attachment_image_tag @clinic, :image, size: "145x155", fallback: "no-image.jpg"
-    
-    .col-xs-6
-      table.table.noborder
-        tr
-          th.noborder
-            | 医師
-          td.noborder
-            = @clinic.doctor
-        tr
-          th.noborder
-            | 診療科目
-          td.noborder
-            - @clinic.genres.each do |genre|
-                = genre.medical_department
-                | 　
-        tr
-          th.noborder
-            | 所在地
-          td.noborder
-            = @clinic.address
-        tr
-          th.noborder
-            | 最寄駅
-          td.noborder
-            = @clinic.nearest_station
-        tr
-          th.noborder
-            | 電話番号
-          td.noborder
-            = @clinic.phone_number
-
-  .row.clinic_consultation_hours
-  
-    .text-center
-      table.table.table-bordered
-        thead
-          tr
-            th 診療時間
-            th 月
-            th 火
-            th 水
-            th 木
-            th 金
-            th 土
-            th 日
-            th 祝
-      
-        - @clinic.consultation_hours.each do |consultation_hour|
-          tbody
+        .col-xs-6
+          table.table.noborder
             tr
-                td
-                  = consultation_hour.start_time
-                  | 〜
-                  = consultation_hour.finish_time
-                td 
-                  = consultation_hour.mo_time
-                td
-                  = consultation_hour.tu_time
-                td
-                  = consultation_hour.we_time
-                td
-                  = consultation_hour.th_time
-                td
-                  = consultation_hour.fr_time
-                td
-                  = consultation_hour.sa_time
-                td
-                  = consultation_hour.su_time
-                td
-                  = consultation_hour.ho_time
+              th.noborder
+                | 診療科目
+              td.noborder
+                - @clinic.genres.each do |genre|
+                    = genre.medical_department
+                    | 　
+            tr
+              th.noborder
+                | 所在地
+              td.noborder
+                = @clinic.address
+            tr
+              th.noborder
+                | 最寄駅
+              td.noborder
+                = @clinic.nearest_station
+            tr
+              th.noborder
+                | 電話番号
+              td.noborder
+                = @clinic.phone_number
+
+      .row.clinic_consultation_hours
+        
+        .col-xs-11
+          table.table.table-bordered
+            thead
+              tr
+                th.week 診療時間
+                th.week 月
+                th.week 火
+                th.week 水
+                th.week 木
+                th.week 金
+                th.week 土
+                th.week 日
+                th.week 祝
+            - @clinic.consultation_hours.each do |consultation_hour|
+              tbody
+                tr
+                    td
+                      = consultation_hour.start_time
+                      | 〜
+                      = consultation_hour.finish_time
+                    td 
+                      = consultation_hour.mo_time
+                    td
+                      = consultation_hour.tu_time
+                    td
+                      = consultation_hour.we_time
+                    td
+                      = consultation_hour.th_time
+                    td
+                      = consultation_hour.fr_time
+                    td
+                      = consultation_hour.sa_time
+                    td
+                      = consultation_hour.su_time
+                    td
+                      = consultation_hour.ho_time
+    .col-xs-3#clinic-map
+      #map style='height: 330px; width: auto;'
+
+      - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMap".html_safe
+      script{ async src=google_api }
+
+      javascript:
+
+        let map;
+
+        function initMap() {
+          geocoder = new google.maps.Geocoder()
+
+          map = new google.maps.Map(document.getElementById('map'), {
+            // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
+            center: {
+              lat: gon.clinic.latitude,
+              lng: gon.clinic.longitude
+            },
+            zoom: 16,
+          });
+
+          marker = new google.maps.Marker({
+            // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
+            position: {
+              lat: gon.clinic.latitude,
+              lng: gon.clinic.longitude
+            },
+            map: map
+          });
+        }
 
   .row.text-center
     .btn.btn-warning.review-btn
@@ -99,6 +125,8 @@
       |(
       = @clinic.reviews.count
       |件)
+
+
   .row
     .page-header
     .col-xs-3
@@ -124,5 +152,3 @@
           span.glyphicon.glyphicon-chevron-right aria-hidden='true'
           span.sr-only
             | 次へ 
-
-  

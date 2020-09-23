@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+// require turbolinks
 //= require jquery
 //= require jquery-ui
 //= require bootstrap-sprockets
@@ -26,7 +26,7 @@
 
 $(function () {
   $('#star').raty({
-    size: 50,
+    size: 1000,
     starOff: "/assets/star-off.png",
     starOn: "/assets/star-on.png",
     scoreName: "score"

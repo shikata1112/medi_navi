@@ -75,10 +75,6 @@ footer {
   width: 200px;
 }
 
-table th {
-  text-align: center; 
-}
-
 .add-clinic {
   text-align: right;
   margin-bottom: 10px;
@@ -139,37 +135,6 @@ thead {
   width: 100%;
   margin: 0 auto;
 }
-
-.noborder {
-  border-style:none!important;
-}
-
-.favorite {
-  background-color: rgb(247, 247, 247);
-}
-
-.unfavorite {
-  background-color: rgb(255, 227, 104);
-}
-
-.clinic_consultation_hours {
-  width: 75%;
-  margin-top: 20px;
-  margin-bottom: -10px;
-}
-
-.clinic-boxes {
-  margin-top: 50px;
-}
-
-.review-btn, .review-show {
-  margin-top: 50px;
-}
-
-// .dropdown-menu.genre-search.pull-right {
-//   margin-right: 0px;
-// }
-
 
 .genre-list {
   margin-left: 15px;

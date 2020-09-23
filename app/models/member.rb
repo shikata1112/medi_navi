@@ -27,4 +27,9 @@ class Member < ApplicationRecord
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
+
+  # google API
+  geocoded_by :address
+  after_validation :geocode
+  
 end

@@ -5,9 +5,9 @@ html
       | MediNavi
     = csrf_meta_tags
     = csp_meta_tag
+    = include_gon
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
-    //script src="js/tag-it.js" type="text/javascript" charset="utf-8"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     .wrapper
@@ -30,7 +30,7 @@ html
       - elsif member_signed_in? 
         header
           .header-content
-            = link_to root_path do
+            = link_to root_path, 'data-turbolinks': false do
               = image_tag  "logo.jpg", size: "180x60", class: "navi-logo"
             .btn-group
               .dropdown-toggle data-toggle="dropdown"
