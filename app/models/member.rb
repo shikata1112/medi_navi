@@ -1,6 +1,7 @@
 class Member < ApplicationRecord
   
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, 
+         :rememberable, :validatable, :confirmable
 
   include JpPrefecture
   jp_prefecture :prefecture_code
@@ -27,4 +28,9 @@ class Member < ApplicationRecord
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
+
+  # google API
+  geocoded_by :address
+  after_validation :geocode
+
 end

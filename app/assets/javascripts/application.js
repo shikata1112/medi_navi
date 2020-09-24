@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+// require turbolinks
 //= require jquery
 //= require jquery-ui
 //= require bootstrap-sprockets
@@ -33,6 +33,8 @@ $(function () {
   });
 });
 
+
+// tag
 $(document).on('ready page:load', function(){
   $('#tags').tagit()
 })

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_22_105617) do
+ActiveRecord::Schema.define(version: 2020_09_23_050922) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(version: 2020_09_22_105617) do
     t.json "images"
     t.string "nearest_station"
     t.integer "prefecture_id"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["prefecture_id"], name: "index_clinics_on_prefecture_id"
   end
 
@@ -106,6 +108,8 @@ ActiveRecord::Schema.define(version: 2020_09_22_105617) do
     t.integer "prefecture_code"
     t.string "profile_image_id"
     t.integer "prefecture_id"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end

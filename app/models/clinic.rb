@@ -31,4 +31,9 @@ class Clinic < ApplicationRecord
     Clinic.where(['name LIKE ?', "%#{search}%"])
   end
 
+  
+  # google API, 現在地からの検索機能
+  geocoded_by :address
+  after_validation :geocode
+
 end

@@ -112,6 +112,10 @@ gem 'seed-fu'
 gem 'acts-as-taggable-on'
 gem 'jquery-ui-rails'
 
+# google API関連
+gem 'gon'
+gem 'geocoder'
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

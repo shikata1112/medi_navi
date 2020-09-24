@@ -23,7 +23,15 @@
               | 2時間以上
           td
             - review.tag_list.each do |tag|
-              span.label.label-default style='margin-right: 10px;'
+              span.label.label-default style="margin-right: 10px;"
                 = tag
           td
-            = review.score
+            div class="fixed-star#{review.id}"
+              javascript:
+                $(".fixed-star#{review.id}").raty({
+                  size: 50,
+                  starOff: "/assets/star-off.png",
+                  starOn: "/assets/star-on.png",
+                  readOnly: true,
+                  score: "#{review.score}",
+                })
