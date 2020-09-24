@@ -46,15 +46,6 @@
             zoom: 15,
           });
 
-          //marker = new google.maps.Marker({
-             // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
-          //   position: {
-          //     lat: gon.member.latitude,
-          //     lng: gon.member.longitude
-          //   },
-          //   map: map
-          // });
-
           // 繰り返し処理でマーカーと吹き出しを複数表示させる
           for (var i = 0; i < markerData.length; i++) {
             let id = markerData[i]['id']

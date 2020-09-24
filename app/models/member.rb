@@ -1,6 +1,7 @@
 class Member < ApplicationRecord
   
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, 
+         :rememberable, :validatable, :confirmable
 
   include JpPrefecture
   jp_prefecture :prefecture_code
@@ -31,5 +32,5 @@ class Member < ApplicationRecord
   # google API
   geocoded_by :address
   after_validation :geocode
-  
+
 end

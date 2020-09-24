@@ -26,13 +26,15 @@
 
 $(function () {
   $('#star').raty({
-    size: 1000,
+    size: 50,
     starOff: "/assets/star-off.png",
     starOn: "/assets/star-on.png",
     scoreName: "score"
   });
 });
 
+
+// tag
 $(document).on('ready page:load', function(){
   $('#tags').tagit()
 })

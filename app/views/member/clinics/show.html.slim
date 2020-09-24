@@ -11,11 +11,13 @@
               - if @clinic.favorited_by?(current_member)
                 = link_to member_clinic_favorites_path(@clinic), method: :delete do
                   .btn.btn-default.btn-sm.unfavorite
-                    | お気に入り済み
+                    i.far.fa-star
+                    |  お気に入り済み
               - else
                 = link_to member_clinic_favorites_path(@clinic), method: :post do
                   .btn.btn-default.btn-sm.favorite
-                    | お気に入り登録
+                    i.far.fa-star 
+                    |  お気に入り登録
       
       .row
         .col-xs-3
@@ -118,13 +120,14 @@
         }
 
   .row.text-center
-    .btn.btn-warning.review-btn
-      = link_to "口コミを投稿する", new_member_clinic_review_path(@clinic), 'data-turbolinks': false
-    .btn.btn-default.review-show
-      = link_to "レビューを見る", member_clinic_reviews_path(@clinic)
-      |(
-      = @clinic.reviews.count
-      |件)
+    .btn-group
+      .btn.btn-warning.review-btn
+        = link_to "口コミを投稿する", new_member_clinic_review_path(@clinic), 'data-turbolinks': false
+      .btn.btn-default.review-show
+        = link_to "レビューを見る", member_clinic_reviews_path(@clinic)
+        |  (
+        = @clinic.reviews.count
+        |件)
 
 
   .row

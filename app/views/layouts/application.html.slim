@@ -32,7 +32,7 @@ html
           .header-content
             = link_to root_path, 'data-turbolinks': false do
               = image_tag  "logo.jpg", size: "180x60", class: "navi-logo"
-            .btn-group
+            .btn-group.header-list
               .dropdown-toggle data-toggle="dropdown"
                 | アカウント
                 span.caret
@@ -62,7 +62,7 @@ html
                     span.glyphicon.glyphicon-log-out aria-hidden="true"
                     |  ログアウト
 
-            .btn-group
+            .btn-group.header-list
               .dropdown-toggle data-toggle="dropdown"
                 | 診療科目から探す
                 span.caret
@@ -72,7 +72,7 @@ html
                     li.genre-list role="presentation"
                       = genre.medical_department
 
-            .btn-group
+            .btn-group.header-list
               .dropdown-toggle data-toggle="dropdown"
                 | 都道府県から探す
                 span.caret
