@@ -1,7 +1,7 @@
 class Member < ApplicationRecord
   
-  devise :database_authenticatable, :registerable, :recoverable, 
-         :rememberable, :validatable, :confirmable
+  devise :database_authenticatable, :registerable, :recoverable,
+          :rememberable, :validatable
 
   include JpPrefecture
   jp_prefecture :prefecture_code

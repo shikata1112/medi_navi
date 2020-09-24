@@ -5,7 +5,7 @@
       = flash[:error]
   .col-xs-2
   .col-xs-8    
-    h1
+    h1.text-center
       | 会員ログイン
 
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
@@ -24,8 +24,10 @@
           = f.label :remember_me, class: 'form-check-label' do
             = resource.class.human_attribute_name('remember_me')
 
-      = recaptcha_tags
       .form-group
-        = f.submit "ログイン", class: 'btn btn-primary'
+        = recaptcha_tags
+
+      .form-group
+        = f.submit "ログイン", class: 'btn btn-primary btn-block'
         
     = render 'devise/shared/links'

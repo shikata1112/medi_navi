@@ -34,37 +34,42 @@ html
               = image_tag  "logo.jpg", size: "180x60", class: "navi-logo"
             .btn-group.header-list
               .dropdown-toggle data-toggle="dropdown"
-                | アカウント
-                span.caret
-              ul.dropdown-menu.pull-right role="menu"
-                li.nav-list role="presentation"
-                  = link_to member_member_path(current_member) do
-                    span.glyphicon.glyphicon-user aria-hidden="true"
-                    |  マイページ
-                li.nav-list role="presentation"
-                  = link_to root_path do
-                    span.glyphicon.glyphicon-bell aria-hidden="true"
-                    |  通知
-                li.nav-list role="presentation"
-                  = link_to my_favorite_path do
-                    span.glyphicon.glyphicon-star aria-hidden="true"
-                    |  お気に入りクリニック
-                li.nav-list role="presentation"
-                  = link_to my_calendar_path, 'data-turbolinks': false
-                    span.glyphicon.glyphicon-calendar aria-hidden="true"
-                    |  Myカレンダー
-                li.nav-list role="presentation"
-                  = link_to edit_member_member_path(current_member) do
-                    span.glyphicon.glyphicon-cog aria-hidden="true"
-                    |  プロフィール編集
-                li.nav-list role="presentation"
-                  = link_to destroy_member_session_path, method: :delete do
-                    span.glyphicon.glyphicon-log-out aria-hidden="true"
-                    |  ログアウト
+                .nav-member_name
+                  = current_member.name
+                  |  
+                  = attachment_image_tag current_member, :profile_image, size: "25x25", fallback: "no-image.jpg", class: "img-circle"
+                  |  
+                  span.caret
+              ul.dropdown-menu.pull-right.acount role="menu"
+                  li.nav-list role="presentation"
+                    = link_to member_member_path(current_member) do
+                      span.glyphicon.glyphicon-user aria-hidden="true"
+                      |  マイページ
+                  li.nav-list role="presentation"
+                    = link_to root_path do
+                      span.glyphicon.glyphicon-bell aria-hidden="true"
+                      |  通知
+                  li.nav-list role="presentation"
+                    = link_to my_favorite_path do
+                      span.glyphicon.glyphicon-star aria-hidden="true"
+                      |  お気に入りクリニック
+                  li.nav-list role="presentation"
+                    = link_to my_calendar_path, 'data-turbolinks': false
+                      span.glyphicon.glyphicon-calendar aria-hidden="true"
+                      |  Myカレンダー
+                  li.nav-list role="presentation"
+                    = link_to edit_member_member_path(current_member) do
+                      span.glyphicon.glyphicon-cog aria-hidden="true"
+                      |  プロフィール編集
+                  li.nav-list role="presentation"
+                    = link_to destroy_member_session_path, method: :delete do
+                      span.glyphicon.glyphicon-log-out aria-hidden="true"
+                      |  ログアウト
 
             .btn-group.header-list
               .dropdown-toggle data-toggle="dropdown"
-                | 診療科目から探す
+                i.fas.fa-align-left
+                |  診療科目から探す 
                 span.caret
               ul.dropdown-menu.genre-search.pull-right role="menu"
                 - Genre.all.each do |genre|
@@ -74,7 +79,8 @@ html
 
             .btn-group.header-list
               .dropdown-toggle data-toggle="dropdown"
-                | 都道府県から探す
+                i.fas.fa-globe-asia
+                |  都道府県から探す 
                 span.caret
               ul.dropdown-menu.prefecture-search.pull-right role="menu"
                 - Prefecture.all.each do |prefecture|
