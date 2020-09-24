@@ -25,14 +25,14 @@
 
 // clinics.show
 
-.clinic-name {
-  display: inline-block;
+.clinic-head {
+  display: flex;
+  justify-content: space-between;
 }
 
 .favorite-button {
-  display: inline-block;
+  margin-right: 10px;
   margin-bottom: -5px;
-  margin-left: 380px;
 }
 
 .clinic-image {
