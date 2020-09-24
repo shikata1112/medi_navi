@@ -116,6 +116,9 @@ gem 'jquery-ui-rails'
 gem 'gon'
 gem 'geocoder'
 
+# japanMap
+gem 'jcanvas-rails', '~> 0.1.0'
+
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

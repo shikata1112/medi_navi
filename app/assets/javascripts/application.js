@@ -16,6 +16,7 @@
 //= require jquery
 //= require jquery-ui
 //= require bootstrap-sprockets
+//= require jcanvas
 //= require tag-it
 //= require highcharts/highcharts
 //= require highcharts/highcharts-more
@@ -24,6 +25,8 @@
 //= require fullcalendar 
 //= require_tree 
 
+
+// 星レビュー機能
 $(function () {
   $('#star').raty({
     size: 50,
@@ -34,7 +37,7 @@ $(function () {
 });
 
 
-// tag
+// tag付け機能
 $(document).on('ready page:load', function(){
   $('#tags').tagit()
 })
