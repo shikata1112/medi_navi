@@ -10,7 +10,7 @@ html
     script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    .wrapper
+    #wrapper
       - if admin_signed_in? 
         header.admin_header
           .header-content

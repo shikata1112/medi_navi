@@ -1,0 +1,5 @@
+
+.container
+  - clinics.each do |clinic|
+    .row.clinic-row
+      = render 'member/clinics/clinic_info', clinic: clinic

@@ -29,7 +29,6 @@
 // 星レビュー機能
 $(function () {
   $('#star').raty({
-    size: 50,
     starOff: "/assets/star-off.png",
     starOn: "/assets/star-on.png",
     scoreName: "score"

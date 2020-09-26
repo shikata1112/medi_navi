@@ -2,18 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+// clinics.top
+
 .text-center.search-form {
-  margin: 60px 50px;
+  margin: 80px 50px;
+}
+
+.search-result-form {
+  margin: 45px 50px;
+
 }
 
 .search-field {
   width: 700px;
-  height: 35px;
+  height: 46px;
 }
 
 .search-submit{
   margin-left: 10px;
-  height: 35px;
+  height: 45px;
+  width: 160px;
 }
 
 .top-image.text-center {
@@ -21,6 +30,13 @@
   height: 550px;
   background-size: cover;
   background-position: center; 
+}
+
+// clinics.search
+
+.clinic-none {
+  margin-top: 80px;
+  margin-bottom: 30px;
 }
 
 // clinics.show
@@ -87,6 +103,30 @@ table.table.noborder {
   background-color: white;
 }
 
-.prefecture-searchmap {
-  
+.col-xs-10.clinic-info {
+  border: 1px solid rgba(185, 184, 184, 0.648);
+  padding-bottom: 30px;
+  padding-left: 30px;
+  background-color: white;
+}
+
+.row.clinic-border {
+  border-bottom: 1px solid rgba(185, 184, 184, 0.648);
+  margin-right: 1px;
+}
+
+.row.clinic-show {
+  margin-top: 20px;
+}
+
+.row.clinic-row {
+  margin-top: 50px;
+}
+
+.clinic-score-average {
+  display:inline-block ;
+  margin-left: 20px;
+  color: #ff9500;
+  font-size: x-large;
+  font-weight: 800;
 }

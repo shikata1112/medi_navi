@@ -3,16 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-// .fa-star {
-//   font-size: 30px;
-//   color:#ffcc00;
-//   cursor: pointer;
-// }
+.review-box {
+  borde: 1px solid rgba(185, 184, 184, 0.648);
+  padding: 20px;
+  background-color: white;
+  margin-top: 60px;
+  margin: 60px auto;
+}
 
-// .main-rating {
-//   display: flex;
-// }
+.review-form {
+  margin-top: 20px;
+}
 
-// .rating-value-display {
-//   font-size: 20px;
-// }
+.tagit.ui-widget.ui-widget-content.ui-corner-all {
+  border-color: inherit;
+}
+
+.review-submit-btn {
+  margin-top: 10px;
+}
+
+.review-box {
+  margin: 60px auto;
+  width: 40%;
+}
+
+.return-btn.text-right {
+  margin-right: -5px;
+  padding-bottom: 10px;
+}
+
+.waite-time {
+  margin-right: 20px;
+  margin-top: 10px;
+}

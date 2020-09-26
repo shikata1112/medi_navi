@@ -28,7 +28,7 @@ class Clinic < ApplicationRecord
 
   # 検索機能
   def Clinic.search(search)
-    Clinic.where(['name LIKE ?', "%#{search}%"])
+    Clinic.where(['name LIKE ? OR nearest_station LIKE ? OR phone_number LIKE ? OR address LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
   end
 
   
