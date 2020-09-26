@@ -1,0 +1,14 @@
+div class="average-star#{clinic.id}"
+    javascript:
+      $('.average-star#{clinic.id}').raty({
+        size: 36,
+        starOff: "/assets/star-off.png",
+        starOn: "/assets/star-on.png",
+        starHalf: "/assets/star-half.png",
+        half: true,
+        readOnly: true,
+        score: "#{clinic.reviews.average(:score).to_f.round(1)}", // 平均点を算出し、round関数で切り上げ
+      });
+
+    .clinic-score-average
+      = clinic.reviews.average(:score).to_f.round(2)

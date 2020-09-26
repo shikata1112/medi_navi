@@ -25,6 +25,8 @@
             = attachment_image_tag @clinic, :image, size: "130x130", fallback: "no-image.jpg"
 
         .col-xs-6
+          = render 'member/clinics/scorestar', clinic: @clinic
+
           table.table.noborder
             tr
               th.noborder

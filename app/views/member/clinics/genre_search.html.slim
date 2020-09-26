@@ -1,6 +1,2 @@
-h2
-  | クリニックの検索結果
-- @clinics.each do |clinic|
-  = link_to member_clinic_path(clinic) do
-    = clinic.name
-  br
+
+= render 'member/clinics/search_results', clinics: @clinics

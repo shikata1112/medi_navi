@@ -1,0 +1,89 @@
+  
+.col-xs-1
+.col-xs-10.clinic-info
+  .row.clinic-border
+    h3.clinic-head
+      .clinic-name
+        = link_to member_clinic_path(clinic) do
+          = clinic.name
+      
+      .favorite-button
+        - if clinic.favorited_by?(current_member)
+          = link_to member_clinic_favorites_path(clinic), method: :delete do
+            .btn.btn-default.btn-sm.unfavorite
+              i.far.fa-star
+              |  お気に入り済み
+        - else
+          = link_to member_clinic_favorites_path(clinic), method: :post do
+            .btn.btn-default.btn-sm.favorite
+              i.far.fa-star 
+              |  お気に入り登録
+
+  .row.clinic-show
+    .col-xs-3
+      .clinic-image
+        = attachment_image_tag clinic, :image, size: "130x130", fallback: "no-image.jpg"
+
+    .col-xs-6
+      / = render 'member/clinics/scorestar', clinic: @clinic
+
+      table.table.noborder
+        tr
+          th.noborder
+            | 診療科目
+          td.noborder
+            - clinic.genres.each do |genre|
+                = genre.medical_department
+                | 　
+        tr
+          th.noborder
+            | 所在地
+          td.noborder
+            = clinic.address
+        tr
+          th.noborder
+            | 最寄駅
+          td.noborder
+            = clinic.nearest_station
+        tr
+          th.noborder
+            | 電話番号
+          td.noborder
+            = clinic.phone_number
+
+  .row.clinic_consultation_hours
+    table.table.table-bordered
+      thead
+        tr
+          th.week 診療時間
+          th.week 月
+          th.week 火
+          th.week 水
+          th.week 木
+          th.week 金
+          th.week 土
+          th.week 日
+          th.week 祝
+      - clinic.consultation_hours.each do |consultation_hour|
+        tbody
+          tr
+              td
+                = consultation_hour.start_time
+                | 〜
+                = consultation_hour.finish_time
+              td 
+                = consultation_hour.mo_time
+              td
+                = consultation_hour.tu_time
+              td
+                = consultation_hour.we_time
+              td
+                = consultation_hour.th_time
+              td
+                = consultation_hour.fr_time
+              td
+                = consultation_hour.sa_time
+              td
+                = consultation_hour.su_time
+              td
+                = consultation_hour.ho_time
