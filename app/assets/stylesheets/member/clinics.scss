@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+// clinics.top
+
 .text-center.search-form {
   margin: 80px 50px;
 }
@@ -27,6 +30,13 @@
   height: 550px;
   background-size: cover;
   background-position: center; 
+}
+
+// clinics.search
+
+.clinic-none {
+  margin-top: 80px;
+  margin-bottom: 30px;
 }
 
 // clinics.show

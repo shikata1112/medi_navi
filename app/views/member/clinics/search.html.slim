@@ -2,22 +2,26 @@
   .row
     .text-center.search-result-form
       = form_tag(clinics_search_path, method: :get) do
-        = text_field_tag :search, "", placeholder: " クリニック キーワード検索", class: "search-field"
+        = text_field_tag :search, params[:search], placeholder: " クリニック名・駅名・住所・電話番号", class: "search-field"
         = button_tag type: 'submit', class: 'btn btn-info search-submit' do
           i.fas.fa-search
           |  検索する
 
-    
-    - if params[:search].blank?
-      h3
-        | 該当するクリニックが見つかりませんでした。
-      .top-link
-        = link_to "TOPに戻る", root_path, class: "btn btn-default"
-    - else
-      - if @clinics.blank?
-        h3
+
+      - if params[:search].blank?
+        h3.clinic-none
           | 該当するクリニックが見つかりませんでした。
+          br
+          | 別のキーワードで検索してください。
         .top-link
-          = link_to "TOPに戻る", root_path, class: "btn btn-default"
+          = link_to "TOPに戻る", root_path, class: "btn btn-default btn-lg"
       - else
-        = render 'member/clinics/search_results', clinics: @clinics
+        - if @clinics.blank?
+          h3.clinic-none
+            | 該当するクリニックが見つかりませんでした。
+            br
+            | 別のキーワードで検索してください。
+          .top-link
+            = link_to "TOPに戻る", root_path, class: "btn btn-default btn-lg"
+        - else
+          = render 'member/clinics/search_results', clinics: @clinics
