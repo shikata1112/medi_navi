@@ -115,7 +115,10 @@ html
                 li.footer-list
                   = link_to "Search", root_path, style:"color: #5bc0de;"
                 li.footer-list
-                  = link_to "Member", member_member_path(current_member), style:"color: #5bc0de;"
+                  - if member_signed_in? 
+                    = link_to "Member", member_member_path(current_member), style:"color: #5bc0de;"
+                  - else 
+                    = link_to "Member", new_member_session_path
 
               .sns-share
                 .twitter-link

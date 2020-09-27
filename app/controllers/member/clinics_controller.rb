@@ -1,8 +1,8 @@
 class Member::ClinicsController < ApplicationController
 
   def top
-    @member = Member.find(current_member.id)
-    gon.member = @member
+    
+    gon.member = current_member
     gon.clinics = Clinic.all
   end
 

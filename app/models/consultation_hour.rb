@@ -1,5 +1,5 @@
 class ConsultationHour < ApplicationRecord
-  belongs_to :clinic
+  belongs_to :clinic, optional: true
 
   enum mo_time: { '●': 0, '／': 1, '▲': 2}, _prefix: true
   enum tu_time: { '●': 0, '／': 1, '▲': 2}, _prefix: true
