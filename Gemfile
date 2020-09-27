@@ -64,10 +64,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 
-#　railsでslimを利用するためのgem
+# railsでslimを利用するためのgem
 gem 'slim-rails'
 
-#　html.erbをhtmle.slimに変換するためのgem
+#html.erbをhtmle.slimに変換するためのgem
 gem 'html2slim'
 
 # devise機能
@@ -76,7 +76,7 @@ gem 'devise-bootstrap-views'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
-# デバッグ　binding.pry
+# デバッグ binding.pry
 gem 'pry-rails'
 
 # reCAPTCHA
@@ -106,7 +106,7 @@ gem 'momentjs-rails'
 gem 'font-awesome-sass'
 
 # DB初期値
-gem 'seed-fu',
+gem 'seed-fu'
 
 # タグ付け関連
 gem 'acts-as-taggable-on'
