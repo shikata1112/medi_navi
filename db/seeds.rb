@@ -10,7 +10,7 @@ Member.create!(
   [
     {
       name: '秀',
-      email: 'shu@gmail.com',
+      email: 'shu.42111227@gmail.com',
       password: '111111',
       password_confirmation: '111111',
       prefecture_code: '27',

@@ -106,7 +106,7 @@ gem 'momentjs-rails'
 gem 'font-awesome-sass'
 
 # DB初期値
-gem 'seed-fu'
+gem 'seed-fu',
 
 # タグ付け関連
 gem 'acts-as-taggable-on'
