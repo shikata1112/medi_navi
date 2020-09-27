@@ -1,7 +1,7 @@
   - content_for(:body_attributes) do
     data-turbolinks="false"
 
-  .top-image.text-center
+  .top-image
 
   .container
     .row
@@ -37,21 +37,21 @@
 
             $("#map-container").japanMap(
                 {
-                    width: 800,
+                    width: 900,
                     selection: "prefecture",
                     areas: areas,
-                    backgroundColor : "#f2fcff",
-                    borderLineColor: "#f2fcff",
+                    backgroundColor : "white",
+                    borderLineColor: "black",
                     borderLineWidth : 0.25,
                     lineColor : "#a0a0a0",
                     lineWidth: 1,
                     drawsBoxLine: true,
                     movesIslands : true,
-                    //showsPrefectureName: true,
-                    //prefectureNameType: "short",
-                    //fontShadowColor : "white",
-                    //fontSize : 11,
-                    //fontColor : "black",
+                    showsPrefectureName: true,
+                    prefectureNameType: "short",
+                    fontShadowColor : "black",
+                    fontSize : 11,
+                    fontColor : "areaColor",
                     onSelect:function(data){
                         window.location.href = 'http://localhost:3000/clinics/prefecture_search?name=' + data.name;
                   },

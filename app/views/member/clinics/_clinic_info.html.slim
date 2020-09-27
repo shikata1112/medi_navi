@@ -22,10 +22,18 @@
   .row.clinic-show
     .col-xs-3
       .clinic-image
-        = attachment_image_tag clinic, :image, size: "130x130", fallback: "no-image.jpg"
+        = attachment_image_tag clinic, :image, size: "150x150", fallback: "no-image.jpg"
 
     .col-xs-6
-      = render 'member/clinics/scorestar', clinic: clinic
+      .clinic-review
+        = render 'member/clinics/scorestar', clinic: clinic
+
+        .clinic-review-count
+          = link_to member_clinic_reviews_path(clinic) do
+            i.fas.fa-comment-dots
+            |  口コミ 
+            = clinic.reviews.count
+            | 件
 
       table.table.noborder
         tr
@@ -51,8 +59,8 @@
           td.noborder
             = clinic.phone_number
 
-  .row.clinic_consultation_hours
-    table.table.table-bordered
+  .row
+    table.table.table-bordered.clinic_consultation_hours
       thead
         tr
           th.week 診療時間
