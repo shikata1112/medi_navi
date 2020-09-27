@@ -21,11 +21,19 @@
       
       .row
         .col-xs-3
-          .clinic-image
-            = attachment_image_tag @clinic, :image, size: "130x130", fallback: "no-image.jpg"
+          .show-clinic-image
+            = attachment_image_tag @clinic, :image, size: "150x150", fallback: "no-image.jpg"
 
-        .col-xs-6
-          = render 'member/clinics/scorestar', clinic: @clinic
+        .col-xs-9
+          .clinic-review
+            = render 'member/clinics/scorestar', clinic: @clinic
+
+            .clinic-review-count
+              = link_to member_clinic_reviews_path(@clinic) do
+                i.fas.fa-comment-dots
+                |  口コミ 
+                = @clinic.reviews.count
+                | 件
 
           table.table.noborder
             tr
@@ -51,10 +59,10 @@
               td.noborder
                 = @clinic.phone_number
 
-      .row.clinic_consultation_hours
+      .row
         
-        .col-xs-11
-          table.table.table-bordered
+        .col-xs-9
+          table.table.table-bordered.clinic_consultation_hours
             thead
               tr
                 th.week 診療時間
@@ -126,7 +134,7 @@
       .btn.btn-warning.review-btn
         = link_to "口コミを投稿する", new_member_clinic_review_path(@clinic), 'data-turbolinks': false
       .btn.btn-default.review-show
-        = link_to "レビューを見る", member_clinic_reviews_path(@clinic)
+        = link_to "口コミを確認する", member_clinic_reviews_path(@clinic)
         |  (
         = @clinic.reviews.count
         |件)

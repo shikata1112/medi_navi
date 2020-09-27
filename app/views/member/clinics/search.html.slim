@@ -8,20 +8,20 @@
           |  検索する
 
 
-      - if params[:search].blank?
+    - if params[:search].blank?
+      h3.clinic-none
+        | 該当するクリニックが見つかりませんでした。
+        br
+        | 別のキーワードで検索してください。
+      .text-center
+        = link_to "TOPに戻る", root_path, class: "btn btn-default btn-lg"
+    - else
+      - if @clinics.blank?
         h3.clinic-none
           | 該当するクリニックが見つかりませんでした。
           br
           | 別のキーワードで検索してください。
-        .top-link
+        .text-center
           = link_to "TOPに戻る", root_path, class: "btn btn-default btn-lg"
       - else
-        - if @clinics.blank?
-          h3.clinic-none
-            | 該当するクリニックが見つかりませんでした。
-            br
-            | 別のキーワードで検索してください。
-          .top-link
-            = link_to "TOPに戻る", root_path, class: "btn btn-default btn-lg"
-        - else
-          = render 'member/clinics/search_results', clinics: @clinics
+        = render 'member/clinics/search_results', clinics: @clinics

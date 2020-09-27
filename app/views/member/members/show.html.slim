@@ -2,8 +2,8 @@
   .row.my-profile
     .col-xs-2
 
-    .col-xs-2
-      = attachment_image_tag @member, :profile_image, size:"185x185", fallback: "no-image.jpg"
+    .col-xs-2.profile-image
+      = attachment_image_tag @member, :profile_image, size:"175x175", fallback: "no-image.jpg"
     
     .col-xs-6
       table.table
@@ -34,17 +34,10 @@
           
   .row.edit-link
     .col-xs-2
-    .col-xs-8
-      table.table
-        tr  
-          li
-            = link_to "登録内容を変更する", edit_member_member_path(@member)
-        tr 
-          li
-            = link_to "メールアドレスを変更する"
-        tr 
-          li
-            = link_to "パスワードを変更する"
-        tr 
-          li
-            = link_to "退会する", resignation_path
+    .col-xs-8.edit-link-box
+      li.edit-link
+        = link_to "登録内容を変更する", edit_member_member_path(@member)
+      li.edit-link
+        = link_to "メールアドレス・パスワードを変更する", edit_member_registration_path
+      li.edit-link
+        = link_to "退会する", resignation_path

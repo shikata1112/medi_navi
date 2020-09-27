@@ -45,10 +45,10 @@ html
                     = link_to member_member_path(current_member) do
                       span.glyphicon.glyphicon-user aria-hidden="true"
                       |  マイページ
-                  li.nav-list role="presentation"
-                    = link_to root_path do
-                      span.glyphicon.glyphicon-bell aria-hidden="true"
-                      |  通知
+                  / li.nav-list role="presentation"
+                  /   = link_to root_path do
+                  /     span.glyphicon.glyphicon-bell aria-hidden="true"
+                  /     |  通知
                   li.nav-list role="presentation"
                     = link_to my_favorite_path do
                       span.glyphicon.glyphicon-star aria-hidden="true"
@@ -103,5 +103,33 @@ html
       = yield
 
       footer
-        .footer-content
+        .container.footer-box
+          .row
+            .footer-contents
+              .footer-logo
+                = link_to "Medi Navi", root_path, style:"color: #5bc0de;"
+
+              ul.footer-lists
+                li.footer-list
+                  = link_to "About", clinics_about_path, style:"color: #5bc0de;"
+                li.footer-list
+                  = link_to "Search", root_path, style:"color: #5bc0de;"
+                li.footer-list
+                  = link_to "Member", member_member_path(current_member), style:"color: #5bc0de;"
+
+              .sns-share
+                .twitter-link
+                  = link_to "https://twitter.com/share?url=#{ request.url }&t=#{ "Medi Navi" }を、Twitterでみんなに広めよう！", class: 'btn btn-default twitter-link', target: '_blank' do
+                    i.fab.fa-twitter style='color: #3399FF;'
+                    |  Twitter
+                .facebook-link
+                  = link_to "https://www.facebook.com/sharer?src=bm&u=#{ request.url }&text=#{ "Medi Navi" }を、Facebookでみんなに広めよう！", class: 'btn btn-default facebook-link', target: '_blank' do
+                    i.fab.fa-facebook style='color: #3b5998;'
+                    |  Facebook
+
+        p.footer-copyright.text-center.
+          | © 2020, Medi Navi All rights reserved.
+
+
+
 
