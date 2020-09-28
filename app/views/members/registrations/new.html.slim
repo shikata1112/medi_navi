@@ -1,67 +1,68 @@
 .container
-  .col-xs-2
-  .col-xs-8
-    h1.text-center
-      | 会員新規登録
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      = render "members/shared/error_messages", resource: resource
-      = bootstrap_devise_error_messages!
+  .row
+    .col-xs-3
+    .col-xs-6.member-registration
+      h1.text-center
+        | 会員新規登録
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render "members/shared/error_messages", resource: resource
+        = bootstrap_devise_error_messages!
 
-      .form-group
-        = f.label "ニックネーム"
-        br
-        = f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "山田 太朗", class: 'form-control'
+        .form-group
+          = f.label "ニックネーム"
+          br
+          = f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "山田 太朗", class: 'form-control'
 
-      .form-group
-        = f.label "メールアドレス"
-        br
-        = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "example@medinavi.jp", class: 'form-control'
+        .form-group
+          = f.label "メールアドレス"
+          br
+          = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "example@medinavi.jp", class: 'form-control'
 
-      .form-group
-        = f.label "郵便番号"
-        br
-        = f.text_field :postcode, autofocus: true, autocomplete: "postcode", placeholder: "1231234", class: 'form-control'
+        .form-group
+          = f.label "郵便番号"
+          br
+          = f.text_field :postcode, autofocus: true, autocomplete: "postcode", placeholder: "1231234", class: 'form-control'
 
-        / 47都道府県をプルダウンメニューで表示
-      .form-group
-        = f.label "都道府県"
-        br
-        = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }
-        br
+          / 47都道府県をプルダウンメニューで表示
+        .form-group
+          = f.label "都道府県"
+          br
+          = f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }
+          br
 
-      .form-group
-        = f.label "住所"
-        br
-        = f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "東京都渋谷区渋谷1-2-3", class: 'form-control'
-      
-      .form-group
-        = f.label "生年月日"
-        br
-        = f.date_select :birthday, use_month_numbers: true, start_year: 1901, end_year: (Time.now.year - 10), default: Date.new(1990, 1, 1), class: 'form-control'
+        .form-group
+          = f.label "住所"
+          br
+          = f.text_field :address, autofocus: true, autocomplete: "address", placeholder: "東京都渋谷区渋谷1-2-3", class: 'form-control'
+        
+        .form-group
+          = f.label "生年月日"
+          br
+          = f.date_select :birthday, use_month_numbers: true, start_year: 1901, end_year: (Time.now.year - 10), default: Date.new(1990, 1, 1), class: 'form-control'
 
-      .form-group
-        = f.label "性別"
-        br
-        = f.radio_button :sex, value=true
-        = f.label "男性"
-        |       
-        = f.radio_button :sex, value=false
-        = f.label "女性"
+        .form-group
+          = f.label "性別"
+          br
+          = f.radio_button :sex, value=true
+          = f.label "男性"
+          |       
+          = f.radio_button :sex, value=false
+          = f.label "女性"
 
-      .form-group
-        = f.label "パスワード"
-        - if @minimum_password_length
-        br
-        = f.password_field :password, autocomplete: "new-password", placeholder: "英数字6文字以上"
+        .form-group
+          = f.label "パスワード"
+          - if @minimum_password_length
+          br
+          = f.password_field :password, autocomplete: "new-password", placeholder: "英数字6文字以上"
 
-      .form-group
-        = f.label "パスワード再入力"
-        br
-        = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "英数字6文字以上(確認用)"
+        .form-group
+          = f.label "パスワード再入力"
+          br
+          = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "英数字6文字以上(確認用)"
 
-      .form-group
-        = recaptcha_tags
+        .form-group
+          = recaptcha_tags
 
-      .form-group
-        = f.submit "新規登録", class: 'btn btn-primary btn-block'
-    = render "members/shared/links"
+        .form-group
+          = f.submit "新規登録", class: 'btn btn-primary btn-block'
+      = render "members/shared/links"

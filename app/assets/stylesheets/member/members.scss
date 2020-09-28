@@ -81,7 +81,7 @@
 }
 
 .sns-share {
-  margin-left: 400px;
+  margin-left: 650px;
 }
 
 .twitter-link {
@@ -92,4 +92,12 @@
 .facebook-link {
   width: 200px;
   margin-top: 5px;
+}
+
+// member-registrations-new, .member-sessions-new
+
+.member-registration, .member-session {
+  border: solid 1px rgba(185, 184, 184, 0.648);
+  background-color: white;
+  margin-top: 40px;
 }

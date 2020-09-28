@@ -31,7 +31,7 @@ class Member::ClinicsController < ApplicationController
     @clinics = Clinic.where("address LIKE?","#{params[:name]}%")
   end
 
-  # 現在地からの検索
+  # 会員住所からの検索
   def api_search
     latitude = params[:latitude]
     longitude = params[:longitude]

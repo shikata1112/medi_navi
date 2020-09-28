@@ -53,7 +53,7 @@
                     fontSize : 11,
                     fontColor : "areaColor",
                     onSelect:function(data){
-                        window.location.href = 'http://localhost:3000/clinics/prefecture_search?name=' + data.name;
+                        window.location.href = 'http://35.72.2.224/clinics/prefecture_search?name=' + data.name;
                   },
                 }
             );
@@ -72,56 +72,109 @@
       - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMap".html_safe
       script{ async src=google_api }
 
-      javascript:
+      - if member_signed_in?
+        javascript:
 
-        let map;
-        let marker = [];
-        let infoWindow = [];
-        let markerData = gon.clinics;
+          let map;
+          let marker = [];
+          let infoWindow = [];
+          let markerData = gon.clinics;
 
-        function initMap() {
-          geocoder = new google.maps.Geocoder()
+          function initMap() {
+            geocoder = new google.maps.Geocoder()
 
-          map = new google.maps.Map(document.getElementById('map'), {
-            // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
-            center: {
-              lat: gon.member.latitude,
-              lng: gon.member.longitude
-            },
-            zoom: 15,
-          });
+            map = new google.maps.Map(document.getElementById('map'), {
+              // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
+              center: {
+                lat: gon.member.latitude,
+                lng: gon.member.longitude
+              },
+              zoom: 15,
+            });
 
-          // 繰り返し処理でマーカーと吹き出しを複数表示させる
-          for (var i = 0; i < markerData.length; i++) {
+            // 繰り返し処理でマーカーと吹き出しを複数表示させる
+            for (var i = 0; i < markerData.length; i++) {
+              let id = markerData[i]['id']
+
+                    // 各地点の緯度経度を算出
+              markerLatLng = new google.maps.LatLng({
+                lat: markerData[i]['latitude'],
+                lng: markerData[i]['longitude']
+              });
+
+              // 各地点のマーカーを作成
+              marker[i] = new google.maps.Marker({
+                position: markerLatLng,
+                map: map
+              });
+
+              // マーカーにクリックイベントを追加
+              markerEvent(i);
+            }
+          }
+
+          // マーカーをクリックしたら吹き出しを表示
+          function markerEvent(i) {
+            marker[i].addListener('click', function () {
+              infoWindow[i].open(map, marker[i]);
+            });
+
             let id = markerData[i]['id']
 
-                  // 各地点の緯度経度を算出
-            markerLatLng = new google.maps.LatLng({
-              lat: markerData[i]['latitude'],
-              lng: markerData[i]['longitude']
+            infoWindow[i] = new google.maps.InfoWindow({
+              content: `<a href='/member/clinics/${ id }'>${ markerData[i]['name'] }</a>`
             });
-
-            // 各地点のマーカーを作成
-            marker[i] = new google.maps.Marker({
-              position: markerLatLng,
-              map: map
-            });
-
-            // マーカーにクリックイベントを追加
-            markerEvent(i);
           }
-        }
+      - else
+        javascript:
 
-        // マーカーをクリックしたら吹き出しを表示
-        function markerEvent(i) {
-          marker[i].addListener('click', function () {
-            infoWindow[i].open(map, marker[i]);
-          });
+          let map;
+          let marker = [];
+          let infoWindow = [];
+          let markerData = gon.clinics;
 
-          let id = markerData[i]['id']
+          function initMap() {
+            geocoder = new google.maps.Geocoder()
 
-          infoWindow[i] = new google.maps.InfoWindow({
-            content: `<a href='/member/clinics/${ id }'>${ markerData[i]['name'] }</a>`
-          });
-        }
+            map = new google.maps.Map(document.getElementById('map'), {
+              // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
+              center: {
+                lat: 35.681519,
+                lng: 139.767464
+              },
+              zoom: 14,
+            });
 
+            // 繰り返し処理でマーカーと吹き出しを複数表示させる
+            for (var i = 0; i < markerData.length; i++) {
+              let id = markerData[i]['id']
+
+                    // 各地点の緯度経度を算出
+              markerLatLng = new google.maps.LatLng({
+                lat: markerData[i]['latitude'],
+                lng: markerData[i]['longitude']
+              });
+
+              // 各地点のマーカーを作成
+              marker[i] = new google.maps.Marker({
+                position: markerLatLng,
+                map: map
+              });
+
+              // マーカーにクリックイベントを追加
+              markerEvent(i);
+            }
+          }
+
+          // マーカーをクリックしたら吹き出しを表示
+          function markerEvent(i) {
+            marker[i].addListener('click', function () {
+              infoWindow[i].open(map, marker[i]);
+            });
+
+            let id = markerData[i]['id']
+
+            infoWindow[i] = new google.maps.InfoWindow({
+              content: `<a href='/member/clinics/${ id }'>${ markerData[i]['name'] }</a>`
+            });
+          }

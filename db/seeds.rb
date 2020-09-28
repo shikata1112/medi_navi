@@ -1,15 +1,15 @@
 # This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+# The data can then be loaded with the rails db:seed command {or created alongside the database with db:setup},.
 #
 # Examples:
 #
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+#   movies = Movie.create{[{ name: 'Star Wars' }, { name: 'Lord of the Rings' }]},
+#   Character.create{name: 'Luke', movie: movies.first},
 
 Member.create!(
   [
     {
-      name: '秀',
+      name: '四方秀',
       email: 'shu.42111227@gmail.com',
       password: '111111',
       password_confirmation: '111111',
@@ -23,50 +23,135 @@ Member.create!(
 )
 
 
-Prefecture.create(name: '北海道', slug: 'hokkaido')
-Prefecture.create(name: '青森', slug: 'aomori')
-Prefecture.create(name: '秋田', slug: 'akita')
-Prefecture.create(name: '岩手', slug: 'iwate')
-Prefecture.create(name: '宮城', slug: 'miyagi')
-Prefecture.create(name: '山形', slug: 'yamagata')
-Prefecture.create(name: '福島', slug: 'fukushima')
-Prefecture.create(name: '栃木', slug: 'tochigi')
-Prefecture.create(name: '茨城', slug: 'ibaraki')
-Prefecture.create(name: '群馬', slug: 'gunma')
-Prefecture.create(name: '埼玉', slug: 'saitama')
-Prefecture.create(name: '千葉', slug: 'chiba')
-Prefecture.create(name: '東京', slug: 'tokyo')
-Prefecture.create(name: '神奈川', slug: 'kanagawa')
-Prefecture.create(name: '新潟', slug: 'nigata')
-Prefecture.create(name: '富山', slug: 'toyama')
-Prefecture.create(name: '石川', slug: 'ishikawa')
-Prefecture.create(name: '福井', slug: 'fukui')
-Prefecture.create(name: '山梨', slug: 'yamanashi')
-Prefecture.create(name: '長野', slug: 'nagano')
-Prefecture.create(name: '岐阜', slug: 'gifu')
-Prefecture.create(name: '静岡', slug: 'shizuoka')
-Prefecture.create(name: '愛知', slug: 'aichi')
-Prefecture.create(name: '三重', slug: 'mie')
-Prefecture.create(name: '滋賀', slug: 'shiga')
-Prefecture.create(name: '京都', slug: 'kyoto')
-Prefecture.create(name: '大阪', slug: 'osaka')
-Prefecture.create(name: '兵庫', slug: 'hyougo')
-Prefecture.create(name: '奈良', slug: 'nara')
-Prefecture.create(name: '和歌山', slug: 'wakayama')
-Prefecture.create(name: '鳥取', slug: 'tottori')
-Prefecture.create(name: '島根', slug: 'simane')
-Prefecture.create(name: '岡山', slug: 'okayama')
-Prefecture.create(name: '広島', slug: 'hiroshima')
-Prefecture.create(name: '山口', slug: 'yamaguchi')
-Prefecture.create(name: '徳島', slug: 'tokushima')
-Prefecture.create(name: '香川', slug: 'kagawa')
-Prefecture.create(name: '愛媛', slug: 'ehime')
-Prefecture.create(name: '高知', slug: 'kouchi')
-Prefecture.create(name: '福岡', slug: 'fukuoka')
-Prefecture.create(name: '佐賀', slug: 'saga')
-Prefecture.create(name: '長崎', slug: 'nagasaki')
-Prefecture.create(name: '熊本', slug: 'kumamoto')
-Prefecture.create(name: '大分', slug: 'oita')
-Prefecture.create(name: '宮崎', slug: 'miyazaki')
-Prefecture.create(name: '鹿児島', slug: 'kagoshima')
-Prefecture.create(name: '沖縄', slug: 'okinawa')
+Admin.create!(
+  [
+    {
+      email: 'admin@gmail.com',
+      password: '111111',
+      password_confirmation: '111111',
+    }
+  ]
+)
+
+
+Clinic.create!(
+  [
+    {
+      name: '西中島南方クリニック',
+      doctor: '西中島太郎',
+      address: '大阪市淀川区西中島3-14-28',
+      phone_number: '111111111',
+      official_site: 'https://infratop.jp/',
+      explanation: '患者に寄り添うことを第一に考えるクリニックです',
+      postcode: '5320011',
+      nearest_station: '南方駅（阪急）、西中島南方駅（大阪メトロ）',
+    },
+    {
+      name: '新大阪クリニック',
+      doctor: '新大阪太郎',
+      address: '大阪市淀川区西中島5',
+      phone_number: '000000000',
+      official_site: 'https://infratop.jp/',
+      explanation: '患者に寄り添うことを第一に考えるクリニックです',
+      postcode: '5320011',
+      nearest_station: '新大阪駅（JR）',
+    },
+
+    {
+      name: '十三クリニック',
+      doctor: '十三太郎',
+      address: '大阪市淀川区十三東2',
+      phone_number: '222222222',
+      official_site: 'https://infratop.jp/',
+      explanation: '患者に寄り添うことを第一に考えるクリニックです',
+      postcode: '5320011',
+      nearest_station: '十三駅（阪急）',
+    },
+    {
+      name: '梅田スカイクリニック',
+      doctor: '梅田太郎',
+      address: '大阪市帰宅大淀中1-1-88',
+      phone_number: '333333333',
+      official_site: 'https://infratop.jp/',
+      explanation: '患者に寄り添うことを第一に考えるクリニックです',
+      postcode: '5320011',
+      nearest_station: '梅田駅（阪急）、大阪駅（JR）',
+    },
+  ]
+)
+
+Genre.create!(
+  [
+    {medical_department: '整形外科'},
+    {medical_department: '内科'},
+    {medical_department: '心療内科'},
+    {medical_department: '外科'},
+    {medical_department: '耳鼻科'},
+    {medical_department: '皮膚科'},
+    {medical_department: '小児科'},
+    {medical_department: '産婦人科'},
+    {medical_department: '精神科'},
+    {medical_department: '歯科'},
+    {medical_department: 'リウマチ科'},
+    {medical_department: '循環器内科'},
+    {medical_department: '美容外科'},
+    {medical_department: '眼科'},
+    {medical_department: '形成外科'},
+    {medical_department: '泌尿器科'},
+    {medical_department: 'リハビリテーション科'},
+    {medical_department: '耳鼻咽喉科'},
+  ]
+)
+
+
+Prefecture.create!(
+  [
+    {name: '北海道', slug: 'hokkaido'},
+    {name: '青森', slug: 'aomori'},
+    {name: '秋田', slug: 'akita'},
+    {name: '岩手', slug: 'iwate'},
+    {name: '宮城', slug: 'miyagi'},
+    {name: '山形', slug: 'yamagata'},
+    {name: '福島', slug: 'fukushima'},
+    {name: '栃木', slug: 'tochigi'},
+    {name: '茨城', slug: 'ibaraki'},
+    {name: '群馬', slug: 'gunma'},
+    {name: '埼玉', slug: 'saitama'},
+    {name: '千葉', slug: 'chiba'},
+    {name: '東京', slug: 'tokyo'},
+    {name: '神奈川', slug: 'kanagawa'},
+    {name: '新潟', slug: 'nigata'},
+    {name: '富山', slug: 'toyama'},
+    {name: '石川', slug: 'ishikawa'},
+    {name: '福井', slug: 'fukui'},
+    {name: '山梨', slug: 'yamanashi'},
+    {name: '長野', slug: 'nagano'},
+    {name: '岐阜', slug: 'gifu'},
+    {name: '静岡', slug: 'shizuoka'},
+    {name: '愛知', slug: 'aichi'},
+    {name: '三重', slug: 'mie'},
+    {name: '滋賀', slug: 'shiga'},
+    {name: '京都', slug: 'kyoto'},
+    {name: '大阪', slug: 'osaka'},
+    {name: '兵庫', slug: 'hyougo'},
+    {name: '奈良', slug: 'nara'},
+    {name: '和歌山', slug: 'wakayama'},
+    {name: '鳥取', slug: 'tottori'},
+    {name: '島根', slug: 'simane'},
+    {name: '岡山', slug: 'okayama'},
+    {name: '広島', slug: 'hiroshima'},
+    {name: '山口', slug: 'yamaguchi'},
+    {name: '徳島', slug: 'tokushima'},
+    {name: '香川', slug: 'kagawa'},
+    {name: '愛媛', slug: 'ehime'},
+    {name: '高知', slug: 'kouchi'},
+    {name: '福岡', slug: 'fukuoka'},
+    {name: '佐賀', slug: 'saga'},
+    {name: '長崎', slug: 'nagasaki'},
+    {name: '熊本', slug: 'kumamoto'},
+    {name: '大分', slug: 'oita'},
+    {name: '宮崎', slug: 'miyazaki'},
+    {name: '鹿児島', slug: 'kagoshima'},
+    {name: '沖縄', slug: 'okinawa'},
+  ]
+)

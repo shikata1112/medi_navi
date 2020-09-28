@@ -1,33 +1,35 @@
 .container
+  .row
+    .col-xs-2
+    .col-xs-8
+      - if flash[:error]
+        .alert.alert-danger
+          = flash[:error]
+      .col-xs-2
+      .col-xs-8.member-session   
+        h1.text-center
+          | 会員ログイン
 
-  - if flash[:error]
-    .alert.alert-danger
-      = flash[:error]
-  .col-xs-2
-  .col-xs-8    
-    h1.text-center
-      | 会員ログイン
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
 
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form-group
+            = f.label :email
+            = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
 
-      .form-group
-        = f.label :email
-        = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
+          .form-group
+            = f.label :password
+            = f.password_field :password, autocomplete: 'current-password', class: 'form-control'
 
-      .form-group
-        = f.label :password
-        = f.password_field :password, autocomplete: 'current-password', class: 'form-control'
+          - if devise_mapping.rememberable?
+            .form-group.form-check
+              = f.check_box :remember_me, class: 'form-check-input'
+              = f.label :remember_me, class: 'form-check-label' do
+                = resource.class.human_attribute_name('remember_me')
 
-      - if devise_mapping.rememberable?
-        .form-group.form-check
-          = f.check_box :remember_me, class: 'form-check-input'
-          = f.label :remember_me, class: 'form-check-label' do
-            = resource.class.human_attribute_name('remember_me')
+          .form-group
+            = recaptcha_tags
 
-      .form-group
-        = recaptcha_tags
-
-      .form-group
-        = f.submit "ログイン", class: 'btn btn-primary btn-block'
-        
-    = render 'devise/shared/links'
+          .form-group
+            = f.submit "ログイン", class: 'btn btn-primary btn-block'
+            
+        = render 'devise/shared/links'
