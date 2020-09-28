@@ -16,23 +16,23 @@
 
 .search-field {
   width: 700px;
-  height: 46px;
+  height: 35px;
   font-size: 1.3em;
 }
 
 .search-submit{
   margin-left: 10px;
-  height: 45px;
-  width: 160px;
+  margin-top: -5px;
+  height: 35px;
+  width: 140px;
 }
 
 .top-image {
   background-image: image-url("clinic.jpg");
-  height: 550px;
+  height: 500px;
   background-size: cover;
   background-position: center; 
 }
-
 
 // clinics.search
 
@@ -76,7 +76,7 @@
 
 .table.table-bordered.clinic_consultation_hours {
   text-align: center;
-  width: 750px;
+  width: 650px;
   margin-top: 36px;
 }
 
@@ -95,7 +95,6 @@
 table.table.noborder {
   margin-left: -10px;
   margin-top: 10px;
-  font-size: 1.3em;
 }
 
 .clinic-review {
@@ -122,7 +121,7 @@ table.table.noborder {
   background-color: white;
 }
 
-.col-xs-10.clinic-info {
+.col-xs-8.clinic-info {
   border: 1px solid rgba(185, 184, 184, 0.648);
   padding-bottom: 30px;
   padding-left: 30px;

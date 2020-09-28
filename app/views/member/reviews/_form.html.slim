@@ -6,11 +6,11 @@
     = form_with model: review, url: member_clinic_reviews_path, method: :post, local: true do |f|
       = f.label :title, "タイトル"
       br
-      = f.text_field :title, size: 73
+      = f.text_field :title, size: 65
       br
       = f.label :comment, "本文", class: "review-form"
       br
-      = f.text_area :comment, size: "71x10"
+      = f.text_area :comment, size: "64x10"
       br
       = f.label "待ち時間", class: "review-form"
       br

@@ -14,7 +14,7 @@
 
     .row.prefecture-searchmap
       .page-header
-        h3
+        h4
           i.fas.fa-globe-asia
           |  都道府県から探す
 
@@ -37,7 +37,7 @@
 
             $("#map-container").japanMap(
                 {
-                    width: 900,
+                    width: 700,
                     selection: "prefecture",
                     areas: areas,
                     backgroundColor : "white",
@@ -63,11 +63,11 @@
 
     .row
       .page-header
-        h3
+        h4
           i.fas.fa-map-marked-alt
           |  近くのクリニックを探す
 
-      #map style='height: 500px; width: 900px;'
+      #map style='height: 400px; width: 700px;'
 
       - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMap".html_safe
       script{ async src=google_api }
