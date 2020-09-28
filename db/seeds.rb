@@ -102,19 +102,35 @@ GenreMap.create!(
   [
     {
       clinic_id: 1,
-      genre_id: 1, 16,
+      genre_id: 1,
+    },
+    {
+      clinic_id: 1,
+      genre_id: 11,
+    },
+    {
+      clinic_id: 1,
+      genre_id: 16,
     },
     {
       clinic_id: 2,
-      genre_id: 2, 3, 9
+      genre_id: 2,
     },
     {
       clinic_id: 3,
-      genre_id: 1, 14, 16
+      genre_id: 1,
+    },
+    {
+      clinic_id: 3,
+      genre_id: 14,
     },
     {
       clinic_id: 4,
-      genre_id: 5, 17
+      genre_id: 5,
+    },
+    {
+      clinic_id: 4,
+      genre_id: 17,
     },
   ]
 )
