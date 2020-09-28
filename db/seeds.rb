@@ -70,6 +70,36 @@ Clinic.create!(
       postcode: '5320011',
       nearest_station: '梅田駅（阪急）、大阪駅（JR）',
     },
+    {
+      name: '東京丸の内クリニック',
+      doctor: '丸の内太郎',
+      address: '東京都千代田区丸の内1-9-1',
+      phone_number: '555555555',
+      official_site: 'https://infratop.jp/',
+      explanation: '患者に寄り添うことを第一に考えるクリニックです',
+      postcode: '1000005',
+      nearest_station: '東京駅',
+    },
+    {
+      name: '京橋（東京）クリニック',
+      doctor: '京橋太郎',
+      address: '東京都中央区京橋2-2-1',
+      phone_number: '666666666',
+      official_site: 'https://infratop.jp/',
+      explanation: '患者に寄り添うことを第一に考えるクリニックです',
+      postcode: '1040031',
+      nearest_station: '京橋駅（東京）',
+    },
+    {
+      name: '大手町野村クリニック',
+      doctor: '野村太郎',
+      address: '東京都千代田区大2-1-1',
+      phone_number: '777777777',
+      official_site: 'https://infratop.jp/',
+      explanation: '患者に寄り添うことを第一に考えるクリニックです',
+      postcode: '1000004',
+      nearest_station: '東京駅、大手町駅',
+    },
   ]
 )
 
