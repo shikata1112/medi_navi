@@ -175,6 +175,7 @@
             let id = markerData[i]['id']
 
             infoWindow[i] = new google.maps.InfoWindow({
-              content: `<a href='/member/clinics/${ id }'>${ markerData[i]['name'] }</a>`
+              //content: `<a href='/member/clinics/${ id }'>${ markerData[i]['name'] }</a>`
+              content: `<a href='/members/sign_in'>${ markerData[i]['name'] }</a>`
             });
           }
