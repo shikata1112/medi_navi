@@ -6,9 +6,13 @@
   margin-top: 50px;
 }
 
-.profile-image {
-  margin-right: 30px;
-  
+.col-xs-2.profile-image {
+  border-radius: 50%;
+}
+
+.table.follow-follower {
+  margin-top: 10px;
+  border-bottom: solid 1px rgba(197, 197, 197, 0.648);
 }
 
 .profile-forms {
