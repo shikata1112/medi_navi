@@ -2,9 +2,9 @@ class Member::ClinicsController < ApplicationController
   before_action :authenticate_member!, except: :about
 
   def top
-    
     gon.member = current_member
     gon.clinics = Clinic.all
+    @genres = Genre.all
   end
 
   def about

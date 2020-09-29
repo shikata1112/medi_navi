@@ -22,7 +22,7 @@
       .row
         .col-xs-3
           .show-clinic-image
-            = attachment_image_tag @clinic, :image, size: "150x150", fallback: "no-image.jpg"
+            = attachment_image_tag @clinic, :image, size: "140x150", fallback: "no-image.jpg"
 
         .col-xs-9
           .clinic-review
@@ -166,12 +166,12 @@
             | 次へ 
 
   .row.clinic-basic-info
-    .col-xs-3
-    .col-xs-6.clinic-basic-info
+    .col-xs-2
+    .col-xs-8.clinic-basic-info
       h3.header-basic-info
         .head-basic-info
           | クリニックの基本情報
-      table.table
+      table.table.basic-info
         tr
           th.basic-info
             | クリニック名
@@ -217,7 +217,7 @@
           th.basic-info
             | 診療時間
           td.basic-info
-            table.table.table-bordered.basic-info
+            table.table.table-bordered.basic-info-consultation
               thead
                 tr
                   th.week 診療時間
