@@ -28,7 +28,31 @@
 }
 
 .top-image {
+  position: relative;
+}
+
+.top-band {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.494);
+  margin-top: -350px;
+  height: 160px;
+  width: 100%;
+}
+
+.top-app-logo {
+  // background-image: image-url("top-logo.png");
+  // height: 80px;
+  // width: 270px;
+  margin-left: 525px;
+  margin-top: 38px;
+  color: white;
+  font-size: 4.0em;
+  font-family: 'arial black';
+}
+
+.clinic-top-image {
   background-image: image-url("clinic.jpg");
+  width: 100%;
   height: 500px;
   background-size: cover;
   background-position: center; 

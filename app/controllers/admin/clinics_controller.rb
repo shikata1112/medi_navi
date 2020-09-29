@@ -1,4 +1,7 @@
 class Admin::ClinicsController < ApplicationController
+  before_action :authenticate_user!
+
+
 
   def new
     @clinic = Clinic.new

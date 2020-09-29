@@ -1,4 +1,6 @@
 class Member::FavoritesController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @favorite = current_member.favorites.create(clinic_id: params[:clinic_id])
     redirect_back(fallback_location: root_path)

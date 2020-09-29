@@ -1,4 +1,7 @@
 class Admin::MembersController < ApplicationController
+  before_action :authenticate_user!
+
+
 
   def top 
     days = (Date.today.beginning_of_month..Date.today).to_a
