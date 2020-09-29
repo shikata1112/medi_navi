@@ -1,7 +1,5 @@
 .container
   .row
-    .col-xs-2
-    .col-xs-8
       .page-header
         h3
           =link_to member_clinic_path(@clinic) do
@@ -29,7 +27,7 @@
                 = review.member.name
               td
                 = review.title
-              td
+              td.comment
                 = review.comment
               td
                 - case review.wating_time
@@ -45,11 +43,11 @@
                   | 1時間〜2時間
                 - when 5
                   | 2時間以上
-              td
+              td.tag
                 - review.tag_list.each do |tag|
                   span.label.label-default style="margin-right: 10px;"
                     = tag
-              td
+              td.star
                 div class="fixed-star#{review.id}"
                   javascript:
                     $(".fixed-star#{review.id}").raty({
