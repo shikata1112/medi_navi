@@ -7,45 +7,49 @@
 
       = form_with model: @clinic, url: admin_clinic_path(@clinic),method: :patch , local: true do |f| 
 
-        = f.label :クリニック名
-        = f.text_field :name, class: "form-control"
-        br
-        = f.label :クリニック紹介文
-        = f.text_area :explanation, class: "form-control"
-        br
-        = f.label :管理医師
-        = f.text_field :doctor, class: "form-control"
-        br
-        = f.label :genres, "診療科目(複数選択可)"
-        = f.collection_check_boxes(:genre_ids, @genres, :id, :medical_department, include_hidden: false)
-        br
-        = f.label :医師イメージ
-        = f.attachment_field :image, placeholder: "画像"
-        br
-        = f.label :郵便番号
-        = f.text_field :postcode, class: "form-control"
-        br
-        = f.label :所在地
-        = f.text_field :address, class: "form-control"
-        br
-        = f.label :最寄駅
-        = f.text_field :nearest_station, class: "form-control"
-        br
-        = f.label :電話番号
-        = f.text_field :phone_number, class: "form-control"
-        br
-        = f.label :公式サイト
-        = f.text_field :official_site, class: "form-control"
-        br
-        = f.label :クリニックステータス
-        = f.select :is_active, [["開院", true], ["閉院", false]]
-        br
-        = f.label :クリニックイメージ
-        = f.file_field :images, multiple: true
-        br
-        .clinic-btn
-          = f.submit "更新", class:"btn btn-primary btn-block"
+        .form-group
+          = f.label :クリニック名
+          = f.text_field :name, class: "form-control"
+        .form-group 
+          = f.label :クリニック紹介文
+          = f.text_area :explanation, class: "form-control"
+        .form-group
+          = f.label :管理医師
+          = f.text_field :doctor, class: "form-control"
+          br 
+        .form-group
+          = f.label :genres, "診療科目(複数選択可)"
           br
+          = f.collection_check_boxes(:genre_ids, @genres, :id, :medical_department, include_hidden: false)
+        .form-group
+          = f.label :医師イメージ
+          = f.attachment_field :image, placeholder: "画像"
+        .form-group
+          = f.label :郵便番号
+          = f.text_field :postcode, class: "form-control"
+        .form-group
+          = f.label :所在地
+          = f.text_field :address, class: "form-control"
+        .form-group
+          = f.label :最寄駅
+          = f.text_field :nearest_station, class: "form-control"
+        .form-group
+          = f.label :電話番号
+          = f.text_field :phone_number, class: "form-control"
+        .form-group
+          = f.label :公式サイト
+          = f.text_field :official_site, class: "form-control"
+        .form-group
+          = f.label :クリニックステータス
+          = f.select :is_active, [["開院", true], ["閉院", false]]
+        .form-group
+          = f.label :クリニックイメージ
+          = f.file_field :images, multiple: true
+          br 
+        .form-group
+          .clinic-btn
+            = f.submit "更新", class:"btn btn-primary btn-block"
+            
   .row.consultation_hour
     h3
       strong :診療時間

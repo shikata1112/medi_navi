@@ -58,6 +58,12 @@
             | 電話番号
           td.noborder
             = clinic.phone_number
+            
+      .review-link-btn
+        = link_to new_member_clinic_review_path(clinic), class: "btn btn-warning" do
+          i.fas.fa-pencil-alt
+          |  口コミを投稿する
+
 
   .row
     table.table.table-bordered.clinic_consultation_hours
