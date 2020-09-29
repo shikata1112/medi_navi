@@ -83,12 +83,13 @@
 }
 
 .clinic-image {
-  margin-top: 15px;
-  margin-left: 30px;
+  margin-top: 10px;
+  margin-left: 45px;
 }
 
 .show-clinic-image {
   margin-top: 15px;
+  margin-left: 20px;
 }
 
 .btn.btn-default.favorite {
@@ -179,29 +180,28 @@
   font-weight: 800;
 }
 
-.table.table-bordered.basic-info {
+.table.basic-info {
+  margin-top: -11px;
+}
+
+.table.table-bordered.basic-info-consultation  {
   text-align: center;
 }
 
-.col-xs-6.clinic-basic-info {
-  border: 1px solid rgba(185, 184, 184, 0.648);
-  background-color: white;
-  padding: 0 20px 20px 20px;
-}
-
 th.basic-info {
-  background-color: rgba(201, 229, 230, 0.529);
-  border-bottom: 1px solid rgba(185, 184, 184, 0.648);
+  background-color: rgba(224, 254, 255, 0.529);
+  border: 1px solid rgba(185, 184, 184, 0.648);
 }
 
 td.basic-info {
   background-color: white;
-  border-bottom: 1px solid rgba(185, 184, 184, 0.648);
+  border: 1px solid rgba(185, 184, 184, 0.648);
 }
 
 h3.header-basic-info {
   background-color: #006d8e;
   color: white;
+  height: 50px;
   width: 100%;
 }
 
@@ -211,4 +211,11 @@ h3.header-basic-info {
 
 .head-basic-info {
   margin-left: 5px;
+  padding-top: 10px;
+}
+
+.genre-index {
+  margin: 30px 0;
+  width: 650px;
+  font-size: 1.4em;
 }

@@ -2,23 +2,28 @@
   .row
     .col-xs-2
     .col-xs-8
+      .page-header
+        h3
+          =link_to member_clinic_path(@clinic) do
+            = @clinic.name
+          | の口コミ
       table.table.table-bordered
-        - @clinic.reviews.each do |review|
-          thead
-            tr
-              th
-                | 名前
-              th
-                | タイトル
-              th
-                | 内容
-              th
-                | 待ち時間
-              th
-                | タグ
-              th
-                | 評価（5段階）
-          tbody
+        thead
+          tr
+            th
+              | 名前
+            th
+              | タイトル
+            th
+              | 内容
+            th
+              | 待ち時間
+            th
+              | タグ
+            th
+              | 評価（5段階）
+        tbody
+          - @clinic.reviews.each do |review|
             tr
               td
                 = review.member.name
