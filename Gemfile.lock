@@ -238,7 +238,7 @@ GEM
     refile-mini_magick (0.2.0)
       mini_magick (~> 4.0)
       refile (~> 0.5)
-    regexp_parser (1.8.0)
+    regexp_parser (1.8.1)
     request_store (1.5.0)
       rack (>= 1.4)
     responders (3.0.1)
