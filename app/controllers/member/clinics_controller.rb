@@ -1,5 +1,5 @@
 class Member::ClinicsController < ApplicationController
-  before_action :authenticate_user!, except: [:top, :about]
+  before_action :authenticate_member!, except: :about
 
   def top
     

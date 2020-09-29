@@ -1,5 +1,5 @@
 class Member::ReviewsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_member!
 
   def new
     @clinic = Clinic.find(params[:clinic_id])

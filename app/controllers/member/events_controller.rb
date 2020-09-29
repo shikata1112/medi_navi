@@ -1,5 +1,5 @@
 class Member::EventsController < ApplicationController
-
+  before_action :authenticate_member!
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def new
