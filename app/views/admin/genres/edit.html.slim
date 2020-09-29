@@ -1,13 +1,15 @@
 
 .container
   .row
-    .new-medical_department.text-center
-      .page-header
-        h2 診療科目変更画面
-      = form_with model: @genre, url: admin_genre_path(@genre), local: true do |f| 
+    .col-xs-4
+    .col-xs-4
+      .new-medical_department.text-center
+        .page-header
+          h2 診療科目変更画面
+        = form_with model: @genre, url: admin_genre_path(@genre), local: true do |f| 
 
-        = f.text_field :medical_department
-        
-        .medical_department_btn
-          = f.submit '更新', class:"btn btn-warning"
-          br
+          = f.text_field :medical_department
+          
+          .medical_department_btn
+            = f.submit '更新', class:"btn btn-warning"
+            br

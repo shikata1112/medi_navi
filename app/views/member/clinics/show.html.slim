@@ -132,7 +132,10 @@
   .row.text-center
     .btn-group
       .btn.btn-warning.review-btn
-        = link_to "口コミを投稿する", new_member_clinic_review_path(@clinic), 'data-turbolinks': false
+        = link_to new_member_clinic_review_path(@clinic) do
+          i.fas.fa-pencil-alt
+          |  口コミを投稿する
+
       .btn.btn-default.review-show
         = link_to "口コミを確認する", member_clinic_reviews_path(@clinic)
         |  (
