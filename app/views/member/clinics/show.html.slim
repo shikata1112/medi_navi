@@ -139,11 +139,10 @@
         = @clinic.reviews.count
         |件)
 
-
   .row
     .page-header
-    .col-xs-3
-    .col-xs-6.clinic-boxes
+    .col-xs-2
+    .col-xs-8.clinic-boxes
       #sampleCarousel.carousel.slide data-ride='carousel'
         ol.carousel-indicators
           li.active data-target='#sampleCarousel' data-slide-to='0'
@@ -165,3 +164,91 @@
           span.glyphicon.glyphicon-chevron-right aria-hidden='true'
           span.sr-only
             | 次へ 
+
+  .row.clinic-basic-info
+    .col-xs-3
+    .col-xs-6.clinic-basic-info
+      h3.header-basic-info
+        .head-basic-info
+          | クリニックの基本情報
+      table.table
+        tr
+          th.basic-info
+            | クリニック名
+          td.basic-info
+            = @clinic.name
+        tr
+          th.basic-info
+            | 医師名
+          td.basic-info
+            = @clinic.doctor
+        tr
+          th.basic-info
+            | 診療科目
+          td.basic-info 
+            - @clinic.genres.each do |genre|
+              = genre.medical_department
+              | 　
+        tr
+          th.basic-info
+            | 電話番号
+          td.basic-info  
+            = @clinic.phone_number 
+        tr
+          th.basic-info
+            | 所在地
+          td.basic-info 
+            | 〒
+            = @clinic.postcode
+            |  
+            = @clinic.address
+        tr
+          th.basic-info
+            | 最寄駅
+          td.basic-info   
+            = @clinic.nearest_station
+        tr
+          th.basic-info
+            | 公式サイト
+          td.basic-info
+            = link_to @clinic.official_site do
+              = @clinic.official_site
+        tr
+          th.basic-info
+            | 診療時間
+          td.basic-info
+            table.table.table-bordered.basic-info
+              thead
+                tr
+                  th.week 診療時間
+                  th.week 月
+                  th.week 火
+                  th.week 水 
+                  th.week 木
+                  th.week 金
+                  th.week 土
+                  th.week 日
+                  th.week 祝
+              - @clinic.consultation_hours.each do |consultation_hour|
+                tbody
+                  tr
+                      td
+                        = consultation_hour.start_time
+                        | 〜
+                        = consultation_hour.finish_time
+                      td 
+                        = consultation_hour.mo_time
+                      td
+                        = consultation_hour.tu_time
+                      td
+                        = consultation_hour.we_time
+                      td
+                        = consultation_hour.th_time
+                      td
+                        = consultation_hour.fr_time
+                      td
+                        = consultation_hour.sa_time
+                      td
+                        = consultation_hour.su_time
+                      td
+                        = consultation_hour.ho_time

@@ -43,6 +43,11 @@
 
 // clinics.show
 
+.img-responsive.img-rounded.carousel-image {
+  width: 430px;
+  height: 380px;
+}
+
 .clinic-head {
   display: flex;
   justify-content: space-between;
@@ -92,9 +97,10 @@
   border-style:none!important;
 }
 
-table.table.noborder {
+.table.clinic-contents {
   margin-left: -10px;
   margin-top: 10px;
+  width: 0%;
 }
 
 .clinic-review {
@@ -147,4 +153,38 @@ table.table.noborder {
   color: #ff9500;
   font-size: x-large;
   font-weight: 800;
+}
+
+.table.table-bordered.basic-info {
+  text-align: center;
+}
+
+.col-xs-6.clinic-basic-info {
+  border: 1px solid rgba(185, 184, 184, 0.648);
+  background-color: white;
+  padding: 0 20px 20px 20px;
+}
+
+th.basic-info {
+  background-color: rgba(201, 229, 230, 0.529);
+  border-bottom: 1px solid rgba(185, 184, 184, 0.648);
+}
+
+td.basic-info {
+  background-color: white;
+  border-bottom: 1px solid rgba(185, 184, 184, 0.648);
+}
+
+h3.header-basic-info {
+  background-color: #006d8e;
+  color: white;
+  width: 100%;
+}
+
+.row.clinic-basic-info {
+  margin-top: 50px;
+}
+
+.head-basic-info {
+  margin-left: 5px;
 }

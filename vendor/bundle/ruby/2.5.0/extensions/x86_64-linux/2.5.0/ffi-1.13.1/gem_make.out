@@ -1,0 +1,181 @@
+current directory: /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c
+/home/vagrant/.rbenv/versions/2.5.7/bin/ruby -r ./siteconf20200928-17124-umbhp9.rb extconf.rb
+checking for ffi.h... no
+checking for ffi.h in /usr/local/include,/usr/include/ffi,/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/ffi,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/ffi... no
+creating extconf.h
+creating Makefile
+
+current directory: /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c
+make "DESTDIR=" clean
+make: Warning: File `libffi.gnu.mk' has modification time 276 s in the future
+make: warning:  Clock skew detected.  Your build may be incomplete.
+
+current directory: /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c
+make "DESTDIR="
+make: Warning: File `libffi.gnu.mk' has modification time 276 s in the future
+Configuring libffi
+make -C "/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux"
+make[1]: Entering directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux'
+make[1]: Warning: File `Makefile' has modification time 277 s in the future
+make  all-recursive
+make[2]: Entering directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux'
+make[2]: Warning: File `Makefile' has modification time 277 s in the future
+Making all in include
+make[3]: Entering directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux/include'
+make[3]: Warning: File `Makefile' has modification time 277 s in the future
+make[3]: Nothing to be done for `all'.
+make[3]: warning:  Clock skew detected.  Your build may be incomplete.
+make[3]: Leaving directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux/include'
+Making all in testsuite
+make[3]: Entering directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux/testsuite'
+make[3]: Warning: File `Makefile' has modification time 277 s in the future
+make[3]: Nothing to be done for `all'.
+make[3]: warning:  Clock skew detected.  Your build may be incomplete.
+make[3]: Leaving directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux/testsuite'
+Making all in man
+make[3]: Entering directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux/man'
+make[3]: Warning: File `Makefile' has modification time 277 s in the future
+make[3]: Nothing to be done for `all'.
+make[3]: warning:  Clock skew detected.  Your build may be incomplete.
+make[3]: Leaving directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux/man'
+make[3]: Entering directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux'
+make[3]: Warning: File `Makefile' has modification time 277 s in the future
+/bin/sh ./libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi  -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src   -Wall -fexceptions -c -o src/prep_cif.lo /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/prep_cif.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src -Wall -fexceptions -c /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/prep_cif.c  -fPIC -DPIC -o src/.libs/prep_cif.o
+/bin/sh ./libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi  -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src   -Wall -fexceptions -c -o src/types.lo /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/types.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src -Wall -fexceptions -c /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/types.c  -fPIC -DPIC -o src/.libs/types.o
+/bin/sh ./libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi  -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src   -Wall -fexceptions -c -o src/raw_api.lo /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/raw_api.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src -Wall -fexceptions -c /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/raw_api.c  -fPIC -DPIC -o src/.libs/raw_api.o
+/bin/sh ./libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi  -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src   -Wall -fexceptions -c -o src/java_raw_api.lo /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/java_raw_api.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src -Wall -fexceptions -c /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/java_raw_api.c  -fPIC -DPIC -o src/.libs/java_raw_api.o
+/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/java_raw_api.c: In function 'ffi_java_raw_call':
+/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/java_raw_api.c:317:3: warning: 'ffi_java_raw_to_ptrarray' is deprecated (declared at /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/java_raw_api.c:76) [-Wdeprecated-declarations]
+   ffi_java_raw_to_ptrarray (cif, raw, avalue);
+   ^
+/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/java_raw_api.c: In function 'ffi_java_translate_args':
+/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/java_raw_api.c:328:3: warning: 'ffi_java_raw_size' is deprecated (declared at /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/java_raw_api.c:45) [-Wdeprecated-declarations]
+   ffi_java_raw *raw = (ffi_java_raw*)alloca (ffi_java_raw_size (cif));
+   ^
+/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/java_raw_api.c:331:3: warning: 'ffi_java_ptrarray_to_raw' is deprecated (declared at /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/java_raw_api.c:157) [-Wdeprecated-declarations]
+   ffi_java_ptrarray_to_raw (cif, avalue, raw);
+   ^
+/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/java_raw_api.c: In function 'ffi_prep_java_raw_closure':
+/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/java_raw_api.c:369:3: warning: 'ffi_prep_java_raw_closure_loc' is deprecated (declared at /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/java_raw_api.c:337) [-Wdeprecated-declarations]
+   return ffi_prep_java_raw_closure_loc (cl, cif, fun, user_data, cl);
+   ^
+/bin/sh ./libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi  -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src   -Wall -fexceptions -c -o src/closures.lo /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/closures.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src -Wall -fexceptions -c /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/closures.c  -fPIC -DPIC -o src/.libs/closures.o
+/bin/sh ./libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi  -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src   -Wall -fexceptions -c -o src/x86/ffi64.lo /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/x86/ffi64.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src -Wall -fexceptions -c /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/x86/ffi64.c  -fPIC -DPIC -o src/x86/.libs/ffi64.o
+/bin/sh ./libtool    --mode=compile gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi  -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src  -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src  -c -o src/x86/unix64.lo /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/x86/unix64.S
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src -c /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/x86/unix64.S  -fPIC -DPIC -o src/x86/.libs/unix64.o
+/bin/sh ./libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi  -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src   -Wall -fexceptions -c -o src/x86/ffiw64.lo /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/x86/ffiw64.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src -Wall -fexceptions -c /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/x86/ffiw64.c  -fPIC -DPIC -o src/x86/.libs/ffiw64.o
+/bin/sh ./libtool    --mode=compile gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi  -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src  -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src  -c -o src/x86/win64.lo /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/x86/win64.S
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src -c /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src/x86/win64.S  -fPIC -DPIC -o src/x86/.libs/win64.o
+gcc -DHAVE_CONFIG_H -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi  -I. -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/include -Iinclude -I/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/src   -Wall -fexceptions -DX86_64 -DGENERATE_LIBFFI_MAP \
+ -E -x assembler-with-cpp -o libffi.map /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/libffi.map.in
+/bin/sh ./libtool  --tag=CC   --mode=link gcc  -Wall -fexceptions   -o libffi_convenience.la  src/prep_cif.lo src/types.lo src/raw_api.lo src/java_raw_api.lo src/closures.lo   src/x86/ffi64.lo src/x86/unix64.lo src/x86/ffiw64.lo src/x86/win64.lo 
+libtool: link: rm -fr  .libs/libffi_convenience.a(D)
+libtool: link: ar cru .libs/libffi_convenience.a src/.libs/prep_cif.o src/.libs/types.o src/.libs/raw_api.o src/.libs/java_raw_api.o src/.libs/closures.o src/x86/.libs/ffi64.o src/x86/.libs/unix64.o src/x86/.libs/ffiw64.o src/x86/.libs/win64.o 
+libtool: link: ranlib .libs/libffi_convenience.a
+libtool: link: ( cd ".libs" && rm -f "libffi_convenience.la" && ln -s "../libffi_convenience.la" "libffi_convenience.la" )
+/bin/sh ./libtool  --tag=CC   --mode=link gcc  -Wall -fexceptions -no-undefined -version-info `grep -v '^#' /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi/libtool-version` -Wl,--version-script,libffi.map    -o libffi.la -rpath /usr/local/lib/../lib64 src/prep_cif.lo src/types.lo src/raw_api.lo src/java_raw_api.lo src/closures.lo  src/x86/ffi64.lo src/x86/unix64.lo src/x86/ffiw64.lo src/x86/win64.lo 
+libtool: link: gcc -shared  -fPIC -DPIC  src/.libs/prep_cif.o src/.libs/types.o src/.libs/raw_api.o src/.libs/java_raw_api.o src/.libs/closures.o src/x86/.libs/ffi64.o src/x86/.libs/unix64.o src/x86/.libs/ffiw64.o src/x86/.libs/win64.o    -Wl,--version-script -Wl,libffi.map   -Wl,-soname -Wl,libffi.so.8 -o .libs/libffi.so.8.1.0
+libtool: link: (cd ".libs" && rm -f "libffi.so.8" && ln -s "libffi.so.8.1.0" "libffi.so.8")
+libtool: link: (cd ".libs" && rm -f "libffi.so" && ln -s "libffi.so.8.1.0" "libffi.so")
+libtool: link: ( cd ".libs" && rm -f "libffi.la" && ln -s "../libffi.la" "libffi.la" )
+make[3]: warning:  Clock skew detected.  Your build may be incomplete.
+make[3]: Leaving directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux'
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Leaving directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux'
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
+make[1]: Leaving directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux'
+compiling AbstractMemory.c
+compiling ArrayType.c
+compiling Buffer.c
+compiling Call.c
+compiling ClosurePool.c
+compiling DynamicLibrary.c
+compiling Function.c
+compiling FunctionInfo.c
+compiling LastError.c
+compiling LongDouble.c
+compiling MappedType.c
+compiling MemoryPointer.c
+compiling MethodHandle.c
+compiling Platform.c
+compiling Pointer.c
+compiling Struct.c
+compiling StructByValue.c
+compiling StructLayout.c
+compiling Thread.c
+compiling Type.c
+compiling Types.c
+compiling Variadic.c
+compiling ffi.c
+linking shared-object ffi_c.so
+make: warning:  Clock skew detected.  Your build may be incomplete.
+
+current directory: /home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c
+make "DESTDIR=" install
+make: Warning: File `libffi.gnu.mk' has modification time 265 s in the future
+make -C "/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux"
+make[1]: Entering directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux'
+make[1]: Warning: File `Makefile' has modification time 271 s in the future
+make  all-recursive
+make[2]: Entering directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux'
+make[2]: Warning: File `Makefile' has modification time 271 s in the future
+Making all in include
+make[3]: Entering directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux/include'
+make[3]: Warning: File `Makefile' has modification time 271 s in the future
+make[3]: Nothing to be done for `all'.
+make[3]: warning:  Clock skew detected.  Your build may be incomplete.
+make[3]: Leaving directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux/include'
+Making all in testsuite
+make[3]: Entering directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux/testsuite'
+make[3]: Warning: File `Makefile' has modification time 271 s in the future
+make[3]: Nothing to be done for `all'.
+make[3]: warning:  Clock skew detected.  Your build may be incomplete.
+make[3]: Leaving directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux/testsuite'
+Making all in man
+make[3]: Entering directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux/man'
+make[3]: Warning: File `Makefile' has modification time 271 s in the future
+make[3]: Nothing to be done for `all'.
+make[3]: warning:  Clock skew detected.  Your build may be incomplete.
+make[3]: Leaving directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux/man'
+make[3]: Entering directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux'
+make[3]: Warning: File `Makefile' has modification time 271 s in the future
+make[3]: Nothing to be done for `all-am'.
+make[3]: warning:  Clock skew detected.  Your build may be incomplete.
+make[3]: Leaving directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux'
+make[2]: warning:  Clock skew detected.  Your build may be incomplete.
+make[2]: Leaving directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux'
+make[1]: warning:  Clock skew detected.  Your build may be incomplete.
+make[1]: Leaving directory `/home/vagrant/work/medi_navi/vendor/bundle/ruby/2.5.0/gems/ffi-1.13.1/ext/ffi_c/libffi-x86_64-linux'
+compiling AbstractMemory.c
+compiling ArrayType.c
+compiling Buffer.c
+compiling Call.c
+compiling ClosurePool.c
+compiling DynamicLibrary.c
+compiling Function.c
+compiling FunctionInfo.c
+compiling LastError.c
+compiling LongDouble.c
+compiling MappedType.c
+compiling MemoryPointer.c
+compiling MethodHandle.c
+compiling Platform.c
+compiling Pointer.c
+compiling Struct.c
+compiling StructByValue.c
+compiling StructLayout.c
+compiling Thread.c
+compiling Type.c
+compiling Types.c
+compiling Variadic.c
+compiling ffi.c
+linking shared-object ffi_c.so
+/usr/bin/install -c -m 0755 ffi_c.so ./.gem.20200928-17124-134xc71
+make: warning:  Clock skew detected.  Your build may be incomplete.

@@ -1,37 +1,56 @@
 .container
   .row
-    table.table
-      - @clinic.reviews.each do |review|
-        tr
-          td
-            = review.title
-          td
-            = review.comment
-          td
-            - case review.wating_time
-            - when 0
-              | 5分未満
-            - when 1
-              | 10分〜20分
-            - when 2
-              | 20分〜30分
-            - when 3
-              | 30分〜1時間
-            - when 4
-              | 1時間〜2時間
-            - when 5
-              | 2時間以上
-          td
-            - review.tag_list.each do |tag|
-              span.label.label-default style="margin-right: 10px;"
-                = tag
-          td
-            div class="fixed-star#{review.id}"
-              javascript:
-                $(".fixed-star#{review.id}").raty({
-                  size: 50,
-                  starOff: "/assets/star-off.png",
-                  starOn: "/assets/star-on.png",
-                  readOnly: true,
-                  score: "#{review.score}",
-                })
+    .col-xs-2
+    .col-xs-8
+      table.table.table-bordered
+        - @clinic.reviews.each do |review|
+          thead
+            tr
+              th
+                | 名前
+              th
+                | タイトル
+              th
+                | 内容
+              th
+                | 待ち時間
+              th
+                | タグ
+              th
+                | 評価（5段階）
+          tbody
+            tr
+              td
+                = review.member.name
+              td
+                = review.title
+              td
+                = review.comment
+              td
+                - case review.wating_time
+                - when 0
+                  | 5分未満
+                - when 1
+                  | 10分〜20分
+                - when 2
+                  | 20分〜30分
+                - when 3
+                  | 30分〜1時間
+                - when 4
+                  | 1時間〜2時間
+                - when 5
+                  | 2時間以上
+              td
+                - review.tag_list.each do |tag|
+                  span.label.label-default style="margin-right: 10px;"
+                    = tag
+              td
+                div class="fixed-star#{review.id}"
+                  javascript:
+                    $(".fixed-star#{review.id}").raty({
+                      size: 50,
+                      starOff: "/assets/star-off.png",
+                      starOn: "/assets/star-on.png",
+                      readOnly: true,
+                      score: "#{review.score}",
+                    })
