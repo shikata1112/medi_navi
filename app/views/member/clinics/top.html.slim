@@ -27,7 +27,7 @@
 
         .genre-index
           - @genres.each do |genre|
-            = link_to clinics_genre_search_path(genre_id: genre.id) do
+            = link_to clinics_genre_search_path(genre_id: genre.id), class: "genre-link" do
               = genre.medical_department
             | 　｜　
 
@@ -42,8 +42,7 @@
           = link_to 'スケジュール登録', new_member_event_path, class: 'btn btn-success btn-xs'
           #calendar
 
-    .row
-      .col-xs-7
+      .col-xs-7.jp-map
         .page-header
           h4
             i.fas.fa-globe-asia
