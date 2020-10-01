@@ -34,4 +34,6 @@ class Member < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
+  # impressions-pv
+  is_impressionable counter_cache: true
 end

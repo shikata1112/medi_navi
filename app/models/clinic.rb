@@ -31,9 +31,11 @@ class Clinic < ApplicationRecord
     Clinic.where(['name LIKE ? OR nearest_station LIKE ? OR phone_number LIKE ? OR address LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
   end
 
-  
   # google API, 現在地からの検索機能
   geocoded_by :address
   after_validation :geocode
+
+  # impressions-pv
+  is_impressionable counter_cache: true
 
 end
