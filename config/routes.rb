@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     devise_for :members, controllers: {
       sessions:      'members/sessions',
       passwords:     'members/passwords',
-      registrations: 'members/registrations'
+      registrations: 'members/registrations',
+      omniauth_callbacks: 'members/omniauth_callbacks'
     }
   # -------------------- devise ------------------------------------------------
 
@@ -37,6 +38,8 @@ Rails.application.routes.draw do
     get 'clinics/genre_search', to: 'member/clinics#genre_search'
 
     get 'clinics/prefecture_search', to: 'member/clinics#prefecture_search'
+
+    get 'clinics/sort', to: 'member/clinics#sort'
 
     get 'my_favorite', to: 'member/favorites#my_favorite'
 

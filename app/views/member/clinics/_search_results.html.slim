@@ -1,5 +1,15 @@
 
 .container
+  .row
+    .col-xs-2
+    .col-xs-8
+      = form_with model: clinics, url: clinics_sort_path, method: :get, local: true do |f|
+        = f.select :keyword, [  ['------------', '------------'],
+                                ['新着順', 'new'],
+                                ['点数順', 'score'],
+                                ['レビュー数順', 'likes'],
+                              ]
+        = f.submit "並び替える"
   - clinics.each do |clinic|
     .row.clinic-row
       = render 'member/clinics/clinic_info', clinic: clinic

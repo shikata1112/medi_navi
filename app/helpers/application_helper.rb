@@ -1,5 +1,6 @@
 module ApplicationHelper
 
+  # 診療時間
   def time_list
     [
       ['07:00', '07:00'],['07:30', '07:30'],['08:00', '08:00'],['08:30', '08:30'],['09:00', '09:00'],
@@ -10,6 +11,35 @@ module ApplicationHelper
       ['19:30', '19:30'],['20:00', '20:00'],['20:30', '20:30'],['21:00', '21:00'],['21:30', '21:30'],
       ['22:00', '22:00'],['22:30', '22:30'],['23:00', '23:00'],
     ]
+  end
+
+  # 新着順　
+  def self.new_order
+    self.order(id: 'DESC')
+  end
+
+  # 星点数順
+  def self.score_order
+    self.where(id: Review.group(:clinic_id).order('avg(score) desc').pluck(:clinic_id))
+  end
+
+  # レビュー数
+  def self.review_order
+    self.where(id: Review.group(:clinic_id).order('count(clinic_id) desc').pluck(:clinic_id))
+  end
+
+  # 並び替え
+  def self.sort(selection, clinics)
+    case selection 
+    when params[:keyword] == "new"
+      clinics.new_order
+    when params[:keyword] == "score"
+      clinics.score_order
+    when params[:keyword] == "review"
+      clinics.review_order
+    when  params[:keyword] == "------------"
+      clinics
+    end
   end
 
 end

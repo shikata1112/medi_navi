@@ -42,4 +42,9 @@ class Member::ClinicsController < ApplicationController
     @places = Clinic.all.within(2, origin: [latitude, longitude])
   end
 
+  # 並び替え
+  def sort
+    @clinics = Clinic.sort
+  end
+
 end
