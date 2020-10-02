@@ -44,7 +44,7 @@ class Member::ClinicsController < ApplicationController
 
   # 並び替え
   def sort
-    @clinics = Clinic.sort
+    @clinics = Clinic.sort(params[:clinic][:keyword])
   end
 
 end

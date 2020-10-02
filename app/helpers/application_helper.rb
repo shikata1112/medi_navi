@@ -13,33 +13,4 @@ module ApplicationHelper
     ]
   end
 
-  # 新着順　
-  def self.new_order
-    self.order(id: 'DESC')
-  end
-
-  # 星点数順
-  def self.score_order
-    self.where(id: Review.group(:clinic_id).order('avg(score) desc').pluck(:clinic_id))
-  end
-
-  # レビュー数
-  def self.review_order
-    self.where(id: Review.group(:clinic_id).order('count(clinic_id) desc').pluck(:clinic_id))
-  end
-
-  # 並び替え
-  def self.sort(selection, clinics)
-    case selection 
-    when params[:keyword] == "new"
-      clinics.new_order
-    when params[:keyword] == "score"
-      clinics.score_order
-    when params[:keyword] == "review"
-      clinics.review_order
-    when  params[:keyword] == "------------"
-      clinics
-    end
-  end
-
 end
