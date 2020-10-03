@@ -1,25 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  clinic_id: 1
-  week_time: MyString
-  mo_time: MyString
-  tu_time: MyString
-  we_time: MyString
-  th_time: MyString
-  fr_time: MyString
-  sa_time: MyString
-  su_time: MyString
-  ho_time: MyString
+# one:
+#   clinic_id: 1
+#   week_time: MyString
+#   mo_time: MyString
+#   tu_time: MyString
+#   we_time: MyString
+#   th_time: MyString
+#   fr_time: MyString
+#   sa_time: MyString
+#   su_time: MyString
+#   ho_time: MyString
 
-two:
-  clinic_id: 1
-  week_time: MyString
-  mo_time: MyString
-  tu_time: MyString
-  we_time: MyString
-  th_time: MyString
-  fr_time: MyString
-  sa_time: MyString
-  su_time: MyString
-  ho_time: MyString
+# two:
+#   clinic_id: 1
+#   week_time: MyString
+#   mo_time: MyString
+#   tu_time: MyString
+#   we_time: MyString
+#   th_time: MyString
+#   fr_time: MyString
+#   sa_time: MyString
+#   su_time: MyString
+#   ho_time: MyString

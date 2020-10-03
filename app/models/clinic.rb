@@ -14,7 +14,8 @@ class Clinic < ApplicationRecord
   has_many :members, through: :favorites
 
   def favorited_by?(member)
-    favorites.where(member_id: member.id).exists?
+    # favorites.where(member_id: member.id).exists?
+    favorites.any? {|favorite| favorite.member_id == member.id}
   end
 
   # 画像投稿機能
@@ -36,12 +37,14 @@ class Clinic < ApplicationRecord
 
   # 新着順　
   def self.new_order
-    Clinic.order(id: 'DESC')
+    order(id: 'DESC')
   end
 
   # 星点数順
   def self.score_order
+    #ActiveRecord::Base.connection.execute("select A.*, B.score as average_score from clinics as A left join (select clinic_id, avg(score) as score from reviews group by clinic_id) AS B where A.id = B.clinic_id order by average_score desc")
     Clinic.where(id: Review.group(:clinic_id).order('avg(score) desc').pluck(:clinic_id))
+    # joins(:reviews).merge(Review.order('avg(score) desc'))
   end
 
   # レビュー数
