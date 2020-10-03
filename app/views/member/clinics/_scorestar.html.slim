@@ -7,8 +7,9 @@ div class="average-star#{clinic.id}"
         starHalf: "/assets/star-half.png",
         half: true,
         readOnly: true,
-        score: "#{clinic.reviews.average(:score).to_f.round(1)}",  // 平均点を算出し、round関数で切り上げ
+        score: "#{avg(clinic.reviews.map(&:score))}",  // 平均点を算出し、round関数で切り上げ
       });
 
     .clinic-score-average
-      = clinic.reviews.average(:score).to_f.round(2)
+      / = clinic.reviews.average(:score).to_f.round(2)
+      = avg(clinic.reviews.map(&:score))

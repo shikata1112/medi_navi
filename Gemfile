@@ -119,6 +119,10 @@ gem 'jcanvas-rails', '~> 0.1.0'
 #　pv付与
 gem 'impressionist', '~>1.6.1'
 
+# SNSログイン
+gem 'omniauth'
+gem 'omniauth-facebook'
+
 # 環境変数、mysql
 gem 'dotenv-rails'
 group :production do

@@ -1,6 +1,7 @@
   
 .col-xs-2
 .col-xs-8.clinic-info
+
   .row.clinic-border
     h3.clinic-head
       .clinic-name
@@ -32,7 +33,7 @@
           = link_to member_clinic_reviews_path(clinic) do
             i.fas.fa-comment-dots
             |  口コミ 
-            = clinic.reviews.count
+            = clinic.reviews.length
             | 件
 
       table.table.clinic-contents
@@ -63,7 +64,6 @@
         = link_to new_member_clinic_review_path(clinic), class: "btn btn-warning" do
           i.fas.fa-pencil-alt
           |  口コミを投稿する
-
 
   .row
     table.table.table-bordered.clinic_consultation_hours

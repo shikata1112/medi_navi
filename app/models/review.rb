@@ -4,5 +4,4 @@ class Review < ApplicationRecord
 
   # タグ付け機能
   acts_as_taggable
-  
 end

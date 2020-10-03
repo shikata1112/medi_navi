@@ -10,6 +10,9 @@
         h1.text-center
           | 会員ログイン
 
+        .form-group(style="margin-top: 30px;")
+          = link_to "Facebookでログインする", member_facebook_omniauth_authorize_path, method: :post, class: 'btn btn-primary btn-block'
+
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
 
           .form-group

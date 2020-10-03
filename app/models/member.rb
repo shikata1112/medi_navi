@@ -2,7 +2,24 @@ class Member < ApplicationRecord
   
   
   devise :database_authenticatable, :registerable, :recoverable,
-          :rememberable, :validatable
+          :rememberable, :validatable, :omniauthable
+
+  def self.find_for_oauth(auth)
+
+    member = Member.where(provider: auth.provider, uid: auth.uid).first
+
+    unless member
+      member = Member.create(
+        name: auth.info.name,
+        provider: auth.provider,
+        uid: auth.uid,
+        email: auth.info.email,
+        password: Devise.friendly_token[0,20],
+        profile_image:  auth.info.image
+      )
+    end
+    member
+  end
 
   include JpPrefecture
   jp_prefecture :prefecture_code

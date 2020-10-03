@@ -32,7 +32,8 @@ class Member::ClinicsController < ApplicationController
 
   # 都道府県検索
   def prefecture_search
-    @clinics = Clinic.where("address LIKE?","#{params[:name]}%")
+    #@clinics = Clinic.preload(:genres).where("address LIKE?", "#{params[:name]}%")
+    @clinics = Clinic.eager_load(:genres, :favorites, :consultation_hours, :reviews).where("address LIKE?", "#{params[:name]}%")
   end
 
   # 会員住所からの検索
@@ -40,6 +41,11 @@ class Member::ClinicsController < ApplicationController
     latitude = params[:latitude]
     longitude = params[:longitude]
     @places = Clinic.all.within(2, origin: [latitude, longitude])
+  end
+
+  # 並び替え
+  def sort
+    @clinics = Clinic.sort(params[:clinic][:keyword])
   end
 
 end
