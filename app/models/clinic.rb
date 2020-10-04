@@ -35,7 +35,7 @@ class Clinic < ApplicationRecord
   is_impressionable counter_cache: true
 
 
-  # 新着順　
+  # 新着順
   def self.new_order
     order(id: 'DESC')
   end
