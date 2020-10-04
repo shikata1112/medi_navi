@@ -11,5 +11,6 @@ div class="average-star#{clinic.id}"
       });
 
     .clinic-score-average
-      / = clinic.reviews.average(:score).to_f.round(2)
+      // = clinic.reviews.average(:score).to_f.round(2)
+      // mapを使用することでSQLが発行されない（N+1問題）
       = avg(clinic.reviews.map(&:score))

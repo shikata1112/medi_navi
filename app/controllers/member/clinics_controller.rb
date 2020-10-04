@@ -12,10 +12,9 @@ class Member::ClinicsController < ApplicationController
   end
 
   def show
-    @clinic = Clinic.find(params[:id])
     # impressionist(@clinic, nil, unique: [:session_hash])
-
-    gon.clinic = @clinic　# jsでgon.clinicが使用できる
+    @clinic = Clinic.find(params[:id])
+    gon.clinic = @clinic # jsでgon.clinicで@clinicが使用できる
   end
 
   # フォームからのあいまい検索
@@ -27,7 +26,6 @@ class Member::ClinicsController < ApplicationController
   def genre_search
     @genre = Genre.find(params[:genre_id])
     @clinics = @genre.clinics
-    # @clinics = Genre.find(params[:genre_id]).clinics 29,30行目の省略形
   end
 
   # 都道府県検索
