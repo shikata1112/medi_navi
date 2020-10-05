@@ -15,6 +15,7 @@ class Clinic < ApplicationRecord
 
   def favorited_by?(member)
     # favorites.where(member_id: member.id).exists?
+    # any?を使用することでSQL発行しない
     favorites.any? {|favorite| favorite.member_id == member.id}
   end
 

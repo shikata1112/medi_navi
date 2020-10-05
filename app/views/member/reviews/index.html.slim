@@ -21,7 +21,7 @@
             th
               | 評価（5段階）
         tbody
-          - @clinic.reviews.each do |review|
+          - @reviews.each do |review|
             tr
               td
                 = review.member.name
@@ -44,7 +44,7 @@
                 - when 5
                   | 2時間以上
               td.tag
-                - review.tag_list.each do |tag|
+                - review.tags.pluck(:name).each do |tag|
                   span.label.label-default style="margin-right: 10px;"
                     = tag
               td.star
