@@ -19,19 +19,19 @@ class Member::ClinicsController < ApplicationController
 
   # フォームからのあいまい検索
   def search
-    @clinics = Clinic.search(params[:search])
+    @clinics = Clinic.eager_load(:genres, :favorites, :consultation_hours, :reviews, :genre_maps).search(params[:search])
   end
 
   # 診療科目検索
   def genre_search
     @genre = Genre.find(params[:genre_id])
-    @clinics = @genre.clinics
+    @clinics = @genre.clinics.eager_load(:genres, :favorites, :consultation_hours, :reviews, :genre_maps)
   end
 
   # 都道府県検索
   def prefecture_search
     #@clinics = Clinic.preload(:genres).where("address LIKE?", "#{params[:name]}%")
-    @clinics = Clinic.eager_load(:genres, :favorites, :consultation_hours, :reviews).where("address LIKE?", "#{params[:name]}%")
+    @clinics = Clinic.eager_load(:genres, :favorites, :consultation_hours, :reviews, :genre_maps).where("address LIKE?", "#{params[:name]}%")
   end
 
   # 会員住所からの検索
