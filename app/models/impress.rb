@@ -1,0 +1,2 @@
+class Impress < ApplicationRecord
+end

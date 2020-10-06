@@ -8,9 +8,7 @@ class Member::ReviewsController < ApplicationController
 
   def index
     @clinic = Clinic.find(params[:clinic_id])
-    # @reviews = Review.eager_load(:members, :taggings, :tags).where(member_id: current_member.id)
     @reviews = @clinic.reviews.includes(:tags, :member)
-    # @reviews = Review.eager_load(:member, :taggings, :tags).all
   end
 
   def create

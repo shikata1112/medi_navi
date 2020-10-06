@@ -44,10 +44,11 @@
             br
             = @member.address
 
-      .edit-link-box
-        li.edit-link
-          = link_to "登録内容を変更する", edit_member_member_path(@member)
-        li.edit-link
-          = link_to "メールアドレス・パスワードを変更する", edit_member_registration_path
-        li.edit-link
-          = link_to "退会する", resignation_path
+      - if current_member == @member
+        .edit-link-box
+          li.edit-link
+            = link_to "登録内容を変更する", edit_member_member_path(@member)
+          li.edit-link
+            = link_to "メールアドレス・パスワードを変更する", edit_member_registration_path
+          li.edit-link
+            = link_to "退会する", resignation_path
