@@ -1,0 +1,32 @@
+
+.container
+  .row
+    .col-xs-1
+    .col-xs-10.follow-member
+      table.table.table-bordered
+        thead
+          tr
+            th.text-center
+              | 画像
+            th.text-center
+              | 名前
+            th.text-center
+              | フォロー
+            th.text-center
+              | フォロワー
+            th
+
+        tbody
+          - @members.each do |member|
+            tr.text-center
+              td width=150 
+                = attachment_image_tag member, :profile_image, size:"50", fallback: "no-image.jpg"
+              td
+                = link_to member_member_path(member) do
+                  = member.name
+              td width=200
+                = member.followings.count
+              td width=200
+                = member.followers.count
+              td
+                = link_to "詳細", member_member_path(member), class: "btn btn-default"

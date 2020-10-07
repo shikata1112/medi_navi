@@ -50,7 +50,11 @@ Rails.application.routes.draw do
 
     namespace :member do
       
-      resources :members, only: [:show, :edit, :update]
+      resources :members, only: [:show, :edit, :update] do
+        resource :relationships, only: [:create, :destroy]
+        get :follows, on: :member
+        get :followers, on: :member
+      end
       resources :clinics, only: [:show, :index] do
         resource :favorites, only: [:create, :destroy]
         resources :reviews, only: [:new, :index, :create, :destroy]

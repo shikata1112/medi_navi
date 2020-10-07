@@ -41,6 +41,16 @@ class Member < ApplicationRecord
 
   attachment :profile_image
 
+  # フォロー機能
+  has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
+  has_many :followings, through: :active_relationships, source: :follower
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
+  has_many :followers, through: :passive_relationships, source: :following
+
+  def followed_by?(member)
+    passive_relationships.find_by(following_id: member.id).present?
+  end
+
   # 会員論理削除機能
   def active_for_authentication?
     super && (self.is_deleted == false)
@@ -50,6 +60,4 @@ class Member < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
-  # impressions-pv
-  is_impressionable counter_cache: true
 end

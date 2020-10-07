@@ -5,36 +5,47 @@
     .col-xs-2.profile-image
       = attachment_image_tag @member, :profile_image, size:"140x140", fallback: "no-image.jpg", class: "img-circle"
 
+      .member-follow
+        - if current_member != @member
+          - if @member.followed_by?(current_member)
+            = link_to "フォロー", member_member_relationships_path(@member.id), class: "btn btn-primary btn-block", method: :delete
+          - else
+            = link_to "フォロー", member_member_relationships_path(@member.id), class: "btn btn-default btn-block", method: :post
+
       table.table.follow-follower
         tr
-          th
-            | フォロー
+          th 
+            = link_to "フォロー", follows_member_member_path(@member)
           td 
-            | 0
+            = @member.followings.count
         tr
           th
-            | フォロワー
+            = link_to "フォロワー", followers_member_member_path(@member)
           td 
-            | 0
+            = @member.followers.count
     
     .col-xs-6
       table.table.member-info
         tr
           th.th-color
             | ニックネーム
-          td = @member.name
+          td 
+            = @member.name
         tr
           th.th-color 
             | メール
-          td = @member.email
+          td 
+            = @member.email
         tr
           th.th-color 
             | 生年月日
-          td = @member.birthday
+          td 
+            = @member.birthday
         tr
           th.th-color 
             | 性別
-          td = @member.sex == true ? "男性" : "女性"
+          td 
+            = @member.sex == true ? "男性" : "女性"
         tr
           th.th-color 
             | 住所

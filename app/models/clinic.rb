@@ -33,7 +33,7 @@ class Clinic < ApplicationRecord
   after_validation :geocode
 
   # impressions-pv
-  is_impressionable counter_cache: true
+  # is_impressionable counter_cache: true
 
 
   # 新着順
