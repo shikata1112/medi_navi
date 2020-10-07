@@ -47,9 +47,6 @@ class Member < ApplicationRecord
   has_many :passive_relationships, class_name: "Relationship", foreign_key: :follower_id
   has_many :followers, through: :passive_relationships, source: :following
 
-  validates :follower_id, presence: true
-  validates :following_id, presence: true
-
   def followed_by?(member)
     passive_relationships.find_by(following_id: member.id).present?
   end
