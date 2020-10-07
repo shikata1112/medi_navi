@@ -5,7 +5,7 @@ class Member::ClinicsController < ApplicationController
     gon.member = current_member
     gon.clinics = Clinic.all
     @genres = Genre.all
-    @clinics = Clinic.order(impressions_count: 'DESC') # PVソート機能
+    # @clinics = Clinic.order(impressions_count: 'DESC') # PVソート機能
   end
 
   def about

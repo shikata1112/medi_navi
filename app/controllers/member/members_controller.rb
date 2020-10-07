@@ -28,6 +28,16 @@ class Member::MembersController < ApplicationController
     redirect_to root_path
   end
 
+  def follows
+    member = Member.find(params[:id])
+    @members = member.followings
+  end
+
+  def followers
+    member = Member.find(params[:id])
+    @members = member.followers
+  end
+
   private
 
   def member_params

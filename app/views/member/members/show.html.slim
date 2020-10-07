@@ -5,17 +5,24 @@
     .col-xs-2.profile-image
       = attachment_image_tag @member, :profile_image, size:"140x140", fallback: "no-image.jpg", class: "img-circle"
 
+      .member-follow
+        - if current_member != @member
+          - if @member.followed_by?(current_member)
+            = link_to 'フォロー', member_member_relationships_path(@member.id), class: "btn btn-primary", method: :delete
+          - else
+            = link_to 'フォロー', member_member_relationships_path(@member.id), class: "btn btn-default", method: :post
+
       table.table.follow-follower
         tr
           th
             | フォロー
           td 
-            | 0
+            = @member.followings.count
         tr
           th
             | フォロワー
           td 
-            | 0
+            = @member.followers.count
     
     .col-xs-6
       table.table.member-info
