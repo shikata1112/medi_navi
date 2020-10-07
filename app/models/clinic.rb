@@ -43,7 +43,6 @@ class Clinic < ApplicationRecord
 
   # 星点数順
   def self.score_order
-    #ActiveRecord::Base.connection.execute("select A.*, B.score as average_score from clinics as A left join (select clinic_id, avg(score) as score from reviews group by clinic_id) AS B where A.id = B.clinic_id order by average_score desc")
     Clinic.where(id: Review.group(:clinic_id).order('avg(score) desc').pluck(:clinic_id))
     # joins(:reviews).merge(Review.order('avg(score) desc'))
   end

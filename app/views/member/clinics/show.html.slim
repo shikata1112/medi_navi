@@ -8,6 +8,7 @@
               = @clinic.name
             
             .favorite-button
+              / = @clinic.impressionist_count
               - if @clinic.favorited_by?(current_member)
                 = link_to member_clinic_favorites_path(@clinic), method: :delete do
                   .btn.btn-default.btn-sm.unfavorite

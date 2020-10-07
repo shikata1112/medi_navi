@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_04_100321) do
+ActiveRecord::Schema.define(version: 2020_10_06_140423) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2020_10_04_100321) do
   create_table "impressions", force: :cascade do |t|
     t.string "impressionable_type"
     t.integer "impressionable_id"
+    t.integer "member_id"
     t.string "controller_name"
     t.string "action_name"
     t.string "view_name"
@@ -104,8 +105,6 @@ ActiveRecord::Schema.define(version: 2020_10_04_100321) do
     t.text "params"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "clinic_id"
-    t.integer "member_id"
     t.index ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index"
     t.index ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index"
     t.index ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index"
@@ -114,6 +113,7 @@ ActiveRecord::Schema.define(version: 2020_10_04_100321) do
     t.index ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index"
     t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
     t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
+    t.index ["member_id"], name: "index_impressions_on_member_id"
   end
 
   create_table "members", force: :cascade do |t|

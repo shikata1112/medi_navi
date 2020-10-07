@@ -11,9 +11,11 @@ class Member::ClinicsController < ApplicationController
   def about
   end
 
+  # impressionist :actions=> [:show]
+
   def show
-    # impressionist(@clinic, nil, unique: [:session_hash])
     @clinic = Clinic.find(params[:id])
+    # impressionist(@clinic, nil, unique: [:session_hash])
     gon.clinic = @clinic # jsでgon.clinicで@clinicが使用できる
   end
 
@@ -43,7 +45,7 @@ class Member::ClinicsController < ApplicationController
 
   # 並び替え
   def sort
-    @clinics = Clinic.sort(params[:clinic][:keyword])
+    @clinics = Clinic.sort(params[:clinic][:keyword]).eager_load(:genres, :favorites, :consultation_hours, :reviews, :genre_maps)
   end
 
 end
