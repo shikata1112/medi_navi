@@ -8,7 +8,7 @@
       .member-follow
         - if current_member != @member
           - if @member.followed_by?(current_member)
-            = link_to "フォロー", member_member_relationships_path(@member.id), class: "btn btn-primary btn-block", method: :delete
+            = link_to "フォロー中", member_member_relationships_path(@member.id), class: "btn btn-primary btn-block", method: :delete
           - else
             = link_to "フォロー", member_member_relationships_path(@member.id), class: "btn btn-default btn-block", method: :post
 
@@ -23,6 +23,18 @@
             = link_to "フォロワー", followers_member_member_path(@member)
           td 
             = @member.followers.count
+
+      .member-dm
+        - unless @member.id == current_member.id
+              - if @is_room == true
+                = link_to member_room_path(@room_id), class: "btn btn-default btn-block" do
+                  i.far.fa-envelope
+              - else
+                = form_with model: @room, url: member_rooms_path, local: true do |f|
+                  = fields_for @entry do |e|
+                    = e.hidden_field :member_id, value: @member.id
+                  = button_tag type: 'submit', class: "btn btn-default btn-block" do
+                    i.far.fa-envelope
     
     .col-xs-6
       table.table.member-info
