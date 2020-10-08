@@ -49,6 +49,8 @@ Rails.application.routes.draw do
     patch 'quit', to: 'member/members#quit'
 
     namespace :member do
+      resources :messages, only: [:create, :destroy]
+      resources :rooms, only: [:create, :index, :show]
       
       resources :members, only: [:show, :edit, :update] do
         resource :relationships, only: [:create, :destroy]

@@ -41,6 +41,10 @@ class Member < ApplicationRecord
 
   attachment :profile_image
 
+  # DM
+  has_many :entries, dependent: :destroy
+  has_many :messages, dependent: :destroy
+
   # フォロー機能
   has_many :active_relationships, class_name: "Relationship", foreign_key: :following_id
   has_many :followings, through: :active_relationships, source: :follower
