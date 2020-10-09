@@ -32,38 +32,39 @@ class Clinic < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
+
+  
   # impressions-pv
   # is_impressionable counter_cache: true
 
-
   # 新着順
-  def self.new_order
-    order(id: 'DESC')
-  end
+  # def self.new_order
+  #   order(id: 'DESC')
+  # end
 
-  # 星点数順
-  def self.score_order
-    Clinic.where(id: Review.group(:clinic_id).order('avg(score) desc').pluck(:clinic_id))
-    # joins(:reviews).merge(Review.order('avg(score) desc'))
-  end
+  # # 星点数順
+  # def self.score_order
+  #   Clinic.where(id: Review.group(:clinic_id).order('avg(score) desc').pluck(:clinic_id))
+  #   # joins(:reviews).merge(Review.order('avg(score) desc'))
+  # end
 
-  # レビュー数
-  def self.review_order
-    Clinic.where(id: Review.group(:clinic_id).order('count(clinic_id) desc').pluck(:clinic_id))
-  end
+  # # レビュー数
+  # def self.review_order
+  #   Clinic.where(id: Review.group(:clinic_id).order('count(clinic_id) desc').pluck(:clinic_id))
+  # end
 
-  # 並び替え
-  def self.sort(selection)
-    case selection 
-    when "new"
-      new_order
-    when "score"
-      score_order
-    when "review"
-      review_order
-    else
-      all
-    end
-  end
+  # # 並び替え
+  # def self.sort(selection)
+  #   case selection 
+  #   when "new"
+  #     new_order
+  #   when "score"
+  #     score_order
+  #   when "review"
+  #     review_order
+  #   else
+  #     all
+  #   end
+  # end
 
 end

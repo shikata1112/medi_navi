@@ -123,7 +123,7 @@ gem 'geocoder'
 gem 'jcanvas-rails', '~> 0.1.0'
 
 #　pv付与
-# gem 'impressionist', '~>1.6.1'
+gem 'impressionist', '~>1.6.1'
 
 # SNSログイン
 gem 'omniauth'
