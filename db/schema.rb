@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_08_022815) do
+ActiveRecord::Schema.define(version: 2020_10_09_124752) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -150,6 +150,7 @@ ActiveRecord::Schema.define(version: 2020_10_08_022815) do
     t.string "unconfirmed_email"
     t.string "uid"
     t.string "provider"
+    t.integer "impressions_count", default: 0
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
