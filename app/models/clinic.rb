@@ -33,14 +33,13 @@ class Clinic < ApplicationRecord
   after_validation :geocode
 
 
-  
   # impressions-pv
   # is_impressionable counter_cache: true
 
   # 新着順
-  # def self.new_order
-  #   order(id: 'DESC')
-  # end
+  def self.new_order
+    order(id: 'DESC')
+  end
 
   # # 星点数順
   # def self.score_order
