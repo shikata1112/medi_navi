@@ -129,6 +129,8 @@ gem 'impressionist', '~>1.6.1'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+# バッチ処理
+gem 'whenever', require: false
 
 # 環境変数、mysql
 gem 'dotenv-rails'

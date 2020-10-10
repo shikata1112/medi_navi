@@ -1,0 +1,29 @@
+
+.container
+  .row
+    .col-xs-3
+
+    .col-xs-6.coupons-index
+      - if @coupons.present?
+        table.table
+          thead
+            tr
+              th.text-center
+                | クーポン番号
+              th
+                | タイトル
+              th
+
+          tbody
+            - @coupons.each.with_index(1) do |coupon, index|
+              tr
+                td.text-center
+                  = index
+                td
+                  - limit = coupon.created_at + coupon.limit.minutes
+                  = limit.to_s(:datetime_jp)
+                td
+                  = link_to "使用する", member_coupon_path(coupon), method: :delete, "data-confirm" => "クーポン #{index} を使用しますか？", class: "btn btn-warning"
+      - else 
+        h3.text-center
+          | 利用できるクーポンはありません。
