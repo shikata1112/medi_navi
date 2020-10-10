@@ -17,6 +17,7 @@ class Member::ReviewsController < ApplicationController
     @review.member_id = current_member.id 
     @review.score = params[:score]
     @review.save
+    Coupon.coupon_create(current_member) #レビュー投稿に成功するとクーポンが発行される。
     redirect_to member_clinic_reviews_path
   end
 

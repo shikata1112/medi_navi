@@ -41,6 +41,9 @@ class Member < ApplicationRecord
 
   attachment :profile_image
 
+  # クーポン機能
+  has_many :coupons, dependent: :destroy
+
   # DM
   has_many :entries, dependent: :destroy
   has_many :messages, dependent: :destroy

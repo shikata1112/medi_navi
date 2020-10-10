@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_09_124752) do
+ActiveRecord::Schema.define(version: 2020_10_10_002628) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -58,6 +58,14 @@ ActiveRecord::Schema.define(version: 2020_10_09_124752) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["clinic_id"], name: "index_consultation_hours_on_clinic_id"
+  end
+
+  create_table "coupons", force: :cascade do |t|
+    t.integer "member_id"
+    t.boolean "is_valid", default: true
+    t.integer "limit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "entries", force: :cascade do |t|
