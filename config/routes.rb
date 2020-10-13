@@ -52,6 +52,7 @@ Rails.application.routes.draw do
       resources :messages, only: [:create, :destroy]
       resources :rooms, only: [:create, :index, :show]
       resources :coupons, only: [:index, :destroy]
+      resources :notifications, only: :index
       
       resources :members, only: [:show, :edit, :update] do
         resource :relationships, only: [:create, :destroy]
