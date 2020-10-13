@@ -53,7 +53,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # N+1を検出
-  gem 'bullet'
+  # gem 'bullet'
 end
 
 group :test do
