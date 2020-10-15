@@ -53,6 +53,7 @@ Rails.application.routes.draw do
       resources :rooms, only: [:create, :index, :show]
       resources :coupons, only: [:index, :destroy]
       resources :notifications, only: :index
+      delete 'notifications', to: 'notifications#destroy_all'
       
       resources :members, only: [:show, :edit, :update] do
         resource :relationships, only: [:create, :destroy]

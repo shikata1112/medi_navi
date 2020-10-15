@@ -53,7 +53,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   # N+1を検出
-  # gem 'bullet'
+  gem 'bullet'
 end
 
 group :test do
@@ -122,7 +122,7 @@ gem 'geocoder'
 # japanMap
 gem 'jcanvas-rails', '~> 0.1.0'
 
-#　pv付与
+# pv付与
 gem 'impressionist', '~>1.6.1'
 
 # SNSログイン
@@ -131,6 +131,9 @@ gem 'omniauth-facebook'
 
 # バッチ処理
 gem 'whenever', require: false
+
+# ページネーション
+gem 'kaminari'
 
 # 環境変数、mysql
 gem 'dotenv-rails'
