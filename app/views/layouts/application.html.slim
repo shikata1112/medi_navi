@@ -45,10 +45,10 @@ html
                     = link_to member_member_path(current_member) do
                       span.glyphicon.glyphicon-user aria-hidden="true"
                       |  マイページ
-                  / li.nav-list role="presentation"
-                  /   = link_to root_path do
-                  /     span.glyphicon.glyphicon-bell aria-hidden="true"
-                  /     |  通知
+                  li.nav-list role="presentation"
+                    = link_to member_notifications_path do
+                      span.glyphicon.glyphicon-bell aria-hidden="true"
+                      |  通知
                   li.nav-list role="presentation"
                     = link_to member_rooms_path do
                       span.glyphicon.glyphicon-envelope aria-hidden="true"
