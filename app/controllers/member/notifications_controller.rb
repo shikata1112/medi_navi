@@ -1,8 +1,7 @@
 class Member::NotificationsController < ApplicationController
 
   def index
-    @notifications = current_member.passive_notifications.page(params[:page]).per(20)
-
+    @notifications = current_member.passive_notifications.eager_load(:visiter).page(params[:page]).per(8)
     @notifications.where(checked: false).each do |notification|
       notification.update_attributes(checked: true)
     end
