@@ -27,7 +27,7 @@
       .member-dm
         - unless @member.id == current_member.id
               - if @is_room == true
-                = link_to member_room_path(@room_id), class: "btn btn-default btn-block" do
+                = link_to member_room_path(@room_id, member_id: @member.id), class: "btn btn-default btn-block" do
                   i.far.fa-envelope
               - else
                 = form_with model: @room, url: member_rooms_path, local: true do |f|

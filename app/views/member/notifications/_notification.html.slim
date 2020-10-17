@@ -9,10 +9,10 @@
 
   - case notification.action
   - when "follow"
-    = "さんがあなたをフォローしました。"
+    | さんがあなたをフォローしました。
   - when "dm"
-    = "さんからメッセージが届きました。"
-
+    | さんからメッセージが届きました。
+    
 .small.text-muted.text-right
   = l notification.created_at, format: :short
 hr

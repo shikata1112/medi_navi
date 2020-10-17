@@ -68,25 +68,6 @@ class Member < ApplicationRecord
     # end
   end
 
-  # DMの通知
-  def create_notification_message!(current_member)
-    @roommembernotme = Entry.where(room_id: @room.id).where.not(member_id: current_member.id)
-    @theid = @roommembernotme.find_by(room_id: @room.id)
-    notification = current_member.active_notifications.new(
-        room_id: @room.id,
-        message_id: @message.id,
-        visited_id: @theid.member_id,
-        visitor_id: current_member.id,
-        action: 'dm'
-    )
-    # 自分の投稿に対するコメントの場合は、通知済みとする
-    if notification.visitor_id == notification.visited_id
-        notification.checked = true
-    end
-    notification.save if notification.valid?
-  end
-
-
   # フォロー機能
   def followed_by?(member)
     passive_relationships.find_by(following_id: member.id).present?
