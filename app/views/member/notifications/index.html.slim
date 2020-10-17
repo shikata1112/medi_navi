@@ -13,7 +13,8 @@
       - notifications = @notifications.where.not(visiter_id: current_member.id)
       - if notifications.exists?
         = render @notifications
-        = paginate notifications
+        .text-center
+          = paginate @notifications
       - else
         p.text-center
           | 通知はありません。

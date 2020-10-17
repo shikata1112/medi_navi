@@ -41,38 +41,44 @@ html
                   |  
                   span.caret
               ul.dropdown-menu.pull-right.acount role="menu"
-                  li.nav-list role="presentation"
-                    = link_to member_member_path(current_member) do
-                      span.glyphicon.glyphicon-user aria-hidden="true"
-                      |  マイページ
-                  li.nav-list role="presentation"
-                    = link_to member_notifications_path do
+                li.nav-list role="presentation"
+                  = link_to member_member_path(current_member) do
+                    span.glyphicon.glyphicon-user aria-hidden="true"
+                    |  マイページ
+                li.nav-list role="presentation"
+                  = link_to member_notifications_path do
+                    - if unchecked_notifications.any?
+                      i.fa.fa-circle.n-circle
                       span.glyphicon.glyphicon-bell aria-hidden="true"
                       |  通知
-                  li.nav-list role="presentation"
-                    = link_to member_rooms_path do
-                      span.glyphicon.glyphicon-envelope aria-hidden="true"
-                      |  メッセージ
-                  li.nav-list role="presentation"
-                    = link_to my_favorite_path do
-                      span.glyphicon.glyphicon-star aria-hidden="true"
-                      |  お気に入りクリニック
-                  li.nav-list role="presentation"
-                    = link_to member_coupons_path do
-                      span.glyphicon.glyphicon-credit-card aria-hidden="true"
-                      |  クーポン一覧
-                  li.nav-list role="presentation"
-                    = link_to my_calendar_path
-                      span.glyphicon.glyphicon-calendar aria-hidden="true"
-                      |  Myカレンダー
-                  li.nav-list role="presentation"
-                    = link_to edit_member_member_path(current_member) do
-                      span.glyphicon.glyphicon-cog aria-hidden="true"
-                      |  プロフィール編集
-                  li.nav-list role="presentation"
-                    = link_to destroy_member_session_path, method: :delete do
-                      span.glyphicon.glyphicon-log-out aria-hidden="true"
-                      |  ログアウト
+                    - else
+                      span.glyphicon.glyphicon-bell aria-hidden="true"
+                      |  通知
+
+                li.nav-list role="presentation"
+                  = link_to member_rooms_path do
+                    span.glyphicon.glyphicon-envelope aria-hidden="true"
+                    |  メッセージ
+                li.nav-list role="presentation"
+                  = link_to my_favorite_path do
+                    span.glyphicon.glyphicon-star aria-hidden="true"
+                    |  お気に入りクリニック
+                li.nav-list role="presentation"
+                  = link_to member_coupons_path do
+                    span.glyphicon.glyphicon-credit-card aria-hidden="true"
+                    |  クーポン一覧
+                li.nav-list role="presentation"
+                  = link_to my_calendar_path
+                    span.glyphicon.glyphicon-calendar aria-hidden="true"
+                    |  Myカレンダー
+                li.nav-list role="presentation"
+                  = link_to edit_member_member_path(current_member) do
+                    span.glyphicon.glyphicon-cog aria-hidden="true"
+                    |  プロフィール編集
+                li.nav-list role="presentation"
+                  = link_to destroy_member_session_path, method: :delete do
+                    span.glyphicon.glyphicon-log-out aria-hidden="true"
+                    |  ログアウト
 
             .btn-group.header-list
               .dropdown-toggle data-toggle="dropdown"

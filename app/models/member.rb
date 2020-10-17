@@ -68,12 +68,6 @@ class Member < ApplicationRecord
     # end
   end
 
-  # DMの通知
-  # def create_notification_message!(current_member)
-
-  # end
-
-
   # フォロー機能
   def followed_by?(member)
     passive_relationships.find_by(following_id: member.id).present?
