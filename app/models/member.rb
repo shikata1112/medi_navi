@@ -3,6 +3,11 @@ class Member < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable,
           :rememberable, :validatable, :omniauthable
 
+  # バリデーション
+  validates :email, :name, :postcode, :address, :birthday, :prefecture_code, presence: true
+  validates :postcode, length: { is: 7 } , numericality: true
+  validates :is_deleted, :sex, inclusion: {in: [true, false]}
+  
 
   # facebookログイン
   def self.find_for_oauth(auth)
