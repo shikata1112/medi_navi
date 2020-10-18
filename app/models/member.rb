@@ -4,8 +4,8 @@ class Member < ApplicationRecord
           :rememberable, :validatable, :omniauthable
 
   # バリデーション
-  validates :email, :name, :postcode, :address, :birthday, :prefecture_code, presence: true
-  validates :postcode, length: { is: 7 } , numericality: true
+  validates :email, :name, :address, :birthday, :prefecture_code, presence: true
+  validates :postcode, length: { is: 7 }, numericality: true
   validates :is_deleted, :sex, inclusion: {in: [true, false]}
   
 

@@ -1,9 +1,10 @@
+
 FactoryBot.define do
 
   factory :member do
     name { "test" }
     email { "test@gmail.com" }
-    postcode { "1111111" }
+    postcode { "1231111" }
     address { "大阪府大阪市test" }
     birthday { "1999-11-11" }
     sex { "true" }

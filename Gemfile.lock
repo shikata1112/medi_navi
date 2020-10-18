@@ -1,4 +1,12 @@
 GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 17a50f8608aa8367598ab5f7f0eda6982afc73ec
+  branch: master
+  specs:
+    faker (2.14.0)
+      i18n (>= 1.6, < 2)
+
+GIT
   remote: https://github.com/manfe/refile.git
   revision: 46b4178654e60bb5846b1423acf6d0740cdecc25
   specs:
@@ -126,13 +134,11 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
-    faker (1.1.2)
-      i18n (~> 0.5)
     faraday (1.1.0)
       multipart-post (>= 1.2, < 3)
       ruby2_keywords
     ffi (1.13.1)
-    font-awesome-sass (5.14.0)
+    font-awesome-sass (5.15.1)
       sassc (>= 1.11)
     fullcalendar-rails (3.9.0.0)
       jquery-rails (>= 4.0.5, < 5.0.0)
@@ -154,7 +160,7 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    i18n (0.9.5)
+    i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.0)
       mini_magick (>= 4.9.5, < 5)
@@ -411,7 +417,7 @@ DEPENDENCIES
   devise-i18n-views
   dotenv-rails
   factory_bot_rails
-  faker (~> 1.1.2)
+  faker!
   font-awesome-sass
   fullcalendar-rails
   geocoder
