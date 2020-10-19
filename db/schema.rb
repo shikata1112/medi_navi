@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 2020_10_17_091207) do
   create_table "impressions", force: :cascade do |t|
     t.string "impressionable_type"
     t.integer "impressionable_id"
-    t.integer "member_id"
+    t.integer "user_id"
     t.string "controller_name"
     t.string "action_name"
     t.string "view_name"
@@ -134,7 +134,7 @@ ActiveRecord::Schema.define(version: 2020_10_17_091207) do
     t.index ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index"
     t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
     t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
-    t.index ["member_id"], name: "index_impressions_on_member_id"
+    t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
   create_table "members", force: :cascade do |t|
@@ -162,7 +162,6 @@ ActiveRecord::Schema.define(version: 2020_10_17_091207) do
     t.string "unconfirmed_email"
     t.string "uid"
     t.string "provider"
-    t.integer "impressions_count", default: 0
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end

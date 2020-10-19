@@ -219,7 +219,7 @@ Prefecture.create!(
 )
 
 
-100.times do |n|
+10.times do |n|
   name  = "クリニック#{n+1}"
   doctor = Faker::Name.name 
   address = Faker::Address.city
