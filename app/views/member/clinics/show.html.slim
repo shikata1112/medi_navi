@@ -8,7 +8,6 @@
               = @clinic.name
             
             .favorite-button
-              / = @clinic.impressionist_count
               - if @clinic.favorited_by?(current_member)
                 = link_to member_clinic_favorites_path(@clinic), method: :delete do
                   .btn.btn-default.btn-sm.unfavorite
@@ -35,6 +34,12 @@
                 |  口コミ 
                 = @clinic.reviews.count
                 | 件
+            
+            .pv-count
+              i.fas.fa-eye
+              |  
+              = @clinic.impressionist_count
+              |  pv
 
           table.table.noborder
             tr

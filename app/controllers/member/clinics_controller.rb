@@ -13,7 +13,7 @@ class Member::ClinicsController < ApplicationController
 
   def show
     @clinic = Clinic.find(params[:id])
-    # impressionist(clinic, nil, unique: [:session_hash])
+    impressionist(@clinic, nil, unique: [:session_hash.to_s])
     gon.clinic = @clinic # jsでgon.clinicで@clinicが使用できる
   end
 

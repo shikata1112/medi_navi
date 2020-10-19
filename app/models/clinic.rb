@@ -13,6 +13,11 @@ class Clinic < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :members, through: :favorites
 
+  # バリデーション
+  validates :name, :doctor, :address, :postcode, :phone_number, presence: true
+  validates :is_active, inclusion: {in: [true, false]}
+  
+
   def favorited_by?(member)
     # favorites.where(member_id: member.id).exists?
     # any?を使用することでSQL発行しない
@@ -34,7 +39,7 @@ class Clinic < ApplicationRecord
 
 
   # impressions-pv
-  # is_impressionable counter_cache: true
+  is_impressionable counter_cache: true
 
   # 新着順
   def self.new_order
