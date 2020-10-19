@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_10_17_091207) do
     t.float "latitude"
     t.float "longitude"
     t.integer "impressions_count", default: 0
+    t.index ["name"], name: "index_clinics_on_name"
   end
 
   create_table "consultation_hours", force: :cascade do |t|
@@ -99,12 +100,15 @@ ActiveRecord::Schema.define(version: 2020_10_17_091207) do
     t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["clinic_id"], name: "index_genre_maps_on_clinic_id"
+    t.index ["genre_id"], name: "index_genre_maps_on_genre_id"
   end
 
   create_table "genres", force: :cascade do |t|
     t.string "medical_department"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["medical_department"], name: "index_genres_on_medical_department"
   end
 
   create_table "impressions", force: :cascade do |t|

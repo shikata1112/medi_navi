@@ -27,25 +27,6 @@ Admin.create!(
 )
 
 
-100000.times do |n|
-  name  = "クリニック#{n+1}"
-  doctor = Faker::Name.name 
-  address = Faker::Address.city
-  phone_number = Faker::PhoneNumber.cell_phone
-  nearest_station = Faker::Address.street_name
-
-  Clinic.create!(name:  name,
-                 doctor: doctor,
-                 address: address,
-                 phone_number: phone_number,
-                 official_site: 'https://infratop.jp/',
-                 explanation: '患者に寄り添うことを第一に考えるクリニックです',
-                 postcode: '0000000',
-                 nearest_station: nearest_station,
-                )
-end
-
-
 Clinic.create!(
   [
     {
@@ -237,3 +218,21 @@ Prefecture.create!(
   ]
 )
 
+
+100.times do |n|
+  name  = "クリニック#{n+1}"
+  doctor = Faker::Name.name 
+  address = Faker::Address.city
+  phone_number = Faker::PhoneNumber.cell_phone
+  nearest_station = Faker::Address.street_name
+
+  Clinic.create!(name:  name,
+                 doctor: doctor,
+                 address: address,
+                 phone_number: phone_number,
+                 official_site: 'https://infratop.jp/',
+                 explanation: '患者に寄り添うことを第一に考えるクリニックです',
+                 postcode: '0000000',
+                 nearest_station: nearest_station,
+                )
+end
