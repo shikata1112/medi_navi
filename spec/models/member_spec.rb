@@ -14,7 +14,7 @@ RSpec.describe Member, type: :model do
       end 
     end
     
-    context "バリデーションの有効" do
+    context "バリデーションの有効性" do
 
       it "nameがnilの場合は登録できないこと" do
         @member.name = nil

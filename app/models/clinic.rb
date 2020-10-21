@@ -18,6 +18,7 @@ class Clinic < ApplicationRecord
   validates :is_active, inclusion: {in: [true, false]}
   
 
+  # クリニックのお気に入り機能
   def favorited_by?(member)
     # favorites.where(member_id: member.id).exists?
     # any?を使用することでSQL発行しない

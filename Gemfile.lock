@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: bb1b7c1925abb05934072c5a43c2c22a3d825250
+  revision: a905527b06af6a39a91d561e9050636733845612
   branch: master
   specs:
     faker (2.14.0)
@@ -240,7 +240,7 @@ GEM
     omniauth (1.9.1)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
-    omniauth-facebook (7.0.0)
+    omniauth-facebook (8.0.0)
       omniauth-oauth2 (~> 1.2)
     omniauth-oauth2 (1.7.0)
       oauth2 (~> 1.4)
