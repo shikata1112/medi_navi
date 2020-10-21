@@ -231,10 +231,6 @@ a.genre-link {
   margin-top: 220px;
 }
 
-canvas {
-  margin-top: -115px;
-}
-
 .pv-count {
   margin-top: 6px;
   padding-left: 40px;
@@ -246,4 +242,16 @@ canvas {
 
 .pv-clinic-name {
   color: black;
+}
+
+.col-xs-7.map-col {
+  position: static;
+}
+
+.prefecture-search {
+  margin-top: 100px;
+}
+
+.google-search {
+  margin-top: 100px;
 }
