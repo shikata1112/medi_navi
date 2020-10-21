@@ -1,5 +1,5 @@
   - content_for(:body_attributes) do
-    data-turbolinks="false"
+
 
   .top-image
     .clinic-top-image
@@ -9,114 +9,33 @@
         |  Medi Navi
 
 
+
+  .text-center.search-form
+    = form_tag(clinics_search_path, method: :get) do
+      = text_field_tag :search, "", placeholder: " クリニック名・駅名・住所・電話番号", class: "search-field"
+      = button_tag type: 'submit', class: 'btn btn-info search-submit' do
+        i.fas.fa-search
+        |  検索する
+
   .container
     .row
-      .text-center.search-form
-        = form_tag(clinics_search_path, method: :get) do
-          = text_field_tag :search, "", placeholder: " クリニック名・駅名・住所・電話番号", class: "search-field"
-          = button_tag type: 'submit', class: 'btn btn-info search-submit' do
-            i.fas.fa-search
-            |  検索する
-
-    .row.genre-search-index
       .col-xs-7
-        .page-header
-          h4
-            i.fas.fa-align-left
-            |  ジャンル一覧から探す
 
-        .genre-index
-          - @genres.each do |genre|
-            = link_to clinics_genre_search_path(genre_id: genre.id), class: "genre-link" do
-              = genre.medical_department
-            | 　｜　
-
-      .col-xs-1
-      .col-xs-4
-        .page-header
-          = link_to my_calendar_path do
-            h3
-              | マイカレンダー
-
+        // ジャンル検索
         .row
-          = link_to 'スケジュール登録', new_member_event_path, class: 'btn btn-success btn-xs'
-          #calendar
+          .genre-search-index
+            .page-header
+              h4
+                i.fas.fa-align-left
+                |  ジャンル一覧から探す
 
-      .col-xs-7.jp-map
-        .page-header
-          h4
-            i.fas.fa-globe-asia
-            |  都道府県から探す
+            .genre-index
+              - @genres.each do |genre|
+                = link_to clinics_genre_search_path(genre_id: genre.id), class: "genre-link" do
+                  = genre.medical_department
+                | 　｜　
 
-        = javascript_include_tag 'jquery.japan-map.min.js'
-        javascript:
-          
-          $(function(){
-              var areas = [
-                {"code": 1 , "name":"北海道地方", "color":"#ca93ea", "hoverColor":"gray", "hoverfontSize":"15", "prefectures":[1]},
-                {"code": 2 , "name":"東北地方",   "color":"#a7a5ea", "hoverColor":"gray", "prefectures":[2,3,4,5,6,7]},
-                {"code": 3 , "name":"関東地方",   "color":"#84b0f6", "hoverColor":"gray", "prefectures":[8,9,10,11,12,13,14]},
-                {"code": 4 , "name":"北陸・甲信越地方",   "color":"#52d49c", "hoverColor":"gray", "prefectures":[15,16,17,18,19,20]},
-                {"code": 4 , "name":"東海地方",   "color":"#77e18e", "hoverColor":"gray", "prefectures":[21,22,23,24]},
-                {"code": 6 , "name":"近畿地方",   "color":"#f2db7b", "hoverColor":"gray", "prefectures":[25,26,27,28,29,30]},
-                {"code": 7 , "name":"中国地方",   "color":"#f9ca6c", "hoverColor":"gray", "prefectures":[31,32,33,34,35]},
-                {"code": 8 , "name":"四国地方",   "color":"#fbad8b", "hoverColor":"gray", "prefectures":[36,37,38,39]},
-                {"code": 9 , "name":"九州地方",   "color":"#f7a6a6", "hoverColor":"gray", "prefectures":[40,41,42,43,44,45,46]},
-                {"code":10 , "name":"沖縄地方",   "color":"#ea89c4", "hoverColor":"gray", "prefectures":[47]}
-              ];
-
-              $("#map-container").japanMap(
-                  {
-                      width: 700,
-                      selection: "prefecture",
-                      areas: areas,
-                      backgroundColor : "white",
-                      borderLineColor: "black",
-                      borderLineWidth : 0.25,
-                      lineColor : "#a0a0a0",
-                      lineWidth: 1,
-                      drawsBoxLine: true,
-                      movesIslands : true,
-                      showsPrefectureName: true,
-                      prefectureNameType: "short",
-                      fontShadowColor : "black",
-                      fontSize : 11,
-                      fontColor : "areaColor",
-                      onSelect:function(data){
-                          window.location.href = 'http://54.199.40.234/clinics/prefecture_search?name=' + data.name;
-                    },
-                  }
-              );
-          });
-
-      #map-container
-
-      // pvランキング機能
-      / .col-xs-4
-      /   table.table
-      /       thead
-      /         tr
-      /           th
-      /             | 順位
-      /           th
-      /             | 氏名
-      /           th
-      /             | PV数
-
-      /       tbody
-      /         - @clinics.each.with_index(1) do |clinic, index|
-      /           tr
-      /             td
-      /               = index
-      /               | 位
-      /             td
-      /               = link_to member_clinic_path(clinic) do
-      /                 = clinic.name
-      /             td
-      /               = clinic.impressions_count
-
-    .row
-      .col-xs-7
+        // google APIで検索
         .page-header
           h4
             i.fas.fa-map-marked-alt
@@ -234,3 +153,55 @@
                 content: `<a href='/members/sign_in'>${ markerData[i]['name'] }</a>`
               });
             }
+
+      / ------------------------------------------------------------------------------------------------------------------------------
+
+      .col-xs-1
+
+      .col-xs-4
+
+        // カレンダー機能
+        .page-header
+          = link_to my_calendar_path do
+            h3
+              | マイカレンダー
+
+        .row
+          = link_to 'スケジュール登録', new_member_event_path, class: 'btn btn-success btn-xs'
+          #calendar
+
+        // pvランキング機能
+        .pv-ranking style="margin-top: 40px;"
+          table.table.table-bordered
+            thead
+              tr
+                th.text-center
+                  | 順位
+                th
+                  | クリニック
+                th.text-center
+                  | PV数
+
+            tbody
+              - @clinics.each.with_index(1) do |clinic, index|
+                tr
+                  td.text-center
+                    = index
+                    |  位
+                  td
+                    = link_to member_clinic_path(clinic), class:"pv-clinic-name" do
+                      = clinic.name
+                  td.text-center
+                    = clinic.impressions_count
+
+    
+      
+    // 都道府県検索
+    .row  
+      / h4.page-header
+      /   i.fas.fa-globe-asia
+      /   |  都道府県から探す      
+      = javascript_include_tag 'jquery.japan-map.min.js'
+      #map-container
+    
+    

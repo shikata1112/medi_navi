@@ -227,8 +227,8 @@ a.genre-link {
   margin-left: 70px;
 }
 
-.col-xs-7.jp-map {
-  margin-top: -220px;
+.jp-map {
+  margin-top: 220px;
 }
 
 canvas {
@@ -238,4 +238,12 @@ canvas {
 .pv-count {
   margin-top: 6px;
   padding-left: 40px;
+}
+
+.pv-ranking {
+  background-color: white; 
+}
+
+.pv-clinic-name {
+  color: black;
 }
