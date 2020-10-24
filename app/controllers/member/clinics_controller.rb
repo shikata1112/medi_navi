@@ -14,7 +14,7 @@ class Member::ClinicsController < ApplicationController
   def show
     @clinic = Clinic.find(params[:id])
     impressionist(@clinic, nil, unique: [:impressionable_id, :ip_address])
-    gon.clinic = @clinic # jsでgon.clinicで@clinicが使用できる
+    gon.clinic = @clinic
   end
 
   # フォームからのあいまい検索
@@ -40,10 +40,5 @@ class Member::ClinicsController < ApplicationController
     longitude = params[:longitude]
     @places = Clinic.all.within(2, origin: [latitude, longitude])
   end
-
-  # 並び替え
-  # def sort
-  #   @clinics = Clinic.sort(params[:clinic][:keyword]).eager_load(:genres, :favorites, :consultation_hours, :reviews, :genre_maps)
-  # end
 
 end

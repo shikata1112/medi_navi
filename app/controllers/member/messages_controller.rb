@@ -5,8 +5,7 @@ class Member::MessagesController < ApplicationController
     @message.member_id = current_member.id 
     @room = @message.room
     if @message.save
-
-      # DMの通知
+      
       @roommembernotme = Entry.where(room_id: @room.id).where.not(member_id: current_member.id)
       @theid = @roommembernotme.find_by(room_id: @room.id)
       notification = current_member.active_notifications.new(
@@ -21,8 +20,6 @@ class Member::MessagesController < ApplicationController
           notification.checked = true
       end
       notification.save if notification.valid?
-        
-      # redirect_to member_room_path(@room)
       redirect_back(fallback_location: root_path)
     else 
       redirect_back(fallback_location: root_path)
