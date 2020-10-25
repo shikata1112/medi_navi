@@ -31,7 +31,7 @@ $(function(){
           fontSize : 11,
           fontColor : "areaColor",
           onSelect:function(data){
-              window.location.href = 'http://54.199.40.234/clinics/prefecture_search?name=' + data.name;
+              window.location.href = 'https://medi-navi.site/clinics/prefecture_search?name=' + data.name;
         },
       }
   );
