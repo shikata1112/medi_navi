@@ -12,22 +12,31 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+// require turbolinks
 //= require jquery
+//= require jquery-ui
 //= require bootstrap-sprockets
+//= require jcanvas
+//= require tag-it
 //= require highcharts/highcharts
 //= require highcharts/highcharts-more
-//= require highcharts/highstock
 //= require nested_form_fields
 //= require moment
 //= require fullcalendar 
 //= require_tree 
 
+
+// 星レビュー機能
 $(function () {
   $('#star').raty({
-    size: 50,
     starOff: "/assets/star-off.png",
     starOn: "/assets/star-on.png",
     scoreName: "score"
   });
 });
+
+
+// tag付け機能
+$(document).on('ready page:load', function(){
+  $('#tags').tagit()
+})

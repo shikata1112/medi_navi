@@ -2,27 +2,62 @@
   .row.my-profile
     .col-xs-2
 
-    .col-xs-2
-      = attachment_image_tag @member, :profile_image, size:"185x185", fallback: "no-image.jpg"
+    .col-xs-2.profile-image
+      = attachment_image_tag @member, :profile_image, size:"140x140", fallback: "no-image.jpg", class: "img-circle"
+
+      .member-follow
+        - if current_member != @member
+          - if @member.followed_by?(current_member)
+            = link_to "フォロー中", member_member_relationships_path(@member.id), class: "btn btn-primary btn-block", method: :delete
+          - else
+            = link_to "フォロー", member_member_relationships_path(@member.id), class: "btn btn-default btn-block", method: :post
+
+      table.table.follow-follower
+        tr
+          th 
+            = link_to "フォロー", follows_member_member_path(@member)
+          td 
+            = @member.followings.count
+        tr
+          th
+            = link_to "フォロワー", followers_member_member_path(@member)
+          td 
+            = @member.followers.count
+
+      .member-dm
+        - unless @member.id == current_member.id
+              - if @is_room == true
+                = link_to member_room_path(@room_id, member_id: @member.id), class: "btn btn-default btn-block" do
+                  i.far.fa-envelope
+              - else
+                = form_with model: @room, url: member_rooms_path, local: true do |f|
+                  = fields_for @entry do |e|
+                    = e.hidden_field :member_id, value: @member.id
+                  = button_tag type: 'submit', class: "btn btn-default btn-block" do
+                    i.far.fa-envelope
     
     .col-xs-6
-      table.table
+      table.table.member-info
         tr
           th.th-color
             | ニックネーム
-          td = @member.name
+          td 
+            = @member.name
         tr
           th.th-color 
             | メール
-          td = @member.email
+          td 
+            = @member.email
         tr
           th.th-color 
             | 生年月日
-          td = @member.birthday
+          td 
+            = @member.birthday
         tr
           th.th-color 
             | 性別
-          td = @member.sex == true ? "男性" : "女性"
+          td 
+            = @member.sex == true ? "男性" : "女性"
         tr
           th.th-color 
             | 住所
@@ -31,20 +66,12 @@
             = @member.postcode
             br
             = @member.address
-          
-  .row.edit-link
-    .col-xs-2
-    .col-xs-8
-      table.table
-        tr  
-          li
+
+      - if current_member == @member
+        .edit-link-box
+          li.edit-link
             = link_to "登録内容を変更する", edit_member_member_path(@member)
-        tr 
-          li
-            = link_to "メールアドレスを変更する"
-        tr 
-          li
-            = link_to "パスワードを変更する"
-        tr 
-          li
+          li.edit-link
+            = link_to "メールアドレス・パスワードを変更する", edit_member_registration_path
+          li.edit-link
             = link_to "退会する", resignation_path

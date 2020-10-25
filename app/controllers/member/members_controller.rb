@@ -1,7 +1,26 @@
 class Member::MembersController < ApplicationController
-
+  before_action :authenticate_member!
+  
   def show
     @member = Member.find(params[:id])
+
+    @current_entry = Entry.where(member_id: current_member.id)
+    @another_entry = Entry.where(member_id: @member.id)
+    unless @member.id == current_member.id
+      @current_entry.each do |current|
+        @another_entry.each do |another|
+          if current.room_id == another.room_id
+            @is_room = true
+            @room_id = current.room_id
+          end
+        end
+      end
+      
+      unless @is_room
+        @room = Room.new
+        @entry = Entry.new
+      end
+    end
   end
 
   def edit
@@ -20,11 +39,20 @@ class Member::MembersController < ApplicationController
 
   def quit
     @member = Member.find(current_member.id)
-    #is_deletedカラムにフラグを立てる(defaultはfalse)
     @member.update(is_deleted: true)
     reset_session
     flash[:notice] = "◆退会処理が完了しました。またのご利用を心よりお待ちしております。"
     redirect_to root_path
+  end
+
+  def follows
+    member = Member.find(params[:id])
+    @members = member.followings
+  end
+
+  def followers
+    member = Member.find(params[:id])
+    @members = member.followers
   end
 
   private

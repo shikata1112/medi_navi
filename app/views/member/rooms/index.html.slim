@@ -1,0 +1,23 @@
+.container
+  .row style="margin: 40px;"
+    .col-xs-2
+
+    .col-xs-8
+      table.table
+        thead
+          tr
+            th
+              | メッセージ相手
+            th
+              | メッセージ内容
+
+        tbody
+          - @another_entries.each do |entry|
+            tr
+              td
+                = link_to entry.member.name, member_member_path(entry.member)
+
+              td
+                = link_to member_room_path(entry.room, member_id: entry.member.id) do
+                  / 最後に送られたメッセージを表示
+                  = Message.find_by(id: entry.room.message_ids.last)&.body

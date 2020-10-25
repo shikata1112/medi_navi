@@ -1,4 +1,6 @@
 class Admin::ConsultationHoursController < ApplicationController
+  before_action :authenticate_admin!
+
 
   def create 
     @consultation_hour = ConsultationHour.new(consultation_hour_params)

@@ -5,11 +5,12 @@ html
       | MediNavi
     = csrf_meta_tags
     = csp_meta_tag
+    = include_gon
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    .wrapper
+    #wrapper
       - if admin_signed_in? 
         header.admin_header
           .header-content
@@ -29,27 +30,45 @@ html
       - elsif member_signed_in? 
         header
           .header-content
-            = link_to root_path do
+            = link_to root_path, 'data-turbolinks': false do
               = image_tag  "logo.jpg", size: "180x60", class: "navi-logo"
-            .btn-group
+            .btn-group.header-list
               .dropdown-toggle data-toggle="dropdown"
-                | アカウント
-                span.caret
-              ul.dropdown-menu.pull-right role="menu"
+                .nav-member_name
+                  = current_member.name
+                  |  
+                  = attachment_image_tag current_member, :profile_image, size: "20x20", fallback: "no-image.jpg", class: "img-circle"
+                  |  
+                  span.caret
+              ul.dropdown-menu.pull-right.acount role="menu"
                 li.nav-list role="presentation"
                   = link_to member_member_path(current_member) do
                     span.glyphicon.glyphicon-user aria-hidden="true"
                     |  マイページ
                 li.nav-list role="presentation"
-                  = link_to root_path do
-                    span.glyphicon.glyphicon-bell aria-hidden="true"
-                    |  通知
+                  = link_to member_notifications_path do
+                    - if unchecked_notifications.any?
+                      i.fa.fa-circle.n-circle
+                      span.glyphicon.glyphicon-bell aria-hidden="true"
+                      |  通知
+                    - else
+                      span.glyphicon.glyphicon-bell aria-hidden="true"
+                      |  通知
+
+                li.nav-list role="presentation"
+                  = link_to member_rooms_path do
+                    span.glyphicon.glyphicon-envelope aria-hidden="true"
+                    |  メッセージ
                 li.nav-list role="presentation"
                   = link_to my_favorite_path do
                     span.glyphicon.glyphicon-star aria-hidden="true"
                     |  お気に入りクリニック
                 li.nav-list role="presentation"
-                  = link_to my_calendar_path, 'data-turbolinks': false
+                  = link_to member_coupons_path do
+                    span.glyphicon.glyphicon-credit-card aria-hidden="true"
+                    |  クーポン一覧
+                li.nav-list role="presentation"
+                  = link_to my_calendar_path
                     span.glyphicon.glyphicon-calendar aria-hidden="true"
                     |  Myカレンダー
                 li.nav-list role="presentation"
@@ -61,15 +80,27 @@ html
                     span.glyphicon.glyphicon-log-out aria-hidden="true"
                     |  ログアウト
 
-            .btn-group
+            .btn-group.header-list
               .dropdown-toggle data-toggle="dropdown"
-                | 診療科目から検索する
+                i.fas.fa-align-left
+                |  診療科目から探す 
                 span.caret
               ul.dropdown-menu.genre-search.pull-right role="menu"
                 - Genre.all.each do |genre|
                   = link_to clinics_genre_search_path(genre_id: genre.id) do
                     li.genre-list role="presentation"
                       = genre.medical_department
+
+            .btn-group.header-list
+              .dropdown-toggle data-toggle="dropdown"
+                i.fas.fa-globe-asia
+                |  都道府県から探す 
+                span.caret
+              ul.dropdown-menu.prefecture-search.pull-right role="menu"
+                - Prefecture.all.each do |prefecture|
+                  = link_to clinics_prefecture_search_path(name: prefecture.name) do
+                    li.prefecture-list role="presentation"
+                      = prefecture.name
       - else
         header
           .header-content
@@ -86,5 +117,36 @@ html
       = yield
 
       footer
-        .footer-content
+        .container.footer-box
+          .row
+            .footer-contents
+              .footer-logo
+                = link_to "Medi Navi", root_path, style:"color: #5bc0de;"
+
+              ul.footer-lists
+                li.footer-list
+                  = link_to "About", clinics_about_path, style:"color: #5bc0de;"
+                li.footer-list
+                  = link_to "Search", root_path, style:"color: #5bc0de;"
+                li.footer-list
+                  - if member_signed_in? 
+                    = link_to "Member", member_member_path(current_member), style:"color: #5bc0de;"
+                  - else 
+                    = link_to "Member", new_member_session_path, style:"color: #5bc0de;"
+
+              .sns-share
+                .twitter-link
+                  = link_to "https://twitter.com/share?url=#{ request.url }&t=#{ "Medi Navi" }を、Twitterでみんなに広めよう！", class: 'btn btn-default btn-ms twitter-link', target: '_blank' do
+                    i.fab.fa-twitter style='color: #3399FF;'
+                    |  Twitter
+                .facebook-link
+                  = link_to "https://www.facebook.com/sharer?src=bm&u=#{ request.url }&text=#{ "Medi Navi" }を、Facebookでみんなに広めよう！", class: 'btn btn-default facebook-link', target: '_blank' do
+                    i.fab.fa-facebook style='color: #3b5998;'
+                    |  Facebook
+
+        p.footer-copyright.text-center.
+          | © 2020, Medi Navi All rights reserved.
+
+
+
 

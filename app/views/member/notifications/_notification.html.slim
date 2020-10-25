@@ -1,0 +1,18 @@
+
+- visiter = notification.visiter
+.form-inline
+  
+  = link_to member_member_path(visiter) do
+    = attachment_image_tag visiter, :profile_image, :fill,100,100, format: "jpeg", fallback: "no-image.jpg", size: "50x50", class:"img-circle"
+    strong style="margin-left: 10px;"
+      = visiter.name
+
+  - case notification.action
+  - when "follow"
+    | さんがあなたをフォローしました。
+  - when "dm"
+    | さんからメッセージが届きました。
+    
+.small.text-muted.text-right
+  = l notification.created_at, format: :short
+hr

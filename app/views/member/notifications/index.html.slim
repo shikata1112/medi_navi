@@ -1,0 +1,20 @@
+
+.container
+  .row
+    .col-xs-3
+    .col-xs-6.notification-index
+      h3.text-center
+        | 通知
+      = link_to member_notifications_path, method: :delete do
+        i.fas.fa-trash style="color: black;"
+          |  全削除
+      hr
+
+      - notifications = @notifications.where.not(visiter_id: current_member.id)
+      - if notifications.exists?
+        = render @notifications
+        .text-center
+          = paginate @notifications
+      - else
+        p.text-center
+          | 通知はありません。

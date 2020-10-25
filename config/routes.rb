@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     devise_for :members, controllers: {
       sessions:      'members/sessions',
       passwords:     'members/passwords',
-      registrations: 'members/registrations'
+      registrations: 'members/registrations',
+      omniauth_callbacks: 'members/omniauth_callbacks'
     }
   # -------------------- devise ------------------------------------------------
 
@@ -36,6 +37,10 @@ Rails.application.routes.draw do
 
     get 'clinics/genre_search', to: 'member/clinics#genre_search'
 
+    get 'clinics/prefecture_search', to: 'member/clinics#prefecture_search'
+
+    get 'clinics/sort', to: 'member/clinics#sort'
+
     get 'my_favorite', to: 'member/favorites#my_favorite'
 
     get 'my_calendar', to: 'member/events#my_calendar'
@@ -44,8 +49,17 @@ Rails.application.routes.draw do
     patch 'quit', to: 'member/members#quit'
 
     namespace :member do
+      resources :messages, only: [:create, :destroy]
+      resources :rooms, only: [:create, :index, :show]
+      resources :coupons, only: [:index, :destroy]
+      resources :notifications, only: :index
+      delete 'notifications', to: 'notifications#destroy_all'
       
-      resources :members, only: [:show, :edit, :update]
+      resources :members, only: [:show, :edit, :update] do
+        resource :relationships, only: [:create, :destroy]
+        get :follows, on: :member
+        get :followers, on: :member
+      end
       resources :clinics, only: [:show, :index] do
         resource :favorites, only: [:create, :destroy]
         resources :reviews, only: [:new, :index, :create, :destroy]

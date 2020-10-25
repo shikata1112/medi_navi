@@ -1,11 +1,14 @@
 
 .container
   .row
-    .page-header
-        h2 会員一覧
+    .page-header.members-index
+      h2
+        | 会員一覧
+      .members-export
+        = link_to 'CSVエクスポート', admin_members_path(format: :csv), class: 'btn btn-success'
   
     .text-center
-      table.table.table-bordered.table-hover
+      table.table.table-bordered.table-hover.admin-table
         thead
           tr
             th ID

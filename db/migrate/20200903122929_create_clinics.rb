@@ -1,7 +1,7 @@
 class CreateClinics < ActiveRecord::Migration[5.2]
   def change
     create_table :clinics do |t|
-      t.string :name
+      t.string :name, index: true
       t.string :doctor
       t.string :address
       t.string :phone_number

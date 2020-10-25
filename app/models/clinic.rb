@@ -1,26 +1,28 @@
 class Clinic < ApplicationRecord
 
-  # 診療科目登録機能
   has_many :genre_maps
   has_many :genres, through: :genre_maps
-
   attr_accessor :genre_ids
 
-  # 診療時間登録機能
   has_many :consultation_hours, dependent: :destroy
   accepts_nested_attributes_for :consultation_hours
 
-  # いいね機能
+  has_many :reviews, dependent: :destroy
+  has_many :members, through: :reviews
+
   has_many :favorites, dependent: :destroy
   has_many :members, through: :favorites
 
-  def favorited_by?(member)
-    favorites.where(member_id: member.id).exists?
-  end
+  # バリデーション
+  validates :name, :doctor, :address, :postcode, :phone_number, presence: true
+  validates :is_active, inclusion: {in: [true, false]}
+  
 
-  # レビュー機能
-  has_many :reviews, dependent: :destroy
-  has_many :members, through: :reviews
+  # クリニックのお気に入り機能
+  def favorited_by?(member)
+    # any?を使用することでSQL発行しない
+    favorites.any? {|favorite| favorite.member_id == member.id}
+  end
 
   # 画像投稿機能
   mount_uploaders :images, ImageUploader
@@ -28,7 +30,20 @@ class Clinic < ApplicationRecord
 
   # 検索機能
   def Clinic.search(search)
-    Clinic.where(['name LIKE ?', "%#{search}%"])
+    Clinic.where(['name LIKE ? OR nearest_station LIKE ? OR phone_number LIKE ? OR address LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
+  end
+
+  # google API, 現在地からの検索機能
+  geocoded_by :address
+  after_validation :geocode
+
+
+  # impressions-pv
+  is_impressionable counter_cache: true
+
+  # 新着順
+  def self.new_order
+    order(id: 'DESC')
   end
 
 end

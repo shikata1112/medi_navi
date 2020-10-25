@@ -1,0 +1,41 @@
+.container 
+  .row
+    .col-xs-3
+
+    .col-xs-6
+      .page-header
+        h3
+          = link_to @another_entry.member.name, member_member_path(@another_entry.member)
+
+      table.table
+        thead
+          tr
+            th
+              | 送信者
+            th
+              | メッセージ
+            th
+
+        tbody
+          - @messages.each do |message|
+            tr
+              td
+                = link_to member_member_path(message.member) do
+                  = message.member.name
+              td
+                = message.body
+              td
+                - if message.member == current_member
+                  = link_to '削除', member_message_path(message), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn-sm btn-danger'
+
+  .row
+    .col-xs-3
+
+    .col-xs-6 style="margin-top: 40px;"
+      = form_with model: @message, url: member_messages_path(member_id: @member.id), local: true do |f|
+
+        .col-xs-10
+          = f.text_field :body, class: 'form-control'
+          = f.hidden_field :room_id, value: @room.id
+        .col-xs-2 style="margin-left: -10px;"
+          = f.submit '送信', class: 'btn btn-info'

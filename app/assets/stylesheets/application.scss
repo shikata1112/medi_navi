@@ -11,8 +11,10 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
- *= require_self
+ *= require jquery.tagit 
+ *= require tagit.ui-zendesk 
  *= require fullcalendar
+ *= require_self
  */
 @import "bootstrap-sprockets";  
 @import "bootstrap"; 
@@ -20,20 +22,28 @@
 @import 'font-awesome';
 
 header {
-  background-color: rgba(243, 243, 243, 0.801);
+  background-color: rgb(255, 255, 255);
   width: 100%;
   height: 70px;
 }
 
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(250, 248, 243, 0.808);
+  font-family: none;
+}
+
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .nav.navbar-nav.navbar-right {
   margin: 10px 5px 0 0;
 }
 
-.btn-group {
+.btn-group.header-list {
   float: right;
   margin-right: 20px;
   margin-top: 25px;
@@ -45,11 +55,15 @@ body {
   margin-right: -20px;
 }
 
+.dropdown-menu.pull-right.acount {
+  margin-top: 20px;
+}
+
 .nav-list {
   margin-left: -10px;
 }
 
-.wrapper{
+#wrapper{
   min-height: 100vh;
   position: relative;
   padding-bottom: 400px;
@@ -57,7 +71,7 @@ body {
 }
 
 footer {
-  background-color: rgb(209, 209, 209);
+  background-color: rgba(212, 212, 212, 0.511);
   width: 100%;
   height: 250px;
   margin-top: 25px;
@@ -71,10 +85,6 @@ footer {
 
 .heading {
   width: 200px;
-}
-
-table th {
-  text-align: center; 
 }
 
 .add-clinic {
@@ -138,36 +148,6 @@ thead {
   margin: 0 auto;
 }
 
-.noborder {
-  border-style:none!important;
-}
-
-.favorite {
-  background-color: rgb(247, 247, 247);
-}
-
-.unfavorite {
-  background-color: rgb(255, 227, 104);
-}
-
-.clinic_consultation_hours {
-  width: 75%;
-  margin-top: 20px;
-  margin-bottom: -10px;
-}
-
-.clinic-boxes {
-  margin-top: 50px;
-}
-
-.review-btn, .review-show {
-  margin-top: 50px;
-}
-
-.dropdown-menu.genre-search.pull-right {
-  margin-right: 0px;
-}
-
 .genre-list {
   margin-left: 15px;
   margin-bottom: 5px;
@@ -178,3 +158,89 @@ thead {
   margin-left: 25px;
 }
 
+.dropdown-menu.prefecture-search.pull-right {
+  width: 270px;
+}
+
+.prefecture-list {
+  padding-left: 2px;
+  margin: 10px;
+  display: inline-block;
+}
+
+.admin-table {
+  background-color: white;
+}
+
+
+// member
+
+.container.footer-box {
+  width: 75%;
+}
+
+.footer-contents {
+  height: 100px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.3);
+  display: flex;
+}
+
+.footer-logo {
+  margin: 31px 30px 0 10px;
+  font-size: 2.0em;
+  font-family: 'arial black';
+}
+
+.footer-lists {
+  display: flex;
+  margin-top: 44px;
+  font-size: 1.1em;
+  list-style: none;
+}
+
+.footer-list {
+  margin-right: 50px;
+}
+
+.footer-copyright {
+  font-size: 0.9em;
+  margin-top: 65px;
+}
+
+.sns-share {
+  margin-left: 320px;
+}
+
+.twitter-link {
+  width: 200px;
+  margin-top: 5px;
+}
+
+.facebook-link {
+  width: 200px;
+  margin-top: 5px;
+}
+
+.password-edit {
+  border: solid 1px rgba(185, 184, 184, 0.648);
+  background-color: white;
+  padding: 10px 20px;
+}
+
+
+// admins
+
+.col-xs-4.admin-session {
+  border: solid 1px rgba(185, 184, 184, 0.648);
+  background-color: white;
+  margin-top: 30px;
+  padding: 0 40px 40px 40px;
+}
+
+.col-xs-4.admin-registration {
+  border: solid 1px rgba(185, 184, 184, 0.648);
+  background-color: white;
+  margin-top: 30px;
+  padding: 0 40px 40px 40px;
+}

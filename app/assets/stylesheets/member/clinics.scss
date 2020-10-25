@@ -2,21 +2,256 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+// clinics.top
+
 .text-center.search-form {
-  margin-top: 35px;
+  margin: 80px 50px;
+}
+
+.search-result-form {
+  margin: 45px 50px;
+
 }
 
 .search-field {
-  width: 500px;
+  width: 700px;
   height: 35px;
+  font-size: 1.3em;
 }
 
 .search-submit{
   margin-left: 10px;
+  margin-top: -5px;
   height: 35px;
+  width: 140px;
 }
 
-.top-image.text-center, .top-link {
+.top-image {
+  position: relative;
+}
+
+.top-band {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.494);
+  margin-top: -350px;
+  height: 160px;
+  width: 100%;
+}
+
+.top-app-logo {
+  // background-image: image-url("top-logo.png");
+  // height: 80px;
+  // width: 270px;
+  margin-left: 525px;
+  margin-top: 38px;
+  color: white;
+  font-size: 4.0em;
+  font-family: 'arial black';
+}
+
+.clinic-top-image {
+  background-image: image-url("clinic.jpg");
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+  background-position: center; 
+}
+
+// clinics.search
+
+.clinic-none {
+  margin-top: 80px;
+  margin-bottom: 30px;
+}
+
+// clinics.show
+
+.img-responsive.img-rounded.carousel-image {
+  width: 430px;
+  height: 380px;
+}
+
+.clinic-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.favorite-button {
+  margin-right: 10px;
+  margin-bottom: -5px;
+}
+
+.clinic-image {
+  margin-top: 10px;
+  margin-left: 45px;
+}
+
+.show-clinic-image {
+  margin-top: 15px;
+  margin-left: 20px;
+}
+
+.btn.btn-default.favorite {
+  background-color: rgba(213, 213, 213, 0.398);
+}
+
+.btn.btn-default.unfavorite {
+  background-color: rgba(252, 224, 100, 0.819);
+}
+
+.week {
+  text-align: center;
+}
+
+.table.table-bordered.clinic_consultation_hours {
+  text-align: center;
+  width: 650px;
+  margin-top: 36px;
+}
+
+.clinic-boxes {
+  margin-top: 40px;
+}
+
+.review-btn, .review-show {
+  margin-top: 50px;
+}
+
+.noborder {
+  border-style:none!important;
+}
+
+.table.clinic-contents {
+  margin-left: -10px;
+  margin-top: 10px;
+  width: 0%;
+}
+
+.clinic-review {
+  display: flex;
+  font-size: 1.3em;
+}
+
+.clinic-review-count {
+  margin-left: 50px;
+  margin-top: 7px;
+}
+
+#clinic-map {
+  margin-top: 60px;
+  margin-left: 50px;
+  border: 1px solid rgba(185, 184, 184, 0.648);
+  padding: 3px 3px;
+}
+
+.row.clinic-info {
+  border: 1px solid rgba(185, 184, 184, 0.648);
+  padding: 0 0 30px 30px;
+  margin-top: 50px;
+  background-color: white;
+}
+
+.col-xs-8.clinic-info {
+  border: 1px solid rgba(185, 184, 184, 0.648);
+  padding-bottom: 30px;
+  padding-left: 30px;
+  background-color: white;
+}
+
+.row.clinic-border {
+  border-bottom: 1px solid rgba(185, 184, 184, 0.648);
+  margin-right: 1px;
+}
+
+.row.clinic-show {
+  margin-top: 30px;
+}
+
+.clinic-score-average {
+  display:inline-block ;
+  margin-left: 20px;
+  color: #ff9500;
+  font-size: x-large;
+  font-weight: 800;
+}
+
+.table.basic-info {
+  margin-top: -11px;
+}
+
+.table.table-bordered.basic-info-consultation  {
+  text-align: center;
+}
+
+th.basic-info {
+  background-color: rgba(224, 254, 255, 0.529);
+  border: 1px solid rgba(185, 184, 184, 0.648);
+}
+
+td.basic-info {
+  background-color: white;
+  border: 1px solid rgba(185, 184, 184, 0.648);
+}
+
+h3.header-basic-info {
+  background-color: #006d8e;
+  color: white;
+  height: 50px;
+  width: 100%;
+}
+
+.row.clinic-basic-info {
+  margin-top: 50px;
+}
+
+.head-basic-info {
+  margin-left: 5px;
+  padding-top: 10px;
+}
+
+.genre-index {
+  font-size: 1.4em;
+}
+
+a.genre-link {
+  color: inherit;
+}
+
+.genre-link:hover {
+  background-color: #04c4ff75;
+}
+
+.review-link-btn {
   margin-top: 20px;
+  margin-left: 70px;
 }
 
+.jp-map {
+  margin-top: 220px;
+}
+
+.pv-count {
+  margin-top: 6px;
+  padding-left: 40px;
+}
+
+.pv-ranking {
+  background-color: white; 
+}
+
+.pv-clinic-name {
+  color: black;
+}
+
+.col-xs-7.map-col {
+  position: static;
+}
+
+.prefecture-search {
+  margin-top: 100px;
+}
+
+.google-search {
+  margin-top: 100px;
+}

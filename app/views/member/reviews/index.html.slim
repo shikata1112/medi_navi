@@ -1,13 +1,60 @@
 .container
   .row
-    - @clinic.reviews.each do |review|
-      table.table
-        tr
-          td
-            = review.title
-          td
-            = review.comment
-          td
-            = review.wating_time
-          td
-            = review.score
+      .page-header
+        h3
+          =link_to member_clinic_path(@clinic) do
+            = @clinic.name
+          | の口コミ
+      table.table.table-bordered
+        thead
+          tr
+            th
+              | 名前
+            th
+              | タイトル
+            th
+              | 内容
+            th
+              | 待ち時間
+            th
+              | タグ
+            th
+              | 評価（5段階）
+        tbody
+          - @reviews.each do |review|
+            tr
+              td
+                = link_to member_member_path(review.member.id) do
+                  = review.member.name
+              td
+                = review.title
+              td.comment
+                = review.comment
+              td
+                - case review.wating_time
+                - when 0
+                  | 5分未満
+                - when 1
+                  | 10分〜20分
+                - when 2
+                  | 20分〜30分
+                - when 3
+                  | 30分〜1時間
+                - when 4
+                  | 1時間〜2時間
+                - when 5
+                  | 2時間以上
+              td.tag
+                - review.tags.pluck(:name).each do |tag|
+                  span.label.label-default style="margin-right: 10px;"
+                    = tag
+              td.star
+                div class="fixed-star#{review.id}"
+                  javascript:
+                    $(".fixed-star#{review.id}").raty({
+                      size: 50,
+                      starOff: "/assets/star-off.png",
+                      starOn: "/assets/star-on.png",
+                      readOnly: true,
+                      score: "#{review.score}",
+                    })

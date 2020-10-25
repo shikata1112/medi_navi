@@ -39,6 +39,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
+  gem 'capybara'
 end
 
 group :development do
@@ -48,11 +52,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # N+1を検出
+  gem 'bullet'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
@@ -64,10 +70,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
 
-#　railsでslimを利用するためのgem
+# railsでslimを利用するためのgem
 gem 'slim-rails'
 
-#　html.erbをhtmle.slimに変換するためのgem
+#html.erbをhtmle.slimに変換するためのgem
 gem 'html2slim'
 
 # devise機能
@@ -76,7 +82,7 @@ gem 'devise-bootstrap-views'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
-# デバッグ　binding.pry
+# デバッグ binding.pry
 gem 'pry-rails'
 
 # reCAPTCHA
@@ -105,6 +111,34 @@ gem 'momentjs-rails'
 
 gem 'font-awesome-sass'
 
+# タグ付け関連
+gem 'acts-as-taggable-on'
+gem 'jquery-ui-rails'
+
+# google API関連
+gem 'gon'
+gem 'geocoder'
+
+# japanMap
+gem 'jcanvas-rails', '~> 0.1.0'
+
+# pv付与
+gem 'impressionist', '~>1.6.1'
+
+# SNSログイン
+gem 'omniauth'
+gem 'omniauth-facebook'
+
+# バッチ処理
+gem 'whenever', require: false
+
+# ページネーション
+gem 'kaminari'
+
+# ダミーデータ生成
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+# 環境変数、mysql
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

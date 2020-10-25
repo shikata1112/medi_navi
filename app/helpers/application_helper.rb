@@ -1,5 +1,6 @@
 module ApplicationHelper
 
+  # 診療時間
   def time_list
     [
       ['07:00', '07:00'],['07:30', '07:30'],['08:00', '08:00'],['08:30', '08:30'],['09:00', '09:00'],
@@ -12,10 +13,8 @@ module ApplicationHelper
     ]
   end
 
-  def waiting_time_list
-    [
-      []
-    ]
+  def unchecked_notifications
+    @notifications = current_member.passive_notifications.where(checked: false)
   end
 
 end
