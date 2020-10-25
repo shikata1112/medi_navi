@@ -41,7 +41,7 @@ RSpec.describe Clinic, type: :model do
         expect(@clinic).to be_invalid
       end
 
-      it "is_activeはtrueもしくはfalse以外では登録できないこと" do
+      it "is_activeがtrueもしくはfalse以外では登録できないこと" do
         @clinic.is_active = nil
         expect(@clinic).to be_invalid
       end

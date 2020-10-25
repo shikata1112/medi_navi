@@ -6,8 +6,10 @@ class Member < ApplicationRecord
   # バリデーション
   validates :email, :name, :address, :birthday, :prefecture_code, presence: true
   validates :postcode, length: { is: 7 }, numericality: true
-  validates :is_deleted, :sex, inclusion: {in: [true, false]}
+  validates :is_deleted, inclusion: {in: [true, false]}
+  validates :sex, inclusion: {in: [true, false]}
   
+  attachment :profile_image
 
   # facebookログイン
   def self.find_for_oauth(auth)
@@ -44,8 +46,6 @@ class Member < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
   has_many :clinics, through: :reviews
-
-  attachment :profile_image
 
   # クーポン機能
   has_many :coupons, dependent: :destroy

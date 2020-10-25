@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: a905527b06af6a39a91d561e9050636733845612
+  revision: 89312ee89c618d9be4b0527da91048e80813c81c
   branch: master
   specs:
     faker (2.14.0)
@@ -308,7 +308,7 @@ GEM
       netrc (~> 0.8)
     rspec-core (3.9.3)
       rspec-support (~> 3.9.3)
-    rspec-expectations (3.9.2)
+    rspec-expectations (3.9.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-mocks (3.9.1)
@@ -322,7 +322,7 @@ GEM
       rspec-expectations (~> 3.9)
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
-    rspec-support (3.9.3)
+    rspec-support (3.9.4)
     ruby-vips (2.0.17)
       ffi (~> 1.9)
     ruby2_keywords (0.0.2)
@@ -407,7 +407,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   bullet
   byebug
-  capybara (>= 2.15)
+  capybara
   carrierwave
   chromedriver-helper
   coffee-rails (~> 4.2)

@@ -3,7 +3,7 @@ class Member::MembersController < ApplicationController
   
   def show
     @member = Member.find(params[:id])
-    # DM関連
+
     @current_entry = Entry.where(member_id: current_member.id)
     @another_entry = Entry.where(member_id: @member.id)
     unless @member.id == current_member.id
@@ -15,7 +15,7 @@ class Member::MembersController < ApplicationController
           end
         end
       end
-      # roomが存在しない場合は新規登録
+      
       unless @is_room
         @room = Room.new
         @entry = Entry.new
@@ -39,7 +39,6 @@ class Member::MembersController < ApplicationController
 
   def quit
     @member = Member.find(current_member.id)
-    #is_deletedカラムにフラグを立てる(defaultはfalse)
     @member.update(is_deleted: true)
     reset_session
     flash[:notice] = "◆退会処理が完了しました。またのご利用を心よりお待ちしております。"
