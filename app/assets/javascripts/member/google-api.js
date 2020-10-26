@@ -1,5 +1,4 @@
 
-  let map;
   let marker = [];
   let infoWindow = [];
   let markerData = gon.clinics;
