@@ -62,7 +62,7 @@ Rails.application.routes.draw do
       end
       resources :clinics, only: [:show, :index] do
         resource :favorites, only: [:create, :destroy]
-        resources :reviews, only: [:new, :index, :create, :destroy]
+        resources :reviews, only: [:new, :index, :create]
       end
       resources :events
 

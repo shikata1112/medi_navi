@@ -13,7 +13,6 @@ class Admin::MembersController < ApplicationController
 
   def index
     @members = Member.all
-
     respond_to do |format|
       format.html
       format.csv do |csv|
@@ -41,4 +40,5 @@ class Admin::MembersController < ApplicationController
   def edit
     @member = Member.find(params[:id])
   end
+  
 end

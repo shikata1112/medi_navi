@@ -1,4 +1,5 @@
 class Member::CouponsController < ApplicationController
+  before_action :authenticate_member!
 
   def index
     @coupons = Coupon.where(member_id: current_member.id, is_valid: '有効')

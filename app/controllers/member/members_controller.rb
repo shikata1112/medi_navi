@@ -1,9 +1,8 @@
 class Member::MembersController < ApplicationController
   before_action :authenticate_member!
+  before_action :set_member, only: [:show, :edit, :update, :follows, :followers]
   
   def show
-    @member = Member.find(params[:id])
-
     @current_entry = Entry.where(member_id: current_member.id)
     @another_entry = Entry.where(member_id: @member.id)
     unless @member.id == current_member.id
@@ -24,11 +23,9 @@ class Member::MembersController < ApplicationController
   end
 
   def edit
-    @member = Member.find(params[:id])
   end
 
   def update
-    @member = Member.find(params[:id])
     @member.update(member_params)
     redirect_to member_member_path(@member)
   end
@@ -46,19 +43,21 @@ class Member::MembersController < ApplicationController
   end
 
   def follows
-    member = Member.find(params[:id])
-    @members = member.followings
+    @members = @member.followings
   end
 
   def followers
-    member = Member.find(params[:id])
-    @members = member.followers
+    @members = @member.followers
   end
 
   private
 
   def member_params
     params.require(:member).permit(:name, :profile_image, :address, :email, :birthday, :postcode, :sex)
+  end
+
+  def set_member
+    @member = Member.find(params[:id])
   end
 
 end

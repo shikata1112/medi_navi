@@ -1,5 +1,6 @@
 class Admin::ClinicsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_clinic, only: [:show, :edit, :update, :destroy]
 
   def new
     @clinic = Clinic.new
@@ -24,11 +25,9 @@ class Admin::ClinicsController < ApplicationController
   end
 
   def show
-    @clinic = Clinic.find(params[:id])
   end
 
   def edit
-    @clinic = Clinic.find(params[:id])
     @clinic.genre_ids = @clinic.genre_maps.pluck(:genre_id)
     @genres = Genre.all
     @new_clinic = Clinic.new
@@ -36,7 +35,6 @@ class Admin::ClinicsController < ApplicationController
   end
 
   def update
-    @clinic = Clinic.find(params[:id])
     if @clinic.update(clinic_params)
       @clinic.genre_maps.destroy_all
       clinic_params[:genre_ids].each do |genre_id|
@@ -50,13 +48,16 @@ class Admin::ClinicsController < ApplicationController
   end
 
   def destroy
-    @clinic = Clinic.find(params[:id])
     @clinic.destroy
     redirect_to admin_clinics_path
   end
 
   private
 
+  def set_clinic
+    @clinic = Clinic.find(params[:id])
+  end
+  
   def clinic_params
     params.require(:clinic).permit(
       :name,

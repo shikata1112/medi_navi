@@ -17,7 +17,6 @@ class Clinic < ApplicationRecord
   validates :name, :doctor, :address, :postcode, :phone_number, presence: true
   validates :is_active, inclusion: {in: [true, false]}
   
-
   # クリニックのお気に入り機能
   def favorited_by?(member)
     # any?を使用することでSQL発行しない
@@ -37,13 +36,15 @@ class Clinic < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
-
   # impressions-pv
   is_impressionable counter_cache: true
 
-  # 新着順
   def self.new_order
     order(id: 'DESC')
+  end
+
+  def self.clinics_load
+    eager_load(:genres, :favorites, :consultation_hours, :reviews, :genre_maps)
   end
 
 end
