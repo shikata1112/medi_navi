@@ -19,9 +19,14 @@
 
 # Learn more: http://github.com/javan/whenever
 
-env :PATH, ENV['PATH'] # 絶対パスから相対パス指定
-set :output, 'log/cron.log' # ログの出力先ファイルを設定
-set :environment, :development # 環境を設定
+# env :PATH, ENV['PATH'] # 絶対パスから相対パス指定
+# set :output, 'log/cron.log' # ログの出力先ファイルを設定
+# set :environment, :production # 環境を設定
+
+require File.expand_path(File.dirname(__FILE__) + "/environment")
+rails_env = Rails.env.to_sym
+set :environment, rails_env
+set :output, 'log/cron.log'
 
 every 1.minute do
   runner 'Coupon.coupon_destroy'
