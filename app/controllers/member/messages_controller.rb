@@ -1,4 +1,5 @@
 class Member::MessagesController < ApplicationController
+  before_action :authenticate_member!
 
   def create 
     @message = Message.new(message_params)
