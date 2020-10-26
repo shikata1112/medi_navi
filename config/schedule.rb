@@ -23,6 +23,6 @@ env :PATH, ENV['PATH'] # 絶対パスから相対パス指定
 set :output, 'log/cron.log' # ログの出力先ファイルを設定
 set :environment, :development # 環境を設定
 
-every 3.minute do
+every 1.minute do
   runner 'Coupon.coupon_destroy'
 end
