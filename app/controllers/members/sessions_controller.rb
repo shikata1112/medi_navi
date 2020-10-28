@@ -18,6 +18,17 @@ class Members::SessionsController < Devise::SessionsController
   #   super
   # end
 
+
+  # ゲストログイン
+  def new_guest
+    member = Member.find(2)
+    member.update(email: 'guest@gmail.com', name: 'ゲスト') do |member|
+      member.password = SecureRandom.urlsafe_vase64
+    end
+    sign_in member
+    redirect_to root_path
+  end
+
   protected
 
   # If you have extra params to permit, append them to the sanitizer.

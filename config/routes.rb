@@ -13,6 +13,11 @@ Rails.application.routes.draw do
       registrations: 'members/registrations',
       omniauth_callbacks: 'members/omniauth_callbacks'
     }
+
+    devise_scope :member do
+      post 'members/guest_sign_in', to: 'members/sessions#new_guest'
+    end
+
   # -------------------- devise ------------------------------------------------
 
   # -------------------- admsin ------------------------------------------------
