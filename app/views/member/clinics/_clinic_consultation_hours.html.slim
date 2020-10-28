@@ -1,0 +1,34 @@
+thead
+  tr
+    th.week 診療時間
+    th.week 月
+    th.week 火
+    th.week 水
+    th.week 木
+    th.week 金
+    th.week 土
+    th.week 日
+    th.week 祝
+- clinic.consultation_hours.each do |consultation_hour|
+  tbody
+    tr
+        td
+          = consultation_hour.start_time
+          | 〜
+          = consultation_hour.finish_time
+        td 
+          = consultation_hour.mo_time
+        td
+          = consultation_hour.tu_time
+        td
+          = consultation_hour.we_time
+        td
+          = consultation_hour.th_time
+        td
+          = consultation_hour.fr_time
+        td
+          = consultation_hour.sa_time
+        td
+          = consultation_hour.su_time
+        td
+          = consultation_hour.ho_time

@@ -108,6 +108,8 @@ html
               = image_tag  "logo.jpg", size: "180x60", class: "navi-logo"
             ul.nav.navbar-nav.navbar-right
               li
+                = link_to 'ゲストログイン', members_guest_sign_in_path, method: :post
+              li
                 = link_to 'メディナビとは', clinics_about_path
               li
                 = link_to '新規登録',  new_member_registration_path
