@@ -32,7 +32,7 @@
     .col-xs-3
 
     .col-xs-6 style="margin-top: 40px;"
-      = form_with model: @message, url: member_messages_path(member_id: @member.id), local: true do |f|
+      = form_with model: @message, url: member_messages_path, local: true do |f|
 
         .col-xs-10
           = f.text_field :body, class: 'form-control'

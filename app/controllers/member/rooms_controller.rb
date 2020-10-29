@@ -17,7 +17,6 @@ class Member::RoomsController < ApplicationController
   end
 
   def show
-    @member = Member.find(params[:member_id])
     @room = Room.find(params[:id])
     @message = Message.new
     @messages = @room.messages.includes(:member)
