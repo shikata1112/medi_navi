@@ -11,7 +11,14 @@
         /                           ['レビュー数順', 'review'],
         /                         ]
         /   = f.submit "並び替える"
-          
-  - clinics.each do |clinic|
-    .row style="margin-bottom: 50px;"
-      = render 'member/clinics/clinic_info', clinic: clinic
+
+  - if clinics.present?        
+    - clinics.each do |clinic|
+      .row style="margin-bottom: 50px;"
+        = render 'member/clinics/clinic_info', clinic: clinic
+
+  - elsif current_page?(my_favorite_path)
+    | 現在、お気に入りのクリニックはありません。
+
+  - else
+    | 条件に該当するクリニックはありません。
