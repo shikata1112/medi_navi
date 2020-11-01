@@ -37,3 +37,25 @@ ja:
   recaptcha: 
     errors: 
       verification_failed: 'reCAPTCHA認証に失敗しました。' 
+
+  activerecord:
+    errors:
+      models:
+        member:
+          attributes:
+            email:
+              blank: "入力してください。"
+            password:
+              blank: "入力してください。"
+            name:
+              blank: "入力してください。"
+            address:
+              blank: "入力してください。"
+            prefecture_code:
+              blank: "選択してください。"
+            birthday:
+              blank: "選択してください。"
+            postcode:
+              wrong_length: "入力してください。"
+            sex:
+              inclusion: "選択してください。"
