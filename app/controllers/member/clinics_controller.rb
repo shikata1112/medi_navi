@@ -2,8 +2,8 @@ class Member::ClinicsController < ApplicationController
   before_action :authenticate_member!, except: :about
 
   def top
-    gon.member = current_member
-    gon.clinics = Clinic.all
+    @clinic_all = Clinic.all
+    @clinic_all_json = @clinic_all.to_json.html_safe
     @genres = Genre.all
     @clinics = Clinic.order(impressions_count: 'DESC').limit(10) # PVソート機能
   end
@@ -14,7 +14,6 @@ class Member::ClinicsController < ApplicationController
   def show
     @clinic = Clinic.find(params[:id])
     impressionist(@clinic, nil, unique: [:impressionable_id, :ip_address])
-    gon.clinic = @clinic
   end
 
   # フォームからのあいまい検索

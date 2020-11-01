@@ -1,7 +1,7 @@
 class Member < ApplicationRecord
   
   devise :database_authenticatable, :registerable, :recoverable,
-          :rememberable, :validatable, :omniauthable
+          :rememberable, :omniauthable
 
   # バリデーション
   validates :email, :name, :address, :birthday, :prefecture_code, presence: true
