@@ -5,7 +5,7 @@
     .col-xs-4.quit-form
       h3.text-center
         | 本当に退会しますか？
-      p.text-center
+      p
         | 退会すると、会員登録情報や
         br
         | これまでの購入履歴が閲覧できなくなります。
@@ -13,8 +13,10 @@
         | 退会する場合は「退会する」をクリックしてください。
         br
 
-      .text-center
-        - if member_signed_in?
+      .text-center style="padding-bottom: 25px;"
+        - if current_member.id == 2
+          = link_to "退会する", "", class: "btn btn-danger quit-btn", disabled: true
+        - else
           = link_to "退会する", quit_path(@member), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger quit-btn"
-    
-      = link_to "戻る", :back, class: "back-link"
+
+      = link_to "戻る", member_member_path(current_member), class: "back-link"

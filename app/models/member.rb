@@ -4,8 +4,8 @@ class Member < ApplicationRecord
           :rememberable, :omniauthable
 
   # バリデーション
-  validates :email, :name, :address, :birthday, :prefecture_code, presence: true
-  validates :postcode, length: { is: 7 }, numericality: true
+  validates :email, :name, :address, :birthday, :prefecture_code, :password, :password_confirmation, presence: true
+  validates :postcode, length: { is: 7 }
   validates :is_deleted, inclusion: {in: [true, false]}
   validates :sex, inclusion: {in: [true, false]}
   
@@ -13,19 +13,15 @@ class Member < ApplicationRecord
 
   # facebookログイン
   def self.find_for_oauth(auth)
-    member = Member.where(provider: auth.provider, uid: auth.uid).first
-
-    unless member
-      member = Member.create(
-        name: auth.info.name,
-        provider: auth.provider,
-        uid: auth.uid,
-        email: auth.info.email,
-        password: Devise.friendly_token[0,20],
-        profile_image:  auth.info.image
-      )
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.name = auth.info.name   # assuming the user model has a name
+      user.profile_image = auth.info.image # assuming the user model has an image
+      # If you are using confirmable and the provider(s) you use validate emails, 
+      # uncomment the line below to skip the confirmation emails.
+      # user.skip_confirmation!
     end
-    member
   end
 
   include JpPrefecture

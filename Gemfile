@@ -116,7 +116,6 @@ gem 'acts-as-taggable-on'
 gem 'jquery-ui-rails'
 
 # google API関連
-gem 'gon'
 gem 'geocoder'
 
 # japanMap

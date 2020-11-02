@@ -6,7 +6,6 @@
         | 会員新規登録
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
         = render "members/shared/error_messages", resource: resource
-        = bootstrap_devise_error_messages!
 
         .form-group
           = f.label "ニックネーム"
@@ -23,7 +22,6 @@
           br
           = f.text_field :postcode, autofocus: true, autocomplete: "postcode", placeholder: "1231234", class: 'form-control'
 
-          / 47都道府県をプルダウンメニューで表示
         .form-group
           = f.label "都道府県"
           br
@@ -43,11 +41,11 @@
         .form-group
           = f.label "性別"
           br
-          = f.radio_button :sex, value=true
           = f.label "男性"
-          |       
-          = f.radio_button :sex, value=false
+          = f.radio_button :sex, value=true
+          |   
           = f.label "女性"
+          = f.radio_button :sex, value=false
 
         .form-group
           = f.label "パスワード"
@@ -56,12 +54,12 @@
           = f.password_field :password, autocomplete: "new-password", placeholder: "英数字6文字以上"
 
         .form-group
-          = f.label "パスワード再入力"
+          = f.label "パスワード(確認)"
           br
           = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "英数字6文字以上(確認用)"
 
         .form-group
-          = recaptcha_tags
+            = recaptcha_tags
 
         .form-group
           = f.submit "新規登録", class: 'btn btn-primary btn-block'

@@ -2,7 +2,7 @@ ja:
   activerecord:
     attributes:
       member:
-        name: "名前を"
+        name: "ニックネームを"
         current_password: "現在のパスワード"
         email: "メールアドレスを"
         password: "パスワードを"
@@ -20,7 +20,7 @@ ja:
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
     models:
-      member: "ユーザ"
+      member: "会員"
       admin: "管理者"
   devise:
     confirmations:

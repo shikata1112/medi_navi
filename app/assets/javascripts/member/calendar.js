@@ -1,3 +1,4 @@
+
 $(function() {
   function eventCalendar() {
     return $('#calendar').fullCalendar({});
@@ -34,4 +35,5 @@ $(function() {
     eventColor: '#63ceef',
     eventTextColor: '#000000',
   });
+
 });

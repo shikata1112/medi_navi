@@ -47,6 +47,10 @@ ja:
               blank: "入力してください。"
             password:
               blank: "入力してください。"
+            password_confirmation:
+              blank: "入力してください。"
+            current_password:
+              blank: "入力してください。"
             name:
               blank: "入力してください。"
             address:
@@ -55,6 +59,8 @@ ja:
               blank: "選択してください。"
             birthday:
               blank: "選択してください。"
+            postcode:
+              not_a_number: "入力してください。"
             postcode:
               wrong_length: "入力してください。"
             sex:
