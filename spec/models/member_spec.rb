@@ -119,18 +119,6 @@ RSpec.describe Member, type: :model do
       it { expect(association.macro).to eq :has_many } 
       it { expect(association.class_name).to eq "Message"} 
     end
-
-    # context "Relationshipモデルとのアソシエーション" do
-    #   let(:target) { :relationships } 
-    #   it { expect(association.macro).to eq :has_many } 
-    #   it { expect(association.class_name).to eq "Relationship"} 
-    # end
-
-    # context "Notificationモデルとのアソシエーション" do
-    #   let(:target) { :notifications } 
-    #   it { expect(association.macro).to eq :has_many } 
-    #   it { expect(association.class_name).to eq "Notification"} 
-    # end
   end
 
 end
