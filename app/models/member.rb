@@ -43,6 +43,9 @@ class Member < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :clinics, through: :reviews
 
+  # クリニック閲覧履歴
+  has_many :clinic_histories, dependent: :destroy
+
   # クーポン機能
   has_many :coupons, dependent: :destroy
 

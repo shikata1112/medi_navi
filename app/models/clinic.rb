@@ -13,6 +13,8 @@ class Clinic < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :members, through: :favorites
 
+  has_many :clinic_histories, dependent: :destroy
+
   # バリデーション
   validates :name, :doctor, :address, :postcode, :phone_number, presence: true
   validates :is_active, inclusion: {in: [true, false]}
