@@ -1,11 +1,11 @@
 class Member < ApplicationRecord
   
   devise :database_authenticatable, :registerable, :recoverable,
-          :rememberable, :omniauthable
+          :rememberable, :omniauthable, :validatable
 
   # バリデーション
   validates :email, :name, :address, :birthday, :prefecture_code, :password, :password_confirmation, presence: true
-  validates :postcode, length: { is: 7 }
+  validates :postcode, length: { is: 7 }, numericality: true
   validates :is_deleted, inclusion: {in: [true, false]}
   validates :sex, inclusion: {in: [true, false]}
   
@@ -42,6 +42,9 @@ class Member < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
   has_many :clinics, through: :reviews
+
+  # クリニック閲覧履歴
+  has_many :clinic_histories, dependent: :destroy
 
   # クーポン機能
   has_many :coupons, dependent: :destroy

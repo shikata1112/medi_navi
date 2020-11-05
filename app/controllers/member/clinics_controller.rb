@@ -2,10 +2,11 @@ class Member::ClinicsController < ApplicationController
   before_action :authenticate_member!, except: :about
 
   def top
-    @clinic_all = Clinic.all
+    @clinic_all = Clinic.eager_load(:reviews).all
     @clinic_all_json = @clinic_all.to_json.html_safe
     @genres = Genre.all
     @clinics = Clinic.order(impressions_count: 'DESC').limit(10) # PVソート機能
+    @histories = ClinicHistory.eager_load(:clinic).all
   end
 
   def about
@@ -14,6 +15,20 @@ class Member::ClinicsController < ApplicationController
   def show
     @clinic = Clinic.find(params[:id])
     impressionist(@clinic, nil, unique: [:impressionable_id, :ip_address])
+    new_history = @clinic.clinic_histories.new
+    new_history.member_id = current_member.id
+
+    if current_member.clinic_histories.exists?(clinic_id: "#{params[:id]}")
+      old_history = current_member.clinic_histories.find_by(clinic_id: "#{params[:id]}")
+      old_history.destroy
+    end
+    new_history.save
+
+    histories_stock_limit = 3
+    histories = current_member.clinic_histories.all
+    if histories.count > histories_stock_limit
+      histories[0].destroy
+    end
   end
 
   # フォームからのあいまい検索
