@@ -72,7 +72,7 @@
 
       #map style='height: 330px; width: auto;'
 
-      - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=clinicShowMap".html_safe
+      - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=ShowMap".html_safe
       script{ async src=google_api }
 
       input value="#{@clinic.latitude}" type="hidden" class='clinic_latitude'

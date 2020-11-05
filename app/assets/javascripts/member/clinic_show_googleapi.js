@@ -1,5 +1,5 @@
 
-function clinicShowMap() {
+function ShowMap() {
   geocoder = new google.maps.Geocoder()
 
   console.log('test');
