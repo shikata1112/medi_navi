@@ -57,14 +57,40 @@
       .col-xs-1
       .col-xs-4
 
-        // カレンダー機能
-        .page-header
-          = link_to my_calendar_path do
-            h4 style="color: black;"
-              | マイカレンダー
-        .row
-          = link_to 'スケジュール登録', new_member_event_path, class: 'btn btn-success btn-xs'
-          #calendar
+        // クリニック閲覧履歴
+        h2 style="color: black; margin-top: 50px; font-size:1.4em"
+          | あなたが見たクリニック
+        .clinic-border  style="border-bottom: 1px solid #eee; margin-bottom: 14px;"
+        .clinic-histories
+          - @histories.each do |history|
+            .row
+              .col-xs-2
+                = link_to member_clinic_path(history.clinic) do
+                  = attachment_image_tag history.clinic, :image, size: "55x60", fallback: "no-image.jpg"
+
+              .col-xs-8
+                = link_to member_clinic_path(history.clinic) do
+                  .clinic-history-name style="color: black; font-size:  1.1em; font-weight: 500;"
+                    = history.clinic.name
+
+                  .clinic-history-address style="color: #999; font-size:  0.9em;"
+                    | (
+                    = history.clinic.address
+                    | )
+                .reviews-box style="display: flex; margin-top: 5px; margin-bottom: 10px;"
+                  .clinic-history-review style="color: #ff9500; padding-left: 5px;"
+                    i.fas.fa-star
+                    - if history.clinic.reviews.map(&:score).present?
+                      |  
+                      = avg(history.clinic.reviews.map(&:score))
+                    - else
+                      |  0.0
+                  .clinic-history-comment style="color: #799b9b; padding-left: 20px;"
+                    i.fas.fa-comment-dots
+                    |  
+                    = history.clinic.reviews.length
+                
+            .clinic-border style="border-bottom: 2px dotted #eee; margin-bottom: 15px;"
 
         // pvランキング機能
         .page-header
@@ -93,11 +119,11 @@
                   td.text-center
                     = clinic.impressions_count
 
-        // クリニック閲覧履歴
+        // カレンダー機能
         .page-header
-          h4 style="color: black;"
-              | あなたが見たクリニック
-        .clinic-histories
-          - @histories.each do |history|
-            = history.clinic.name
-            
+          = link_to my_calendar_path do
+            h4 style="color: black;"
+              | マイカレンダー
+        .row
+          = link_to 'スケジュール登録', new_member_event_path, class: 'btn btn-success btn-xs'
+          #calendar   

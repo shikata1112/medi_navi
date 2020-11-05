@@ -2,11 +2,11 @@ class Member::ClinicsController < ApplicationController
   before_action :authenticate_member!, except: :about
 
   def top
-    @clinic_all = Clinic.all
+    @clinic_all = Clinic.eager_load(:reviews).all
     @clinic_all_json = @clinic_all.to_json.html_safe
     @genres = Genre.all
     @clinics = Clinic.order(impressions_count: 'DESC').limit(10) # PVソート機能
-    @histories = ClinicHistory.all
+    @histories = ClinicHistory.eager_load(:clinic).all
   end
 
   def about
@@ -22,7 +22,6 @@ class Member::ClinicsController < ApplicationController
       old_history = current_member.clinic_histories.find_by(clinic_id: "#{params[:id]}")
       old_history.destroy
     end
-
     new_history.save
 
     histories_stock_limit = 3
