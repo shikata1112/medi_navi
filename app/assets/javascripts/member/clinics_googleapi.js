@@ -35,12 +35,12 @@ function initMap() {
     });
 
     // マーカーにクリックイベントを追加
-    markerEvent(i, markerData, marker, infoWindow);
+    markerEvent(i, markerData, marker, infoWindow, map);
   }
 }
 
 // マーカーをクリックしたら吹き出しを表示
-function markerEvent(i, markerData, marker, infoWindow) {
+function markerEvent(i, markerData, marker, infoWindow, map) {
   marker[i].addListener('click', function () {
     infoWindow[i].open(map, marker[i]);
   });
