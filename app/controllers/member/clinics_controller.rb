@@ -6,7 +6,7 @@ class Member::ClinicsController < ApplicationController
     @clinic_all_json = @clinic_all.to_json.html_safe
     @genres = Genre.all
     @clinics = Clinic.order(impressions_count: 'DESC').limit(10) # PVソート機能
-    @histories = ClinicHistory.eager_load(:clinic).all
+    @histories = ClinicHistory.eager_load(:clinic).where(member_id: current_member.id)
   end
 
   def about
@@ -15,9 +15,10 @@ class Member::ClinicsController < ApplicationController
   def show
     @clinic = Clinic.find(params[:id])
     impressionist(@clinic, nil, unique: [:impressionable_id, :ip_address])
+
+    # クリニックの閲覧履歴
     new_history = @clinic.clinic_histories.new
     new_history.member_id = current_member.id
-
     if current_member.clinic_histories.exists?(clinic_id: "#{params[:id]}")
       old_history = current_member.clinic_histories.find_by(clinic_id: "#{params[:id]}")
       old_history.destroy
