@@ -9,11 +9,11 @@
 
             - if current_member.id == 2
               .form-group
-                = f.label :ニックネーム
+                = f.label "ニックネーム"
                 = f.text_field :name, class: 'form-control', disabled: true
                 
               .form-group
-                = f.label :生年月日
+                = f.label "生年月日"
                 = f.text_field :birthday, class: 'form-control', disabled: true
                 
               .form-group
@@ -39,11 +39,11 @@
                 br
             - else
               .form-group
-                = f.label :ニックネーム
+                = f.label "ニックネーム"
                 = f.text_field :name, class: 'form-control'
                 
               .form-group
-                = f.label :生年月日
+                = f.label "生年月日"
                 = f.text_field :birthday, class: 'form-control'
                 
               .form-group
