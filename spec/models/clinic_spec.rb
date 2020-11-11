@@ -50,7 +50,57 @@ RSpec.describe Clinic, type: :model do
 
   end
 
-  describe "メソッドの確認" do
+  describe "モデルの関連付け" do
+
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
+
+    context "GenreMapモデルとのアソシエーションが1:Nとなっていること" do
+      let(:target) { :genre_maps }
+      it { expect(association.macro).to eq :has_many } 
+      it { expect(association.class_name).to eq "GenreMap" } 
+    end
+
+    context "Genreモデルとのアソシエーションが1:Nとなっていること" do
+      let(:target) { :genres }
+      it { expect(association.macro).to eq :has_many } 
+      it { expect(association.class_name).to eq "Genre" } 
+    end
+
+    context "ConsultationHourモデルとのアソシエーションが1:Nとなっていること" do
+      let(:target) { :consultation_hours }
+      it { expect(association.macro).to eq :has_many } 
+      it { expect(association.class_name).to eq "ConsultationHour" } 
+    end
+
+    context "Reviewモデルとのアソシエーションが1:Nとなっていること" do
+      let(:target) { :reviews }
+      it { expect(association.macro).to eq :has_many } 
+      it { expect(association.class_name).to eq "Review" } 
+    end
+
+    context "Memberモデルとのアソシエーションが1:Nとなっていること" do
+      let(:target) { :members }
+      it { expect(association.macro).to eq :has_many } 
+      it { expect(association.class_name).to eq "Member" } 
+    end
+
+    context "Favoriteモデルとのアソシエーションが1:Nとなっていること" do
+      let(:target) { :favorites }
+      it { expect(association.macro).to eq :has_many } 
+      it { expect(association.class_name).to eq "Favorite" } 
+    end
+    
+    context "ClinicHistoryモデルとのアソシエーションが1:Nとなっていること" do
+      let(:target) { :clinic_histories }
+      it { expect(association.macro).to eq :has_many } 
+      it { expect(association.class_name).to eq "ClinicHistory" } 
+    end
+    
+  end
+  
+  describe "あいまい検索メソッドの確認" do
 
     clinic1 = Clinic.create(
       name: "大阪クリニック",
@@ -82,26 +132,31 @@ RSpec.describe Clinic, type: :model do
       is_active: "true",
     )
 
-    it "検索文字列に部分一致するクリニックを返すこと" do
-      expect(Clinic.search("クリニック")).to include(clinic1, clinic2)
-      expect(Clinic.search("クリニック")).to_not include(clinic3)
-
-      expect(Clinic.search("京橋")).to include(clinic1, clinic2)
-      expect(Clinic.search("京橋")).to_not include(clinic3)
-
-      expect(Clinic.search("5567")).to include(clinic2, clinic3)
-      expect(Clinic.search("5567")).to_not include(clinic1)
-
-      expect(Clinic.search("中央区")).to include(clinic1, clinic3)
-      expect(Clinic.search("中央区")).to_not include(clinic2)
+    context "一致するデータが見つかるとき" do
+      it "検索文字列に部分一致するクリニックを返すこと" do
+        expect(Clinic.search("クリニック")).to include(clinic1, clinic2)
+        expect(Clinic.search("クリニック")).to_not include(clinic3)
+  
+        expect(Clinic.search("京橋")).to include(clinic1, clinic2)
+        expect(Clinic.search("京橋")).to_not include(clinic3)
+  
+        expect(Clinic.search("5567")).to include(clinic2, clinic3)
+        expect(Clinic.search("5567")).to_not include(clinic1)
+  
+        expect(Clinic.search("中央区")).to include(clinic1, clinic3)
+        expect(Clinic.search("中央区")).to_not include(clinic2)
+      end
     end
-
-    it "検索結果が1件も見つからなければ空のコレクションを返すこと" do
-      expect(Clinic.search("びょういん")).to be_empty
-      expect(Clinic.search("名古屋")).to be_empty
-      expect(Clinic.search("3333")).to be_empty
-      expect(Clinic.search("京都府京都市")).to be_empty
+    
+    context "一致するデータが1件も見つからないとき" do
+      it "検索結果が1件も見つからなければ空のコレクションを返すこと" do
+        expect(Clinic.search("びょういん")).to be_empty
+        expect(Clinic.search("名古屋")).to be_empty
+        expect(Clinic.search("3333")).to be_empty
+        expect(Clinic.search("京都府京都市")).to be_empty
+      end
     end
+    
   end
 
 end
