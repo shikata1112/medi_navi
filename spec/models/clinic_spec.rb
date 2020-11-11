@@ -50,6 +50,56 @@ RSpec.describe Clinic, type: :model do
 
   end
 
+  describe "モデルの関連付け" do
+
+    let(:association) do
+      described_class.reflect_on_association(target)
+    end
+
+    context "GenreMapモデルとのアソシエーションが1:Nとなっていること" do
+      let(:target) { :genre_maps }
+      it { expect(association.macro).to eq :has_many } 
+      it { expect(association.class_name).to eq "GenreMap" } 
+    end
+
+    context "Genreモデルとのアソシエーションが1:Nとなっていること" do
+      let(:target) { :genres }
+      it { expect(association.macro).to eq :has_many } 
+      it { expect(association.class_name).to eq "Genre" } 
+    end
+
+    context "ConsultationHourモデルとのアソシエーションが1:Nとなっていること" do
+      let(:target) { :consultation_hours }
+      it { expect(association.macro).to eq :has_many } 
+      it { expect(association.class_name).to eq "ConsultationHour" } 
+    end
+
+    context "Reviewモデルとのアソシエーションが1:Nとなっていること" do
+      let(:target) { :reviews }
+      it { expect(association.macro).to eq :has_many } 
+      it { expect(association.class_name).to eq "Review" } 
+    end
+
+    context "Memberモデルとのアソシエーションが1:Nとなっていること" do
+      let(:target) { :members }
+      it { expect(association.macro).to eq :has_many } 
+      it { expect(association.class_name).to eq "Member" } 
+    end
+
+    context "Favoriteモデルとのアソシエーションが1:Nとなっていること" do
+      let(:target) { :favorites }
+      it { expect(association.macro).to eq :has_many } 
+      it { expect(association.class_name).to eq "Favorite" } 
+    end
+    
+    context "ClinicHistoryモデルとのアソシエーションが1:Nとなっていること" do
+      let(:target) { :clinic_histories }
+      it { expect(association.macro).to eq :has_many } 
+      it { expect(association.class_name).to eq "ClinicHistory" } 
+    end
+    
+  end
+  
   describe "あいまい検索メソッドの確認" do
 
     clinic1 = Clinic.create(

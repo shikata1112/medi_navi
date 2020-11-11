@@ -93,32 +93,57 @@ RSpec.describe Member, type: :model do
     context "Favoriteモデルとのアソシエーション" do
       let(:target) { :favorites } 
       it { expect(association.macro).to eq :has_many } 
-      it { expect(association.class_name).to eq "Favorite"} 
+      it { expect(association.class_name).to eq "Favorite" } 
     end
     
     context "Reviewモデルとのアソシエーション" do
       let(:target) { :reviews } 
       it { expect(association.macro).to eq :has_many } 
-      it { expect(association.class_name).to eq "Review"} 
+      it { expect(association.class_name).to eq "Review" } 
     end
 
     context "Couponモデルとのアソシエーション" do
       let(:target) { :coupons } 
       it { expect(association.macro).to eq :has_many } 
-      it { expect(association.class_name).to eq "Coupon"} 
+      it { expect(association.class_name).to eq "Coupon" } 
     end
 
     context "Entryモデルとのアソシエーション" do
       let(:target) { :entries } 
       it { expect(association.macro).to eq :has_many } 
-      it { expect(association.class_name).to eq "Entry"} 
+      it { expect(association.class_name).to eq "Entry" } 
     end
 
     context "Messageモデルとのアソシエーション" do
       let(:target) { :messages } 
       it { expect(association.macro).to eq :has_many } 
-      it { expect(association.class_name).to eq "Message"} 
+      it { expect(association.class_name).to eq "Message" } 
     end
+
+    context "ActiveRelationshipモデルとのアソシエーション" do
+      let(:target) { :active_relationships }
+      it { expect(association.macro).to eq :has_many }
+      it { expect(association.class_name).to eq "Relationship" }
+    end
+
+    context "PassiveRelationshipモデルとのアソシエーション" do
+      let(:target) { :passive_relationships }
+      it { expect(association.macro).to eq :has_many }
+      it { expect(association.class_name).to eq "Relationship" }
+    end
+
+    context "ActiveNotificationモデルとのアソシエーション" do
+      let(:target) { :active_notifications }
+      it { expect(association.macro).to eq :has_many }
+      it { expect(association.class_name).to eq "Notification" }
+    end
+
+    context "PassiveNotificationモデルとのアソシエーション" do
+      let(:target) { :passive_notifications }
+      it { expect(association.macro).to eq :has_many }
+      it { expect(association.class_name).to eq "Notification"}
+    end
+    
   end
 
 end
