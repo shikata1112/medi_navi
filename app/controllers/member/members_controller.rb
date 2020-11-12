@@ -26,8 +26,11 @@ class Member::MembersController < ApplicationController
   end
 
   def update
-    @member.update(member_params)
-    redirect_to member_member_path(current_member.id)
+    if @member.update(member_params)
+      redirect_to member_member_path(current_member.id)
+    else
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def resignation
