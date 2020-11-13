@@ -3,7 +3,7 @@ FactoryBot.define do
 
   factory :member do
     name { "test" }
-    email { "test@gmail.com" }
+    email { "test@example.com" }
     postcode { "1231111" }
     address { "大阪府大阪市test" }
     birthday { "1999-11-11" }
