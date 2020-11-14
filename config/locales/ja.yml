@@ -45,8 +45,10 @@ ja:
           attributes:
             email:
               blank: "入力してください。"
+              taken: "正しく入力してください。"
             password:
               blank: "入力してください。"
+              too_short: "6文字以上で入力してください。"
             password_confirmation:
               blank: "入力してください。"
             current_password:
@@ -65,3 +67,4 @@ ja:
               wrong_length: "入力してください。"
             sex:
               inclusion: "選択してください。"
+

@@ -5,7 +5,6 @@
       h1.text-center
         | 会員新規登録
       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-        = render "members/shared/error_messages", resource: resource
 
         .form-group
           = f.label "ニックネーム"

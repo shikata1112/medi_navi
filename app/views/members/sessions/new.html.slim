@@ -2,9 +2,6 @@
   .row
     .col-xs-2
     .col-xs-8
-      - if flash[:error]
-        .alert.alert-danger
-          = flash[:error]
       .col-xs-2
       .col-xs-8.member-session   
         h1.text-center
@@ -14,7 +11,7 @@
           = link_to "Facebookでログインする", member_facebook_omniauth_authorize_path, method: :post, class: 'btn btn-primary btn-block'
 
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-
+        
           .form-group
             = f.label "メールアドレス"
             = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'

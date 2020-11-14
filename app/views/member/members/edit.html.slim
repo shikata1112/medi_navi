@@ -1,4 +1,12 @@
 .container
+  - if flash[:alert_update] 
+	p class="alert alert-danger"
+		= flash[:alert_update]
+
+  - if flash[:alert] 
+    p class="alert alert-danger"
+      = flash[:alert] 
+
   .row
     .col-md-6.col-md-offset-3
       .pfofile-box
