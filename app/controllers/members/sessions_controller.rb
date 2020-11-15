@@ -40,6 +40,9 @@ class Members::SessionsController < Devise::SessionsController
     new_member_session_path
   end
 
+  def after_sign_in_path_for(resource)
+    root_path
+  end
 
   # Recaptcha
   prepend_before_action :check_captcha, only: [:create]

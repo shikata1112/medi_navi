@@ -26,8 +26,13 @@ class Member::MembersController < ApplicationController
   end
 
   def update
-    @member.update(member_params)
-    redirect_to member_member_path(current_member.id)
+    if @member.update(member_params)
+      redirect_to member_member_path(current_member.id)
+      flash[:notice_update] = "会員情報が更新されました。"
+    else
+      flash[:alert_update] = "正しい値を入力してください。"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def resignation

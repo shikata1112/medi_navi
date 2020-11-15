@@ -42,6 +42,37 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :controller # 追記
   config.include Devise::Test::IntegrationHelpers, type: :request # 追記
   config.extend ControllerMacros, :type => :controller # 追記
+  config.include Devise::Test::IntegrationHelpers, type: :system # 追記
+
+  config.before(:each) do |example|
+    if example.metadata[:type] == :system
+      if example.metadata[:js]
+        driven_by :selenium_chrome_headless, screen_size: [1400, 1400]
+      else
+        driven_by :rack_test
+      end
+    end
+  end
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+
+  config.before(:all) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:all) do
+    DatabaseCleaner.clean
+  end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
