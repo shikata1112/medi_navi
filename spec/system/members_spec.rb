@@ -75,7 +75,7 @@ RSpec.describe 'Members', type: :system do
 
   describe "会員プロフィール編集機能のテスト" do
     before do
-      @member = Member.create!(:member)
+      @member = Member.create(:member)
     end
 
     context "フォームの入力が正常なとき" do
