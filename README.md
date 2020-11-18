@@ -27,3 +27,4 @@ https://docs.google.com/spreadsheets/d/1QON6Tq3UOt7xvWTvUil9pjH0jcYtZlt6tWFRD3Gq
 
 ### About me
 新卒で3年3ヶ月間、医療機器メーカーにて医療機器の修理・販売・保守を行うサービスエンジニア（SE）として勤務してました。
+2020年7月からWebエンジニアを目指して勉強中です。
