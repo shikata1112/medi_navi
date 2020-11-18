@@ -75,7 +75,7 @@ RSpec.describe 'Members', type: :system do
   end
 
   describe "会員プロフィール編集機能のテスト" do
-    let!(:member) { create(:member, email: 'yamada@example.com') }
+    let!(:member) { create(:member, email: 'yamada@example.com', name: 'やまだ') }
 
     context "フォームの入力が正常なとき" do
       it "会員プロフィールが入力した内容で更新できる事" do
