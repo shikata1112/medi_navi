@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Members', type: :system do
   
   describe '新規会員登録機能のテスト' do
-    context 'フォームの入力が正常のとき' do
+    context 'フォームの入力が正常なとき' do
       it '新規会員登録が成功' do
         visit root_path
         click_link '新規登録'
@@ -44,16 +44,17 @@ RSpec.describe 'Members', type: :system do
   end
 
   describe '会員ログイン機能のテスト' do
-    let!(:member) { create(:member) }
+    let!(:member) { create(:member, email: 'test2@example.com') }
 
     context "フォームの入力が正常なとき" do
       it 'ログインが成功' do
         visit root_path
         click_link 'ログイン'
+        expect(current_path).to eq new_member_session_path
 
         fill_in 'member_email', with: 'test2@example.com'
         fill_in 'member_password', with: '111111'
-        click_button 'ログイン'
+        click_button "ログイン"
 
         expect(current_path).to eq root_path
       end
@@ -74,14 +75,14 @@ RSpec.describe 'Members', type: :system do
   end
 
   describe "会員プロフィール編集機能のテスト" do
-    before do
-      @member = Member.create(:member)
-    end
+    let!(:member) { create(:member, email: 'yamada@example.com') }
 
     context "フォームの入力が正常なとき" do
       it "会員プロフィールが入力した内容で更新できる事" do
-        visit edit_member_member_path(@member)
-        expect(page).to have_field 'member_name', with: 'やまだ'  
+        login_member(member)
+
+        visit edit_member_member_path(member.id)
+        expect(page).to have_content  with: 'やまだ'  
         
         fill_in 'member_postcode', with: '6570042'
         fill_in 'member_address', with: '兵庫県神戸市灘区烏帽子町'
@@ -94,6 +95,5 @@ RSpec.describe 'Members', type: :system do
     end
     
   end
-  
   
 end

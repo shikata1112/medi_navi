@@ -1,4 +1,4 @@
-module ControllerMacros
+module LoginModule
 
   def login_admin(admin)
     visit new_admin_session_path
@@ -11,7 +11,7 @@ module ControllerMacros
     visit new_member_session_path
 		fill_in 'member_email', with: member.email
 		fill_in 'member_password', with: member.password
-		click_button 'ログイン'
+    click_button 'ログイン' 
   end
   
 end

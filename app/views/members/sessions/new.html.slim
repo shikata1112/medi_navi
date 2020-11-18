@@ -13,11 +13,11 @@
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
         
           .form-group
-            = f.label "メールアドレス"
+            = f.label :email, "メールアドレス"
             = f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control'
 
           .form-group
-            = f.label "パスワード"
+            = f.label :password, "パスワード"
             = f.password_field :password, autocomplete: 'current-password', class: 'form-control'
 
           - if devise_mapping.rememberable?

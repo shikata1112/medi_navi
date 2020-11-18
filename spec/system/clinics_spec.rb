@@ -4,10 +4,8 @@ RSpec.describe 'Clinics', type: :system do
   let!(:member) { create(:member) }
 
   it '会員は検索フォームからクリニックの詳細画面を表示する' do
-    visit '/members/sign_in'
-    fill_in 'member_email',	with: 'test@example.com'
-    fill_in 'member_password',	with: '111111'
-    click_button 'ログイン'
+    login_member(member)
+    expect(current_path).to eq root_path
     
     expect {
       find_by_id('search').click
