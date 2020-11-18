@@ -15,9 +15,6 @@
 ### 主な利用シーン
 　通院したいがどこの病院が良いのか、病院の場所等の情報が分からないとき
 
-## 設計書
-
-
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1QON6Tq3UOt7xvWTvUil9pjH0jcYtZlt6tWFRD3GqM68/edit?usp=sharing
 
@@ -27,3 +24,6 @@ https://docs.google.com/spreadsheets/d/1QON6Tq3UOt7xvWTvUil9pjH0jcYtZlt6tWFRD3Gq
 - フレームワーク：Ruby on Rails
 - JSライブラリ：jQuery
 - 仮想環境：Vagrant,VirtualBox
+
+# About me
+新卒で3年3ヶ月間、医療機器メーカーにて医療機器の修理・販売・保守を行うサービスエンジニア（SE）として勤務してました。
