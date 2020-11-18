@@ -1,7 +1,7 @@
 ## <アプリ名>
   Medi Navi(メディナビ)
   
-  https://medi-navi.site/
+  URL:https://medi-navi.site/
 ### サイト概要
   病院・クリニックの検索、口コミ投稿、スケジュール管理、会員同士のコミュニケーションができるサイト。
 
