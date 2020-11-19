@@ -11,7 +11,7 @@ module LoginModule
     visit new_member_session_path
 		fill_in 'member_email', with: member.email
 		fill_in 'member_password', with: member.password
-    click_button 'ログイン' 
+    click_button 'sign_in_button' 
   end
   
 end

@@ -7,7 +7,6 @@ RSpec.describe 'Members', type: :system do
       it '新規会員登録が成功' do
         visit root_path
         click_link '新規登録'
-        visit '/members/sign_up'
         fill_in 'member_name', with: '山田太朗'
         fill_in 'member_email', with: 'yamada@gmail.com'
         fill_in 'member_postcode', with: '1111111'
@@ -27,7 +26,6 @@ RSpec.describe 'Members', type: :system do
         visit root_path
         click_link '新規登録'
 
-        visit '/members/sign_up'
         fill_in 'member_name', with: ''
         fill_in 'member_email', with: 'yamada@gmail.com'
         fill_in 'member_postcode', with: '1111111'
@@ -54,7 +52,7 @@ RSpec.describe 'Members', type: :system do
 
         fill_in 'member_email', with: 'test2@example.com'
         fill_in 'member_password', with: '111111'
-        click_button "ログイン"
+        click_button 'sign_in_button'
 
         expect(current_path).to eq root_path
       end
@@ -75,20 +73,25 @@ RSpec.describe 'Members', type: :system do
   end
 
   describe "会員プロフィール編集機能のテスト" do
-    let!(:member) { create(:member, email: 'yamada@example.com', name: 'やまだ') }
+    let!(:member) { create(:member, name: 'やまだ') }
 
     context "フォームの入力が正常なとき" do
       it "会員プロフィールが入力した内容で更新できる事" do
         login_member(member)
 
         visit edit_member_member_path(member.id)
-        expect(page).to have_content  with: 'やまだ'  
-        
+        expect(page).to have_field 'name_field', with: 'やまだ'  
+
+        fill_in "member_birthday",	with: '1999-11-12'
         fill_in 'member_postcode', with: '6570042'
         fill_in 'member_address', with: '兵庫県神戸市灘区烏帽子町'
+        choose 'member_sex_false'
         click_button '更新する'
+        
 
         expect(page).to have_content 'やまだ'
+        expect(page).to have_content '女性'
+        expect(page).to have_content '1999-11-12'
         expect(page).to have_content '6570042'
         expect(page).to have_content '兵庫県神戸市灘区烏帽子町'
       end

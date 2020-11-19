@@ -7,9 +7,9 @@ FactoryBot.define do
     postcode { '1231111' }
     address { '大阪府大阪市test' }
     birthday { '1999-11-11' }
-    sex { 'true' }
-    prefecture_code { '27' }
-    is_deleted { 'true' }
+    sex { true }
+    prefecture_code { 27 }
+    is_deleted { false }
     password { '111111' }
     password_confirmation { '111111' }
   end

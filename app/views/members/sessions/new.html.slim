@@ -22,7 +22,7 @@
 
           - if devise_mapping.rememberable?
             .form-group.form-check
-              = f.check_box :remember_me, class: 'form-check-input'
+              = f.check_box :remember_me, class: 'form-check-input', id: 'recapthca'
               = f.label :remember_me, class: 'form-check-label' do
                 = resource.class.human_attribute_name('remember_me')
 
@@ -30,6 +30,6 @@
             = recaptcha_tags
 
           .form-group
-            = f.submit "ログイン", class: 'btn btn-primary btn-block'
+            = f.submit "ログイン", class: 'btn btn-primary btn-block', id: "sign_in_button"
             
         = render 'devise/shared/links'

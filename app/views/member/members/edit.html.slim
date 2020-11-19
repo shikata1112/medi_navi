@@ -48,28 +48,28 @@
             - else
               .form-group
                 = f.label :name, "ニックネーム"
-                = f.text_field :name, class: 'form-control'
+                = f.text_field :name, class: 'form-control', id: 'name_field'
                 
               .form-group
                 = f.label "生年月日"
-                = f.text_field :birthday, class: 'form-control'
+                = f.text_field :birthday, class: 'form-control', id: 'member_birthday'
                 
               .form-group
                 = f.label :sex, "性別"
                 br
-                = f.radio_button :sex, value=true
+                = f.radio_button :sex, value=true, id: 'member_sex_true'
                 = f.label "男性"
                 |       
-                = f.radio_button :sex, value=false
+                = f.radio_button :sex, value=false, id: 'member_sex_false'
                 = f.label "女性"
 
               .form-group
                 = f.label :postcode, "郵便番号（ハイフンなし）"
-                = f.text_field :postcode, class: 'form-control'
+                = f.text_field :postcode, class: 'form-control', id: 'member_postcode'
                 
               .form-group
                 = f.label :address, "住所"
-                = f.text_field :address, class: 'form-control'
+                = f.text_field :address, class: 'form-control', id: 'member_address'
                 br
 
               .form-group
