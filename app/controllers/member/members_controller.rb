@@ -44,7 +44,7 @@ class Member::MembersController < ApplicationController
     @member.update(is_deleted: true)
     reset_session
     flash[:notice] = "◆退会処理が完了しました。またのご利用を心よりお待ちしております。"
-    redirect_to root_path
+    redirect_to new_member_session_path
   end
 
   def follows
