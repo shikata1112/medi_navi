@@ -16,7 +16,7 @@ FactoryBot.define do
 
   factory :admin do
     email { 'admin@example.com' }
-    password { '2222222' }
+    password { '12345678' }
   end
 
   factory :guest, class: Member do
