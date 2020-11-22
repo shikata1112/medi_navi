@@ -1,5 +1,17 @@
 
 .container
+  - if flash[:genre_create]
+    p.alert.alert-success
+      = flash[:genre_create]
+
+  - if flash[:genre_edit]
+    p.alert.alert-success
+      = flash[:genre_edit]
+  
+  - if flash[:genre_destroy]
+    p.alert.alert-danger
+      = flash[:genre_destroy]
+
   .row
     .page-header
       h2 診療科目一覧
@@ -21,4 +33,4 @@
                 td = genre.id
                 td = genre.medical_department
                 td = link_to "編集", edit_admin_genre_path(genre), class:"btn btn-warning"
-                td = link_to "削除", admin_genre_path(genre), method: :delete, class:"btn btn-danger"
+                td = link_to "削除", admin_genre_path(genre), method: :delete, "data-confirm" => "#{genre.medical_department} を本当に削除しますか？", class:"btn btn-danger"

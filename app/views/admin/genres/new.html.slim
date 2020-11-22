@@ -1,4 +1,9 @@
+
 .container
+  - if flash[:genre_create]
+    p.alert.alert-danger
+      = flash[:genre_create]
+
   .row
     .col-xs-4
     .col-xs-4
@@ -7,8 +12,8 @@
           h2 診療科目登録画面
         = form_with model: @genre, url: admin_genres_path, local: true do |f| 
 
-          = f.label :診療科目名
-          = f.text_field :medical_department
+          = f.label :medical_department, '診療科目名'
+          = f.text_field :medical_department, id: 'medical_department_field'
           
           .medical_department_btn
             = f.submit '新規登録', class:"btn btn-primary"
