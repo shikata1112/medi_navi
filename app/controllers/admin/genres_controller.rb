@@ -12,7 +12,7 @@ class Admin::GenresController < ApplicationController
       flash[:genre_create] = "診療科目を登録しました。"
       redirect_to admin_genres_path
     else
-      flash[:genre_create] = "診療科目名が空欄またはすでに登録されています。"
+      flash[:genre_create_failure] = "診療科目名が空欄またはすでに登録されています。"
       redirect_back(fallback_location: root_path)
     end
   end
@@ -27,9 +27,9 @@ class Admin::GenresController < ApplicationController
   def update
     if @genre.update(genre_params)
       redirect_to admin_genres_path
-      flash[:genre_edit] = "診療科目名を更新しました。"
+      flash[:genre_edit] = "診療科目を更新しました。"
     else
-      flash[:genre_edit] = "診療科目名が空欄またはすでに登録されています。"
+      flash[:genre_edit_failure] = "診療科目名が空欄またはすでに登録されています。"
       redirect_back(fallback_location: root_path)
     end
   end

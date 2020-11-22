@@ -1,9 +1,7 @@
 
 .container
-  - if flash[:genre_create]
-    p.alert.alert-danger
-      = flash[:genre_create]
-
+  = render "admin/genres/genre_errors"
+  
   .row
     .col-xs-4
     .col-xs-4

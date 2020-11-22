@@ -1,16 +1,6 @@
 
 .container
-  - if flash[:genre_create]
-    p.alert.alert-success
-      = flash[:genre_create]
-
-  - if flash[:genre_edit]
-    p.alert.alert-success
-      = flash[:genre_edit]
-  
-  - if flash[:genre_destroy]
-    p.alert.alert-danger
-      = flash[:genre_destroy]
+  = render "admin/genres/genre_errors"
 
   .row
     .page-header
