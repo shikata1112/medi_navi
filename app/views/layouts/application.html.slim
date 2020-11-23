@@ -86,7 +86,7 @@ html
                 span.caret
               ul.dropdown-menu.genre-search.pull-right role="menu"
                 - Genre.all.each do |genre|
-                  = link_to clinics_genre_search_path(genre_id: genre.id) do
+                  = link_to clinics_genre_search_path(genre_id: genre.id), id: 'prefecture_search' do
                     li.genre-list role="presentation"
                       = genre.medical_department
 

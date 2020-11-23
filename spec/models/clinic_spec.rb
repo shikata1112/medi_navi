@@ -148,7 +148,7 @@ RSpec.describe Clinic, type: :model do
       end
     end
     
-    context "一致するデータが1件も見つからないとき" do
+    context "一致するデータが見つからないとき" do
       it "検索結果が1件も見つからなければ空のコレクションを返すこと" do
         expect(Clinic.search("びょういん")).to be_empty
         expect(Clinic.search("名古屋")).to be_empty
