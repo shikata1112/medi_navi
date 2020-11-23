@@ -41,6 +41,9 @@ class Member::ClinicsController < ApplicationController
   def genre_search
     @genre = Genre.find(params[:genre_id])
     @clinics = @genre.clinics.clinics_load
+
+    # @genre = Genre.where("address LIKE?", "#{params[:medical_department]}")
+    # @clinics = @genre.clinics.clinics_load
   end
 
   # 都道府県検索
