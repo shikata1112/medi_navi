@@ -1,16 +1,16 @@
 require 'rails_helper'
 
-RSpec.describe ClinicHistory, type: :model do
+RSpec.describe GenreMap, type: :model do
 
   describe "モデルの関連付け" do
     let(:association) do
       described_class.reflect_on_association(target)
     end
 
-    context "Memberモデルとのアソシエーション" do
-      let(:target) { :member } 
+    context "Genreモデルとのアソシエーション" do
+      let(:target) { :genre } 
       it { expect(association.macro).to eq :belongs_to } 
-      it { expect(association.class_name).to eq "Member" } 
+      it { expect(association.class_name).to eq "Genre" } 
     end
 
     context "Clinicモデルとのアソシエーション" do

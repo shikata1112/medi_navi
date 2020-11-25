@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Message, type: :model do
+RSpec.describe Favorite, type: :model do
 
   describe "モデルの関連付け" do
     let(:association) do
@@ -13,10 +13,10 @@ RSpec.describe Message, type: :model do
       it { expect(association.class_name).to eq "Member" } 
     end
 
-    context "Roomモデルとのアソシエーション" do
-      let(:target) { :room } 
+    context "Clinicモデルとのアソシエーション" do
+      let(:target) { :clinic } 
       it { expect(association.macro).to eq :belongs_to } 
-      it { expect(association.class_name).to eq "Room" } 
+      it { expect(association.class_name).to eq "Clinic" } 
     end
   end
 
