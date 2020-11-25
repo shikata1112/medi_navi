@@ -1,6 +1,6 @@
 class Coupon < ApplicationRecord
 
-  belongs_to :user
+  belongs_to :member
 
   enum is_valid: { '有効': true, '無効': false }
 

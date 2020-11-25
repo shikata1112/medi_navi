@@ -41,18 +41,29 @@ RSpec.describe 'Clinics', type: :system do
     let!(:member) { create(:member) }
     let!(:clinic) { create(:clinic) }
     let!(:genre) { create(:genre, medical_department: '整形外科') }
+    let!(:genre2) { create(:genre, medical_department: '眼科') }
     let!(:genre_map) { create(:genre_map) }
 
     context '選択した都道府県に一致するクリニックが見つかった場合' do
       it '条件に一致するクリニックの詳細画面を表示する' do
         login_member(member)
 
-        click_on 'genre_link', visible: '整形外科'
-        click_link '大阪クリニック'
+        click_on 'genre_link', visible: '整形外科', match: :first
+        click_link 'testクリニック'
 
-        expect(page).to have_content '大阪クリニック'
-        expect(page).to have_content '京橋駅'
-        expect(page).to have_content '大阪府大阪市中央区123'
+        expect(page).to have_content 'testクリニック'
+        expect(page).to have_content 'test太郎'
+        expect(page).to have_content '大阪府大阪市中央区test'
+      end
+    end
+
+    context "条件に一致するクリニックが見つからない場合" do
+      it 'クリニックを表示しない' do
+        login_member(member)
+
+        click_on '眼科', match: :first
+
+        expect(page).to have_content '条件に該当するクリニックはありません。'
       end
     end
     

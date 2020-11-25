@@ -101,50 +101,25 @@ RSpec.describe Clinic, type: :model do
   end
   
   describe "あいまい検索メソッドの確認" do
-
-    clinic1 = Clinic.create(
-      name: "大阪クリニック",
-      nearest_station: "京橋駅",
-      phone_number: "0776669999",
-      address: "大阪府大阪市中央区123",
-      doctor: "a",
-      postcode: "1111111",
-      is_active: "true",
-    )
-
-    clinic2 = Clinic.create(
-      name: "東京クリニック",
-      nearest_station: "西京橋駅",
-      phone_number: "1122556755",
-      address: "東京都千代田区丸の内123",
-      doctor: "a",
-      postcode: "1111111",
-      is_active: "true",
-    )
-
-    clinic3 = Clinic.create(
-      name: "福岡医院",
-      nearest_station: "博多駅",
-      phone_number: "1234555567",
-      address: "福岡県福岡市中央区博多123",
-      doctor: "a",
-      postcode: "1111111",
-      is_active: "true",
-    )
+    before do
+      @clinic1 = create(:clinic1)
+      @clinic2 = create(:clinic2)
+      @clinic3 = create(:clinic3)
+    end
 
     context "一致するデータが見つかるとき" do
       it "検索文字列に部分一致するクリニックを返すこと" do
-        expect(Clinic.search("クリニック")).to include(clinic1, clinic2)
-        expect(Clinic.search("クリニック")).to_not include(clinic3)
+        expect(Clinic.search("クリニック")).to include(@clinic1, @clinic2)
+        expect(Clinic.search("クリニック")).to_not include(@clinic3)
   
-        expect(Clinic.search("京橋")).to include(clinic1, clinic2)
-        expect(Clinic.search("京橋")).to_not include(clinic3)
+        expect(Clinic.search("京橋")).to include(@clinic1, @clinic2)
+        expect(Clinic.search("京橋")).to_not include(@clinic3)
   
-        expect(Clinic.search("5567")).to include(clinic2, clinic3)
-        expect(Clinic.search("5567")).to_not include(clinic1)
+        expect(Clinic.search("5567")).to include(@clinic2, @clinic3)
+        expect(Clinic.search("5567")).to_not include(@clinic1)
   
-        expect(Clinic.search("中央区")).to include(clinic1, clinic3)
-        expect(Clinic.search("中央区")).to_not include(clinic2)
+        expect(Clinic.search("中央区")).to include(@clinic1, @clinic3)
+        expect(Clinic.search("中央区")).to_not include(@clinic2)
       end
     end
     
