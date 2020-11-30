@@ -45,8 +45,8 @@
         
         h3 
           strong :診療時間
-          .reset-btn
-            = f.remove_nested_fields_link 'リセット', class: 'btn btn-default btn-xs', role: 'button'
+          / .reset-btn
+          /   = f.remove_nested_fields_link 'リセット', class: 'btn btn-default btn-xs', role: 'button'
         .clinic-create
           .text-center
             table.table.table-bordered
@@ -62,7 +62,8 @@
                   th 日
                   th 祝
 
-              = f.nested_fields_for :consultation_hours, @clinic.consultation_hours.build do |consultation_hour|
+              / = f.nested_fields_for :consultation_hours, @clinic.consultation_hours.build do |consultation_hour|
+              = f.collection_select :consultation_hours, @clinic, @clinic.consultation_hours do |consultation_hour|
                 table.table.table-bordered
                     tbody
                       tr
@@ -87,7 +88,7 @@
                         td
                           = consultation_hour.select :ho_time, ConsultationHour.ho_times.keys
                         
-          = f.add_nested_fields_link :consultation_hours, '＋', class:"btn btn-default btn-xs"
+          / = f.add_nested_fields_link :consultation_hours, '＋', class:"btn btn-default btn-xs"
           
           .clinic-create
             = f.submit "新規登録", class:"btn btn-primary btn-block"
