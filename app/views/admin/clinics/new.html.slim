@@ -17,7 +17,7 @@
           = f.text_field :doctor, class: "form-control"
         .form-group
           = f.label :genres, "診療科目(複数選択可)"
-          = f.collection_check_boxes(:genre_ids, @genres, :id, :medical_department, include_hidden: false)
+          = f.collection_check_boxes(:genre_ids, Genre.all, :id, :medical_department, include_hidden: false)
         .form-group
           = f.label :image, "医師イメージ"
           = f.attachment_field :image
@@ -63,30 +63,29 @@
                   th 祝
 
               / = f.nested_fields_for :consultation_hours, @clinic.consultation_hours.build do |consultation_hour|
-              = f.collection_select :consultation_hours, @clinic, @clinic.consultation_hours do |consultation_hour|
-                table.table.table-bordered
-                    tbody
-                      tr
-                        td.heading
-                          = consultation_hour.select :start_time, time_list
-                          | 〜
-                          = consultation_hour.select :finish_time, time_list
-                        td 
-                          = consultation_hour.select :mo_time, ConsultationHour.mo_times.keys
-                        td
-                          = consultation_hour.select :tu_time, ConsultationHour.tu_times.keys
-                        td
-                          = consultation_hour.select :we_time, ConsultationHour.we_times.keys
-                        td
-                          = consultation_hour.select :th_time, ConsultationHour.th_times.keys
-                        td
-                          = consultation_hour.select :fr_time, ConsultationHour.fr_times.keys
-                        td
-                          = consultation_hour.select :sa_time, ConsultationHour.sa_times.keys
-                        td
-                          = consultation_hour.select :su_time, ConsultationHour.su_times.keys
-                        td
-                          = consultation_hour.select :ho_time, ConsultationHour.ho_times.keys
+            
+              tbody
+                tr
+                  td.heading
+                    = f.select :start_time, time_list
+                    | 〜
+                    = f.select :finish_time, time_list
+                  td 
+                    = f.select :mo_time, { '●': 0, '／': 1, '▲': 2}
+                  td
+                    = f.select :tu_time, { '●': 0, '／': 1, '▲': 2}
+                  td
+                    = f.select :we_time, { '●': 0, '／': 1, '▲': 2}
+                  td
+                    = f.select :th_time, { '●': 0, '／': 1, '▲': 2}
+                  td
+                    = f.select :fr_time, { '●': 0, '／': 1, '▲': 2}
+                  td
+                    = f.select :sa_time, { '●': 0, '／': 1, '▲': 2}
+                  td
+                    = f.select :su_time, { '●': 0, '／': 1, '▲': 2}
+                  td
+                    = f.select :ho_time, { '●': 0, '／': 1, '▲': 2}
                         
           / = f.add_nested_fields_link :consultation_hours, '＋', class:"btn btn-default btn-xs"
           
