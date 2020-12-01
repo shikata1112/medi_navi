@@ -17,7 +17,7 @@
           = f.text_field :doctor, class: "form-control"
         .form-group
           = f.label :genres, "診療科目(複数選択可)"
-          = f.collection_check_boxes(:genre_ids, @genres, :id, :medical_department, include_hidden: false)
+          = f.collection_check_boxes :genre_ids, @genres, :id, :medical_department, include_hidden: false
         .form-group
           = f.label :image, "医師イメージ"
           = f.attachment_field :image
@@ -71,26 +71,25 @@
                           | 〜
                           = consultation_hour.select :finish_time, time_list
                         td 
-                          = consultation_hour.select :mo_time, ConsultationHour.mo_times.keys
+                          = consultation_hour.select :mo_time, { '●': 0, '／': 1, '▲': 2}
                         td
-                          = consultation_hour.select :tu_time, ConsultationHour.tu_times.keys
+                          = consultation_hour.select :tu_time, { '●': 0, '／': 1, '▲': 2}
                         td
-                          = consultation_hour.select :we_time, ConsultationHour.we_times.keys
+                          = consultation_hour.select :we_time, { '●': 0, '／': 1, '▲': 2}
                         td
-                          = consultation_hour.select :th_time, ConsultationHour.th_times.keys
+                          = consultation_hour.select :th_time, { '●': 0, '／': 1, '▲': 2}
                         td
-                          = consultation_hour.select :fr_time, ConsultationHour.fr_times.keys
+                          = consultation_hour.select :fr_time, { '●': 0, '／': 1, '▲': 2}
                         td
-                          = consultation_hour.select :sa_time, ConsultationHour.sa_times.keys
+                          = consultation_hour.select :sa_time, { '●': 0, '／': 1, '▲': 2}
                         td
-                          = consultation_hour.select :su_time, ConsultationHour.su_times.keys
+                          = consultation_hour.select :su_time, { '●': 0, '／': 1, '▲': 2}
                         td
-                          = consultation_hour.select :ho_time, ConsultationHour.ho_times.keys
+                          = consultation_hour.select :ho_time, { '●': 0, '／': 1, '▲': 2}
                         
           = f.add_nested_fields_link :consultation_hours, '＋', class:"btn btn-default btn-xs"
           
           .clinic-create
             = f.submit "新規登録", class:"btn btn-primary btn-block"
             br
-
 

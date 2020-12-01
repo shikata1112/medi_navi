@@ -79,21 +79,21 @@
                   | 〜
                   = f.select :finish_time, time_list
                 td 
-                  = f.select :mo_time, ConsultationHour.mo_times.keys
+                  = f.select :mo_time, { '●': 0, '／': 1, '▲': 2}
                 td
-                  = f.select :tu_time, ConsultationHour.tu_times.keys
+                  = f.select :tu_time, { '●': 0, '／': 1, '▲': 2}
                 td
-                  = f.select :we_time, ConsultationHour.we_times.keys
+                  = f.select :we_time, { '●': 0, '／': 1, '▲': 2}
                 td
-                  = f.select :th_time, ConsultationHour.th_times.keys
+                  = f.select :th_time,  { '●': 0, '／': 1, '▲': 2}
                 td
-                  = f.select :fr_time, ConsultationHour.fr_times.keys
+                  = f.select :fr_time,  { '●': 0, '／': 1, '▲': 2}
                 td
-                  = f.select :sa_time, ConsultationHour.sa_times.keys
+                  = f.select :sa_time,  { '●': 0, '／': 1, '▲': 2}
                 td
-                  = f.select :su_time, ConsultationHour.su_times.keys
+                  = f.select :su_time,  { '●': 0, '／': 1, '▲': 2}
                 td
-                  = f.select :ho_time, ConsultationHour.ho_times.keys
+                  = f.select :ho_time,  { '●': 0, '／': 1, '▲': 2}
                 td
                   = f.submit "更新", class:"btn btn-warning"
                 td
@@ -107,21 +107,21 @@
                 | 〜
                 = f.select :finish_time, time_list
               td 
-                = f.select :mo_time, ConsultationHour.mo_times.keys
+                = f.select :mo_time,  { '●': 0, '／': 1, '▲': 2}
               td
-                = f.select :tu_time, ConsultationHour.tu_times.keys
+                = f.select :tu_time,  { '●': 0, '／': 1, '▲': 2}
               td
-                = f.select :we_time, ConsultationHour.we_times.keys
+                = f.select :we_time,  { '●': 0, '／': 1, '▲': 2}
               td
-                = f.select :th_time, ConsultationHour.th_times.keys
+                = f.select :th_time,  { '●': 0, '／': 1, '▲': 2}
               td
-                = f.select :fr_time, ConsultationHour.fr_times.keys
+                = f.select :fr_time,  { '●': 0, '／': 1, '▲': 2}
               td
-                = f.select :sa_time, ConsultationHour.sa_times.keys
+                = f.select :sa_time,  { '●': 0, '／': 1, '▲': 2}
               td
-                = f.select :su_time, ConsultationHour.su_times.keys
+                = f.select :su_time,  { '●': 0, '／': 1, '▲': 2}
               td
-                = f.select :ho_time, ConsultationHour.ho_times.keys
+                = f.select :ho_time,  { '●': 0, '／': 1, '▲': 2}
 
                 =f.hidden_field :clinic_id, :value => @clinic.id
                 
