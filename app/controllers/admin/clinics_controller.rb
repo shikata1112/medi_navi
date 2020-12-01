@@ -8,13 +8,13 @@ class Admin::ClinicsController < ApplicationController
     @genres = Genre.all
   end
 
-  def create 
+  def create
     @clinic = Clinic.new(clinic_params)
     clinic_collection = ClinicCollection.new(@clinic, clinic_params[:genre_ids])
     clinic_collection.save!
     redirect_to admin_clinics_path
   rescue => e
-    puts '例外処理発生しました!!!!!!!!!!!!!!!'
+    @genres = Genre.all
     render 'new'
   end
 
