@@ -33,16 +33,14 @@ class Admin::ClinicsController < ApplicationController
   end
 
   def update
-    if @clinic.update(clinic_params)
-      @clinic.genre_maps.destroy_all
-      clinic_params[:genre_ids].each do |genre_id|
-        genre_map = GenreMap.new(genre_id: genre_id, clinic_id: @clinic.id)
-        genre_map.save
-      end
-        redirect_to edit_admin_clinic_path(@clinic)
-    else
-      render 'edit'
-    end
+    clinic_collection = ClinicCollection.new(@clinic, clinic_params[:genre_ids])
+    clinic_collection.update!
+    @clinic.update(clinic_params)
+    redirect_to admin_clinics_path
+  rescue => e 
+    @new_clinic = Clinic.new
+    @genres = Genre.all
+    render 'edit'
   end
 
   def destroy
