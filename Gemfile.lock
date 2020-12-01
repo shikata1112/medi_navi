@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: e6604d0930cca531b2998ae306792f70b9bcc14d
+  revision: ec06d217644cf3d66bd0e658c9b168af8f0c38c7
   branch: master
   specs:
     faker (2.15.1)
@@ -214,6 +214,10 @@ GEM
     mustermann (1.1.1)
       ruby2_keywords (~> 0.0.1)
     mysql2 (0.5.3)
+    nested_form_fields (0.8.4)
+      coffee-rails (>= 3.2.1)
+      jquery-rails
+      rails (>= 3.2.0)
     netrc (0.11.0)
     nio4r (2.5.4)
     nokogiri (1.10.10)
@@ -426,6 +430,7 @@ DEPENDENCIES
   mini_magick
   momentjs-rails
   mysql2
+  nested_form_fields
   omniauth
   omniauth-facebook
   pry-rails
