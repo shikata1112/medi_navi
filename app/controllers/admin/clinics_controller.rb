@@ -33,9 +33,9 @@ class Admin::ClinicsController < ApplicationController
   end
 
   def update
+    @clinic.update(clinic_params)
     clinic_collection = ClinicCollection.new(@clinic, clinic_params[:genre_ids])
     clinic_collection.update!
-    @clinic.update(clinic_params)
     redirect_to admin_clinics_path
   rescue => e 
     @new_clinic = Clinic.new
