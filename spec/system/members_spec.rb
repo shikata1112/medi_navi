@@ -36,7 +36,7 @@ RSpec.describe 'Members', type: :system do
         fill_in 'member_password_confirmation', with: '111111'
         click_button '新規登録'
       
-        expect(page).to have_content 'ニックネームを 入力してください。'
+        expect(page).to have_content 'ニックネームを入力してください。'
       end
     end
   end
