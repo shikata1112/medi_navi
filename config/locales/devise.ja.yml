@@ -1,6 +1,9 @@
 ja:
   activerecord:
     attributes:
+      clinic:
+        name: "クリニック名"
+        doctor: "管理医師"
       member:
         name: "ニックネームを"
         current_password: "現在のパスワード"

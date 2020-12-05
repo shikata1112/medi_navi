@@ -41,6 +41,12 @@ ja:
   activerecord:
     errors:
       models:
+        clinic:
+          attributes:
+            name:
+              blank: "クリニック名を入力してください。"
+            doctor:
+              blank: "管理医師を入力してください。"
         member:
           attributes:
             email:
