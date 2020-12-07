@@ -15,21 +15,7 @@ class Member::ClinicsController < ApplicationController
   def show
     @clinic = Clinic.find(params[:id])
     impressionist(@clinic, nil, unique: [:impressionable_id, :ip_address])
-
-    # クリニックの閲覧履歴
-    new_history = @clinic.clinic_histories.new
-    new_history.member_id = current_member.id
-    if current_member.clinic_histories.exists?(clinic_id: "#{params[:id]}")
-      old_history = current_member.clinic_histories.find_by(clinic_id: "#{params[:id]}")
-      old_history.destroy
-    end
-    new_history.save
-
-    histories_stock_limit = 3
-    histories = current_member.clinic_histories.all
-    if histories.count > histories_stock_limit
-      histories[0].destroy
-    end
+    @clinic.clinic_histories.create_and_destroy_history(current_member, @clinic)
   end
 
   # フォームからのあいまい検索
@@ -41,9 +27,6 @@ class Member::ClinicsController < ApplicationController
   def genre_search
     @genre = Genre.find(params[:genre_id])
     @clinics = @genre.clinics.clinics_load
-
-    # @genre = Genre.where("address LIKE?", "#{params[:medical_department]}")
-    # @clinics = @genre.clinics.clinics_load
   end
 
   # 都道府県検索
