@@ -17,7 +17,6 @@ class ClinicHistory < ApplicationRecord
       # old_history = current_member.clinic_histories.select { |clinic_history| clinic_history == clinic_id }
       old_history.destroy
     end
-    
     new_history.save
   end
 
