@@ -18,35 +18,31 @@ RSpec.describe ClinicHistory, type: :model do
       it { expect(association.macro).to eq :belongs_to } 
       it { expect(association.class_name).to eq "Clinic" } 
     end
-end
+  end
 
-  describe "メソッドの動作テスト" do
-    before do
-      @clinic1 = build(:clinic)
-      @clinic2 = build(:clinic)
-      @clinic3 = build(:clinic)
-      @clinic4 = build(:clinic)
-      @member1 = build(:member)
-    end
+  before do
+    @clinic1 = create(:clinic)
+    @clinic2 = create(:clinic)
+    @clinic3 = create(:clinic)
+    @clinic4 = create(:clinic)
+    @member1 = create(:member)
+  end
 
-    it "create_new_historyメソッドが正常に動作すること" do
-      ClinicHistory.create_new_history(@member1, @clinic1)
-      ClinicHistory.create_new_history(@member1, @clinic2)
-      ClinicHistory.create_new_history(@member1, @clinic1)
+  it "#create_new_history" do
+    @clinic1.clinic_histories.create_new_history(@member1, @clinic1)
+    @clinic2.clinic_histories.create_new_history(@member1, @clinic2)
+    @clinic1.clinic_histories.create_new_history(@member1, @clinic1)
+    expect(2).to eq ClinicHistory.all.size
+  end
 
-      expect(2).to eq ClinicHistory.all.size
-    end
+  it "#destroy_old_history" do
+    @clinic1.clinic_histories.create_new_history(@member1, @clinic1)
+    @clinic2.clinic_histories.create_new_history(@member1, @clinic2)
+    @clinic3.clinic_histories.create_new_history(@member1, @clinic3)
+    @clinic4.clinic_histories.create_new_history(@member1, @clinic4)
 
-    it "destroy_old_historyメソッドが正常に動作すること" do
-      ClinicHistory.create_new_history(@member1, @clinic1)
-      ClinicHistory.create_new_history(@member1, @clinic2)
-      ClinicHistory.create_new_history(@member1, @clinic3)
-      ClinicHistory.create_new_history(@member1, @clinic4)
+    ClinicHistory.destroy_old_history(@member1)
 
-      ClinicHistory.destroy_old_history(@member1)
-
-      expect(3).to eq ClinicHistory.all.size
-    end
-    
+    expect(3).to eq ClinicHistory.all.size
   end
 end
