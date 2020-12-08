@@ -1,5 +1,5 @@
 current directory: /Users/shu/Desktop/rails-projects/medi_navi/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.10/ext/nokogiri
-/Users/shu/.rbenv/versions/2.6.6/bin/ruby -I /Users/shu/.rbenv/versions/2.6.6/lib/ruby/2.6.0 -r ./siteconf20201206-45870-42e3q6.rb extconf.rb --use-system-libraries --with-xml2-include\=/usr/local/Cellar/libxml2/2.9.10_1/include/libxml2
+/Users/shu/.rbenv/versions/2.6.6/bin/ruby -I /Users/shu/.rbenv/versions/2.6.6/lib/ruby/2.6.0 -r ./siteconf20201209-79564-4g6nlo.rb extconf.rb --use-system-libraries --with-xml2-include\=/usr/local/Cellar/libxml2/2.9.10_1/include/libxml2
 checking if the C compiler accepts  -I /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/libxml2... yes
 checking if the C compiler accepts -Wno-error=unused-command-line-argument-hard-error-in-future... no
 Building nokogiri using system libraries.
@@ -109,4 +109,4 @@ rm -rf /Users/shu/Desktop/rails-projects/medi_navi/vendor/bundle/ruby/2.6.0/gems
 
 current directory: /Users/shu/Desktop/rails-projects/medi_navi/vendor/bundle/ruby/2.6.0/gems/nokogiri-1.10.10/ext/nokogiri
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 nokogiri.bundle ./.gem.20201206-45870-1f66i9p/nokogiri
+/usr/bin/install -c -m 0755 nokogiri.bundle ./.gem.20201209-79564-tdf07n/nokogiri

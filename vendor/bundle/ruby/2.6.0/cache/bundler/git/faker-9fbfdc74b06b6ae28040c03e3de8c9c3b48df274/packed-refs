@@ -5,7 +5,7 @@ f26057ceae817dae931e8b2af53262a1ece1d2b0 refs/heads/bump-version-to-2-14-0
 4a3c41ae890c29aef53395cdd33534ae0531b4eb refs/heads/circleci
 a507f3f6090fe12ee8b3bdf7aab3d6e03199c59b refs/heads/connorshea-patch-1
 e650e6f4bee23ce72abefd3a82add72126c074fa refs/heads/control-typo-fix
-a7532e914dc2d0c2be50c7d6ca2c3ce83ee98f99 refs/heads/dependabot/bundler/rubocop-eq-1.5.1
+5b419c2ca22dde301a003635e332f9dc1c008302 refs/heads/dependabot/bundler/rubocop-eq-1.5.2
 21c23b1a0daace81899dbc0641633cb7df416930 refs/heads/dependabot/bundler/simplecov-eq-0.20.0
 fa2aeb37bebf0ab74afe480d8b675da8ce5fce70 refs/heads/jruby
 ec06d217644cf3d66bd0e658c9b168af8f0c38c7 refs/heads/master

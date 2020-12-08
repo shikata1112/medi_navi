@@ -1,5 +1,5 @@
 current directory: /Users/shu/Desktop/rails-projects/medi_navi/vendor/bundle/ruby/2.6.0/gems/hpricot-0.8.6/ext/hpricot_scan
-/Users/shu/.rbenv/versions/2.6.6/bin/ruby -I /Users/shu/.rbenv/versions/2.6.6/lib/ruby/2.6.0 -r ./siteconf20201206-45870-w4646v.rb extconf.rb
+/Users/shu/.rbenv/versions/2.6.6/bin/ruby -I /Users/shu/.rbenv/versions/2.6.6/lib/ruby/2.6.0 -r ./siteconf20201209-79564-ou4rrc.rb extconf.rb
 checking for main() in -lc... yes
 creating Makefile
 
@@ -324,4 +324,4 @@ linking shared-object hpricot_scan.bundle
 
 current directory: /Users/shu/Desktop/rails-projects/medi_navi/vendor/bundle/ruby/2.6.0/gems/hpricot-0.8.6/ext/hpricot_scan
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 hpricot_scan.bundle ./.gem.20201206-45870-12mke8m
+/usr/bin/install -c -m 0755 hpricot_scan.bundle ./.gem.20201209-79564-1ecc7f4

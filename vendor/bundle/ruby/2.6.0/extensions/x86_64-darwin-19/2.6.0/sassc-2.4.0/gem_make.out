@@ -1,5 +1,5 @@
 current directory: /Users/shu/Desktop/rails-projects/medi_navi/vendor/bundle/ruby/2.6.0/gems/sassc-2.4.0/ext
-/Users/shu/.rbenv/versions/2.6.6/bin/ruby -I /Users/shu/.rbenv/versions/2.6.6/lib/ruby/2.6.0 -r ./siteconf20201206-45870-czyq5.rb extconf.rb
+/Users/shu/.rbenv/versions/2.6.6/bin/ruby -I /Users/shu/.rbenv/versions/2.6.6/lib/ruby/2.6.0 -r ./siteconf20201209-79564-1g1zglf.rb extconf.rb
 creating Makefile
 
 current directory: /Users/shu/Desktop/rails-projects/medi_navi/vendor/bundle/ruby/2.6.0/gems/sassc-2.4.0/ext
@@ -77,4 +77,4 @@ linking shared-object sassc/libsass.bundle
 
 current directory: /Users/shu/Desktop/rails-projects/medi_navi/vendor/bundle/ruby/2.6.0/gems/sassc-2.4.0/ext
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 libsass.bundle ./.gem.20201206-45870-1siqj5/sassc
+/usr/bin/install -c -m 0755 libsass.bundle ./.gem.20201209-79564-1jowr1u/sassc
