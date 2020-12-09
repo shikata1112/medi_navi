@@ -4,25 +4,31 @@ class Member::MembersController < ApplicationController
   
   def show
 
-    current_entry = Entry.where(member_id: current_member.id)
-    another_entry = Entry.where(member_id: @member.id)
-    @room
-    @entry
-    Entry.new_room_entry(@current_entry, @another_entry, @member, current_member)
+    @current_entry = Entry.where(member_id: current_member.id)
+    @another_entry = Entry.where(member_id: @member.id)
 
-    # unless @member.id == current_member.id
-    #   current_entry.each do |current|
-    #     another_entry.each do |another|
+    @member.entries.new_room_entry(@member, current_member, @current_entry, @another_entry)
+
+
+    ## room_idが渡せていない
+
+
+    # if @member.id != current_member.id
+    #   @current_entry.each do |current|
+    #     @another_entry.each do |another|
     #       if current.room_id == another.room_id
     #         @is_room = true
     #         @room_id = current.room_id
     #       end
     #     end
     #   end
-      
+    
     #   unless @is_room
     #     @room = Room.new
     #     @entry = Entry.new
+        
+    #     binding.pry
+        
     #   end
     # end
   end
