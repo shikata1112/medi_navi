@@ -50,27 +50,27 @@ ja:
         member:
           attributes:
             email:
-              blank: "入力してください。"
+              blank: "メールアドレスを入力してください。"
               taken: "正しく入力してください。"
             password:
-              blank: "入力してください。"
+              blank: "パスワードを入力してください。"
               too_short: "6文字以上で入力してください。"
             password_confirmation:
-              blank: "入力してください。"
+              blank: "パスワード（確認）を入力してください。"
             current_password:
-              blank: "入力してください。"
+              blank: "現在のパスワードを入力してください。"
             name:
-              blank: "入力してください。"
+              blank: "ニックネームを入力してください。"
             address:
-              blank: "入力してください。"
+              blank: "住所を入力してください。"
             prefecture_code:
-              blank: "選択してください。"
+              blank: "都道府県を選択してください。"
             birthday:
-              blank: "選択してください。"
+              blank: "生年月日を選択してください。"
             postcode:
-              not_a_number: "入力してください。"
+              not_a_number: "郵便番号を入力してください。"
             postcode:
-              wrong_length: "入力してください。"
+              wrong_length: "7文字（半角数字）で入力してください。"
             sex:
-              inclusion: "選択してください。"
+              inclusion: "性別を選択してください。"
 

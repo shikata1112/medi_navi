@@ -11,6 +11,17 @@ Member.create!(
       postcode: '5320011',
       birthday: '1994-11-12',
       sex: 'true',
+    },
+    {
+      name: 'ゲスト',
+      email: 'gest@gmail.com',
+      password: '111111',
+      password_confirmation: '111111',
+      prefecture_code: '21',
+      address: '東京都渋谷区渋谷11',
+      postcode: '1111111',
+      birthday: '2000-11-11',
+      sex: 'true',
     }
   ]
 )

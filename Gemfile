@@ -139,6 +139,8 @@ gem 'kaminari'
 # ダミーデータ生成
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
+gem 'rubocop', '~> 1.4', require: false
+
 # 環境変数、mysql
 gem 'dotenv-rails'
 group :production do
