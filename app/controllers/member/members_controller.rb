@@ -6,12 +6,9 @@ class Member::MembersController < ApplicationController
 
     @current_entry = Entry.where(member_id: current_member.id)
     @another_entry = Entry.where(member_id: @member.id)
-
-    @member.entries.new_room_entry(@member, current_member, @current_entry, @another_entry)
-
-
-    ## room_idが渡せていない
-
+    # @room_id = Entry.find_by(member_id: current_member.id, room_id: room_id)
+    # @is_room = true || false
+    @member.entries.new_room_entry(@member, current_member, @current_entry, @another_entry, @is_room)
 
     # if @member.id != current_member.id
     #   @current_entry.each do |current|
@@ -26,9 +23,6 @@ class Member::MembersController < ApplicationController
     #   unless @is_room
     #     @room = Room.new
     #     @entry = Entry.new
-        
-    #     binding.pry
-        
     #   end
     # end
   end
