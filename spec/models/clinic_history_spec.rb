@@ -29,9 +29,12 @@ RSpec.describe ClinicHistory, type: :model do
   end
 
   it "#create_new_history" do
-    @clinic1.clinic_histories.create_new_history(@member1, @clinic1)
-    @clinic2.clinic_histories.create_new_history(@member1, @clinic2)
-    @clinic1.clinic_histories.create_new_history(@member1, @clinic1)
+    @clinic1.clinic_histories.create_new_history(@member1, @clinic1.id)
+    @member1.reload
+    @clinic2.clinic_histories.create_new_history(@member1, @clinic2.id)
+    @member1.reload
+    @clinic1.clinic_histories.create_new_history(@member1, @clinic1.id)
+    @member1.reload
     expect(2).to eq ClinicHistory.all.size
   end
 
