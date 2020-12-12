@@ -2,23 +2,19 @@ class Entry < ApplicationRecord
   belongs_to :member
   belongs_to :room
 
-  def self.new_room_entry(member, current_member, current_entry, another_entry, is_room)
-
-    if member.id != current_member.id
-      current_entry.each do |current|
-        another_entry.each do |another|
-          if current.room_id == another.room_id
-            is_room = true
-            room_id = current.room_id
-          end
-        end
-      end
-      
-      unless is_room == true
-        is_room = false
-        room = Room.new
-        entry = Entry.new
-      end
-    end
+  def self.room_exists?(member, current_member)
+    room_ids(member, current_member).present?
   end
+
+  def self.room_id(member, current_member)
+    room_ids(member, current_member).first
+  end
+
+  def self.room_ids(member, current_member)
+    entry_room_ids = unscope(where: :member_id).where(member_id: [current_member.id, member.id])
+                                               .where.not(room_id: nil)
+                                               .pluck(:room_id)
+    entry_room_ids.select { |i| entry_room_ids.count(i) > 1 }.uniq
+  end
+
 end

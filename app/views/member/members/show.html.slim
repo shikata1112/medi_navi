@@ -26,7 +26,7 @@
 
       .member-dm
         - unless @member.id == current_member.id
-          - if @is_room == true
+          - if @is_room && @room_id
             = link_to member_room_path(@room_id, member_id: @member.id), class: "btn btn-default btn-block" do
               i.far.fa-envelope
           - else

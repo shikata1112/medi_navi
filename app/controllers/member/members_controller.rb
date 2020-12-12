@@ -3,28 +3,13 @@ class Member::MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :follows, :followers]
   
   def show
-
-    @current_entry = Entry.where(member_id: current_member.id)
-    @another_entry = Entry.where(member_id: @member.id)
-    # @room_id = Entry.find_by(member_id: current_member.id, room_id: room_id)
-    # @is_room = true || false
-    @member.entries.new_room_entry(@member, current_member, @current_entry, @another_entry, @is_room)
-
-    # if @member.id != current_member.id
-    #   @current_entry.each do |current|
-    #     @another_entry.each do |another|
-    #       if current.room_id == another.room_id
-    #         @is_room = true
-    #         @room_id = current.room_id
-    #       end
-    #     end
-    #   end
+    @is_room = @member.entries.room_exists?(@member, current_member)
+    @room_id = @member.entries.room_id(@member, current_member)
     
-    #   unless @is_room
-    #     @room = Room.new
-    #     @entry = Entry.new
-    #   end
-    # end
+    unless @is_room
+      @room = Room.new
+      @entry = Entry.new
+    end
   end
 
   def edit
