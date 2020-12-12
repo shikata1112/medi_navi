@@ -86,4 +86,8 @@ class Member < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
+  def my_room_ids
+    entries.includes(:room).pluck('rooms.id')
+  end
+
 end
