@@ -9,11 +9,11 @@ class Member::RoomsController < ApplicationController
   
 
   def index
-    current_entries = current_member.entries.includes(:room)
-    my_room_ids = []
-    current_entries.each do |entry|
-      my_room_ids << entry.room.id
-    end
+    # current_entries = current_member.entries.includes(:room)
+    # my_room_ids = []
+    # current_entries.each do |entry|
+    #   my_room_ids << entry.room.id
+    # end
     @another_entries = Entry.eager_load(:member, :room).where(room_id: my_room_ids).where.not(member_id: current_member.id)
   end
 
