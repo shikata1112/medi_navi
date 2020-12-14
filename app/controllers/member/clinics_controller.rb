@@ -15,7 +15,7 @@ class Member::ClinicsController < ApplicationController
   def show
     @clinic = Clinic.find(params[:id])
     impressionist(@clinic, nil, unique: [:impressionable_id, :ip_address])
-    @clinic.clinic_histories.create_and_destroy_history(current_member, @clinic)
+    @clinic.clinic_histories.create_and_destroy_history(current_member, @clinic.id)
   end
 
   # フォームからのあいまい検索
