@@ -1,9 +1,9 @@
 class Member::RoomsController < ApplicationController
 
-  def create 
+  def create
     room = Room.create!
     Entry.create!(member_id: current_member.id, room_id: room.id)
-    Entry.create!(member_id: params[:member_id], room_id: room.id)
+    Entry.create!(member_id: params[:entry][:member_id], room_id: room.id)
     redirect_to member_room_path(room)
   end
   
