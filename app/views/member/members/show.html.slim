@@ -30,7 +30,7 @@
             = link_to member_room_path(@room_id, member_id: @member.id), class: "btn btn-default btn-block" do
               i.far.fa-envelope
           - else
-            = form_with model: @room, url: member_rooms_path, method: :post, local: true do |f|
+            = form_with model: @room, url: member_rooms_path, local: true do |f|
               = fields_for @entry do |e|
                 = e.hidden_field :member_id, value: @member.id
               = button_tag type: 'submit', class: "btn btn-default btn-block" do
