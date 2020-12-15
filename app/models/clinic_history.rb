@@ -11,7 +11,7 @@ class ClinicHistory < ApplicationRecord
     new_history = new
     new_history.member_id = current_member.id
 
-    if current_member.clinic_histories.any?{ |clinic_history| clinic_history.clinic_id == clinic_id }
+    if current_member.clinic_histories.unscope(where: :clinic_id).any?{ |clinic_history| clinic_history.clinic_id == clinic_id }
       old_history = current_member.clinic_histories.find_by(clinic_id: clinic_id)
       old_history.destroy
     end
