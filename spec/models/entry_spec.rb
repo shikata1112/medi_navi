@@ -29,7 +29,7 @@ RSpec.describe Entry, type: :model do
     entry2 = create(:entry2)
   end
 
-  describe "self.room_exists?" do
+  describe ".room_exists?" do
     it 'entryモデルに紐ずくroomが存在するときtrueを返すこと' do
       @member.entries.room_exists?(@current_member, @member)
 
@@ -37,7 +37,7 @@ RSpec.describe Entry, type: :model do
     end
   end
 
-  describe "self.room_id" do
+  describe ".room_id" do
     it 'entryモデルに紐ずく配列から1件のroom_idを返すこと' do
       first_room_id = @member.entries.room_id(@current_member, @member)
 
