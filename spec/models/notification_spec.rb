@@ -20,4 +20,13 @@ RSpec.describe Notification, type: :model do
     end
   end
 
+  describe ".update_attributes!" do
+    before do
+      @member1 = create(:member)
+    end
+
+    it "description" do
+      
+    end
+  end
 end
