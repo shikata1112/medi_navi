@@ -12,7 +12,7 @@ class Member::ReviewsController < ApplicationController
 
   def create
     @review = @clinic.reviews.build(review_params)
-    @review.save!(@review, current_member, params[:score])
+    @review.review_save!(@review, current_member, params[:score])
     Coupon.coupon_create!(current_member)
     redirect_to member_clinic_reviews_path
   rescue => e

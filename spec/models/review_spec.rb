@@ -20,4 +20,22 @@ RSpec.describe Review, type: :model do
     end
   end
 
+  describe "#review_save!" do
+    before do
+      @clinic = create(:clinic1)
+      @member = create(:member)
+      @review = build(:review)
+    end
+
+    it 'レビューを保存できること' do
+      score = 3
+      review = @clinic.reviews.build
+      review.review_save!(@review, @member, score)
+
+      expect(@review).to be_valid
+      expect(1).to eq @clinic.reviews.size
+      expect(1).to eq @clinic.reviews.first.clinic_id
+    end
+  end
+
 end

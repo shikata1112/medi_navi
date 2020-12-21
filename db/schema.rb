@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_134458) do
+ActiveRecord::Schema.define(version: 2020_12_20_155126) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -212,8 +212,8 @@ ActiveRecord::Schema.define(version: 2020_11_04_134458) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "member_id"
-    t.string "clinic_id"
+    t.integer "member_id"
+    t.integer "clinic_id"
     t.string "title"
     t.text "comment"
     t.integer "wating_time", default: 0
