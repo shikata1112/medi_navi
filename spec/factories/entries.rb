@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :entry do
-    member { nil }
-    room { nil }
+    member_id { 1 }
+    room_id { 1 }
   end
 end
