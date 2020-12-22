@@ -10,5 +10,4 @@ class Message < ApplicationRecord
     message.save!
     message
   end
-  
 end

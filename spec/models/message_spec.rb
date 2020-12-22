@@ -20,4 +20,19 @@ RSpec.describe Message, type: :model do
     end
   end
 
+  describe ".message_create!" do
+    before do
+      @member = create(:member)
+      params = ActionController::Parameters.new(room_id: 1, body: 'test')
+      @message = params.permit(:room_id, :body).to_h
+    end
+
+    it "会員に紐ずくメッセージが保存できること" do
+      Message.message_create!(@member, @message)
+
+      expect(1).to eq @member.messages.size
+      expect('test').to eq @member.messages.first.body  
+    end
+  end
+  
 end
