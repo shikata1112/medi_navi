@@ -5,7 +5,7 @@
     .col-xs-6
       .page-header
         h3
-          = link_to @entries.member.name, member_member_path(@entries.member)
+          = link_to @entry.member.name, member_member_path(@entry.member) # railsのdelegateを使用する
 
       table.table
         thead

@@ -17,7 +17,7 @@ class Member::RoomsController < ApplicationController
     @room = Room.find(params[:id])
     @message = Message.new
     @messages = @room.messages.includes(:member)
-    @entries = @room.entries.find_by('member_id != ?', current_member.id)
+    @entry = @room.entries.find_by('member_id != ?', current_member.id)
   end
 
 end
