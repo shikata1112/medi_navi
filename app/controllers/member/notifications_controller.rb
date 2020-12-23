@@ -6,7 +6,7 @@ class Member::NotificationsController < ApplicationController
                                    .eager_load(:visiter)
                                    .page(params[:page])
                                    .per(8)
-    @notifications.update_attributes!(@notifications)
+    current_member.passive_notifications.update_checked!
   end
 
   def destroy_all

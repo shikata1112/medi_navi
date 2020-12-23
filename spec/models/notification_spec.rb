@@ -34,9 +34,9 @@ RSpec.describe Notification, type: :model do
       )
 
       notifications = @member1.passive_notifications
-      notifications.update_attributes!(notifications)
+      notifications.update_checked!
 
-      expect(true).to eq Notification.find(1).checked
+      expect(true).to eq @member1.passive_notifications.find(1).checked
     end
   end
 end
