@@ -86,4 +86,8 @@ class Member < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
+  def coupon_create!
+    coupons.create!(limit: 1)
+  end
+
 end

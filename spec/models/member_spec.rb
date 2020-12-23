@@ -143,7 +143,17 @@ RSpec.describe Member, type: :model do
       it { expect(association.macro).to eq :has_many }
       it { expect(association.class_name).to eq "Notification"}
     end
-    
   end
 
+  describe "#coupon_create!" do
+    before do
+      @member = create(:member)
+    end
+
+    it 'クーポンが保存されること' do
+      @member.coupon_create!
+
+      expect(1).to eq @member.coupons.size  
+    end
+  end
 end
