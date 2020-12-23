@@ -86,4 +86,14 @@ class Member < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
+  def notification_create!(room, message, entry)
+    notification = active_notifications.new(
+      room_id: room.id,
+      message_id: message.id,
+      visited_id: entry.member_id,
+      action: 'dm'
+    )
+    notification.checked_true_or_false
+    notification.save!
+  end
 end

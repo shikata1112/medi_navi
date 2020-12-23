@@ -143,7 +143,26 @@ RSpec.describe Member, type: :model do
       it { expect(association.macro).to eq :has_many }
       it { expect(association.class_name).to eq "Notification"}
     end
-    
   end
 
+  describe "#notification_create!" do
+    before do
+      @current_member = create(:member)
+      @member = create(:guest)
+      @room = create(:room1)
+      @entry = create(:entry1, member_id: @member.id)
+    end
+
+    it "メッセージの通知が保存されること" do
+      @message = Message.create!(member_id: @current_member.id, room_id: @room.id, body: 'test')
+      @entry = Entry.where.not(member_id: @current_member.id)
+                    .find_by(room_id: @room.id)
+      @current_member.notification_create!(@room, @message, @entry)
+
+      expect(1).to eq @current_member.active_notifications.size
+      expect(1).to eq Notification.first.visiter_id
+      expect(2).to eq Notification.first.visited_id
+      expect('dm').to eq Notification.first.action  
+    end
+  end
 end
