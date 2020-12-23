@@ -28,7 +28,7 @@ RSpec.describe ClinicHistory, type: :model do
     @member1 = create(:member)
   end
 
-  it "#create_new_history" do
+  it ".create_new_history" do
     @clinic1.clinic_histories.create_new_history(@member1, @clinic1.id)
     @member1.reload
     @clinic2.clinic_histories.create_new_history(@member1, @clinic2.id)
@@ -38,7 +38,7 @@ RSpec.describe ClinicHistory, type: :model do
     expect(2).to eq ClinicHistory.all.size
   end
 
-  it "#destroy_old_history" do
+  it ".destroy_old_history" do
     @clinic1.clinic_histories.create_new_history(@member1, @clinic1)
     @clinic2.clinic_histories.create_new_history(@member1, @clinic2)
     @clinic3.clinic_histories.create_new_history(@member1, @clinic3)
