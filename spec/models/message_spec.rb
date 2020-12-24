@@ -19,11 +19,4 @@ RSpec.describe Message, type: :model do
       it { expect(association.class_name).to eq "Room" } 
     end
   end
-
-  describe ".message_create!" do
-    before do
-      @member = create(:member)
-      params = ActionController::Parameters.new(room_id: 1, body: 'test')
-      @message = params.permit(:room_id, :body).to_h
-    end
 end
