@@ -7,10 +7,10 @@ class Review < ApplicationRecord
 
   validates :title, :comment, presence: true
 
-  def save!(review, current_member, score)
-    review.member_id = current_member.id
-    review.score = score
-    review.save
+  def save(current_member, params_score)
+    member_id = current_member.id
+    score = params_score
+    save!
   end
 
 end

@@ -12,7 +12,8 @@ class Member::ReviewsController < ApplicationController
 
   def create
     @review = @clinic.reviews.build(review_params)
-    @review.save!(@review, current_member, params[:score])
+    @review.save(current_member, params[:score])
+    # インスタンスメソッド名を改める
     current_member.coupon_create!
     redirect_to member_clinic_reviews_path
   rescue => e
