@@ -5,7 +5,7 @@ class Notification < ApplicationRecord
   belongs_to :room, optional: true
   belongs_to :message, optional: true
 
-  def self.update_checked!
+  def self.update_checked
     where(checked: false).each {|notification| notification.update_attributes(checked: true)}
   end
 end

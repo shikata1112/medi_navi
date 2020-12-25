@@ -7,7 +7,7 @@ class Member::NotificationsController < ApplicationController
                                    .page(params[:page])
                                    .per(8)
                                    .order(created_at: "DESC")
-    current_member.passive_notifications.update_checked!
+    current_member.passive_notifications.update_checked
   end
 
   def destroy_all
