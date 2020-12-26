@@ -6,6 +6,6 @@ class Notification < ApplicationRecord
   belongs_to :message, optional: true
 
   def self.update_checked
-    where(checked: false).each {|notification| notification.update_attributes(checked: true)}
+    where(checked: false).update_all(checked: true)
   end
 end
