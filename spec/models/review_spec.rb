@@ -29,11 +29,15 @@ RSpec.describe Review, type: :model do
     it 'レビューを保存できること' do
       score = 3
       review = @clinic.reviews.build(clinic_id: @clinic.id, title: 'test', comment: 'testtest', wating_time: 0)
-      review.save(@member, score)
+      review.save!(@member, score)
 
       expect(review).to be_valid
       expect(1).to eq @clinic.reviews.size
       expect(1).to eq @clinic.reviews.first.clinic_id
+    end
+
+    it 'レビューの保存に失敗すること' do
+      
     end
   end
 
