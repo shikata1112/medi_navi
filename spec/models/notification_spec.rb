@@ -20,23 +20,25 @@ RSpec.describe Notification, type: :model do
     end
   end
 
-  describe ".update_attributes!" do
+  describe ".update_checked" do
     before do
       @member1 = create(:member)
-      @member2 = create(:guest)
     end
 
-    it "checkedがtrueに更新されること" do
-      Notification.create(
-        visited_id: @member1.id,
-        visiter_id: @member2.id,
-        checked: false
-      )
+    it "checkedが全てtrueに更新されること" do
+      3.times do |i|
+        Notification.create!(
+          visited_id: @member1.id,
+          visiter_id: "#{i + 1}".to_i,
+          checked: false
+        )
+      end
 
       notifications = @member1.passive_notifications
       notifications.update_checked
 
-      expect(true).to eq @member1.passive_notifications.find(1).checked
+      expect(3).to eq @member1.passive_notifications.where(checked: true).size
+      expect(0).to eq @member1.passive_notifications.where(checked: false).size
     end
   end
 end
