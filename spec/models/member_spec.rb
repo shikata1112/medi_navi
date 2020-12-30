@@ -165,4 +165,33 @@ RSpec.describe Member, type: :model do
       expect('dm').to eq Notification.first.action  
     end
   end
+  
+  describe "#coupon_create!" do
+    before do
+      @member = create(:member)
+    end
+
+    it 'クーポンが保存されること' do
+      @member.coupon_create!
+
+      expect(1).to eq @member.coupons.size  
+    end
+  end
+  
+  describe "#room_ids" do
+    before do
+      @member1 = create(:member)
+      @member2 = create(:guest)
+    end
+
+    it "room_idの配列が返ってくること" do
+      room = Room.create
+      Entry.create(member_id: @member1.id, room_id: room.id)
+      Entry.create(member_id: @member2.id, room_id: room.id)
+      
+      @room_ids = @member1.entries.map { |entry| entry.room.id }
+      expect(@member1.room_ids).to eq @room_ids
+    end
+  end
+  
 end

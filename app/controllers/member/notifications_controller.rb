@@ -2,10 +2,12 @@ class Member::NotificationsController < ApplicationController
   before_action :authenticate_member!
 
   def index
-    @notifications = current_member.passive_notifications.eager_load(:visiter).page(params[:page]).per(8)
-    @notifications.where(checked: false).each do |notification|
-      notification.update_attributes(checked: true)
-    end
+    @notifications = current_member.passive_notifications
+                                   .eager_load(:visiter)
+                                   .page(params[:page])
+                                   .per(8)
+                                   .order(created_at: "DESC")
+    current_member.passive_notifications.update_checked
   end
 
   def destroy_all
