@@ -6,8 +6,9 @@ class Member::MessagesController < ApplicationController
     @room = @message.room
     @entry = Entry.where.not(member_id: current_member.id).find_by(room_id: @room.id)
     current_member.notification_create!(@room, @message, @entry)
-    redirect_back(fallback_location: root_path)
   rescue => e
+    # TODO: 警告文を出す処理
+  ensure
     redirect_back(fallback_location: root_path)
   end
 
