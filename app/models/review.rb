@@ -10,7 +10,7 @@ class Review < ApplicationRecord
   # def save!(current_member, params_score)
   #   self.member_id = current_member.id
   #   self.score = params_score
-  #   save
+  #   save!
   # end
 
 end
