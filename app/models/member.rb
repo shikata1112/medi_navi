@@ -93,7 +93,7 @@ class Member < ApplicationRecord
       visited_id: entry.member_id,
       action: 'dm'
     )
-    notification.checked_true_or_false
+    notification.arrived
     notification.save!
   rescue ActiveRecord::RecordInvalid => e
     Rails.logger.error e.full_messages

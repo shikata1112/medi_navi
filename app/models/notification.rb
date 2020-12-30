@@ -5,12 +5,16 @@ class Notification < ApplicationRecord
   belongs_to :room, optional: true
   belongs_to :message, optional: true
 
-  def checked_true_or_false
-    if visiter_id == visited_id
+  def arrived
+    if same_member?
       checked = true
     else
       checked = false
     end
+  end
+
+  def same_member?
+    visiter_id == visited_id
   end
   
   def self.update_checked
