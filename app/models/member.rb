@@ -95,6 +95,8 @@ class Member < ApplicationRecord
     )
     notification.checked_true_or_false
     notification.save!
+  rescue ActiveRecord::RecordInvalid => e
+    Rails.logger.error e.full_messages
   end
   
   def coupon_create!
