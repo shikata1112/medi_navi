@@ -19,5 +19,4 @@ RSpec.describe Review, type: :model do
       it { expect(association.class_name).to eq "Clinic" } 
     end
   end
-
 end

@@ -145,6 +145,18 @@ RSpec.describe Member, type: :model do
     end
   end
 
+  describe "#coupon_create!" do
+    before do
+      @member = create(:member)
+    end
+
+    it 'クーポンが保存されること' do
+      @member.coupon_create!
+
+      expect(1).to eq @member.coupons.size  
+    end
+  end
+  
   describe "#room_ids" do
     before do
       @member1 = create(:member)

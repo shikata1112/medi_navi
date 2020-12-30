@@ -5,6 +5,5 @@ class Review < ApplicationRecord
   # タグ付け機能
   acts_as_taggable
 
-  validates :title, :comment, presence: true
-  
+  validates :title, :comment, :wating_time, :score, presence: true
 end
