@@ -89,5 +89,9 @@ class Member < ApplicationRecord
   def coupon_create!
     coupons.create!(limit: 1)
   end
+  
+  def room_ids
+    entries.includes(:room).pluck('rooms.id')
+  end
 
 end
