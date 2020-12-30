@@ -20,6 +20,16 @@ RSpec.describe Notification, type: :model do
     end
   end
 
+  describe "#arrived" do
+    it "visiterとvisitedが等しかったらtrue, 等しくなかったらfalse" do
+      notification1 = build(:notification1, visiter_id: 1, visited_id: 2)
+      notification2 = build(:notification2, visiter_id: 3, visited_id: 3)
+
+      expect(false).to eq notification1.arrived
+      expect(true).to eq notification2.arrived
+    end
+  end
+  
   describe ".update_checked" do
     before do
       @member1 = create(:member)

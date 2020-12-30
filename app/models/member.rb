@@ -86,6 +86,19 @@ class Member < ApplicationRecord
   geocoded_by :address
   after_validation :geocode
 
+  def notification_create!(room, message, entry)
+    notification = active_notifications.new(
+      room_id: room.id,
+      message_id: message.id,
+      visited_id: entry.member_id,
+      action: 'dm'
+    )
+    notification.arrived
+    notification.save!
+  rescue ActiveRecord::RecordInvalid => e
+    Rails.logger.error e.full_messages
+  end
+  
   def coupon_create!
     coupons.create!(limit: 1)
   end
