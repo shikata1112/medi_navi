@@ -2,13 +2,9 @@ class Admin::MembersController < ApplicationController
   before_action :authenticate_admin!
 
   def top 
-    days = (Date.today.beginning_of_month..Date.today).to_a
-    members = days.map { |item| Member.where(created_at: item.beginning_of_day..item.end_of_day).count }
-    @graph = LazyHighCharts::HighChart.new('graph') do |f|
-      f.title(text: '会員 月間登録推移')
-      f.xAxis(categories: days)
-      f.series(name: '登録数', data: members)
-    end
+    month = (Date.today.beginning_of_month..Date.today).to_a
+    number_of_members = month.map { |item| Member.where(created_at: item.beginning_of_day..item.end_of_day).count }
+    @graph = Chart.new(month, number_of_members).subscriber_transition
   end
 
   def index
