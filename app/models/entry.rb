@@ -2,6 +2,8 @@ class Entry < ApplicationRecord
   belongs_to :member
   belongs_to :room
 
+  delegate :name, to: :member, prefix: true
+
   def self.room_exists?(member, current_member)
     room_ids(member, current_member).present?
   end
