@@ -29,25 +29,6 @@
               = link_to clinics_genre_search_path(genre_id: genre.id), class: "genre-link", id: 'genre_link' do
                 = genre.medical_department
               |   ｜　
-            
-            / - ["心療内科", "外科", "耳鼻科", "リウマチ科", "泌尿器科"].each do |genre|
-            /   = link_to "#{genre}", clinics_genre_search_path(genre: "#{genre}"), class: "genre-link"
-            /   | 　｜　
-            / br
-
-            / - ["産婦人科", "眼科", "精神科", "耳鼻咽喉科", "形成外科"].each do |genre|
-            /   = link_to "#{genre}", clinics_genre_search_path(genre: "#{genre}"), class: "genre-link"
-            /   | 　｜　
-            / br
-
-            / - ["美容外科", "歯科", "皮膚科", "循環器内科", "小児科"].each do |genre|
-            /   = link_to "#{genre}", clinics_genre_search_path(genre: "#{genre}"), class: "genre-link"
-            /   | 　｜　
-            / br
-
-            / - ["リハビリテーション科"].each do |genre|
-            /   = link_to "#{genre}", clinics_genre_search_path(genre: "#{genre}"), class: "genre-link"
-            /   |  ｜
 
         // 都道府県検索
         .prefecture-search

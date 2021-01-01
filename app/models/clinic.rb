@@ -21,7 +21,6 @@ class Clinic < ApplicationRecord
   
   # クリニックのお気に入り機能
   def favorited_by?(member)
-    # any?を使用することでSQL発行しない
     favorites.any? {|favorite| favorite.member_id == member.id}
   end
 

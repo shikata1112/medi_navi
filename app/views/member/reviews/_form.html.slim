@@ -1,47 +1,46 @@
 
-  
-  .review-box
-    .return-btn.text-right
-      = link_to "戻る", member_clinic_path(clinic), class: "btn btn-default btn-sm"
-    = form_with model: review, url: member_clinic_reviews_path, method: :post, local: true do |f|
-      = f.label :title, "タイトル"
-      br
-      = f.text_field :title, size: 65
-      br
-      = f.label :comment, "本文", class: "review-form"
-      br
-      = f.text_area :comment, size: "64x10"
-      br
-      = f.label "待ち時間", class: "review-form"
-      br
-      = f.radio_button :wating_time, value = 0
-      = f.label "5分未満", class: "waite-time"
-      
-      = f.radio_button :wating_time, value = 1
-      = f.label "10分〜20分", class: "waite-time"
-      
-      = f.radio_button :wating_time, value = 2
-      = f.label "20分〜30分", class: "waite-time"
-      br
-      = f.radio_button :wating_time, value = 3
-      = f.label "30分〜1時間", class: "waite-time"
+.review-box
+  .return-btn.text-right
+    = link_to "戻る", member_clinic_path(clinic), class: "btn btn-default btn-sm"
+  = form_with model: review, url: member_clinic_reviews_path, method: :post, local: true do |f|
+    = f.label :title, "タイトル"
+    br
+    = f.text_field :title, size: 65
+    br
+    = f.label :comment, "本文", class: "review-form"
+    br
+    = f.text_area :comment, size: "64x10"
+    br
+    = f.label "待ち時間", class: "review-form"
+    br
+    = f.radio_button :wating_time, value = 0
+    = f.label "5分未満", class: "waite-time"
+    
+    = f.radio_button :wating_time, value = 1
+    = f.label "10分〜20分", class: "waite-time"
+    
+    = f.radio_button :wating_time, value = 2
+    = f.label "20分〜30分", class: "waite-time"
+    br
+    = f.radio_button :wating_time, value = 3
+    = f.label "30分〜1時間", class: "waite-time"
 
-      = f.radio_button :wating_time, value = 4
-      = f.label "1時間〜2時間", class: "waite-time"
-      
-      = f.radio_button :wating_time, value = 5
-      = f.label "2時間以上", class: "waite-time"
-      br
-      = f.label :tag_list, 'タグ', class: "review-form"
-      br
-      = f.text_field :tag_list, value: @review.tag_list.join(','), id: 'tags'
-      br
+    = f.radio_button :wating_time, value = 4
+    = f.label "1時間〜2時間", class: "waite-time"
+    
+    = f.radio_button :wating_time, value = 5
+    = f.label "2時間以上", class: "waite-time"
+    br
+    = f.label :tag_list, 'タグ', class: "review-form"
+    br
+    = f.text_field :tag_list, value: @review.tag_list.join(','), id: 'tags'
+    br
 
-      .text-center
-        = f.label :score, "評価"
-        script src="/assets/jquery.raty.js"
-        #star
-        br
-      
-        .review-submit-btn
-          = f.submit "投稿", class: "btn btn-lg btn-primary"
+    .text-center
+      = f.label :score, "評価"
+      script src="/assets/jquery.raty.js"
+      #star
+      br
+    
+      .review-submit-btn
+        = f.submit "投稿", class: "btn btn-lg btn-primary"
