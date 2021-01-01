@@ -19,4 +19,17 @@ RSpec.describe Review, type: :model do
       it { expect(association.class_name).to eq "Clinic" } 
     end
   end
+
+  describe "delegations" do
+    before do
+      @member = create(:member, name: 'しゅうへい')
+      @clinic = create(:clinic)
+    end
+
+    it "#member_name" do
+      review = create(:review, member_id: @member.id, clinic_id: @clinic.id)
+
+      expect(review.member_name).to eq 'しゅうへい'  
+    end
+  end
 end
