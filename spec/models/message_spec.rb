@@ -19,4 +19,17 @@ RSpec.describe Message, type: :model do
       it { expect(association.class_name).to eq "Room" } 
     end
   end
+
+  describe "delegations" do
+    before do
+      @member = create(:member, name: 'やまだ')
+      @room = create(:room1)
+    end
+
+    it "#member_name" do
+      message = Message.create!(member_id: @member.id, room_id: @room.id, body: 'test')
+
+      expect(message.member_name).to eq 'やまだ'  
+    end
+  end
 end
