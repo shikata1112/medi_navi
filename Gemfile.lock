@@ -354,6 +354,8 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    shoulda-matchers (4.4.1)
+      activesupport (>= 4.2.0)
     sinatra (2.0.8.1)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -464,6 +466,7 @@ DEPENDENCIES
   rubocop (~> 1.4)
   sass-rails (~> 5.0)
   selenium-webdriver
+  shoulda-matchers
   slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)
