@@ -7,13 +7,11 @@ div class="average-star#{clinic.id}"
       starHalf: "/assets/star-half.png",
       half: true,
       readOnly: true,
-      score: "#{avg(clinic.reviews.map(&:score))}",  // 平均点を算出し、round関数で切り上げ
+      score: "#{avg(clinic.reviews.map(&:score))}",
     });
 
   .clinic-score-average
     - if clinic.reviews.map(&:score).present?
-      // = clinic.reviews.average(:score).to_f.round(2)
-      // mapを使用することでSQLが発行されない（N+1問題）
       = avg(clinic.reviews.map(&:score))
     - else
       | 0.0

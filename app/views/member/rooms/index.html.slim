@@ -18,6 +18,5 @@
                 = link_to entry.member_name, member_member_path(entry.member)
 
               td
-                = link_to member_room_path(entry.room, member_id: entry.member_id) do
-                  / 最後に送られたメッセージを表示
+                = link_to member_room_path(entry.room, member_id: entry.member.id) do
                   = Message.find_by(id: entry.room.message_ids.last)&.body
