@@ -21,15 +21,6 @@ RSpec.describe Review, type: :model do
   end
 
   describe "delegations" do
-    before do
-      @member = create(:member, name: 'しゅうへい')
-      @clinic = create(:clinic)
-    end
-
-    it "#member_name" do
-      review = create(:review, member_id: @member.id, clinic_id: @clinic.id)
-
-      expect(review.member_name).to eq 'しゅうへい'  
-    end
+    it { is_expected.to delegate_method(:name).to(:member).with_prefix }
   end
 end

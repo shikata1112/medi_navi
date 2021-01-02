@@ -55,15 +55,6 @@ RSpec.describe Entry, type: :model do
   end
   
   describe "delegations" do
-    before do
-      @member = create(:member, name: 'たろう')
-      @room = create(:room1)
-    end
-
-    it "#member_name" do
-      entry = Entry.create!(member_id: @member.id, room_id: @room.id)
-
-      expect(entry.member_name).to eq 'たろう'
-    end
+    it { is_expected.to delegate_method(:name).to(:member).with_prefix }
   end
 end

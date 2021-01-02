@@ -60,18 +60,7 @@ RSpec.describe ClinicHistory, type: :model do
   end
 
   describe "delegations" do
-    before do
-      @member = create(:member)
-      @clinic = create(:clinic, name: '大阪中央クリニック', address: '大阪府大阪市中央区心斎橋筋1丁目1-1')
-      @history = create(:clinic_history, member_id: @member.id, clinic_id: @clinic.id)
-    end
-
-    it "#clinic_name" do
-      expect(@history.clinic_name).to eq '大阪中央クリニック'  
-    end
-
-    it "#clinic_address" do
-      expect(@history.clinic_address).to eq '大阪府大阪市中央区心斎橋筋1丁目1-1'
-    end
+    it { is_expected.to delegate_method(:name).to(:clinic).with_prefix }
+    it { is_expected.to delegate_method(:address).to(:clinic).with_prefix }
   end
 end
