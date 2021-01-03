@@ -74,4 +74,8 @@ Rails.application.routes.draw do
     end
   # -------------------- member -----------------------------------------------
 
+  namespace :api do
+    resources :clinics, only: [:index]
+  end
+
 end
