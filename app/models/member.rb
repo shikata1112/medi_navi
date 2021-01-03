@@ -109,4 +109,15 @@ class Member < ApplicationRecord
   def display_deleted_text
     is_deleted ? "有効" : "無効"
   end
+
+  def self.csv_values
+    CSV.generate do |csv|
+      csv << %w(ID 氏名 email 登録日)
+      Member.all.each do |member|
+        values = [member.id, member.name, member.email, member.created_at.to_s(:datetime_jp)]
+        csv << values
+      end
+    end
+  end
+  
 end
