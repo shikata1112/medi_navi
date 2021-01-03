@@ -107,6 +107,6 @@ class Member < ApplicationRecord
   end
 
   def display_deleted_text
-    is_deleted ? "有効" : "無効"
+    is_deleted ? "無効" : "有効"
   end
 end
