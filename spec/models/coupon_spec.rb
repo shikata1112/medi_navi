@@ -14,4 +14,14 @@ RSpec.describe Coupon, type: :model do
     end
   end
 
+  describe "#ja_expiration_date" do
+    before do
+      @member = create(:member)
+      @coupon = create(:coupon, member_id: @member.id)
+    end
+
+    it "有効期限を返すこと" do
+      expect(@coupon.ja_expiration_date).to eq (Time.now + 1.minute).to_s(:datetime_jp)
+    end
+  end
 end
