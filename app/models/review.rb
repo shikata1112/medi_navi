@@ -2,6 +2,8 @@ class Review < ApplicationRecord
   belongs_to :member
   belongs_to :clinic
 
+  delegate :name, to: :member, prefix: true
+
   # タグ付け機能
   acts_as_taggable
 

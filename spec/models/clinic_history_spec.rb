@@ -20,32 +20,47 @@ RSpec.describe ClinicHistory, type: :model do
     end
   end
 
-  before do
-    @clinic1 = create(:clinic)
-    @clinic2 = create(:clinic)
-    @clinic3 = create(:clinic)
-    @clinic4 = create(:clinic)
-    @member1 = create(:member)
+  describe ".create_new_history" do
+    before do
+      @clinic1 = create(:clinic)
+      @clinic2 = create(:clinic)
+      @member1 = create(:member)
+    end
+
+    it "クリニックの閲覧履歴が保存されること" do
+      @clinic1.clinic_histories.create_new_history(@member1, @clinic1.id)
+      @member1.reload
+      @clinic2.clinic_histories.create_new_history(@member1, @clinic2.id)
+      @member1.reload
+      @clinic1.clinic_histories.create_new_history(@member1, @clinic1.id)
+      @member1.reload
+      expect(2).to eq ClinicHistory.all.size
+    end
   end
 
-  it ".create_new_history" do
-    @clinic1.clinic_histories.create_new_history(@member1, @clinic1.id)
-    @member1.reload
-    @clinic2.clinic_histories.create_new_history(@member1, @clinic2.id)
-    @member1.reload
-    @clinic1.clinic_histories.create_new_history(@member1, @clinic1.id)
-    @member1.reload
-    expect(2).to eq ClinicHistory.all.size
+  describe ".destroy_old_history" do
+    before do
+      @clinic1 = create(:clinic)
+      @clinic2 = create(:clinic)
+      @clinic3 = create(:clinic)
+      @clinic4 = create(:clinic)
+      @member1 = create(:member)
+    end
+
+    it "クリニックの古い閲覧履歴が削除されること" do
+      @clinic1.clinic_histories.create_new_history(@member1, @clinic1)
+      @clinic2.clinic_histories.create_new_history(@member1, @clinic2)
+      @clinic3.clinic_histories.create_new_history(@member1, @clinic3)
+      @clinic4.clinic_histories.create_new_history(@member1, @clinic4)
+  
+      ClinicHistory.destroy_old_history(@member1)
+  
+      expect(3).to eq ClinicHistory.all.size
+    end
   end
 
-  it ".destroy_old_history" do
-    @clinic1.clinic_histories.create_new_history(@member1, @clinic1)
-    @clinic2.clinic_histories.create_new_history(@member1, @clinic2)
-    @clinic3.clinic_histories.create_new_history(@member1, @clinic3)
-    @clinic4.clinic_histories.create_new_history(@member1, @clinic4)
-
-    ClinicHistory.destroy_old_history(@member1)
-
-    expect(3).to eq ClinicHistory.all.size
+  describe "delegations" do
+    it { is_expected.to delegate_method(:name).to(:clinic).with_prefix }
+    it { is_expected.to delegate_method(:address).to(:clinic).with_prefix }
   end
 end

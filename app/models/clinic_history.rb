@@ -2,6 +2,8 @@ class ClinicHistory < ApplicationRecord
   belongs_to :clinic
   belongs_to :member
 
+  delegate :name, :address, to: :clinic, prefix: true
+
   def self.create_and_destroy_history(current_member, clinic_id)
     create_new_history(current_member, clinic_id)
     destroy_old_history(current_member)

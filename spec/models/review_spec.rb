@@ -19,4 +19,8 @@ RSpec.describe Review, type: :model do
       it { expect(association.class_name).to eq "Clinic" } 
     end
   end
+
+  describe "delegations" do
+    it { is_expected.to delegate_method(:name).to(:member).with_prefix }
+  end
 end

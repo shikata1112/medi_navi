@@ -20,16 +20,16 @@ RSpec.describe Entry, type: :model do
     end
   end
 
-  before do
-    @current_member = create(:member)
-    @member = create(:guest)
-    room1 = create(:room1)
-    room2 = create(:room2)
-    entry1 = create(:entry1)
-    entry2 = create(:entry2)
-  end
-
   describe ".room_exists?" do
+    before do
+      @current_member = create(:member)
+      @member = create(:guest)
+      @room1 = create(:room1)
+      @room2 = create(:room2)
+      @entry1 = create(:entry1)
+      @entry2 = create(:entry2)
+    end
+
     it 'entryモデルに紐ずくroomが存在するときtrueを返すこと' do
       @member.entries.room_exists?(@current_member, @member)
 
@@ -38,6 +38,15 @@ RSpec.describe Entry, type: :model do
   end
 
   describe ".room_id" do
+    before do
+      @current_member = create(:member)
+      @member = create(:guest)
+      @room1 = create(:room1)
+      @room2 = create(:room2)
+      @entry1 = create(:entry1)
+      @entry2 = create(:entry2)
+    end
+
     it 'entryモデルに紐ずく配列から1件のroom_idを返すこと' do
       first_room_id = @member.entries.room_id(@current_member, @member)
 
@@ -45,4 +54,7 @@ RSpec.describe Entry, type: :model do
     end
   end
   
+  describe "delegations" do
+    it { is_expected.to delegate_method(:name).to(:member).with_prefix }
+  end
 end

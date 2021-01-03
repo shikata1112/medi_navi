@@ -5,7 +5,7 @@
     .col-xs-6
       .page-header
         h3
-          = link_to @entry.member.name, member_member_path(@entry.member)
+          = link_to @entry.member_name, member_member_path(@entry.member)
 
       table.table
         thead
@@ -21,7 +21,7 @@
             tr
               td
                 = link_to member_member_path(message.member) do
-                  = message.member.name
+                  = message.member_name
               td
                 = message.body
               td
