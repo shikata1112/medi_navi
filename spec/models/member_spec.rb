@@ -208,4 +208,19 @@ RSpec.describe Member, type: :model do
       expect(@member2.display_gender_text).to eq "女性"
     end
   end
+
+  describe "#display_deleted_text" do
+    before do
+      @member1 = create(:member, is_deleted: true)
+      @member2 = create(:guest, is_deleted: false)
+    end
+
+    it "返り値で有効を返すこと" do
+      expect(@member1.display_deleted_text).to eq "有効"
+    end
+
+    it "返り値で無効を返すこと" do
+      expect(@member2.display_deleted_text).to eq "無効"
+    end
+  end
 end

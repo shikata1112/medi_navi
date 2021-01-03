@@ -106,4 +106,7 @@ class Member < ApplicationRecord
     sex ? "男性" : "女性"
   end
 
+  def display_deleted_text
+    is_deleted ? "有効" : "無効"
+  end
 end
