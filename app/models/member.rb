@@ -102,4 +102,8 @@ class Member < ApplicationRecord
     entries.includes(:room).pluck('rooms.id')
   end
 
+  def display_gender_text
+    sex ? "男性" : "女性"
+  end
+
 end

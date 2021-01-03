@@ -193,5 +193,19 @@ RSpec.describe Member, type: :model do
       expect(@member1.room_ids).to eq @room_ids
     end
   end
-  
+
+  describe "#display_gender_text" do
+    before do
+      @member1 = create(:member, sex: true)
+      @member2 = create(:guest, sex: false)
+    end
+
+    it "返り値で男性を返すこと" do
+      expect(@member1.display_gender_text).to eq "男性"
+    end
+
+    it "返り値で女性を返すこと" do
+      expect(@member2.display_gender_text).to eq "女性"
+    end
+  end
 end
