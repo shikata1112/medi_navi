@@ -27,7 +27,7 @@
               td = clinic.doctor
               td = clinic.address 
               td = clinic.phone_number
-              td = clinic.is_active == true ? '開院中' : '閉院中'
+              td = clinic.display_active_text
               td = link_to "編集", edit_admin_clinic_path(clinic), class:"btn btn-warning", data: {"turbolinks" => false}
               td = link_to "削除", admin_clinic_path(clinic), class:"btn btn-danger", method: :delete
 
