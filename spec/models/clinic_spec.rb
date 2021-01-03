@@ -134,4 +134,18 @@ RSpec.describe Clinic, type: :model do
     
   end
 
+  describe "#display_active_text" do
+    before do
+      @clinic1 = create(:clinic1, is_active: true)
+      @clinic2 = create(:clinic1, is_active: false)
+    end
+
+    it "返り値が開院中であること" do
+      expect(@clinic1.display_active_text).to eq '開院中'
+    end
+
+    it "返り値が閉院中であること" do
+      expect(@clinic2.display_active_text).to eq '閉院中'
+    end
+  end
 end

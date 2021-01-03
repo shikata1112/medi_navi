@@ -48,4 +48,8 @@ class Clinic < ApplicationRecord
     eager_load(:genres, :favorites, :consultation_hours, :reviews, :genre_maps)
   end
 
+  def display_active_text
+    is_active ? '開院中' : '閉院中'
+  end
+  
 end
