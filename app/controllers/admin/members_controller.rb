@@ -24,14 +24,8 @@ class Admin::MembersController < ApplicationController
 
   def respond_format
     respond_to do |format|
-      format_html_csv(format)
-    end
-  end
-
-  def format_html_csv(format)
-    format.html
-    format.csv do |csv|
-      send_users_csv
+      format.html
+      format.csv { send_users_csv }
     end
   end
 
