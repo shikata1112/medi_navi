@@ -1,16 +1,9 @@
 class Coupon < ApplicationRecord
   belongs_to :member
 
-  enum is_valid: { '有効': true, '無効': false }
-  # TODO: 修正
-
-  def self.coupon_destroy
-    coupons = Coupon.all 
-    coupons.each do |coupon|
-      if coupon.expired? && coupon.is_valid == '有効'
-        coupon.is_valid = '無効'
-        coupon.save
-      end
+  def self.destroy!
+    Coupon.each do |coupon|
+      coupon.destroy! if coupon.expired?
     end
   end
 
