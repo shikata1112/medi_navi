@@ -2,7 +2,7 @@ class Coupon < ApplicationRecord
   belongs_to :member
 
   def self.destroy!
-    Coupon.each do |coupon|
+    Coupon.all.each do |coupon|
       coupon.destroy! if coupon.expired?
     end
   end

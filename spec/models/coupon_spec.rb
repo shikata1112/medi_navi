@@ -24,4 +24,29 @@ RSpec.describe Coupon, type: :model do
       expect(@coupon.ja_expiration_date).to eq (Time.now + 1.minute).to_s(:datetime_jp)
     end
   end
+
+  describe ".destroy!" do
+    before do
+      @member = create(:member)
+    end
+
+    it "条件に一致するcouponが削除されること" do
+      create(:coupon, created_at: Time.now)
+
+      3.times do
+        Coupon.create!(
+          member_id: @member.id,
+          is_valid: true,
+          limit: 1,
+          created_at: Time.now - 1.minute
+        )
+      end
+      
+      Coupon.all.each do |coupon|
+        coupon.destroy! if coupon.created_at + coupon.limit.minutes < Time.now
+      end
+
+      expect(@member.coupons.size).to eq 1
+    end
+  end
 end
