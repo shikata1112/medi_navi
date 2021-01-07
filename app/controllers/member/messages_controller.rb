@@ -7,10 +7,10 @@ class Member::MessagesController < ApplicationController
     @entry = Entry.where.not(member_id: current_member.id).find_by(room_id: @room.id)
     current_member.notification_create!(@room, @message, @entry)
   rescue ActiveRecord::RecordInvalid => e
-    Rails.logger.error e.full_messages
+    Rails.logger.error e.message
+    flash[:warning] = "メッセージが空です!"
   rescue => e
-    Rails.logger.error e.full_messages
-    # TODO: 警告文を出す処理
+    Rails.logger.error e.message
   ensure
     redirect_back(fallback_location: root_path)
   end

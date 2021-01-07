@@ -91,7 +91,7 @@ class Member < ApplicationRecord
     notification.arrived
     notification.save!
   rescue ActiveRecord::RecordInvalid => e
-    Rails.logger.error e.full_messages
+    Rails.logger.error e.message
   end
   
   def coupon_create!
