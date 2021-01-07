@@ -27,13 +27,14 @@
               td
                 - if message.member == current_member
                   = link_to '削除', member_message_path(message), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn-sm btn-danger'
-      .alert.alert-warning
-        = flash[:warning]
 
   .row
     .col-xs-3
 
-    .col-xs-6 style="margin-top: 40px;"
+    .col-xs-6 style="margin-top: 20px;"
+      p.alert-warning
+          = flash[:warning]
+
       = form_with model: @message, url: member_messages_path, local: true do |f|
 
         .col-xs-10
