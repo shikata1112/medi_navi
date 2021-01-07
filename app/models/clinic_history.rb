@@ -25,4 +25,8 @@ class ClinicHistory < ApplicationRecord
     histories = current_member.clinic_histories.unscope(where: :clinic_id).all
     histories[0].destroy if histories.count > histories_stock_limit
   end
+
+  def clinic_reviews_score
+    clinic.reviews.map(&:score)
+  end
 end
