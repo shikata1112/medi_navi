@@ -10,7 +10,7 @@ class Member::MessagesController < ApplicationController
     Rails.logger.error e.full_messages
   rescue => e
     Rails.logger.error e.full_messages
-    # TODO: 警告文を出す処理
+    flash[:warning] = "メッセージが空です"
   ensure
     redirect_back(fallback_location: root_path)
   end

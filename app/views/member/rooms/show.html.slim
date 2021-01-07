@@ -27,6 +27,8 @@
               td
                 - if message.member == current_member
                   = link_to '削除', member_message_path(message), method: :delete, data: { confirm: '本当に削除してもよろしいですか？' }, class: 'btn-sm btn-danger'
+      .alert.alert-warning
+        = flash[:warning]
 
   .row
     .col-xs-3
