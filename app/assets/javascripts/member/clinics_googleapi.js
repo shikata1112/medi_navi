@@ -48,7 +48,7 @@ function markerEvent(i, markerData, marker, infoWindow, map) {
     content: `<a href='/member/clinics/${ id }'>${ markerData[i]['name'] }</a>`
   });
 }
-console.log('initMap')
+
 $(document).ready(function(){
   $.ajax({
     url: '/api/clinics',

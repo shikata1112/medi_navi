@@ -1,6 +1,5 @@
 
 function ShowMap() {
-  console.log('ShowMap')
   geocoder = new google.maps.Geocoder()
 
   map = new google.maps.Map(document.getElementById('showmap'), {
