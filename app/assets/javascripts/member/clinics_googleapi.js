@@ -43,6 +43,7 @@ function markerEvent(i, markerData, marker, infoWindow, map) {
   });
 
   let id = markerData[i]['id']
+  console.log(markerData)
 
   infoWindow[i] = new google.maps.InfoWindow({
     content: `<a href='/member/clinics/${ id }'>${ markerData[i]['name'] }</a>`
