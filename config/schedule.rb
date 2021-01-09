@@ -29,5 +29,5 @@ set :environment, rails_env
 set :output, 'log/cron.log'
 
 every 1.minute do
-  runner 'Coupon.coupon_destroy'
+  runner 'Coupon.destroy!'
 end

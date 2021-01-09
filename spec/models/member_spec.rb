@@ -93,44 +93,149 @@ RSpec.describe Member, type: :model do
     context "Favoriteモデルとのアソシエーション" do
       let(:target) { :favorites } 
       it { expect(association.macro).to eq :has_many } 
-      it { expect(association.class_name).to eq "Favorite"} 
+      it { expect(association.class_name).to eq "Favorite" } 
     end
     
     context "Reviewモデルとのアソシエーション" do
       let(:target) { :reviews } 
       it { expect(association.macro).to eq :has_many } 
-      it { expect(association.class_name).to eq "Review"} 
+      it { expect(association.class_name).to eq "Review" } 
     end
 
     context "Couponモデルとのアソシエーション" do
       let(:target) { :coupons } 
       it { expect(association.macro).to eq :has_many } 
-      it { expect(association.class_name).to eq "Coupon"} 
+      it { expect(association.class_name).to eq "Coupon" } 
     end
 
     context "Entryモデルとのアソシエーション" do
       let(:target) { :entries } 
       it { expect(association.macro).to eq :has_many } 
-      it { expect(association.class_name).to eq "Entry"} 
+      it { expect(association.class_name).to eq "Entry" } 
     end
 
     context "Messageモデルとのアソシエーション" do
       let(:target) { :messages } 
       it { expect(association.macro).to eq :has_many } 
-      it { expect(association.class_name).to eq "Message"} 
+      it { expect(association.class_name).to eq "Message" } 
     end
 
-    # context "Relationshipモデルとのアソシエーション" do
-    #   let(:target) { :relationships } 
-    #   it { expect(association.macro).to eq :has_many } 
-    #   it { expect(association.class_name).to eq "Relationship"} 
-    # end
+    context "ActiveRelationshipモデルとのアソシエーション" do
+      let(:target) { :active_relationships }
+      it { expect(association.macro).to eq :has_many }
+      it { expect(association.class_name).to eq "Relationship" }
+    end
 
-    # context "Notificationモデルとのアソシエーション" do
-    #   let(:target) { :notifications } 
-    #   it { expect(association.macro).to eq :has_many } 
-    #   it { expect(association.class_name).to eq "Notification"} 
-    # end
+    context "PassiveRelationshipモデルとのアソシエーション" do
+      let(:target) { :passive_relationships }
+      it { expect(association.macro).to eq :has_many }
+      it { expect(association.class_name).to eq "Relationship" }
+    end
+
+    context "ActiveNotificationモデルとのアソシエーション" do
+      let(:target) { :active_notifications }
+      it { expect(association.macro).to eq :has_many }
+      it { expect(association.class_name).to eq "Notification" }
+    end
+
+    context "PassiveNotificationモデルとのアソシエーション" do
+      let(:target) { :passive_notifications }
+      it { expect(association.macro).to eq :has_many }
+      it { expect(association.class_name).to eq "Notification"}
+    end
   end
 
+  describe "#notification_create!" do
+    before do
+      @current_member = create(:member)
+      @member = create(:guest)
+      @room = create(:room1)
+      @entry = create(:entry1, member_id: @member.id)
+    end
+
+    it "メッセージの通知が保存されること" do
+      @message = Message.create!(member_id: @current_member.id, room_id: @room.id, body: 'test')
+      @entry = Entry.where.not(member_id: @current_member.id)
+                    .find_by(room_id: @room.id)
+      @current_member.notification_create!(@room, @message, @entry)
+
+      expect(1).to eq @current_member.active_notifications.size
+      expect(1).to eq Notification.first.visiter_id
+      expect(2).to eq Notification.first.visited_id
+      expect('dm').to eq Notification.first.action  
+    end
+  end
+  
+  describe "#coupon_create!" do
+    before do
+      @member = create(:member)
+    end
+
+    it 'クーポンが保存されること' do
+      @member.coupon_create!
+
+      expect(1).to eq @member.coupons.size  
+    end
+  end
+  
+  describe "#room_ids" do
+    before do
+      @member1 = create(:member)
+      @member2 = create(:guest)
+    end
+
+    it "room_idの配列が返ってくること" do
+      room = Room.create
+      Entry.create(member_id: @member1.id, room_id: room.id)
+      Entry.create(member_id: @member2.id, room_id: room.id)
+      
+      @room_ids = @member1.entries.map { |entry| entry.room.id }
+      expect(@member1.room_ids).to eq @room_ids
+    end
+  end
+
+  describe "#display_gender_text" do
+    before do
+      @member1 = create(:member, sex: true)
+      @member2 = create(:guest, sex: false)
+    end
+
+    it "返り値で男性を返すこと" do
+      expect(@member1.display_gender_text).to eq "男性"
+    end
+
+    it "返り値で女性を返すこと" do
+      expect(@member2.display_gender_text).to eq "女性"
+    end
+  end
+
+  describe "#display_deleted_text" do
+    before do
+      @member1 = create(:member, is_deleted: true)
+      @member2 = create(:guest, is_deleted: false)
+    end
+
+    it "返り値で無効を返すこと" do
+      expect(@member1.display_deleted_text).to eq "無効"
+    end
+
+    it "返り値で有効を返すこと" do
+      expect(@member2.display_deleted_text).to eq "有効"
+    end
+  end
+
+  describe ".generate_csv" do
+    before do
+      create(:member)
+      create(:guest)
+    end
+    
+    it '会員の情報をstringクラスで返すこと' do
+      outcome = Member.generate_csv
+
+      expect(outcome.class).to eq String
+      expect(outcome.lines.size).to eq 3
+    end
+  end
+  
 end

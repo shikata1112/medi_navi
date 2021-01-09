@@ -13,14 +13,14 @@ class Clinic < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :members, through: :favorites
 
+  has_many :clinic_histories, dependent: :destroy
+
   # バリデーション
   validates :name, :doctor, :address, :postcode, :phone_number, presence: true
   validates :is_active, inclusion: {in: [true, false]}
   
-
   # クリニックのお気に入り機能
   def favorited_by?(member)
-    # any?を使用することでSQL発行しない
     favorites.any? {|favorite| favorite.member_id == member.id}
   end
 
@@ -28,22 +28,32 @@ class Clinic < ApplicationRecord
   mount_uploaders :images, ImageUploader
   attachment :image
 
-  # 検索機能
-  def Clinic.search(search)
-    Clinic.where(['name LIKE ? OR nearest_station LIKE ? OR phone_number LIKE ? OR address LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
-  end
-
   # google API, 現在地からの検索機能
   geocoded_by :address
   after_validation :geocode
 
-
   # impressions-pv
   is_impressionable counter_cache: true
 
-  # 新着順
+  # 検索機能
+  def self.search(search)
+    where(['name LIKE ? OR nearest_station LIKE ? OR phone_number LIKE ? OR address LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
+  end
+
   def self.new_order
     order(id: 'DESC')
   end
 
+  def self.clinics_load
+    eager_load(:genres, :favorites, :consultation_hours, :reviews, :genre_maps)
+  end
+
+  def display_active_text
+    is_active ? '開院中' : '閉院中'
+  end
+
+  def review_scores
+    reviews.map(&:score)
+  end
+  
 end

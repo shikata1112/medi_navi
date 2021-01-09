@@ -24,8 +24,8 @@
           - @reviews.each do |review|
             tr
               td
-                = link_to member_member_path(review.member.id) do
-                  = review.member.name
+                = link_to member_member_path(review.member_id) do
+                  = review.member_name
               td
                 = review.title
               td.comment

@@ -1,23 +1,24 @@
 class Coupon < ApplicationRecord
+  belongs_to :member
 
-  belongs_to :user
-
-  enum is_valid: { '有効': true, '無効': false }
-
-  def self.coupon_create(member)
-    coupon = Coupon.new(member_id: member.id, limit: 1)
-    coupon.save
-  end
-
-  def self.coupon_destroy
-    time = Time.now
-    coupons = Coupon.all 
-    coupons.each do |coupon|
-      if coupon.created_at + coupon.limit.minutes < time && coupon.is_valid == '有効'
-        coupon.is_valid = '無効'
-        coupon.save
-      end
+  def self.destroy!
+    all.each do |coupon|
+      coupon.destroy! if coupon.expired?
     end
   end
 
+  def ja_expiration_date
+    expiration_date.to_s(:datetime_jp)
+  end
+
+  private
+
+  def expired?
+    expiration_date < Time.now
+  end
+
+  def expiration_date
+    created_at + limit.minutes
+  end
+  
 end

@@ -1,6 +1,6 @@
 class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
-
+  before_action :set_genre, only: [:edit, :update, :destroy]
 
   def new
     @genre = Genre.new
@@ -8,8 +8,13 @@ class Admin::GenresController < ApplicationController
 
   def create 
     @genre = Genre.new(genre_params)
-    @genre.save
-    redirect_to admin_genres_path
+    if @genre.save
+      flash[:genre_create] = "診療科目を登録しました。"
+      redirect_to admin_genres_path
+    else
+      flash[:genre_create_failure] = "診療科目名が空欄またはすでに登録されています。"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def index
@@ -17,22 +22,29 @@ class Admin::GenresController < ApplicationController
   end
 
   def edit
-    @genre = Genre.find(params[:id])
   end
 
   def update
-    @genre = Genre.find(params[:id])
-    @genre.update(genre_params)
-    redirect_to admin_genres_path
+    if @genre.update(genre_params)
+      redirect_to admin_genres_path
+      flash[:genre_edit] = "診療科目を更新しました。"
+    else
+      flash[:genre_edit_failure] = "診療科目名が空欄またはすでに登録されています。"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def destroy
-    @genre = Genre.find(params[:id])
     @genre.destroy
+    flash[:genre_destroy] = "診療科目を削除しました。"
     redirect_to admin_genres_path
   end
 
   private
+
+  def set_genre
+    @genre = Genre.find(params[:id])
+  end
 
   def genre_params
     params.require(:genre).permit(:medical_department)

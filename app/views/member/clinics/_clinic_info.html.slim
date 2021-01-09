@@ -1,4 +1,4 @@
-  
+
 .col-xs-2
 .col-xs-8.clinic-info
 
@@ -35,7 +35,6 @@
             |  口コミ 
             = clinic.reviews.size
             | 件
-          / = clinic.impressions_count
 
       table.table.clinic-contents
         tr
@@ -66,39 +65,5 @@
           i.fas.fa-pencil-alt
           |  口コミを投稿する
 
-  .row
-    table.table.table-bordered.clinic_consultation_hours
-      thead
-        tr
-          th.week 診療時間
-          th.week 月
-          th.week 火
-          th.week 水
-          th.week 木
-          th.week 金
-          th.week 土
-          th.week 日
-          th.week 祝
-      - clinic.consultation_hours.each do |consultation_hour|
-        tbody
-          tr
-            td
-              = consultation_hour.start_time
-              | 〜
-              = consultation_hour.finish_time
-            td 
-              = consultation_hour.mo_time
-            td
-              = consultation_hour.tu_time
-            td
-              = consultation_hour.we_time
-            td
-              = consultation_hour.th_time
-            td
-              = consultation_hour.fr_time
-            td
-              = consultation_hour.sa_time
-            td
-              = consultation_hour.su_time
-            td
-              = consultation_hour.ho_time
+  table.table.table-bordered.clinic_consultation_hours
+    = render 'member/clinics/clinic_consultation_hours', clinic: clinic

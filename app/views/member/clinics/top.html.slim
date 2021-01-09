@@ -1,5 +1,3 @@
-  - content_for(:body_attributes) do
-
 
   .top-image
     .clinic-top-image
@@ -7,8 +5,6 @@
       p.top-app-logo
         i.fas.fa-clinic-medical
         |  Medi Navi
-
-
 
   .text-center.search-form
     = form_tag(clinics_search_path, method: :get) do
@@ -26,13 +22,13 @@
           .page-header
             h4
               i.fas.fa-align-left
-              |  ジャンル一覧から探す
+              |  診療科目から探す
 
           .genre-index
             - @genres.each do |genre|
-              = link_to clinics_genre_search_path(genre_id: genre.id), class: "genre-link" do
+              = link_to clinics_genre_search_path(genre_id: genre.id), class: "genre-link", id: 'genre_link' do
                 = genre.medical_department
-              | 　｜　
+              |   ｜　
 
         // 都道府県検索
         .prefecture-search
@@ -42,145 +38,65 @@
           = javascript_include_tag 'jquery.japan-map.min.js'
           #map-container
 
-
         // google APIで検索
         .google-search
           .page-header
             h4
               i.fas.fa-map-marked-alt
               |  近くのクリニックを探す
-
-          #map style='height: 400px; width: 700px;'
-
+          
           - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMap".html_safe
           script{ async src=google_api }
 
-          - if member_signed_in?
-            javascript:
+          #map style='height: 400px; width: 700px;'
 
-              let map;
-              let marker = [];
-              let infoWindow = [];
-              let markerData = gon.clinics;
-
-              function initMap() {
-                geocoder = new google.maps.Geocoder()
-
-                map = new google.maps.Map(document.getElementById('map'), {
-                  // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
-                  center: {
-                    lat: gon.member.latitude,
-                    lng: gon.member.longitude
-                  },
-                  zoom: 15,
-                });
-
-                // 繰り返し処理でマーカーと吹き出しを複数表示させる
-                for (var i = 0; i < markerData.length; i++) {
-                  let id = markerData[i]['id']
-
-                        // 各地点の緯度経度を算出
-                  markerLatLng = new google.maps.LatLng({
-                    lat: markerData[i]['latitude'],
-                    lng: markerData[i]['longitude']
-                  });
-
-                  // 各地点のマーカーを作成
-                  marker[i] = new google.maps.Marker({
-                    position: markerLatLng,
-                    map: map
-                  });
-
-                  // マーカーにクリックイベントを追加
-                  markerEvent(i);
-                }
-              }
-
-              // マーカーをクリックしたら吹き出しを表示
-              function markerEvent(i) {
-                marker[i].addListener('click', function () {
-                  infoWindow[i].open(map, marker[i]);
-                });
-
-                let id = markerData[i]['id']
-
-                infoWindow[i] = new google.maps.InfoWindow({
-                  content: `<a href='/member/clinics/${ id }'>${ markerData[i]['name'] }</a>`
-                });
-              }
-          - else
-            javascript:
-
-              let map;
-              let marker = [];
-              let infoWindow = [];
-              let markerData = gon.clinics;
-
-              function initMap() {
-                geocoder = new google.maps.Geocoder()
-
-                map = new google.maps.Map(document.getElementById('map'), {
-                  // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
-                  center: {
-                    lat: 35.681519,
-                    lng: 139.767464
-                  },
-                  zoom: 14,
-                });
-
-                // 繰り返し処理でマーカーと吹き出しを複数表示させる
-                for (var i = 0; i < markerData.length; i++) {
-                  let id = markerData[i]['id']
-
-                        // 各地点の緯度経度を算出
-                  markerLatLng = new google.maps.LatLng({
-                    lat: markerData[i]['latitude'],
-                    lng: markerData[i]['longitude']
-                  });
-
-                  // 各地点のマーカーを作成
-                  marker[i] = new google.maps.Marker({
-                    position: markerLatLng,
-                    map: map
-                  });
-
-                  // マーカーにクリックイベントを追加
-                  markerEvent(i);
-                }
-              }
-
-              // マーカーをクリックしたら吹き出しを表示
-              function markerEvent(i) {
-                marker[i].addListener('click', function () {
-                  infoWindow[i].open(map, marker[i]);
-                });
-
-                let id = markerData[i]['id']
-
-                infoWindow[i] = new google.maps.InfoWindow({
-                  //content: `<a href='/member/clinics/${ id }'>${ markerData[i]['name'] }</a>`
-                  content: `<a href='/members/sign_in'>${ markerData[i]['name'] }</a>`
-                });
-              }
-
-      / ------------------------------------------------------------------------------------------------------------------------------
+          input type="hidden"
+          input value="#{current_member.latitude}" type="hidden" class='current_member_latitude'
+          input value="#{current_member.longitude}" type="hidden" class='current_member_longitude'
 
       .col-xs-1
-
       .col-xs-4
 
-        // カレンダー機能
-        .page-header
-          = link_to my_calendar_path do
-            h3
-              | マイカレンダー
+        // クリニック閲覧履歴
+        h2 style="color: black; margin-top: 50px; font-size:1.4em"
+          | あなたが最近見たクリニック
+        .clinic-border  style="border-bottom: 1px solid #eee; margin-bottom: 14px;"
+        .clinic-histories
+          - @histories.each do |history|
+            .row
+              .col-xs-2
+                = link_to member_clinic_path(history.clinic) do
+                  = attachment_image_tag history.clinic, :image, size: "55x60", fallback: "no-image.jpg"
 
-        .row
-          = link_to 'スケジュール登録', new_member_event_path, class: 'btn btn-success btn-xs'
-          #calendar
+              .col-xs-8
+                = link_to member_clinic_path(history.clinic) do
+                  .clinic-history-name style="color: black; font-size:  1.1em; font-weight: 500;"
+                    = history.clinic_name
+
+                  .clinic-history-address style="color: #999; font-size:  0.9em;"
+                    | (
+                    = history.clinic_address
+                    | )
+                .reviews-box style="display: flex; margin-top: 5px; margin-bottom: 10px;"
+                  .clinic-history-review style="color: #ff9500; padding-left: 5px;"
+                    i.fas.fa-star
+                    - if history.clinic_review_scores.present?
+                      |  
+                      = avg(history.clinic_review_scores)
+                    - else
+                      |  0.0
+                  .clinic-history-comment style="color: #799b9b; padding-left: 20px;"
+                    i.fas.fa-comment-dots
+                    |  
+                    = history.clinic.reviews.length
+                
+            .clinic-border style="border-bottom: 2px dotted #eee; margin-bottom: 15px;"
 
         // pvランキング機能
-        .pv-ranking style="margin-top: 40px;"
+        .page-header
+          h4 style="color: black;"
+              | PVランキング
+        .pv-ranking
           table.table.table-bordered
             thead
               tr
@@ -202,3 +118,12 @@
                       = clinic.name
                   td.text-center
                     = clinic.impressions_count
+
+        // カレンダー機能
+        .page-header
+          = link_to my_calendar_path do
+            h4 style="color: black;"
+              | マイカレンダー
+        .row
+          = link_to 'スケジュール登録', new_member_event_path, class: 'btn btn-success btn-xs'
+          #calendar   

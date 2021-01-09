@@ -18,6 +18,17 @@ class Members::SessionsController < Devise::SessionsController
   #   super
   # end
 
+
+  # ゲストログイン
+  def new_guest
+    member = Member.find(2)
+    member.update(email: 'guest@gmail.com', name: 'ゲスト') do |member|
+      member.password = SecureRandom.urlsafe_vase64
+    end
+    sign_in member
+    redirect_to root_path
+  end
+
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -29,6 +40,9 @@ class Members::SessionsController < Devise::SessionsController
     new_member_session_path
   end
 
+  def after_sign_in_path_for(resource)
+    root_path
+  end
 
   # Recaptcha
   prepend_before_action :check_captcha, only: [:create]

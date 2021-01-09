@@ -6,7 +6,8 @@ require File.expand_path('../config/environment', __dir__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 
-require 'capybara/rspec' # 追記
+require 'capybara/rspec' # 追加
+require 'shoulda/matchers' # 追加
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -38,10 +39,41 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
-  config.include FactoryBot::Syntax::Methods # 追記
-  config.include Devise::Test::ControllerHelpers, type: :controller # 追記
-  config.include Devise::Test::IntegrationHelpers, type: :request # 追記
-  config.extend ControllerMacros, :type => :controller # 追記
+  config.include FactoryBot::Syntax::Methods # 追加
+  config.include Devise::Test::ControllerHelpers, type: :controller # 追加
+  config.include Devise::Test::IntegrationHelpers, type: :request # 追加
+  config.include Devise::Test::IntegrationHelpers, type: :system # 追加
+  config.include LoginModule # 追加
+
+  config.before(:each) do |example|
+    if example.metadata[:type] == :system
+      if example.metadata[:js]
+        driven_by :selenium_chrome_headless, screen_size: [1400, 1400]
+      else
+        driven_by :rack_test
+      end
+    end
+  end
+
+  # config.before(:suite) do
+  #   DatabaseCleaner.strategy = :truncation
+  # end
+
+  # config.before(:each) do
+  #   DatabaseCleaner.start
+  # end
+
+  # config.after(:each) do
+  #   DatabaseCleaner.clean
+  # end
+
+  # config.before(:all) do
+  #   DatabaseCleaner.start
+  # end
+
+  # config.after(:all) do
+  #   DatabaseCleaner.clean
+  # end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -70,4 +102,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+end
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
 end

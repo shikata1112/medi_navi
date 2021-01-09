@@ -1,32 +1,36 @@
 class Member::ReviewsController < ApplicationController
   before_action :authenticate_member!
+  before_action :set_clinic, only: [:new, :index, :create]
 
   def new
-    @clinic = Clinic.find(params[:clinic_id])
     @review = Review.new
   end
 
   def index
-    @clinic = Clinic.find(params[:clinic_id])
     @reviews = @clinic.reviews.includes(:tags, :member)
   end
 
   def create
-    @clinic = Clinic.find(params[:clinic_id])
-    @review = @clinic.reviews.build(review_params)
-    @review.member_id = current_member.id 
-    @review.score = params[:score]
-    @review.save
-    Coupon.coupon_create(current_member) #レビュー投稿に成功するとクーポンが発行される。
+    @review = @clinic.reviews.build(review_params_with_member_id)
+    @review.save!
+    current_member.coupon_create!
     redirect_to member_clinic_reviews_path
+  rescue => e
+    render 'new'
   end
-
-  def destroy
-  end
-
+  
   private
 
   def review_params
-    params.require(:review).permit(:comment, :title, :score, :wating_time, :clinic_id, :tag_list)
+    params.require(:review).permit(:comment, :title, :wating_time, :clinic_id, :tag_list).merge(score: params[:score])
   end
+
+  def review_params_with_member_id
+    review_params.merge(member_id: current_member.id)
+  end
+
+  def set_clinic
+    @clinic = Clinic.find(params[:clinic_id])
+  end
+
 end

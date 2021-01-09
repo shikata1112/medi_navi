@@ -65,75 +65,18 @@
               td.noborder
                 = @clinic.phone_number
 
-      .row
-        
-        .col-xs-9
-          table.table.table-bordered.clinic_consultation_hours
-            thead
-              tr
-                th.week 診療時間
-                th.week 月
-                th.week 火
-                th.week 水
-                th.week 木
-                th.week 金
-                th.week 土
-                th.week 日
-                th.week 祝
-            - @clinic.consultation_hours.each do |consultation_hour|
-              tbody
-                tr
-                    td
-                      = consultation_hour.start_time
-                      | 〜
-                      = consultation_hour.finish_time
-                    td 
-                      = consultation_hour.mo_time
-                    td
-                      = consultation_hour.tu_time
-                    td
-                      = consultation_hour.we_time
-                    td
-                      = consultation_hour.th_time
-                    td
-                      = consultation_hour.fr_time
-                    td
-                      = consultation_hour.sa_time
-                    td
-                      = consultation_hour.su_time
-                    td
-                      = consultation_hour.ho_time
+      table.table.table-bordered.clinic_consultation_hours
+        = render 'member/clinics/clinic_consultation_hours', clinic: @clinic
+
     .col-xs-3#clinic-map
+
       #map style='height: 330px; width: auto;'
 
-      - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMap".html_safe
+      - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=ShowMap".html_safe
       script{ async src=google_api }
 
-      javascript:
-
-        let map;
-
-        function initMap() {
-          geocoder = new google.maps.Geocoder()
-
-          map = new google.maps.Map(document.getElementById('map'), {
-            // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
-            center: {
-              lat: gon.clinic.latitude,
-              lng: gon.clinic.longitude
-            },
-            zoom: 16,
-          });
-
-          marker = new google.maps.Marker({
-            // コントローラーで定義した変数から緯度経度を呼び出し、マーカーを立てる
-            position: {
-              lat: gon.clinic.latitude,
-              lng: gon.clinic.longitude
-            },
-            map: map
-          });
-        }
+      input value="#{@clinic.latitude}" type="hidden" class='clinic_latitude'
+      input value="#{@clinic.longitude}" type="hidden" class='clinic_longitude'
 
   .row.text-center
     .btn-group
@@ -227,37 +170,4 @@
             | 診療時間
           td.basic-info
             table.table.table-bordered.basic-info-consultation
-              thead
-                tr
-                  th.week 診療時間
-                  th.week 月
-                  th.week 火
-                  th.week 水 
-                  th.week 木
-                  th.week 金
-                  th.week 土
-                  th.week 日
-                  th.week 祝
-              - @clinic.consultation_hours.each do |consultation_hour|
-                tbody
-                  tr
-                      td
-                        = consultation_hour.start_time
-                        | 〜
-                        = consultation_hour.finish_time
-                      td 
-                        = consultation_hour.mo_time
-                      td
-                        = consultation_hour.tu_time
-                      td
-                        = consultation_hour.we_time
-                      td
-                        = consultation_hour.th_time
-                      td
-                        = consultation_hour.fr_time
-                      td
-                        = consultation_hour.sa_time
-                      td
-                        = consultation_hour.su_time
-                      td
-                        = consultation_hour.ho_time
+              = render 'member/clinics/clinic_consultation_hours', clinic: @clinic

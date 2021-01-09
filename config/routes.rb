@@ -13,9 +13,14 @@ Rails.application.routes.draw do
       registrations: 'members/registrations',
       omniauth_callbacks: 'members/omniauth_callbacks'
     }
+
+    devise_scope :member do
+      post 'members/guest_sign_in', to: 'members/sessions#new_guest'
+    end
+
   # -------------------- devise ------------------------------------------------
 
-  # -------------------- admsin ------------------------------------------------
+  # -------------------- admin ------------------------------------------------
     namespace :admin do
 
       get 'top', to: 'members#top', as: 'members_top'
@@ -62,10 +67,15 @@ Rails.application.routes.draw do
       end
       resources :clinics, only: [:show, :index] do
         resource :favorites, only: [:create, :destroy]
-        resources :reviews, only: [:new, :index, :create, :destroy]
+        resources :reviews, only: [:new, :index, :create]
       end
       resources :events
 
     end
   # -------------------- member -----------------------------------------------
+
+  namespace :api do
+    resources :clinics, only: [:index]
+  end
+
 end

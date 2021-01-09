@@ -1,10 +1,19 @@
 FactoryBot.define do
-  factory :notification do
-    visiter_id { 1 }
-    visited_id { 1 }
-    item_id { 1 }
-    comment_id { 1 }
-    action { "MyString" }
+  factory :notification1, class: Notification do
+    visiter_id { nil }
+    visited_id { nil }
+    room_id { 1 }
+    message_id { 1 }
+    action { "dm" }
+    checked { false }
+  end
+
+  factory :notification2, class: Notification do
+    visiter_id { nil }
+    visited_id { nil }
+    room_id { 1 }
+    message_id { 1 }
+    action { "dm" }
     checked { false }
   end
 end

@@ -5,7 +5,7 @@
     .col-xs-6
       .page-header
         h3
-          = link_to @another_entry.member.name, member_member_path(@another_entry.member)
+          = link_to @entry.member_name, member_member_path(@entry.member)
 
       table.table
         thead
@@ -21,7 +21,7 @@
             tr
               td
                 = link_to member_member_path(message.member) do
-                  = message.member.name
+                  = message.member_name
               td
                 = message.body
               td
@@ -31,8 +31,11 @@
   .row
     .col-xs-3
 
-    .col-xs-6 style="margin-top: 40px;"
-      = form_with model: @message, url: member_messages_path(member_id: @member.id), local: true do |f|
+    .col-xs-6 style="margin-top: 20px;"
+      p.alert-warning
+          = flash[:warning]
+
+      = form_with model: @message, url: member_messages_path, local: true do |f|
 
         .col-xs-10
           = f.text_field :body, class: 'form-control'

@@ -11,7 +11,7 @@
               th.text-center
                 | クーポン番号
               th
-                | タイトル
+                | 有効期限
               th
 
           tbody
@@ -20,8 +20,7 @@
                 td.text-center
                   = index
                 td
-                  - limit = coupon.created_at + coupon.limit.minutes
-                  = limit.to_s(:datetime_jp)
+                  = coupon.ja_expiration_date
                 td
                   = link_to "使用する", member_coupon_path(coupon), method: :delete, "data-confirm" => "クーポン #{index} を使用しますか？", class: "btn btn-warning"
       - else 

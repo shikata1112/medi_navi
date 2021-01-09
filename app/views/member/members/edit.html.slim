@@ -1,4 +1,12 @@
 .container
+  - if flash[:alert_update] 
+	p class="alert alert-danger"
+		= flash[:alert_update]
+
+  - if flash[:alert] 
+    p class="alert alert-danger"
+      = flash[:alert] 
+
   .row
     .col-md-6.col-md-offset-3
       .pfofile-box
@@ -6,34 +14,69 @@
           | プロフィール編集
         .profile-forms
           = form_with model: @member, url: member_member_path(@member) do |f|
-            .form-group
-              = f.label :ニックネーム
-              = f.text_field :name, class: 'form-control'
-              
-            .form-group
-              = f.label :生年月日
-              = f.text_field :birthday, class: 'form-control'
-              
-            .form-group
-              = f.label :sex, "性別"
-              br
-              = f.radio_button :sex, value=true
-              = f.label "男性"
-              |       
-              = f.radio_button :sex, value=false
-              = f.label "女性"
-              br
-            .form-group
-              = f.label :postcode, "郵便番号（ハイフンなし）"
-              = f.text_field :postcode, class: 'form-control'
-              
-            .form-group
-              = f.label :address, "住所"
-              = f.text_field :address, class: 'form-control'
-              br
-            .form-group
-              = f.attachment_field :profile_image
-              br
+
+            - if current_member.id == 2
+              .form-group
+                = f.label "ニックネーム"
+                = f.text_field :name, class: 'form-control', id: 'guest_name', disabled: true
+                
+              .form-group
+                = f.label "生年月日"
+                = f.text_field :birthday, class: 'form-control', id: 'guest_birthday', disabled: true
+                
+              .form-group
+                = f.label :sex, "性別"
+                br
+                = f.radio_button :sex, value=true, disabled: true, id: 'guest_sex_true'
+                = f.label "男性"
+                |       
+                = f.radio_button :sex, value=false, disabled: true, id: 'guest_sex_false'
+                = f.label "女性"
+
+              .form-group
+                = f.label :postcode, "郵便番号（ハイフンなし）"
+                = f.text_field :postcode, class: 'form-control', id: 'guest_postcode', disabled: true
+                
+              .form-group
+                = f.label :address, "住所"
+                = f.text_field :address, class: 'form-control', id: 'guest_address', disabled: true
+                br
+
+              .form-group
+                = f.attachment_field :profile_image, disabled: true
+                br
+            - else
+              .form-group
+                = f.label :name, "ニックネーム"
+                = f.text_field :name, class: 'form-control', id: 'name_field'
+                
+              .form-group
+                = f.label "生年月日"
+                = f.text_field :birthday, class: 'form-control', id: 'member_birthday'
+                
+              .form-group
+                = f.label :sex, "性別"
+                br
+                = f.radio_button :sex, value=true, id: 'member_sex_true'
+                = f.label "男性"
+                |       
+                = f.radio_button :sex, value=false, id: 'member_sex_false'
+                = f.label "女性"
+
+              .form-group
+                = f.label :postcode, "郵便番号（ハイフンなし）"
+                = f.text_field :postcode, class: 'form-control', id: 'member_postcode'
+                
+              .form-group
+                = f.label :address, "住所"
+                = f.text_field :address, class: 'form-control', id: 'member_address'
+                br
+
+              .form-group
+                = f.attachment_field :profile_image
+                br
+
             .form-group
               = f.submit "更新する", class: 'btn btn-primary btn-block'
-          = link_to "戻る", :back
+              
+          = link_to "戻る", member_member_path(current_member)

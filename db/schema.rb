@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_17_091207) do
+ActiveRecord::Schema.define(version: 2020_12_20_155126) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 2020_10_17_091207) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "clinic_histories", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "member_id"
+    t.integer "clinic_id"
   end
 
   create_table "clinics", force: :cascade do |t|
@@ -205,8 +212,8 @@ ActiveRecord::Schema.define(version: 2020_10_17_091207) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.string "member_id"
-    t.string "clinic_id"
+    t.integer "member_id"
+    t.integer "clinic_id"
     t.string "title"
     t.text "comment"
     t.integer "wating_time", default: 0

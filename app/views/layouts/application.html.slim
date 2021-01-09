@@ -5,9 +5,8 @@ html
       | MediNavi
     = csrf_meta_tags
     = csp_meta_tag
-    = include_gon
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
+    script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     #wrapper
@@ -87,7 +86,7 @@ html
                 span.caret
               ul.dropdown-menu.genre-search.pull-right role="menu"
                 - Genre.all.each do |genre|
-                  = link_to clinics_genre_search_path(genre_id: genre.id) do
+                  = link_to clinics_genre_search_path(genre_id: genre.id), id: 'prefecture_search' do
                     li.genre-list role="presentation"
                       = genre.medical_department
 
@@ -107,6 +106,8 @@ html
             = link_to root_path do
               = image_tag  "logo.jpg", size: "180x60", class: "navi-logo"
             ul.nav.navbar-nav.navbar-right
+              li
+                = link_to 'ゲストログイン', members_guest_sign_in_path, method: :post
               li
                 = link_to 'メディナビとは', clinics_about_path
               li

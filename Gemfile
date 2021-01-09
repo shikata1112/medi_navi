@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.7'
+ruby '2.6.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
@@ -39,10 +39,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
-  gem 'factory_bot_rails'
+  gem 'rspec-rails', '~> 4.0.1'
   gem 'rails-controller-testing'
-  gem 'capybara'
+  gem 'launchy', '~> 2.4.3'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -61,7 +61,9 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
-  gem 'chromedriver-helper'
+  gem 'webdrivers', '~> 4.0'
+  gem 'capybara'
+  gem "shoulda-matchers"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -81,6 +83,7 @@ gem 'devise'
 gem 'devise-bootstrap-views'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
+gem 'rails-i18n'
 
 # デバッグ binding.pry
 gem 'pry-rails'
@@ -116,7 +119,6 @@ gem 'acts-as-taggable-on'
 gem 'jquery-ui-rails'
 
 # google API関連
-gem 'gon'
 gem 'geocoder'
 
 # japanMap
@@ -137,6 +139,8 @@ gem 'kaminari'
 
 # ダミーデータ生成
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+gem 'rubocop', '~> 1.4', require: false
 
 # 環境変数、mysql
 gem 'dotenv-rails'

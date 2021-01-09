@@ -31,7 +31,7 @@ class Member::EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect_to member_my_calendar_path
+    redirect_to my_calendar_path
   end
 
   def my_calendar
