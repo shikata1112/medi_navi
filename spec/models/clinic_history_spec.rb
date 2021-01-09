@@ -62,19 +62,7 @@ RSpec.describe ClinicHistory, type: :model do
   describe "delegations" do
     it { is_expected.to delegate_method(:name).to(:clinic).with_prefix }
     it { is_expected.to delegate_method(:address).to(:clinic).with_prefix }
+    it { is_expected.to delegate_method(:review_scores).to(:clinic).with_prefix}
   end
 
-  describe "#clinic_reviews_score" do
-    before do
-      clinic = create(:clinic)
-      member = create(:member)
-      review1 = create(:review, clinic_id: clinic.id, member_id: member.id, score: 3.0)
-      refiew2 = create(:review2, clinic_id: clinic.id, member_id: member.id, score: 5.0)
-      @history = create(:clinic_history, clinic_id: clinic.id, member_id: member.id)
-    end
-    
-    it "clinicに紐づいたreviewsのscoreを配列で返すこと" do
-      expect(@history.clinic_reviews_score).to eq [3.0, 5.0]
-    end
-  end
 end

@@ -2,7 +2,7 @@ class ClinicHistory < ApplicationRecord
   belongs_to :clinic
   belongs_to :member
 
-  delegate :name, :address, to: :clinic, prefix: true
+  delegate :name, :address, :review_scores, to: :clinic, prefix: true
 
   def self.create_and_destroy_history(current_member, clinic_id)
     create_new_history(current_member, clinic_id)
@@ -26,7 +26,4 @@ class ClinicHistory < ApplicationRecord
     histories[0].destroy if histories.count > histories_stock_limit
   end
 
-  def clinic_reviews_score
-    clinic.reviews.map(&:score)
-  end
 end
