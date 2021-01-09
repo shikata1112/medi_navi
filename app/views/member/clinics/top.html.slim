@@ -80,11 +80,9 @@
                 .reviews-box style="display: flex; margin-top: 5px; margin-bottom: 10px;"
                   .clinic-history-review style="color: #ff9500; padding-left: 5px;"
                     i.fas.fa-star
-                    - if history.clinic.reviews.map(&:score).present?
-                      // TODO: メソッドに切り出す
+                    - if history.clinic_review_scores.present?
                       |  
-                      = avg(history.clinic.reviews.map(&:score))
-                      // TODO: メソッドに切り出す
+                      = avg(history.clinic_review_scores)
                     - else
                       |  0.0
                   .clinic-history-comment style="color: #799b9b; padding-left: 20px;"

@@ -51,5 +51,9 @@ class Clinic < ApplicationRecord
   def display_active_text
     is_active ? '開院中' : '閉院中'
   end
+
+  def review_scores
+    reviews.map(&:score)
+  end
   
 end
