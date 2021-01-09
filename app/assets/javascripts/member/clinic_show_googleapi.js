@@ -2,9 +2,7 @@
 function ShowMap() {
   geocoder = new google.maps.Geocoder()
 
-  console.log('test');
-
-  map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('showmap'), {
     // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
     center: {
       lat: parseFloat($('.clinic_latitude').val()),

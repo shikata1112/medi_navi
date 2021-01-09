@@ -14,7 +14,6 @@
 //= require activestorage
 //= require jquery
 //= require jquery-ui
-//= require bootstrap-sprockets
 //= require jcanvas
 //= require tag-it
 //= require highcharts/highcharts

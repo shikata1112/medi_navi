@@ -70,7 +70,7 @@
 
     .col-xs-3#clinic-map
 
-      #map style='height: 330px; width: auto;'
+      #showmap style='height: 330px; width: auto;'
 
       - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=ShowMap".html_safe
       script{ async src=google_api }
