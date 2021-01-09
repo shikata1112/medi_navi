@@ -224,14 +224,14 @@ RSpec.describe Member, type: :model do
     end
   end
 
-  describe ".csv_values" do
+  describe ".generate_csv" do
     before do
       create(:member)
       create(:guest)
     end
     
     it '会員の情報をstringクラスで返すこと' do
-      outcome = Member.csv_values
+      outcome = Member.generate_csv
 
       expect(outcome.class).to eq String
       expect(outcome.lines.size).to eq 3

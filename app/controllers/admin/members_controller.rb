@@ -30,7 +30,7 @@ class Admin::MembersController < ApplicationController
   end
 
   def send_users_csv
-    send_data(Member.csv_values, filename: '会員一覧情報')
+    send_data(Member.generate_csv, filename: Member::CSV_FILE_NAME)
   end
   
 end
