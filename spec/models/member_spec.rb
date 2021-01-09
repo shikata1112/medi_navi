@@ -223,4 +223,19 @@ RSpec.describe Member, type: :model do
       expect(@member2.display_deleted_text).to eq "有効"
     end
   end
+
+  describe ".generate_csv" do
+    before do
+      create(:member)
+      create(:guest)
+    end
+    
+    it '会員の情報をstringクラスで返すこと' do
+      outcome = Member.generate_csv
+
+      expect(outcome.class).to eq String
+      expect(outcome.lines.size).to eq 3
+    end
+  end
+  
 end

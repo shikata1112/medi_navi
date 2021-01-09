@@ -11,6 +11,8 @@ class Member < ApplicationRecord
   
   attachment :profile_image
 
+  CSV_FILE_NAME = '会員一覧情報'
+
   # facebookログイン
   def self.find_for_oauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -109,4 +111,24 @@ class Member < ApplicationRecord
   def display_deleted_text
     is_deleted ? "無効" : "有効"
   end
+
+  def self.generate_csv
+    CSV.generate do |csv|
+      csv << csv_headers
+      csv_values.each do |member|
+        csv << [member.id, member.name, member.email, member.created_at.to_s(:datetime_jp)]
+      end
+    end
+  end
+
+  private
+
+  def self.csv_values
+    select(:id, :name, :email, :created_at)
+  end
+
+  def self.csv_headers
+    %w(ID 氏名 email 登録日)
+  end
+  
 end
