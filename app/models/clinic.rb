@@ -55,5 +55,9 @@ class Clinic < ApplicationRecord
   def review_scores
     reviews.pluck(:score)
   end
+
+  def reviews_size
+    reviews.size
+  end
   
 end
