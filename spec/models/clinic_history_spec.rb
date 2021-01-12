@@ -63,6 +63,7 @@ RSpec.describe ClinicHistory, type: :model do
     it { is_expected.to delegate_method(:name).to(:clinic).with_prefix }
     it { is_expected.to delegate_method(:address).to(:clinic).with_prefix }
     it { is_expected.to delegate_method(:review_scores).to(:clinic).with_prefix}
+    it { is_expected.to delegate_method(:reviews_size).to(:clinic).with_prefix}
   end
 
 end
