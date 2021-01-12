@@ -78,4 +78,12 @@ Rails.application.routes.draw do
     resources :clinics, only: [:index]
   end
 
+  scope module: :member do
+    resources :members do
+      get 'inquiry/new'
+      get 'inquiry/confirm'
+      get 'inquiry/thanks'
+    end
+  end
+
 end

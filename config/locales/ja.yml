@@ -73,4 +73,8 @@ ja:
               wrong_length: "7文字（半角数字）で入力してください。"
             sex:
               inclusion: "性別を選択してください。"
+        inquiry:
+          attributes:
+            content:
+              blank: "内容を入力してください。"
 
