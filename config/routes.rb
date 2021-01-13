@@ -86,4 +86,8 @@ Rails.application.routes.draw do
     end
   end
 
+  scope module: :admin do
+    resources :inquiry, only: [:index]
+  end
+
 end

@@ -1,0 +1,22 @@
+.container
+  .row
+    .text-center
+      table.table.table-bordered.table-hover.admin-table
+        thead
+          tr
+            th 
+              | 会員ID
+            th
+              | 会員名
+            th
+              | 問い合わせ内容
+
+        tbody
+          - @members.each do |member|
+            tr
+              td
+                = member.inquiry.member_id
+              td
+                = member.inquiry.content
+              td
+                = member.inquiry.content

@@ -1,10 +1,13 @@
 class Member::InquiryController < ApplicationController
+  before_action :authenticate_member!
+
   def new
     @inquiry = Inquiry.new
   end
 
   def confirm
-    @inquiry = Inquiry.new(inquiry_params)
+    @inquiry = current_member.inquiries.new(inquiry_params)
+
     if @inquiry.valid?
       render :confirm
     else

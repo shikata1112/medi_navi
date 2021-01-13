@@ -25,6 +25,8 @@ html
               li
                 = link_to '診療科目一覧', admin_genres_path
               li
+                = link_to '問い合わせ一覧', inquiry_index_path
+              li
                 = link_to 'ログアウト', destroy_admin_session_path, method: :delete
       - elsif member_signed_in? 
         header
