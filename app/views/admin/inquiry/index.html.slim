@@ -1,5 +1,5 @@
 .container
-  .row
+  .row style="margin-top: 40px;"
     .text-center
       table.table.table-bordered.table-hover.admin-table
         thead
@@ -12,11 +12,11 @@
               | 問い合わせ内容
 
         tbody
-          - @members.each do |member|
+          - @inquiries.each do |inquiry|
             tr
               td
-                = member.inquiry.member_id
+                = inquiry.member_id
               td
-                = member.inquiry.content
+                = Member.find_by(id: inquiry.member_id).name
               td
-                = member.inquiry.content
+                = inquiry.content
