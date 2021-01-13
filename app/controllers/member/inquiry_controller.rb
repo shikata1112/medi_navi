@@ -20,7 +20,7 @@ class Member::InquiryController < ApplicationController
     @inquiry.save!
 
     notifier = Slack::Notifier.new(ENV['WEBHOOK_URL'])
-    notifier.ping('Hello')
+    notifier.ping('問い合わせ発生')
   end
 
   private
