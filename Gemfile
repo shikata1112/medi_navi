@@ -128,7 +128,7 @@ gem 'jcanvas-rails', '~> 0.1.0'
 gem 'impressionist', '~>1.6.1'
 
 # SNSログイン
-gem 'omniauth'
+gem 'omniauth', '1.9.1'
 gem 'omniauth-facebook'
 
 # バッチ処理
@@ -147,3 +147,6 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+# slackへ通知
+gem 'slack-notifier'

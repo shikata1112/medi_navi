@@ -18,6 +18,9 @@ class Member::InquiryController < ApplicationController
   def thanks
     @inquiry = Inquiry.new(inquiry_params)
     @inquiry.save!
+
+    notifier = Slack::Notifier.new(ENV['WEBHOOK_URL'])
+    notifier.ping('Hello')
   end
 
   private
