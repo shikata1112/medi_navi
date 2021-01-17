@@ -79,14 +79,12 @@ Rails.application.routes.draw do
   end
 
   scope module: :member do
-    resources :members do
-      get 'inquiry/new'
-      get 'inquiry/confirm'
-      get 'inquiry/thanks'
-    end
+    get 'inquiry/new'
+    get 'inquiry/confirm'
+    get 'inquiry/thanks'
   end
 
-  scope module: :admin do
+  namespace :admin do
     resources :inquiry, only: [:index]
   end
 
