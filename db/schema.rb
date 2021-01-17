@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_12_20_155126) do
 
-  create_table "admins", force: :cascade do |t|
+  create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -24,14 +24,14 @@ ActiveRecord::Schema.define(version: 2020_12_20_155126) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "clinic_histories", force: :cascade do |t|
+  create_table "clinic_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "member_id"
     t.integer "clinic_id"
   end
 
-  create_table "clinics", force: :cascade do |t|
+  create_table "clinics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "doctor"
     t.string "address"
@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_155126) do
     t.index ["name"], name: "index_clinics_on_name"
   end
 
-  create_table "consultation_hours", force: :cascade do |t|
+  create_table "consultation_hours", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "clinic_id"
     t.string "start_time"
     t.string "finish_time"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_155126) do
     t.index ["clinic_id"], name: "index_consultation_hours_on_clinic_id"
   end
 
-  create_table "coupons", force: :cascade do |t|
+  create_table "coupons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "member_id"
     t.boolean "is_valid", default: true
     t.integer "limit"
@@ -76,16 +76,16 @@ ActiveRecord::Schema.define(version: 2020_12_20_155126) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "entries", force: :cascade do |t|
-    t.integer "member_id"
-    t.integer "room_id"
+  create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "member_id"
+    t.bigint "room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_entries_on_member_id"
     t.index ["room_id"], name: "index_entries_on_room_id"
   end
 
-  create_table "events", force: :cascade do |t|
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "member_id"
     t.string "title"
     t.text "body"
@@ -95,14 +95,14 @@ ActiveRecord::Schema.define(version: 2020_12_20_155126) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "favorites", force: :cascade do |t|
+  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "member_id"
     t.integer "clinic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "genre_maps", force: :cascade do |t|
+  create_table "genre_maps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "clinic_id"
     t.integer "genre_id"
     t.datetime "created_at", null: false
@@ -111,14 +111,14 @@ ActiveRecord::Schema.define(version: 2020_12_20_155126) do
     t.index ["genre_id"], name: "index_genre_maps_on_genre_id"
   end
 
-  create_table "genres", force: :cascade do |t|
+  create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "medical_department"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["medical_department"], name: "index_genres_on_medical_department"
   end
 
-  create_table "impressions", force: :cascade do |t|
+  create_table "impressions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "impressionable_type"
     t.integer "impressionable_id"
     t.integer "user_id"
@@ -137,14 +137,14 @@ ActiveRecord::Schema.define(version: 2020_12_20_155126) do
     t.index ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index"
     t.index ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index"
     t.index ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index"
-    t.index ["impressionable_type", "impressionable_id", "params"], name: "poly_params_request_index"
+    t.index ["impressionable_type", "impressionable_id", "params"], name: "poly_params_request_index", length: { params: 255 }
     t.index ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index"
     t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
-    t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
+    t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", length: { message: 255 }
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
-  create_table "members", force: :cascade do |t|
+  create_table "members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -173,9 +173,9 @@ ActiveRecord::Schema.define(version: 2020_12_20_155126) do
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.integer "member_id"
-    t.integer "room_id"
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "member_id"
+    t.bigint "room_id"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -183,7 +183,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_155126) do
     t.index ["room_id"], name: "index_messages_on_room_id"
   end
 
-  create_table "notifications", force: :cascade do |t|
+  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "visiter_id"
     t.integer "visited_id"
     t.string "action"
@@ -194,14 +194,14 @@ ActiveRecord::Schema.define(version: 2020_12_20_155126) do
     t.integer "message_id"
   end
 
-  create_table "prefectures", force: :cascade do |t|
+  create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
   end
 
-  create_table "relationships", force: :cascade do |t|
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "following_id"
     t.datetime "created_at", null: false
@@ -211,7 +211,7 @@ ActiveRecord::Schema.define(version: 2020_12_20_155126) do
     t.index ["following_id"], name: "index_relationships_on_following_id"
   end
 
-  create_table "reviews", force: :cascade do |t|
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "member_id"
     t.integer "clinic_id"
     t.string "title"
@@ -222,12 +222,12 @@ ActiveRecord::Schema.define(version: 2020_12_20_155126) do
     t.float "score", default: 0.0
   end
 
-  create_table "rooms", force: :cascade do |t|
+  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "taggings", force: :cascade do |t|
+  create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
     t.integer "taggable_id"
@@ -245,11 +245,16 @@ ActiveRecord::Schema.define(version: 2020_12_20_155126) do
     t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
   end
 
-  create_table "tags", force: :cascade do |t|
-    t.string "name"
+  create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", collation: "utf8_bin"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
   end
 
+  add_foreign_key "entries", "members"
+  add_foreign_key "entries", "rooms"
+  add_foreign_key "messages", "members"
+  add_foreign_key "messages", "rooms"
+  add_foreign_key "taggings", "tags"
 end
