@@ -145,8 +145,8 @@ ActiveRecord::Schema.define(version: 2021_01_17_083426) do
   end
 
   create_table "inquiries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title", null: false, comment: "問い合わせの題名"
-    t.text "content", null: false, comment: "問い合わせの本文"
+    t.string "title", null: false, comment: "タイトル"
+    t.text "content", null: false, comment: "本文"
     t.bigint "member_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
