@@ -4,7 +4,7 @@
     .col-xs-6
       h1 問い合わせ内容確認
 
-      = form_with model: @inquiry, url: inquiry_thanks_path, method: :get do |f|
+      = form_with model: @inquiry, url: member_inquiry_create_path do |f|
         .form-group
           = f.label :content, 'タイトル'
           br
@@ -22,4 +22,4 @@
         = f.submit '内容を送信する', class: 'btn btn-primary'
 
       br
-      = link_to '修正する', inquiry_new_path, class: 'btn btn-warning'
+      = link_to '修正する', member_inquiry_new_path, class: 'btn btn-warning'
