@@ -79,8 +79,10 @@ Rails.application.routes.draw do
   end
 
   namespace :member do
-    resources :inquiry, only: [:new, :create] do
-      get 'confirm'
+    namespace :inquiry do
+      get 'new'
+      post 'create'
+      post 'confirm'
       get 'thanks'
     end
   end
