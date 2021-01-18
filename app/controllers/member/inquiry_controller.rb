@@ -11,9 +11,13 @@ class Member::InquiryController < ApplicationController
     render :new if @inquiry.invalid?
   end
 
-  def thanks
+  def create
     @inquiry = current_member.inquiries.new(inquiry_params)
     @inquiry.save!
+    redirect_to action: :thanks
+  end
+
+  def thanks
   end
 
   private
