@@ -4,7 +4,7 @@
       .col-xs-6
         .inquiry_form
           h1 お問い合わせフォーム
-          = form_with model: @inquiry, url: inquiry_confirm_path, method: :get do |f|
+          = form_with model: @inquiry, url: new_member_inquiry_path do |f|
             .form-group
               = f.label :title, 'タイトル'
               br
