@@ -22,4 +22,4 @@
         = f.submit '内容を送信する', class: 'btn btn-primary'
 
       br
-      = link_to '修正する', member_inquiry_new_path(title: @inquiry.title, content: @inquiry.content), class: 'btn btn-warning'
+      = button_to '修正する', member_inquiry_new_path, params: {title: @inquiry.title, content: @inquiry.content}, method: :post

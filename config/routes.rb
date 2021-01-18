@@ -81,6 +81,7 @@ Rails.application.routes.draw do
   namespace :member do
     namespace :inquiry do
       get 'new'
+      post 'new'
       post 'create'
       post 'confirm'
       get 'thanks'
