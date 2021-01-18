@@ -8,11 +8,7 @@ class Member::InquiryController < ApplicationController
   def confirm
     @inquiry = current_member.inquiries.new(inquiry_params)
 
-    if @inquiry.valid?
-      render :confirm
-    else
-      render :new
-    end
+    render :new if @inquiry.invalid?
   end
 
   def thanks
