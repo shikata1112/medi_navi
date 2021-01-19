@@ -133,7 +133,7 @@ html
                   li.footer-list
                     = link_to "Member", member_member_path(current_member), style:"color: #5bc0de;"
                   li.footer-list
-                    = link_to "Confirmation", member_inquiry_new_path(current_member), style:"color: #5bc0de;"
+                    = link_to "Confirmation", member_inquiry_new_path, style:"color: #5bc0de;"
                 - else
                   li.footer-list
                     = link_to "Member", new_member_session_path, style:"color: #5bc0de;"
