@@ -1,0 +1,32 @@
+.container
+  .row style="margin-top: 40px;"
+    .col-xs-3
+    .col-xs-6
+      table.table
+        tr
+          th
+            | 問い合わせID
+          td
+            = @inquiry.id
+        tr
+          th
+            | 会員名
+          td
+            = Member.find_by(id: @inquiry.member_id).name
+        tr
+          th
+            | 会員ID
+          td 
+            = @inquiry.member_id
+        tr
+          th
+            | タイトル
+          td  
+            = @inquiry.title
+        tr
+          th
+            | 内容
+          td  
+            = @inquiry.content
+
+      = link_to '問い合わせ一覧へ', admin_inquiry_index_path, class: 'btn btn-default'
