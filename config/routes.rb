@@ -89,7 +89,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :inquiry, only: [:index]
+    resources :inquiry, only: [:index, :show]
   end
 
 end
