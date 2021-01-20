@@ -106,6 +106,10 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.7)
     crass (1.0.6)
+    database_cleaner (1.8.5)
+    database_cleaner-redis (1.8.0)
+      database_cleaner (~> 1.8.0)
+      redis
     devise (4.7.3)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -291,6 +295,7 @@ GEM
       ffi (~> 1.0)
     recaptcha (5.6.0)
       json
+    redis (4.2.5)
     refile-mini_magick (0.2.0)
       mini_magick (~> 4.0)
       refile (~> 0.5)
@@ -426,6 +431,7 @@ DEPENDENCIES
   capybara
   carrierwave
   coffee-rails (~> 4.2)
+  database_cleaner-redis
   devise
   devise-bootstrap-views
   devise-i18n

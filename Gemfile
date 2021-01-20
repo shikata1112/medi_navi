@@ -65,6 +65,7 @@ group :test do
   gem 'webdrivers', '~> 4.0'
   gem 'capybara'
   gem "shoulda-matchers"
+  gem 'database_cleaner-redis'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
