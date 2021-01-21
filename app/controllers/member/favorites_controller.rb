@@ -3,7 +3,8 @@ class Member::FavoritesController < ApplicationController
 
   def create
     @favorite = current_member.favorites.create(clinic_id: params[:clinic_id])
-    redirect_back(fallback_location: root_path)
+    render json: @favorite
+    # redirect_back(fallback_location: root_path)
   end
 
   def destroy
