@@ -129,11 +129,16 @@ html
                   = link_to "About", clinics_about_path, style:"color: #5bc0de;"
                 li.footer-list
                   = link_to "Search", root_path, style:"color: #5bc0de;"
-                li.footer-list
-                  - if member_signed_in? 
+                - if member_signed_in?
+                  li.footer-list
                     = link_to "Member", member_member_path(current_member), style:"color: #5bc0de;"
-                  - else 
+                  li.footer-list
+                    = link_to "Confirmation", new_member_inquiry_path, style:"color: #5bc0de;"
+                - else
+                  li.footer-list
                     = link_to "Member", new_member_session_path, style:"color: #5bc0de;"
+                  li.footer-list
+                    = link_to "Confirmation", new_member_session_path, style:"color: #5bc0de;"
 
               .sns-share
                 .twitter-link
