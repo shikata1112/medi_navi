@@ -10,7 +10,7 @@ RSpec.describe Member::InquiryController, type: :controller do
   
   describe "confirm" do
     it "/member/inquiry/confirmにアクセスできること" do
-      get :confirm
+      post :confirm
       expect(response).to have_http_status(200)
     end
   end
