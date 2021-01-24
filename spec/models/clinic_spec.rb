@@ -153,8 +153,8 @@ RSpec.describe Clinic, type: :model do
     before do
       @clinic = create(:clinic)
       member = create(:member)
-      review1 = create(:review, clinic_id: @clinic.id, member_id: member.id, score: 3.0)
-      refiew2 = create(:review2, clinic_id: @clinic.id, member_id: member.id, score: 5.0)
+      create(:review, clinic_id: @clinic.id, member_id: member.id, score: 3.0)
+      create(:review2, clinic_id: @clinic.id, member_id: member.id, score: 5.0)
     end
     
     it "clinicに紐づいたreviewsのscoreを配列で返すこと" do
@@ -166,8 +166,8 @@ RSpec.describe Clinic, type: :model do
     before do
       @clinic = create(:clinic)
       member = create(:member)
-      review1 = create(:review, clinic_id: @clinic.id, member_id: member.id, score: 3.0)
-      refiew2 = create(:review2, clinic_id: @clinic.id, member_id: member.id, score: 5.0)
+      create(:review, clinic_id: @clinic.id, member_id: member.id, score: 3.0)
+      create(:review2, clinic_id: @clinic.id, member_id: member.id, score: 5.0)
     end
     
     it "clinicに紐づいたreviewsの件数を返すこと" do

@@ -15,7 +15,7 @@ class Member::ReviewsController < ApplicationController
     @review.save!
     current_member.coupon_create!
     redirect_to member_clinic_reviews_path
-  rescue => e
+  rescue ActiveRecord::RecordInvalid
     render 'new'
   end
   

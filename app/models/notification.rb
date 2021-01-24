@@ -7,9 +7,9 @@ class Notification < ApplicationRecord
 
   def arrived
     if same_member?
-      checked = true
+      true
     else
-      checked = false
+      false
     end
   end
 
