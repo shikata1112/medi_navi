@@ -15,6 +15,11 @@
             = Member.find_by(id: @inquiry.member_id).name
         tr
           th.inquiry
+            | メールアドレス
+          td
+            = Member.find_by(id: @inquiry.member_id).email
+        tr
+          th.inquiry
             | 会員ID
           td 
             = @inquiry.member_id
