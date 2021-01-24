@@ -121,8 +121,6 @@ class Member < ApplicationRecord
     end
   end
 
-  private
-
   def self.csv_values
     select(:id, :name, :email, :created_at)
   end
