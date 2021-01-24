@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Review, type: :model do
+RSpec.describe Review, :type => :model do
 
   describe "モデルの関連付け" do
     let(:association) do
