@@ -10,8 +10,6 @@ class Member::InquiryController < ApplicationController
 
   def confirm
     @inquiry = Inquiry.new(inquiry_params)
-    @inquiry.member_id = current_member.id
-
     render :new if @inquiry.invalid?
   end
 
@@ -21,6 +19,6 @@ class Member::InquiryController < ApplicationController
   private
 
   def inquiry_params
-    params.require(:inquiry).permit(:content, :title, :member_id)
+    params.require(:inquiry).permit(:content, :title)
   end
 end
