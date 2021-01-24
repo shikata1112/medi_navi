@@ -8,19 +8,16 @@
         .form-group
           = f.label :content, 'タイトル'
           br
-          = f.text_field :title, placeholder: "#{@inquiry.title}", readonly: true, class: 'form-control'
+          = f.text_field :title, placeholder: "タイトルを入力してください", readonly: true, class: 'form-control'
           = f.hidden_field :title
 
         .form-group
           = f.label :content, '本文'
           br
-          = f.text_area :content, placeholder: "#{@inquiry.content}", readonly: true, class: 'form-control'
+          = f.text_area :content, placeholder: "本文を入力してください", readonly: true, class: 'form-control'
           = f.hidden_field :content
-
-        = f.hidden_field :member_id
 
         = f.submit '内容を送信する', class: 'btn btn-primary'
 
       br
       = link_to '修正する', new_member_inquiry_path
-      / = button_to '修正する', new_member_inquiry_path, params: {title: @inquiry.title, content: @inquiry.content}, method: :post 
