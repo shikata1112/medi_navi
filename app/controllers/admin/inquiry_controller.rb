@@ -6,5 +6,6 @@ class Admin::InquiryController < ApplicationController
   end
 
   def show
+    @inquiry = Inquiry.find(params[:id])
   end
 end
