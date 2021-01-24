@@ -5,14 +5,14 @@ class Member::InquiryController < ApplicationController
     @inquiry = Inquiry.new
   end
 
-  def create
-  end
-
   def confirm
     @inquiry = Inquiry.new(inquiry_params)
-    @inquiry.member_id = current_member.id
-
     render :new if @inquiry.invalid?
+  end
+
+  def create
+    @inquiry = current_member.inquiries.create!(inquiry_params)
+    redirect_to action: :thanks
   end
 
   def thanks
@@ -21,6 +21,6 @@ class Member::InquiryController < ApplicationController
   private
 
   def inquiry_params
-    params.require(:inquiry).permit(:content, :title, :member_id)
+    params.require(:inquiry).permit(:content, :title)
   end
 end

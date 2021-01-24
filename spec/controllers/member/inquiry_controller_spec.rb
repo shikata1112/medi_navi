@@ -30,6 +30,28 @@ RSpec.describe Member::InquiryController, type: :controller do
     end
   end
 
+  describe "create" do
+    let(:params) do
+      {
+        inquiry: {
+          title: 'test',
+          content: 'testです',
+          member_id: @member.id
+        }
+      }
+    end
+
+    it "正常に問い合わせを保存できるか" do
+      post :create, params: params
+      expect(@member.inquiries.size).to eq (1)
+    end
+
+    it "/member/inquiry/thanksにリダイレクトすること" do
+      post :create, params: params
+      expect(response).to redirect_to "/member/inquiry/thanks"
+    end
+  end
+
   describe "thanks" do
     it "/member/inquiry/thanksにアクセスできること" do
       get :thanks
