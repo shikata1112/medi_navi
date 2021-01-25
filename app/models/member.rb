@@ -62,7 +62,7 @@ class Member < ApplicationRecord
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
-  has_many :inquiries
+  has_many :inquiries, dependent: :destroy
 
   # followの通知
   def create_notification_follow!(current_member)
