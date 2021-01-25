@@ -49,6 +49,7 @@ https://docs.google.com/spreadsheets/d/1QON6Tq3UOt7xvWTvUil9pjH0jcYtZlt6tWFRD3Gq
 
 ### バックエンド
 - Ruby 2.6.6
+  - テンプレートエンジンとしてslimを使用
 - Rails 5.2.4.4
 
 ### 開発環境
