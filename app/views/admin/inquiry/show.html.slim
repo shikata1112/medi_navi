@@ -12,12 +12,12 @@
           th.inquiry
             | 会員名
           td
-            = Member.find_by(id: @inquiry.member_id).name
+            = @inquiry.member_name
         tr
           th.inquiry
             | メールアドレス
           td
-            = Member.find_by(id: @inquiry.member_id).email
+            = @inquiry.member_email
         tr
           th.inquiry
             | 会員ID
