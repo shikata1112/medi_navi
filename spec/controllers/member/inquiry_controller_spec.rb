@@ -42,7 +42,7 @@ RSpec.describe Member::InquiryController, type: :controller do
         }
       end
 
-      it "newアクションへrenderされること" do
+      it "newページがレンダリングされること" do
         post :confirm, params: params
         expect(response).to render_template :new
       end
