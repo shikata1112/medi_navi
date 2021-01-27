@@ -22,7 +22,7 @@ class Members::SessionsController < Devise::SessionsController
   # ゲストログイン
   def new_guest
     member = Member.find(2)
-    member.update(email: 'guest@gmail.com', name: 'ゲスト') do |member|
+    member.update(:email => 'guest@gmail.com', :name => 'ゲスト') do |member|
       member.password = SecureRandom.urlsafe_vase64
     end
     sign_in member
@@ -45,19 +45,19 @@ class Members::SessionsController < Devise::SessionsController
   end
 
   # Recaptcha
-  prepend_before_action :check_captcha, only: [:create]
+  prepend_before_action :check_captcha, :only => [:create]
 
   def check_captcha
     self.resource = resource_class.new sign_in_params
     resource.validate
-    unless verify_recaptcha(model: resource)
+    unless verify_recaptcha(:model => resource)
       respond_with_navigational(resource) { render :new }
     end
   end
 
   # 会員論理削除
   def reject_member
-    @member = Member.find_by(email: params[:member][:email].downcase)
+    @member = Member.find_by(:email => params[:member][:email].downcase)
     if @member
       if (@member.valid_password?(params[:member][:password]) && (@member.active_for_authentication? == false))
         flash[:error] = "このアカウントは退会済みです。"

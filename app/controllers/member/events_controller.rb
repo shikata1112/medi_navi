@@ -1,6 +1,6 @@
 class Member::EventsController < ApplicationController
   before_action :authenticate_member!
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, :only => [:show, :edit, :update, :destroy]
 
   def new
     @event = Event.new
@@ -13,7 +13,7 @@ class Member::EventsController < ApplicationController
   end
 
   def index 
-    @events = Event.where(member_id: current_member.id)
+    @events = Event.where(:member_id => current_member.id)
   end
 
   def show
