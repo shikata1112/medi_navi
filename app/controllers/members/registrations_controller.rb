@@ -60,12 +60,12 @@ class Members::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  prepend_before_action :check_captcha, only: [:create]
+  prepend_before_action :check_captcha, :only => [:create]
 
   def check_captcha
     self.resource = resource_class.new sign_up_params
     resource.validate
-    unless verify_recaptcha(model: resource)
+    unless verify_recaptcha(:model => resource)
       respond_with_navigational(resource) { render :new }
     end
   end

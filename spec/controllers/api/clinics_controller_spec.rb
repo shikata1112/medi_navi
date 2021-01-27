@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Api::ClinicsController, type: :controller do
+RSpec.describe Api::ClinicsController, :type => :controller do
   describe "index" do
     it "/api/clinicsにアクセスできること" do
       get :index

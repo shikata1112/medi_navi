@@ -1,3 +1,3 @@
 class Event < ApplicationRecord
-  belongs_to :member, optional: true
+  belongs_to :member, :optional => true
 end
