@@ -10,48 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_17_083426) do
+ActiveRecord::Schema.define(:version => 2021_01_17_083426) do
 
-  create_table "admins", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+  create_table "admins", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
+    t.string "email", :default => "", :null => false
+    t.string "encrypted_password", :default => "", :null => false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_admins_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.index ["email"], :name => "index_admins_on_email", :unique => true
+    t.index ["reset_password_token"], :name => "index_admins_on_reset_password_token", :unique => true
   end
 
-  create_table "clinic_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "clinic_histories", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer "member_id"
     t.integer "clinic_id"
   end
 
-  create_table "clinics", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "clinics", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
     t.string "name"
     t.string "doctor"
     t.string "address"
     t.string "phone_number"
     t.string "image_id"
     t.text "official_site"
-    t.boolean "is_active", default: true
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean "is_active", :default => true
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.text "explanation"
     t.string "postcode"
     t.json "images"
     t.string "nearest_station"
     t.float "latitude"
     t.float "longitude"
-    t.integer "impressions_count", default: 0
-    t.index ["name"], name: "index_clinics_on_name"
+    t.integer "impressions_count", :default => 0
+    t.index ["name"], :name => "index_clinics_on_name"
   end
 
-  create_table "consultation_hours", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "consultation_hours", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
     t.integer "clinic_id"
     t.string "start_time"
     t.string "finish_time"
@@ -63,62 +63,62 @@ ActiveRecord::Schema.define(version: 2021_01_17_083426) do
     t.integer "sa_time"
     t.integer "su_time"
     t.integer "ho_time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["clinic_id"], name: "index_consultation_hours_on_clinic_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.index ["clinic_id"], :name => "index_consultation_hours_on_clinic_id"
   end
 
-  create_table "coupons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "coupons", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
     t.integer "member_id"
-    t.boolean "is_valid", default: true
+    t.boolean "is_valid", :default => true
     t.integer "limit"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "entries", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
     t.bigint "member_id"
     t.bigint "room_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_entries_on_member_id"
-    t.index ["room_id"], name: "index_entries_on_room_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.index ["member_id"], :name => "index_entries_on_member_id"
+    t.index ["room_id"], :name => "index_entries_on_room_id"
   end
 
-  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "events", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
     t.integer "member_id"
     t.string "title"
     t.text "body"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  create_table "favorites", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "favorites", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
     t.integer "member_id"
     t.integer "clinic_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  create_table "genre_maps", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "genre_maps", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
     t.integer "clinic_id"
     t.integer "genre_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["clinic_id"], name: "index_genre_maps_on_clinic_id"
-    t.index ["genre_id"], name: "index_genre_maps_on_genre_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.index ["clinic_id"], :name => "index_genre_maps_on_clinic_id"
+    t.index ["genre_id"], :name => "index_genre_maps_on_genre_id"
   end
 
-  create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "genres", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
     t.string "medical_department"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["medical_department"], name: "index_genres_on_medical_department"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.index ["medical_department"], :name => "index_genres_on_medical_department"
   end
 
-  create_table "impressions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "impressions", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
     t.string "impressionable_type"
     t.integer "impressionable_id"
     t.integer "user_id"
@@ -131,42 +131,42 @@ ActiveRecord::Schema.define(version: 2021_01_17_083426) do
     t.text "message"
     t.text "referrer"
     t.text "params"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index"
-    t.index ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index"
-    t.index ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index"
-    t.index ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index"
-    t.index ["impressionable_type", "impressionable_id", "params"], name: "poly_params_request_index", length: { params: 255 }
-    t.index ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index"
-    t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
-    t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", length: { message: 255 }
-    t.index ["user_id"], name: "index_impressions_on_user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.index ["controller_name", "action_name", "ip_address"], :name => "controlleraction_ip_index"
+    t.index ["controller_name", "action_name", "request_hash"], :name => "controlleraction_request_index"
+    t.index ["controller_name", "action_name", "session_hash"], :name => "controlleraction_session_index"
+    t.index ["impressionable_type", "impressionable_id", "ip_address"], :name => "poly_ip_index"
+    t.index ["impressionable_type", "impressionable_id", "params"], :name => "poly_params_request_index", :length => { :params => 255 }
+    t.index ["impressionable_type", "impressionable_id", "request_hash"], :name => "poly_request_index"
+    t.index ["impressionable_type", "impressionable_id", "session_hash"], :name => "poly_session_index"
+    t.index ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index", :length => { :message => 255 }
+    t.index ["user_id"], :name => "index_impressions_on_user_id"
   end
 
-  create_table "inquiries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title", null: false, comment: "タイトル"
-    t.text "content", null: false, comment: "本文"
-    t.bigint "member_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_inquiries_on_member_id"
+  create_table "inquiries", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
+    t.string "title", :null => false, :comment => "タイトル"
+    t.text "content", :null => false, :comment => "本文"
+    t.bigint "member_id", :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.index ["member_id"], :name => "index_inquiries_on_member_id"
   end
 
-  create_table "members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
+  create_table "members", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
+    t.string "email", :default => "", :null => false
+    t.string "encrypted_password", :default => "", :null => false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string "name"
     t.string "postcode"
     t.string "address"
     t.date "birthday"
     t.boolean "sex"
-    t.boolean "is_deleted", default: false
+    t.boolean "is_deleted", :default => false
     t.integer "prefecture_code"
     t.string "profile_image_id"
     t.integer "prefecture_id"
@@ -178,87 +178,87 @@ ActiveRecord::Schema.define(version: 2021_01_17_083426) do
     t.string "unconfirmed_email"
     t.string "uid"
     t.string "provider"
-    t.index ["email"], name: "index_members_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
+    t.index ["email"], :name => "index_members_on_email", :unique => true
+    t.index ["reset_password_token"], :name => "index_members_on_reset_password_token", :unique => true
   end
 
-  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "messages", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
     t.bigint "member_id"
     t.bigint "room_id"
     t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["member_id"], name: "index_messages_on_member_id"
-    t.index ["room_id"], name: "index_messages_on_room_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.index ["member_id"], :name => "index_messages_on_member_id"
+    t.index ["room_id"], :name => "index_messages_on_room_id"
   end
 
-  create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "notifications", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
     t.integer "visiter_id"
     t.integer "visited_id"
     t.string "action"
-    t.boolean "checked", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean "checked", :default => false, :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.integer "room_id"
     t.integer "message_id"
   end
 
-  create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "prefectures", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
     t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string "slug"
   end
 
-  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "relationships", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
     t.integer "follower_id"
     t.integer "following_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["follower_id", "following_id"], name: "index_relationships_on_follower_id_and_following_id", unique: true
-    t.index ["follower_id"], name: "index_relationships_on_follower_id"
-    t.index ["following_id"], name: "index_relationships_on_following_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.index ["follower_id", "following_id"], :name => "index_relationships_on_follower_id_and_following_id", :unique => true
+    t.index ["follower_id"], :name => "index_relationships_on_follower_id"
+    t.index ["following_id"], :name => "index_relationships_on_following_id"
   end
 
-  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "reviews", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
     t.integer "member_id"
     t.integer "clinic_id"
     t.string "title"
     t.text "comment"
-    t.integer "wating_time", default: 0
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.float "score", default: 0.0
+    t.integer "wating_time", :default => 0
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.float "score", :default => 0.0
   end
 
-  create_table "rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "rooms", :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
-  create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "taggings", :id => :integer, :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
     t.integer "taggable_id"
     t.string "tagger_type"
     t.integer "tagger_id"
-    t.string "context", limit: 128
+    t.string "context", :limit => 128
     t.datetime "created_at"
-    t.index ["context"], name: "index_taggings_on_context"
-    t.index ["tag_id"], name: "index_taggings_on_tag_id"
-    t.index ["taggable_id", "taggable_type", "context"], name: "taggings_taggable_context_idx"
-    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], name: "taggings_idy"
-    t.index ["taggable_id"], name: "index_taggings_on_taggable_id"
-    t.index ["taggable_type"], name: "index_taggings_on_taggable_type"
-    t.index ["tagger_id", "tagger_type"], name: "index_taggings_on_tagger_id_and_tagger_type"
-    t.index ["tagger_id"], name: "index_taggings_on_tagger_id"
+    t.index ["context"], :name => "index_taggings_on_context"
+    t.index ["tag_id"], :name => "index_taggings_on_tag_id"
+    t.index ["taggable_id", "taggable_type", "context"], :name => "taggings_taggable_context_idx"
+    t.index ["taggable_id", "taggable_type", "tagger_id", "context"], :name => "taggings_idy"
+    t.index ["taggable_id"], :name => "index_taggings_on_taggable_id"
+    t.index ["taggable_type"], :name => "index_taggings_on_taggable_type"
+    t.index ["tagger_id", "tagger_type"], :name => "index_taggings_on_tagger_id_and_tagger_type"
+    t.index ["tagger_id"], :name => "index_taggings_on_tagger_id"
   end
 
-  create_table "tags", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", collation: "utf8_bin"
+  create_table "tags", :id => :integer, :options => "ENGINE=InnoDB DEFAULT CHARSET=utf8", :force => :cascade do |t|
+    t.string "name", :collation => "utf8_bin"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer "taggings_count", default: 0
+    t.integer "taggings_count", :default => 0
   end
 
   add_foreign_key "entries", "members"

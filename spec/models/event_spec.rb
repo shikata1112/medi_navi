@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Event, type: :model do
+RSpec.describe Event, :type => :model do
 
   describe "モデルの関連付け" do
     let(:association) do

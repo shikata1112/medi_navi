@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :notification1, class: Notification do
+  factory :notification1, :class => Notification do
     visiter_id { nil }
     visited_id { nil }
     room_id { 1 }
@@ -8,7 +8,7 @@ FactoryBot.define do
     checked { false }
   end
 
-  factory :notification2, class: Notification do
+  factory :notification2, :class => Notification do
     visiter_id { nil }
     visited_id { nil }
     room_id { 1 }

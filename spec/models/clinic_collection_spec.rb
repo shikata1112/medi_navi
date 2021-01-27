@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ClinicCollection, type: :model do
+RSpec.describe ClinicCollection, :type => :model do
   before do
     @clinic1 = build(:clinic)
     @clinic2 = build(:clinic)
