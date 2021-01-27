@@ -40,15 +40,15 @@ RSpec.configure do |config|
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   config.include FactoryBot::Syntax::Methods # 追加
-  config.include Devise::Test::ControllerHelpers, type: :controller # 追加
-  config.include Devise::Test::IntegrationHelpers, type: :request # 追加
-  config.include Devise::Test::IntegrationHelpers, type: :system # 追加
+  config.include Devise::Test::ControllerHelpers, :type => :controller # 追加
+  config.include Devise::Test::IntegrationHelpers, :type => :request # 追加
+  config.include Devise::Test::IntegrationHelpers, :type => :system # 追加
   config.include LoginModule # 追加
 
   config.before(:each) do |example|
     if example.metadata[:type] == :system
       if example.metadata[:js]
-        driven_by :selenium_chrome_headless, screen_size: [1400, 1400]
+        driven_by :selenium_chrome_headless, :screen_size => [1400, 1400]
       else
         driven_by :rack_test
       end

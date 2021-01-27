@@ -19,7 +19,7 @@ FactoryBot.define do
     password { '12345678' }
   end
 
-  factory :guest, class: Member do
+  factory :guest, :class => Member do
     id { 2 }
     name { 'ゲスト' }
     email { 'guest@example.com' }
