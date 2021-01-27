@@ -12,7 +12,7 @@ class Member::InquiryController < ApplicationController
 
   def create
     @inquiry = current_member.inquiries.create!(inquiry_params)
-    redirect_to action: :thanks
+    redirect_to thanks_member_inquiry_index_path
   end
 
   def thanks
