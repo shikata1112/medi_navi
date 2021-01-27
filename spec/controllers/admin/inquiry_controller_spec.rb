@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Admin::InquiryController, type: :controller do
+  before do
+    admin = create(:admin)
+    sign_in admin
+  end
+  
   describe "index" do
     it "/admin/inquiryにアクセスできること" do
       get :index
