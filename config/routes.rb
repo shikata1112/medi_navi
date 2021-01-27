@@ -80,14 +80,7 @@ Rails.application.routes.draw do
     end
   # -------------------- member -----------------------------------------------
 
-<<<<<<< HEAD
-    namespace :api do
-      resources :clinics, :only => [:index]
-    end
-
-=======
   namespace :api do
     resources :clinics, only: [:index]
   end
->>>>>>> feature/fix-rubocop-w
 end
