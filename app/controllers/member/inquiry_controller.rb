@@ -1,6 +1,7 @@
 class Member::InquiryController < ApplicationController
   
   def new
+    @inquiry = Inquiry.new
   end
 
   def create

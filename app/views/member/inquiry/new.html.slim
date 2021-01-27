@@ -1,0 +1,21 @@
+.container
+  .row
+    .col-xs-3
+    .col-xs-6
+      .inquiry_form
+        h1 お問い合わせフォーム
+        = form_with model: @inquiry, url: confirm_member_inquiry_index_path do |f|
+          .form-group
+            = f.label :title, 'タイトル'
+            br
+            = f.text_field :title, class: 'form-control', id: 'inquiry-title'
+            br
+
+          .form-group
+            = f.label :content, '本文'
+            br
+            = f.text_area :content, class: 'form-control', id: 'inquiry-content'
+            br
+
+          .form-group
+            =f.submit '確認画面へ', class: 'btn btn-primary'
