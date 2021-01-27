@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe GenreMap, type: :model do
+RSpec.describe GenreMap, :type => :model do
 
   describe "モデルの関連付け" do
     let(:association) do
