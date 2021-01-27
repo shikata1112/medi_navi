@@ -10,17 +10,17 @@ FactoryBot.define do
     is_active { true }
   end
 
-  factory :clinic1, class: Clinic do
+  factory :clinic1, :class => Clinic do
     name { "大阪クリニック" }
     nearest_station { "京橋駅" }
     phone_number { "0776669999" }
     address { "大阪府大阪市中央区123" }
-    doctor{ "やまだ" }
+    doctor { "やまだ" }
     postcode { "1111111" }
     is_active { true }
   end
 
-  factory :clinic2, class: Clinic do
+  factory :clinic2, :class => Clinic do
     name { "東京クリニック" }
     nearest_station { "西京橋駅" }
     phone_number { "1122556755" }
@@ -30,7 +30,7 @@ FactoryBot.define do
     is_active { true }
   end
 
-  factory :clinic3, class: Clinic do
+  factory :clinic3, :class => Clinic do
     name { "福岡医院" }
     nearest_station { "博多駅" }
     phone_number { "1234555567" }
@@ -40,7 +40,7 @@ FactoryBot.define do
     is_active { true }
   end
 
-  factory :clinic4, class: Clinic do
+  factory :clinic4, :class => Clinic do
     name { "しかた整形外科クリニック" }
     nearest_station { "西中島南方駅" }
     phone_number { "1111234" }

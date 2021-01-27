@@ -1,6 +1,6 @@
 class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_genre, only: [:edit, :update, :destroy]
+  before_action :set_genre, :only => [:edit, :update, :destroy]
 
   def new
     @genre = Genre.new
@@ -13,7 +13,7 @@ class Admin::GenresController < ApplicationController
       redirect_to admin_genres_path
     else
       flash[:genre_create_failure] = "診療科目名が空欄またはすでに登録されています。"
-      redirect_back(fallback_location: root_path)
+      redirect_back(:fallback_location => root_path)
     end
   end
 
@@ -30,7 +30,7 @@ class Admin::GenresController < ApplicationController
       flash[:genre_edit] = "診療科目を更新しました。"
     else
       flash[:genre_edit_failure] = "診療科目名が空欄またはすでに登録されています。"
-      redirect_back(fallback_location: root_path)
+      redirect_back(:fallback_location => root_path)
     end
   end
 
