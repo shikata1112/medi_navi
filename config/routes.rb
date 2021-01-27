@@ -29,7 +29,11 @@ Rails.application.routes.draw do
       resources :clinics
       resources :consultation_hours, only: [:create, :update, :destroy]
       resources :genres, except: [:show]
+<<<<<<< HEAD
       resources :inquiry, only: [:index, :show]
+=======
+      
+>>>>>>> parent of 45bb4c5... rubocopの違反レベルCのみ解消
     end
   # -------------------- admin ------------------------------------------------
   
