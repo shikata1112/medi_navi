@@ -1,0 +1,29 @@
+.container
+  .row.inquiry_index
+    .col-xs-3
+    .col-xs-6
+      h2
+        | 問い合わせ一覧
+      table.table.table-bordered.table-hover.admin-table
+        thead
+          tr
+            th
+              | 問い合わせID
+            th
+              | 会員名
+            th
+              | 問い合わせタイトル
+            th
+              |
+
+        tbody
+          - @inquiries.each do |inquiry|
+            tr
+              td
+                = inquiry.id
+              td
+                = inquiry.member_name
+              td
+                = inquiry.title
+              td.text-center
+                = link_to '詳細', admin_inquiry_path(inquiry) 
