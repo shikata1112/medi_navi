@@ -2,6 +2,9 @@
   .row
     .col-xs-3
     .col-xs-6
+      p.alert-danger
+          = flash[:danger]
+
       .inquiry_form
         h1 お問い合わせフォーム
         = form_with model: @inquiry, url: confirm_member_inquiry_index_path do |f|
