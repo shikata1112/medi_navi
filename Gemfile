@@ -149,3 +149,5 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 
 # 環境変数
 gem 'dotenv-rails'
+
+gem 'slack-notifier'
