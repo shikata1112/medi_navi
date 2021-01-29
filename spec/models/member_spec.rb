@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Member, :type => :model do
+RSpec.describe Member, type: :model do
 
   before do
     @member = FactoryBot.build(:member)
@@ -141,7 +141,7 @@ RSpec.describe Member, :type => :model do
     context "PassiveNotificationモデルとのアソシエーション" do
       let(:target) { :passive_notifications }
       it { expect(association.macro).to eq :has_many }
-      it { expect(association.class_name).to eq "Notification" }
+      it { expect(association.class_name).to eq "Notification"}
     end
   end
 
@@ -150,13 +150,13 @@ RSpec.describe Member, :type => :model do
       @current_member = create(:member)
       @member = create(:guest)
       @room = create(:room1)
-      @entry = create(:entry1, :member_id => @member.id, :room_id => @room.id)
+      @entry = create(:entry1, member_id: @member.id, room_id: @room.id)
     end
 
     it "メッセージの通知が保存されること" do
-      @message = Message.create!(:member_id => @current_member.id, :room_id => @room.id, :body => 'test')
-      @entry = Entry.where.not(:member_id => @current_member.id)
-                    .find_by(:room_id => @room.id)
+      @message = Message.create!(member_id: @current_member.id, room_id: @room.id, body: 'test')
+      @entry = Entry.where.not(member_id: @current_member.id)
+                    .find_by(room_id: @room.id)
       @current_member.notification_create!(@room, @message, @entry)
       
       expect(1).to eq @current_member.active_notifications.size
@@ -186,8 +186,8 @@ RSpec.describe Member, :type => :model do
 
     it "room_idの配列が返ってくること" do
       room = Room.create
-      Entry.create(:member_id => @member1.id, :room_id => room.id)
-      Entry.create(:member_id => @member2.id, :room_id => room.id)
+      Entry.create(member_id: @member1.id, room_id: room.id)
+      Entry.create(member_id: @member2.id, room_id: room.id)
       
       @room_ids = @member1.entries.map { |entry| entry.room.id }
       expect(@member1.room_ids).to eq @room_ids
@@ -196,8 +196,8 @@ RSpec.describe Member, :type => :model do
 
   describe "#display_gender_text" do
     before do
-      @member1 = create(:member, :sex => true)
-      @member2 = create(:guest, :sex => false)
+      @member1 = create(:member, sex: true)
+      @member2 = create(:guest, sex: false)
     end
 
     it "返り値で男性を返すこと" do
@@ -211,8 +211,8 @@ RSpec.describe Member, :type => :model do
 
   describe "#display_deleted_text" do
     before do
-      @member1 = create(:member, :is_deleted => true)
-      @member2 = create(:guest, :is_deleted => false)
+      @member1 = create(:member, is_deleted: true)
+      @member2 = create(:guest, is_deleted: false)
     end
 
     it "返り値で無効を返すこと" do

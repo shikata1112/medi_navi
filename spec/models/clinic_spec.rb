@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Clinic, :type => :model do
+RSpec.describe Clinic, type: :model do
 
   describe "クリニック新規登録（admin）" do
 
@@ -136,8 +136,8 @@ RSpec.describe Clinic, :type => :model do
 
   describe "#display_active_text" do
     before do
-      @clinic1 = create(:clinic1, :is_active => true)
-      @clinic2 = create(:clinic1, :is_active => false)
+      @clinic1 = create(:clinic1, is_active: true)
+      @clinic2 = create(:clinic1, is_active: false)
     end
 
     it "返り値が開院中であること" do
@@ -153,8 +153,8 @@ RSpec.describe Clinic, :type => :model do
     before do
       @clinic = create(:clinic)
       member = create(:member)
-      create(:review, :clinic_id => @clinic.id, :member_id => member.id, :score => 3.0)
-      create(:review2, :clinic_id => @clinic.id, :member_id => member.id, :score => 5.0)
+      create(:review, clinic_id: @clinic.id, member_id: member.id, score: 3.0)
+      create(:review2, clinic_id: @clinic.id, member_id: member.id, score: 5.0)
     end
     
     it "clinicに紐づいたreviewsのscoreを配列で返すこと" do
@@ -166,8 +166,8 @@ RSpec.describe Clinic, :type => :model do
     before do
       @clinic = create(:clinic)
       member = create(:member)
-      create(:review, :clinic_id => @clinic.id, :member_id => member.id, :score => 3.0)
-      create(:review2, :clinic_id => @clinic.id, :member_id => member.id, :score => 5.0)
+      create(:review, clinic_id: @clinic.id, member_id: member.id, score: 3.0)
+      create(:review2, clinic_id: @clinic.id, member_id: member.id, score: 5.0)
     end
     
     it "clinicに紐づいたreviewsの件数を返すこと" do
