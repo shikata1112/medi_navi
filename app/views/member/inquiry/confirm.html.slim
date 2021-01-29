@@ -1,23 +1,35 @@
 .container
   .row
-    .col-xs-3
-    .col-xs-6
+    .col-xs-2
+    .col-xs-8
       h1 問い合わせ内容確認
 
       = form_with model: @inquiry, url: member_inquiry_index_path do |f|
-        .form-group
-          = f.label :content, 'タイトル'
-          br
-          = f.text_field :title, readonly: true, class: 'form-control'
-          = f.hidden_field :title
+        table.table
+          tr
+            th
+              | メールアドレス
+            td
+              = current_member.email
+          tr
+            th
+              | 名前
+            td
+              = current_member.name
+          tr
+            th
+              | タイトル
+            td
+              = @inquiry.title
+          tr
+            th
+              | 本文
+            td
+              = @inquiry.content
+        
+        = f.hidden_field :title
+        = f.hidden_field :content
 
-        .form-group
-          = f.label :content, '本文'
-          br
-          = f.text_area :content, readonly: true, class: 'form-control'
-          = f.hidden_field :content
+        = f.submit '内容を送信する', class: 'btn btn-primary btn-block'
 
-        = f.submit '内容を送信する', class: 'btn btn-primary'
-
-      br
-      = link_to '修正する', new_member_inquiry_path
+      = link_to '修正する', new_member_inquiry_path, class: 'btn btn-warning btn-block'
