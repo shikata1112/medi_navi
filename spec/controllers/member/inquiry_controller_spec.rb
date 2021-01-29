@@ -50,24 +50,48 @@ RSpec.describe Member::InquiryController, type: :controller do
   end
 
   describe "create" do
-    let(:params) do
+    context "入力した値が正常なとき" do
+      let(:params) do
+        {
+          inquiry: {
+            title: 'test',
+            content: 'testです',
+            member_id: @member.id
+          }
+        }
+      end
+
+      it "問い合わせを保存できるか" do
+        post :create, params: params
+        expect(@member.inquiries.size).to eq (1)
+      end
+
+      it "/member/inquiry/thanksにリダイレクトすること" do
+        post :create, params: params
+        expect(response).to redirect_to "/member/inquiry/thanks"
+      end
+    end
+
+    context "入力した値が正常でないとき" do
+      let(:params) do
       {
         inquiry: {
-          title: 'test',
+          title: nil,
           content: 'testです',
           member_id: @member.id
         }
       }
-    end
+      end
 
-    it "正常に問い合わせを保存できるか" do
-      post :create, params: params
-      expect(@member.inquiries.size).to eq (1)
-    end
+      it "flashメッセージを表示すること" do
+        post :create, params: params
+        expect(flash[:danger]).to be_present
+      end
 
-    it "/member/inquiry/thanksにリダイレクトすること" do
-      post :create, params: params
-      expect(response).to redirect_to "/member/inquiry/thanks"
+      it "newページがレンダリングされること" do
+        post :create, params: params
+        expect(response).to render_template :new
+      end
     end
   end
 

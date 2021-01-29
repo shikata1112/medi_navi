@@ -5,6 +5,6 @@ class AddNameToMembers < ActiveRecord::Migration[5.2]
     add_column :members, :address, :string
     add_column :members, :birthday, :date
     add_column :members, :sex, :boolean
-    add_column :members, :is_deleted, :boolean, :default => false
+    add_column :members, :is_deleted, :boolean, default: false
   end
 end
