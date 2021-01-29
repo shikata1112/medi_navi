@@ -3,7 +3,7 @@ class Admin::MembersController < ApplicationController
 
   def top 
     month = (Date.today.beginning_of_month..Date.today).to_a
-    number_of_members = month.map { |item| Member.where(:created_at => item.beginning_of_day..item.end_of_day).count }
+    number_of_members = month.map { |item| Member.where(created_at: item.beginning_of_day..item.end_of_day).count }
     @graph = Chart.new(month, number_of_members).subscriber_transition
   end
 
@@ -30,7 +30,7 @@ class Admin::MembersController < ApplicationController
   end
 
   def send_users_csv
-    send_data(Member.generate_csv, :filename => Member::CSV_FILE_NAME)
+    send_data(Member.generate_csv, filename: Member::CSV_FILE_NAME)
   end
   
 end

@@ -5,7 +5,7 @@ class CreateReviews < ActiveRecord::Migration[5.2]
       t.string :clinic_id
       t.string :title
       t.text :comment
-      t.integer :wating_time, :default => 0
+      t.integer :wating_time, default: 0
       t.integer :score
 
       t.timestamps

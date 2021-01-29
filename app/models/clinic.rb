@@ -1,27 +1,27 @@
 class Clinic < ApplicationRecord
 
   has_many :genre_maps
-  has_many :genres, :through => :genre_maps
+  has_many :genres, through: :genre_maps
   attr_accessor :genre_ids
 
-  has_many :consultation_hours, :dependent => :destroy
+  has_many :consultation_hours, dependent: :destroy
   accepts_nested_attributes_for :consultation_hours
 
-  has_many :reviews, :dependent => :destroy
-  has_many :members, :through => :reviews
+  has_many :reviews, dependent: :destroy
+  has_many :members, through: :reviews
 
-  has_many :favorites, :dependent => :destroy
-  has_many :members, :through => :favorites
+  has_many :favorites, dependent: :destroy
+  has_many :members, through: :favorites
 
-  has_many :clinic_histories, :dependent => :destroy
+  has_many :clinic_histories, dependent: :destroy
 
   # バリデーション
-  validates :name, :doctor, :address, :postcode, :phone_number, :presence => true
-  validates :is_active, :inclusion => { :in => [true, false] }
+  validates :name, :doctor, :address, :postcode, :phone_number, presence: true
+  validates :is_active, inclusion: {in: [true, false]}
   
   # クリニックのお気に入り機能
   def favorited_by?(member)
-    favorites.any? { |favorite| favorite.member_id == member.id }
+    favorites.any? {|favorite| favorite.member_id == member.id}
   end
 
   # 画像投稿機能
@@ -33,7 +33,7 @@ class Clinic < ApplicationRecord
   after_validation :geocode
 
   # impressions-pv
-  is_impressionable :counter_cache => true
+  is_impressionable counter_cache: true
 
   # 検索機能
   def self.search(search)
@@ -41,7 +41,7 @@ class Clinic < ApplicationRecord
   end
 
   def self.new_order
-    order(:id => 'DESC')
+    order(id: 'DESC')
   end
 
   def self.clinics_load

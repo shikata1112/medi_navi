@@ -14,6 +14,10 @@ class Member::InquiryController < ApplicationController
     @inquiry = current_member.inquiries.create!(inquiry_params)
     MemberMailer.inquiry_mail(@inquiry).deliver_now
     redirect_to thanks_member_inquiry_index_path
+  rescue ActiveRecord::RecordInvalid => e
+    Rails.logger.error e.message
+    flash[:danger] = "エラーが発生しました!もう1度やり直してください。"
+    render :new
   end
 
   def thanks
