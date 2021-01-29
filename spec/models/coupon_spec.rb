@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Coupon, :type => :model do
+RSpec.describe Coupon, type: :model do
 
   describe "モデルの関連付け" do
     let(:association) do
@@ -17,7 +17,7 @@ RSpec.describe Coupon, :type => :model do
   describe "#ja_expiration_date" do
     before do
       @member = create(:member)
-      @coupon = create(:coupon, :member_id => @member.id)
+      @coupon = create(:coupon, member_id: @member.id)
     end
 
     it "有効期限を返すこと" do
@@ -31,14 +31,14 @@ RSpec.describe Coupon, :type => :model do
     end
 
     it "条件に一致するcouponが削除されること" do
-      create(:coupon, :created_at => Time.now)
+      create(:coupon, created_at: Time.now)
 
       3.times do
         Coupon.create!(
-          :member_id => @member.id,
-          :is_valid => true,
-          :limit => 1,
-          :created_at => Time.now - 1.minute
+          member_id: @member.id,
+          is_valid: true,
+          limit: 1,
+          created_at: Time.now - 1.minute
         )
       end
       
