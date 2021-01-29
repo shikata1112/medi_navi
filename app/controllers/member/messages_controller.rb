@@ -4,21 +4,21 @@ class Member::MessagesController < ApplicationController
   def create 
     @message = current_member.messages.create!(message_params)
     @room = @message.room
-    @entry = Entry.where.not(:member_id => current_member.id).find_by(:room_id => @room.id)
+    @entry = Entry.where.not(member_id: current_member.id).find_by(room_id: @room.id)
     current_member.notification_create!(@room, @message, @entry)
   rescue ActiveRecord::RecordInvalid => e
     Rails.logger.error e.message
     flash[:warning] = "メッセージが空です!"
-  rescue StandardError => e
+  rescue => e
     Rails.logger.error e.message
   ensure
-    redirect_back(:fallback_location => root_path)
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     message = Message.find(params[:id])
     message.destroy
-    redirect_back(:fallback_location => root_path)
+    redirect_back(fallback_location: root_path)
   end
 
   private
