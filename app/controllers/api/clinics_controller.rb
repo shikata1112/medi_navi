@@ -3,6 +3,6 @@ class Api::ClinicsController < ApplicationController
 
   def index
     @clinics = Clinic.all
-    render :formats => :json
+    render formats: :json
   end
 end

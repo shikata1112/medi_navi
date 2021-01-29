@@ -1,7 +1,7 @@
 class CreateConsultationHours < ActiveRecord::Migration[5.2]
   def change
     create_table :consultation_hours do |t|
-      t.integer :clinic_id, :index => true
+      t.integer :clinic_id, index: true
       t.string :start_time
       t.string :finish_time
       t.integer :mo_time
