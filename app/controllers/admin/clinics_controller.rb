@@ -1,6 +1,6 @@
 class Admin::ClinicsController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_clinic, :only => [:show, :edit, :update, :destroy]
+  before_action :set_clinic, only: [:show, :edit, :update, :destroy]
 
   def new
     @clinic = Clinic.new
@@ -66,9 +66,9 @@ class Admin::ClinicsController < ApplicationController
       :official_site,
       :explanation,
       :is_active,
-      { :images => [] },
-      :genre_ids => [],
-      :consultation_hours => [
+      { images: []},
+      genre_ids: [],
+      consultation_hours:[
         :id,
         :clinic_id,
         :start_time,
@@ -82,7 +82,7 @@ class Admin::ClinicsController < ApplicationController
         :su_time,
         :ho_time,
         :_destroy
-      ]
+        ]
     )
   end
 

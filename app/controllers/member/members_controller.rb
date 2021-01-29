@@ -1,6 +1,6 @@
 class Member::MembersController < ApplicationController
   before_action :authenticate_member!
-  before_action :set_member, :only => [:show, :edit, :update, :follows, :followers]
+  before_action :set_member, only: [:show, :edit, :update, :follows, :followers]
   
   def show
     @is_room = @member.entries.room_exists?(@member, current_member)
@@ -21,7 +21,7 @@ class Member::MembersController < ApplicationController
       flash[:notice_update] = "会員情報が更新されました。"
     else
       flash[:alert_update] = "正しい値を入力してください。"
-      redirect_back(:fallback_location => root_path)
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -31,7 +31,7 @@ class Member::MembersController < ApplicationController
 
   def quit
     @member = Member.find(current_member.id)
-    @member.update(:is_deleted => true)
+    @member.update(is_deleted: true)
     reset_session
     flash[:notice] = "◆退会処理が完了しました。またのご利用を心よりお待ちしております。"
     redirect_to new_member_session_path

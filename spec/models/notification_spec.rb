@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Notification, :type => :model do
+RSpec.describe Notification, type: :model do
 
   describe "モデルの関連付け" do
     let(:association) do
@@ -22,8 +22,8 @@ RSpec.describe Notification, :type => :model do
 
   describe "#arrived" do
     it "visiterとvisitedが等しかったらtrue, 等しくなかったらfalse" do
-      notification1 = build(:notification1, :visiter_id => 1, :visited_id => 2)
-      notification2 = build(:notification2, :visiter_id => 3, :visited_id => 3)
+      notification1 = build(:notification1, visiter_id: 1, visited_id: 2)
+      notification2 = build(:notification2, visiter_id: 3, visited_id: 3)
 
       expect(false).to eq notification1.arrived
       expect(true).to eq notification2.arrived
@@ -38,17 +38,17 @@ RSpec.describe Notification, :type => :model do
     it "checkedが全てtrueに更新されること" do
       3.times do |i|
         Notification.create!(
-          :visited_id => @member1.id,
-          :visiter_id => (i + 1).to_s.to_i,
-          :checked => false
+          visited_id: @member1.id,
+          visiter_id: "#{i + 1}".to_i,
+          checked: false
         )
       end
 
       notifications = @member1.passive_notifications
       notifications.update_checked
 
-      expect(3).to eq @member1.passive_notifications.where(:checked => true).size
-      expect(0).to eq @member1.passive_notifications.where(:checked => false).size
+      expect(3).to eq @member1.passive_notifications.where(checked: true).size
+      expect(0).to eq @member1.passive_notifications.where(checked: false).size
     end
   end
 end
