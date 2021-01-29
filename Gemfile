@@ -35,11 +35,11 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', :require => false
+gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', :platforms => [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.1'
   gem 'rails-controller-testing'
   gem 'launchy', '~> 2.4.3'
@@ -56,11 +56,6 @@ group :development do
 
   # N+1を検出
   gem 'bullet'
-
-  gem 'rubocop', :require => false
-  gem 'rubocop-performance', :require => false
-  gem 'rubocop-rails', :require => false
-  gem 'rubocop-rspec'
 end
 
 group :test do
@@ -74,7 +69,7 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', :platforms => [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
@@ -96,13 +91,13 @@ gem 'rails-i18n'
 gem 'pry-rails'
 
 # reCAPTCHA
-gem 'recaptcha', :require => "recaptcha/rails"
+gem 'recaptcha', require: "recaptcha/rails"
 
 # 住所自動入力
 gem 'jp_prefecture'
 
 # 画像投稿
-gem "refile", :require => "refile/rails", :github => 'manfe/refile'
+gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 
 # 画像複数投稿
@@ -139,13 +134,15 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 
 # バッチ処理
-gem 'whenever', :require => false
+gem 'whenever', require: false
 
 # ページネーション
 gem 'kaminari'
 
 # ダミーデータ生成
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+gem 'rubocop', '~> 1.4', require: false
 
 # 環境変数
 gem 'dotenv-rails'
