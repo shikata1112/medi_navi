@@ -4,29 +4,29 @@
     .col-xs-8
       h1 問い合わせ内容確認
 
-      = form_with model: @inquiry, url: member_inquiry_index_path do |f|
-        table.table
-          tr
-            th
-              | メールアドレス
-            td
-              = current_member.email
-          tr
-            th
-              | 名前
-            td
-              = current_member.name
-          tr
-            th
-              | タイトル
-            td
-              = @inquiry.title
-          tr
-            th
-              | 本文
-            td
-              = @inquiry.content
-        
+      table.table
+        tr
+          th
+            | メールアドレス
+          td
+            = current_member.email
+        tr
+          th
+            | 名前
+          td
+            = current_member.name
+        tr
+          th
+            | タイトル
+          td
+            = @inquiry.title
+        tr
+          th
+            | 本文
+          td
+            = @inquiry.content
+
+      = form_with model: @inquiry, url: member_inquiry_index_path do |f| 
         = f.hidden_field :title
         = f.hidden_field :content
 
