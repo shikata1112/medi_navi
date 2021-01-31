@@ -148,3 +148,5 @@ gem 'rubocop', '~> 1.4', require: false
 gem 'dotenv-rails'
 
 gem 'slack-notifier'
+
+gem 'sidekiq'

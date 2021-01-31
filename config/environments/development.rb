@@ -64,6 +64,8 @@ Rails.application.configure do
 
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.active_job.queue_adapter = :sidekiq
+
   config.after_initialize do
     Bullet.enable = true # Bulletプラグインを有効
     Bullet.alert = true # JavaScriptでの通知

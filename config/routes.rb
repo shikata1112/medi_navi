@@ -83,4 +83,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :clinics, only: [:index]
   end
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end
