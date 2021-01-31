@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SlackNotifier, :type => :model do
+RSpec.describe SlackNotifier do
 
   describe "#send" do
     it "HTTPリクエスト(200)が送られているか" do
