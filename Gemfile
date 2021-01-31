@@ -146,3 +146,5 @@ gem 'rubocop', '~> 1.4', require: false
 
 # 環境変数
 gem 'dotenv-rails'
+
+gem 'slack-notifier'
