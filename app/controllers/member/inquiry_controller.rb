@@ -12,6 +12,7 @@ class Member::InquiryController < ApplicationController
 
   def create
     @inquiry = current_member.inquiries.create!(inquiry_params)
+    MemberMailer.inquiry_mail(@inquiry).deliver_now
     redirect_to thanks_member_inquiry_index_path
   rescue ActiveRecord::RecordInvalid => e
     Rails.logger.error e.message
