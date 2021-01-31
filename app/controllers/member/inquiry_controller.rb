@@ -5,12 +5,18 @@ class Member::InquiryController < ApplicationController
     @inquiry = Inquiry.new
   end
 
-  def create
-  end
-
   def confirm
     @inquiry = Inquiry.new(inquiry_params)
     render :new if @inquiry.invalid?
+  end
+
+  def create
+    @inquiry = current_member.inquiries.create!(inquiry_params)
+    redirect_to thanks_member_inquiry_index_path
+  rescue ActiveRecord::RecordInvalid => e
+    Rails.logger.error e.message
+    flash[:danger] = "エラーが発生しました!もう1度やり直してください。"
+    render :new
   end
 
   def thanks
