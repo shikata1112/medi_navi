@@ -50,15 +50,17 @@ function markerEvent(i, markerData, marker, infoWindow, map) {
   });
 }
 
-$(document).ready(function(){
-  $.ajax({
-    url: '/api/clinics',
-    dataType: "json"
-  })
-  .done(function(data) {
-    initMap(data);
-  })
-  .fail(function() {
-    console.log('error')
-  })
+$("#top-page").ready(function(){
+  if ($("#top-page").length) {
+    $.ajax({
+      url: '/api/clinics',
+      dataType: "json"
+    })
+    .done(function(data) {
+      initMap(data);
+    })
+    .fail(function() {
+      console.log('error')
+    })
+  }
 });
