@@ -13,8 +13,8 @@ class Member::InquiryController < ApplicationController
   def create
     @inquiry = current_member.inquiries.create!(inquiry_params)
 
-    MemberMailer.inquiry_mail(@inquiry).deliver_now
-    SlackNotifier.new.send("問い合わせがありました！")
+    MemberMailer.inquiry_mail(@inquiry).deliver_later
+    SlackJob.perform_later
     
     redirect_to thanks_member_inquiry_index_path
   rescue ActiveRecord::RecordInvalid => e

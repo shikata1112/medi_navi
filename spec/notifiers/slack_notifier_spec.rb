@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe SlackNotifier do
 
   describe "#send" do
-    it "HTTPリクエスト(200)が送られているか" do
-      expect(SlackNotifier.new.send("hoge").first.code).to eq "200"
+    it "エラーなくslackで通知が送られているか" do
+      expect{ SlackNotifier.new.send("hoge") }.not_to raise_error
     end
   end
 end
