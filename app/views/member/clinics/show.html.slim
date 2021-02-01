@@ -7,17 +7,15 @@
             .clinic-name
               = @clinic.name
             
-            .favorite-button
+            .favorite-button data-clinic-id="#{@clinic.id}"
               - if @clinic.favorited_by?(current_member)
-                = link_to member_clinic_favorites_path(@clinic), method: :delete do
-                  .btn.btn-default.btn-sm.unfavorite
-                    i.far.fa-star
-                    |  お気に入り済み
+                = button_tag id: 'favorite', data: { action: 'delete' }, class: 'btn unfavorite' do
+                  i.far.fa-star
+                  |  お気に入り済み
               - else
-                = link_to member_clinic_favorites_path(@clinic), method: :post do
-                  .btn.btn-default.btn-sm.favorite
-                    i.far.fa-star 
-                    |  お気に入り登録
+                = button_tag id: 'favorite', data: { action: 'create' }, class: 'btn favorite' do
+                  i.far.fa-star
+                  |  お気に入り登録
       
       .row
         .col-xs-3
@@ -73,7 +71,7 @@
       #showmap style='height: 330px; width: auto;'
 
       - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=ShowMap".html_safe
-      script{ async src=google_api }
+      script{ defer src=google_api }
 
       input value="#{@clinic.latitude}" type="hidden" class='clinic_latitude'
       input value="#{@clinic.longitude}" type="hidden" class='clinic_longitude'
@@ -91,31 +89,32 @@
         = @clinic.reviews.count
         |件)
 
-  .row
-    .page-header
-    .col-xs-2
-    .col-xs-8.clinic-boxes
-      #sampleCarousel.carousel.slide data-ride='carousel'
-        ol.carousel-indicators
-          li.active data-target='#sampleCarousel' data-slide-to='0'
-          li data-target='#sampleCarousel' data-slide-to='1'
-          li data-target='#sampleCarousel' data-slide-to='2'
-        .carousel-inner role='listbox'
-          - @clinic.images.each.with_index(1) do |image, index|
-            - if index == 1
-              .item.active
-                = image_tag image.to_s, class: 'img-responsive img-rounded carousel-image'
-            - else
-              .item
-                = image_tag image.to_s, class: 'img-responsive img-rounded carousel-image'
-        a.left.carousel-control href='#sampleCarousel' role='button' data-slide='prev'
-          span.glyphicon.glyphicon-chevron-left aria-hidden='true'
-          span.sr-only
-            | 前へ
-        a.right.carousel-control href='#sampleCarousel' role='button' data-slide='next'
-          span.glyphicon.glyphicon-chevron-right aria-hidden='true'
-          span.sr-only
-            | 次へ 
+  - if @clinic.images.present?
+    .row
+      .page-header
+      .col-xs-2
+      .col-xs-8.clinic-boxes
+        #sampleCarousel.carousel.slide data-ride='carousel'
+          ol.carousel-indicators
+            li.active data-target='#sampleCarousel' data-slide-to='0'
+            li data-target='#sampleCarousel' data-slide-to='1'
+            li data-target='#sampleCarousel' data-slide-to='2'
+          .carousel-inner role='listbox'
+            - @clinic.images.each.with_index(1) do |image, index|
+              - if index == 1
+                .item.active
+                  = image_tag image.to_s, class: 'img-responsive img-rounded carousel-image'
+              - else
+                .item
+                  = image_tag image.to_s, class: 'img-responsive img-rounded carousel-image'
+          a.left.carousel-control href='#sampleCarousel' role='button' data-slide='prev'
+            span.glyphicon.glyphicon-chevron-left aria-hidden='true'
+            span.sr-only
+              | 前へ
+          a.right.carousel-control href='#sampleCarousel' role='button' data-slide='next'
+            span.glyphicon.glyphicon-chevron-right aria-hidden='true'
+            span.sr-only
+              | 次へ 
 
   .row.clinic-basic-info
     .col-xs-2

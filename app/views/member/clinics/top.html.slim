@@ -1,5 +1,5 @@
 
-  .top-image
+  .top-image#top-page
     .clinic-top-image
     .top-band
       p.top-app-logo
@@ -46,7 +46,7 @@
               |  近くのクリニックを探す
           
           - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMap".html_safe
-          script{ async src=google_api }
+          script{ defer src=google_api }
 
           #map style='height: 400px; width: 700px;'
 
