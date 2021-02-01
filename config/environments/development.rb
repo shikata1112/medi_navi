@@ -64,6 +64,8 @@ Rails.application.configure do
 
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  config.active_job.queue_adapter = :sidekiq
+
   config.after_initialize do
     Bullet.enable = true # Bulletプラグインを有効
     Bullet.alert = true # JavaScriptでの通知
@@ -72,4 +74,14 @@ Rails.application.configure do
     Bullet.rails_logger = true # Railsログに出力
   end
   
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                  587,
+  domain:               'gmail.com',
+  user_name:            ENV['MAILER_EMAIL'],
+  password:             ENV['MAILER_PASSWORD'],
+  authentication:       'plain',
+  enable_starttls_auto:  true
+  }
 end

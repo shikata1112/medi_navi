@@ -5,7 +5,7 @@ function initMap(markerData) {
     let infoWindow = [];
   
     geocoder = new google.maps.Geocoder()
-  
+    
     map = new google.maps.Map(document.getElementById('map'), {
       // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
       center: {
@@ -43,21 +43,24 @@ function markerEvent(i, markerData, marker, infoWindow, map) {
   });
 
   let id = markerData[i]['id']
+  console.log(markerData)
 
   infoWindow[i] = new google.maps.InfoWindow({
     content: `<a href='/member/clinics/${ id }'>${ markerData[i]['name'] }</a>`
   });
 }
 
-$(document).ready(function(){
-  $.ajax({
-    url: '/api/clinics',
-    dataType: "json"
-  })
-  .done(function(data) {
-    initMap(data);
-  })
-  .fail(function() {
-    console.log('error')
-  })
+$("#top-page").ready(function(){
+  if ($("#top-page").length) {
+    $.ajax({
+      url: '/api/clinics',
+      dataType: "json"
+    })
+    .done(function(data) {
+      initMap(data);
+    })
+    .fail(function() {
+      console.log('error')
+    })
+  }
 });

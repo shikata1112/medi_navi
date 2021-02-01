@@ -6,7 +6,8 @@ ruby '2.6.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
+gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -64,6 +65,7 @@ group :test do
   gem 'webdrivers', '~> 4.0'
   gem 'capybara'
   gem "shoulda-matchers"
+  gem 'database_cleaner-redis'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -142,8 +144,9 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 
 gem 'rubocop', '~> 1.4', require: false
 
-# 環境変数、mysql
+# 環境変数
 gem 'dotenv-rails'
-group :production do
-  gem 'mysql2'
-end
+
+gem 'slack-notifier'
+
+gem 'sidekiq'

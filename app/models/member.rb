@@ -62,6 +62,8 @@ class Member < ApplicationRecord
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
+  has_many :inquiries, dependent: :destroy
+
   # followの通知
   def create_notification_follow!(current_member)
     temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ?", current_member.id, id, "follow"])
@@ -122,7 +124,7 @@ class Member < ApplicationRecord
   end
 
   private
-
+  
   def self.csv_values
     select(:id, :name, :email, :created_at)
   end

@@ -1,0 +1,35 @@
+.container
+  .row
+    .col-xs-2
+    .col-xs-8
+      h1 問い合わせ内容確認
+
+      table.table
+        tr
+          th
+            | メールアドレス
+          td
+            = current_member.email
+        tr
+          th
+            | 名前
+          td
+            = current_member.name
+        tr
+          th
+            | タイトル
+          td
+            = @inquiry.title
+        tr
+          th
+            | 本文
+          td
+            = @inquiry.content
+
+      = form_with model: @inquiry, url: member_inquiry_index_path do |f| 
+        = f.hidden_field :title
+        = f.hidden_field :content
+
+        = f.submit '内容を送信する', class: 'btn btn-primary btn-block'
+
+      = link_to '修正する', new_member_inquiry_path, class: 'btn btn-warning btn-block'

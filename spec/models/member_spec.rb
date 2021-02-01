@@ -150,7 +150,7 @@ RSpec.describe Member, type: :model do
       @current_member = create(:member)
       @member = create(:guest)
       @room = create(:room1)
-      @entry = create(:entry1, member_id: @member.id)
+      @entry = create(:entry1, member_id: @member.id, room_id: @room.id)
     end
 
     it "メッセージの通知が保存されること" do
@@ -158,7 +158,7 @@ RSpec.describe Member, type: :model do
       @entry = Entry.where.not(member_id: @current_member.id)
                     .find_by(room_id: @room.id)
       @current_member.notification_create!(@room, @message, @entry)
-
+      
       expect(1).to eq @current_member.active_notifications.size
       expect(1).to eq Notification.first.visiter_id
       expect(2).to eq Notification.first.visited_id
