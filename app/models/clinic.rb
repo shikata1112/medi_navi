@@ -53,7 +53,11 @@ class Clinic < ApplicationRecord
   end
 
   def review_scores
-    reviews.map(&:score)
+    reviews.pluck(:score)
+  end
+
+  def reviews_size
+    reviews.size
   end
   
 end

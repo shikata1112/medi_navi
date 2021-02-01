@@ -153,12 +153,25 @@ RSpec.describe Clinic, type: :model do
     before do
       @clinic = create(:clinic)
       member = create(:member)
-      review1 = create(:review, clinic_id: @clinic.id, member_id: member.id, score: 3.0)
-      refiew2 = create(:review2, clinic_id: @clinic.id, member_id: member.id, score: 5.0)
+      create(:review, clinic_id: @clinic.id, member_id: member.id, score: 3.0)
+      create(:review2, clinic_id: @clinic.id, member_id: member.id, score: 5.0)
     end
     
     it "clinicに紐づいたreviewsのscoreを配列で返すこと" do
       expect(@clinic.review_scores).to eq [3.0, 5.0]
+    end
+  end
+
+  describe "#reviews_size" do
+    before do
+      @clinic = create(:clinic)
+      member = create(:member)
+      create(:review, clinic_id: @clinic.id, member_id: member.id, score: 3.0)
+      create(:review2, clinic_id: @clinic.id, member_id: member.id, score: 5.0)
+    end
+    
+    it "clinicに紐づいたreviewsの件数を返すこと" do
+      expect(@clinic.reviews_size).to eq 2
     end
   end
 end

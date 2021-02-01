@@ -26,8 +26,8 @@ RSpec.describe Entry, type: :model do
       @member = create(:guest)
       @room1 = create(:room1)
       @room2 = create(:room2)
-      @entry1 = create(:entry1)
-      @entry2 = create(:entry2)
+      @entry1 = create(:entry1, member_id: @current_member.id, room_id: @room1)
+      @entry2 = create(:entry2, member_id: @member.id, room_id: @room2)
     end
 
     it 'entryモデルに紐ずくroomが存在するときtrueを返すこと' do
@@ -43,14 +43,14 @@ RSpec.describe Entry, type: :model do
       @member = create(:guest)
       @room1 = create(:room1)
       @room2 = create(:room2)
-      @entry1 = create(:entry1)
-      @entry2 = create(:entry2)
+      @entry1 = create(:entry1, member_id: @current_member.id)
+      @entry2 = create(:entry2, member_id: @member.id)
     end
 
     it 'entryモデルに紐ずく配列から1件のroom_idを返すこと' do
       first_room_id = @member.entries.room_id(@current_member, @member)
 
-      expect(1).to eq first_room_id
+      expect(first_room_id).to eq 1
     end
   end
   

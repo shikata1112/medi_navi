@@ -6,11 +6,7 @@ class Notification < ApplicationRecord
   belongs_to :message, optional: true
 
   def arrived
-    if same_member?
-      checked = true
-    else
-      checked = false
-    end
+    same_member? ? true : false
   end
 
   def same_member?

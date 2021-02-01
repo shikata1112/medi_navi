@@ -1,4 +1,5 @@
 json.array! @clinics do |clinic|
+  json.id clinic.id
   json.name clinic.name
   json.doctor  clinic.doctor
   json.address  clinic.address

@@ -7,19 +7,7 @@
       .clinic-name
         = link_to member_clinic_path(clinic) do
           = clinic.name
-      
-      .favorite-button
-        - if clinic.favorited_by?(current_member)
-          = link_to member_clinic_favorites_path(clinic), method: :delete do
-            .btn.btn-default.btn-sm.unfavorite
-              i.far.fa-star
-              |  お気に入り済み
-        - else
-          = link_to member_clinic_favorites_path(clinic), method: :post do
-            .btn.btn-default.btn-sm.favorite
-              i.far.fa-star 
-              |  お気に入り登録
-
+          
   .row.clinic-show
     .col-xs-3
       .clinic-image

@@ -29,7 +29,7 @@ Rails.application.routes.draw do
       resources :clinics
       resources :consultation_hours, only: [:create, :update, :destroy]
       resources :genres, except: [:show]
-      
+      resources :inquiry, only: [:index, :show]
     end
   # -------------------- admin ------------------------------------------------
   
@@ -71,6 +71,12 @@ Rails.application.routes.draw do
       end
       resources :events
 
+      resources :inquiry, only: [:new, :create] do
+        collection do
+          post 'confirm'
+          get 'thanks'
+        end
+      end
     end
   # -------------------- member -----------------------------------------------
 
@@ -78,4 +84,6 @@ Rails.application.routes.draw do
     resources :clinics, only: [:index]
   end
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end

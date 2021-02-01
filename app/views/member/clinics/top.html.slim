@@ -1,5 +1,5 @@
 
-  .top-image
+  .top-image#top-page
     .clinic-top-image
     .top-band
       p.top-app-logo
@@ -46,7 +46,7 @@
               |  近くのクリニックを探す
           
           - google_api = "https://maps.googleapis.com/maps/api/js?key=#{ ENV['GOOGLE_MAP_API'] }&callback=initMap".html_safe
-          script{ async src=google_api }
+          script{ defer src=google_api }
 
           #map style='height: 400px; width: 700px;'
 
@@ -88,7 +88,7 @@
                   .clinic-history-comment style="color: #799b9b; padding-left: 20px;"
                     i.fas.fa-comment-dots
                     |  
-                    = history.clinic.reviews.length
+                    = history.clinic_reviews_size
                 
             .clinic-border style="border-bottom: 2px dotted #eee; margin-bottom: 15px;"
 
