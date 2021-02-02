@@ -14,14 +14,23 @@ RSpec.describe ConsultationHour, type: :model do
     end
   end
   
-  describe "enum" do
-    it { is_expected.to define_enum_for(:mo_time)}
-    it { is_expected.to define_enum_for(:tu_time)}
-    it { is_expected.to define_enum_for(:we_time)}
-    it { is_expected.to define_enum_for(:th_time)}
-    it { is_expected.to define_enum_for(:fr_time)}
-    it { is_expected.to define_enum_for(:sa_time)}
-    it { is_expected.to define_enum_for(:su_time)}
-    it { is_expected.to define_enum_for(:ho_time)}
+  describe "#time_status" do
+    before do
+      clinic = create(:clinic)
+      ConsultationHour.create!(clinic_id: clinic.id, mo_time: 0, tu_time: 1, we_time: 2)
+      @consultation_hour = ConsultationHour.first
+    end
+    
+    it "条件に該当する文字列'◯'を返すこと" do
+      expect(@consultation_hour.time_status(@consultation_hour.mo_time)).to eq '◯'
+    end
+
+    it "条件に該当する文字列'／'を返すこと" do
+      expect(@consultation_hour.time_status(@consultation_hour.tu_time)).to eq '／'
+    end
+
+    it "条件に該当する文字列'△'を返すこと" do
+      expect(@consultation_hour.time_status(@consultation_hour.we_time)).to eq '△'
+    end
   end
 end
