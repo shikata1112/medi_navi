@@ -17,18 +17,18 @@ thead
           | 〜
           = consultation_hour.finish_time
         td 
-          = consultation_hour.mo_time
+          = consultation_hour.time_status(consultation_hour.mo_time)
         td
-          = consultation_hour.tu_time
+          = consultation_hour.time_status(consultation_hour.th_time)
         td
-          = consultation_hour.we_time
+          = consultation_hour.time_status(consultation_hour.we_time)
         td
-          = consultation_hour.th_time
+          = consultation_hour.time_status(consultation_hour.th_time)
         td
-          = consultation_hour.fr_time
+          = consultation_hour.time_status(consultation_hour.fr_time)
         td
-          = consultation_hour.sa_time
+          = consultation_hour.time_status(consultation_hour.sa_time)
         td
-          = consultation_hour.su_time
+          = consultation_hour.time_status(consultation_hour.su_time)
         td
-          = consultation_hour.ho_time
+          = consultation_hour.time_status(consultation_hour.ho_time)
