@@ -44,6 +44,11 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'launchy', '~> 2.4.3'
   gem 'factory_bot_rails'
+  
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rbenv'
 end
 
 group :development do
