@@ -71,21 +71,21 @@
                           | 〜
                           = consultation_hour.select :finish_time, time_list
                         td 
-                          = consultation_hour.select :mo_time, { '●': 0, '／': 1, '▲': 2}
+                          = consultation_hour.select :mo_time
                         td
-                          = consultation_hour.select :tu_time, { '●': 0, '／': 1, '▲': 2}
+                          = consultation_hour.select :tu_time, { '●': 0, '／': 1, '▲': 2 }
                         td
-                          = consultation_hour.select :we_time, { '●': 0, '／': 1, '▲': 2}
+                          = consultation_hour.select :we_time, { '●': 0, '／': 1, '▲': 2 }
                         td
-                          = consultation_hour.select :th_time, { '●': 0, '／': 1, '▲': 2}
+                          = consultation_hour.select :th_time, { '●': 0, '／': 1, '▲': 2 }
                         td
-                          = consultation_hour.select :fr_time, { '●': 0, '／': 1, '▲': 2}
+                          = consultation_hour.select :fr_time, { '●': 0, '／': 1, '▲': 2 }
                         td
-                          = consultation_hour.select :sa_time, { '●': 0, '／': 1, '▲': 2}
+                          = consultation_hour.select :sa_time, { '●': 0, '／': 1, '▲': 2 }
                         td
-                          = consultation_hour.select :su_time, { '●': 0, '／': 1, '▲': 2}
+                          = consultation_hour.select :su_time, { '●': 0, '／': 1, '▲': 2 }
                         td
-                          = consultation_hour.select :ho_time, { '●': 0, '／': 1, '▲': 2}
+                          = consultation_hour.select :ho_time, { '●': 0, '／': 1, '▲': 2 }
                         
           = f.add_nested_fields_link :consultation_hours, '＋', class:"btn btn-default btn-xs"
           
