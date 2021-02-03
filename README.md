@@ -1,6 +1,6 @@
 ## アプリ名
   Medi Navi(メディナビ)
- 
+  <img width="1440" alt="スクリーンショット 2021-02-04 5 12 41" src="https://user-images.githubusercontent.com/67092021/106803824-f1f6ff80-66a7-11eb-8a36-e176426cc2e9.png">  
 ## 概要
   病院・クリニックの検索、口コミ投稿、スケジュール管理、会員同士のやり取りができるサービス。
 
