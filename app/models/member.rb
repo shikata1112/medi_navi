@@ -123,6 +123,10 @@ class Member < ApplicationRecord
     end
   end
 
+  def unchecked_notifications?
+    passive_notifications.where(checked: false).any?
+  end
+
   private
   
   def self.csv_values
