@@ -48,7 +48,7 @@ html
                     |  マイページ
                 li.nav-list role="presentation"
                   = link_to member_notifications_path do
-                    - if unchecked_notifications.any?
+                    - if current_member.unchecked_notifications?
                       i.fa.fa-circle.n-circle
                       span.glyphicon.glyphicon-bell aria-hidden="true"
                       |  通知

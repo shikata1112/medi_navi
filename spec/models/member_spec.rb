@@ -238,4 +238,24 @@ RSpec.describe Member, type: :model do
     end
   end
   
+  describe "#unchecked_notifications?" do
+    before do
+      @member = create(:member)
+      @guest = create(:guest)
+    end
+
+    it "checked: falseの通知が1件でもあればtrueを返すこと" do
+      create(:notification1, visiter_id: @guest.id, visited_id: @member.id, checked: false)
+      create(:notification2, visiter_id: @guest.id, visited_id: @member.id, checked: true)
+      
+      expect(@member.unchecked_notifications?).to eq true
+    end
+
+    it "checked: falseの通知がなければfalseを返すこと" do
+      create(:notification1, visiter_id: @guest.id, visited_id: @member.id, checked: true)
+      create(:notification2, visiter_id: @guest.id, visited_id: @member.id, checked: true)
+
+      expect(@member.unchecked_notifications?).to eq false
+    end
+  end
 end
