@@ -53,39 +53,22 @@
               thead
                 tr
                   th.heading 診療時間
-                  th 月
-                  th 火
-                  th 水
-                  th 木
-                  th 金
-                  th 土
-                  th 日
-                  th 祝
+                  - week_ja_array.each do |day_of_week|
+                    th 
+                      = day_of_week
 
               = f.nested_fields_for :consultation_hours, @consultation_hours do |consultation_hour|
                 table.table.table-bordered
-                    tbody
-                      tr
-                        td.heading
-                          = consultation_hour.select :start_time, time_list
-                          | 〜
-                          = consultation_hour.select :finish_time, time_list
-                        td 
-                          = consultation_hour.select :tu_time, consultation_list
+                  tbody
+                    tr
+                      td.heading
+                        = consultation_hour.select :start_time, time_list
+                        | 〜
+                        = consultation_hour.select :finish_time, time_list
+
+                      - week_en_array.each do |day_of_week|
                         td
-                          = consultation_hour.select :tu_time, consultation_list
-                        td
-                          = consultation_hour.select :we_time, consultation_list
-                        td
-                          = consultation_hour.select :th_time, consultation_list
-                        td
-                          = consultation_hour.select :fr_time, consultation_list
-                        td
-                          = consultation_hour.select :sa_time, consultation_list
-                        td
-                          = consultation_hour.select :su_time, consultation_list
-                        td
-                          = consultation_hour.select :ho_time, consultation_list
+                          = consultation_hour.select day_of_week, consultation_list
                         
           = f.add_nested_fields_link :consultation_hours, '＋', class:"btn btn-default btn-xs"
           

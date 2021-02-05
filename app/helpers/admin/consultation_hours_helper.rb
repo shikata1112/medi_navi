@@ -15,4 +15,12 @@ module Admin::ConsultationHoursHelper
   def consultation_list
     { '●': 0, '／': 1, '▲': 2 }
   end
+
+  def week_ja_array
+    ["月", "火", "水", "木", "金", "土", "日", "祝"]
+  end
+
+  def week_en_array
+    [:mo_time, :tu_time, :we_time, :th_time, :fr_time, :sa_time, :su_time, :ho_time]
+  end
 end
