@@ -62,7 +62,7 @@
                   th 日
                   th 祝
 
-              = f.nested_fields_for :consultation_hours, @clinic.consultation_hours.build do |consultation_hour|
+              = f.nested_fields_for :consultation_hours, @consultation_hours do |consultation_hour|
                 table.table.table-bordered
                     tbody
                       tr
@@ -71,21 +71,21 @@
                           | 〜
                           = consultation_hour.select :finish_time, time_list
                         td 
-                          = consultation_hour.select :mo_time
+                          = consultation_hour.select :tu_time, consultation_list
                         td
-                          = consultation_hour.select :tu_time, { '●': 0, '／': 1, '▲': 2 }
+                          = consultation_hour.select :tu_time, consultation_list
                         td
-                          = consultation_hour.select :we_time, { '●': 0, '／': 1, '▲': 2 }
+                          = consultation_hour.select :we_time, consultation_list
                         td
-                          = consultation_hour.select :th_time, { '●': 0, '／': 1, '▲': 2 }
+                          = consultation_hour.select :th_time, consultation_list
                         td
-                          = consultation_hour.select :fr_time, { '●': 0, '／': 1, '▲': 2 }
+                          = consultation_hour.select :fr_time, consultation_list
                         td
-                          = consultation_hour.select :sa_time, { '●': 0, '／': 1, '▲': 2 }
+                          = consultation_hour.select :sa_time, consultation_list
                         td
-                          = consultation_hour.select :su_time, { '●': 0, '／': 1, '▲': 2 }
+                          = consultation_hour.select :su_time, consultation_list
                         td
-                          = consultation_hour.select :ho_time, { '●': 0, '／': 1, '▲': 2 }
+                          = consultation_hour.select :ho_time, consultation_list
                         
           = f.add_nested_fields_link :consultation_hours, '＋', class:"btn btn-default btn-xs"
           
