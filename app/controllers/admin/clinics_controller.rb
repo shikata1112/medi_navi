@@ -4,7 +4,7 @@ class Admin::ClinicsController < ApplicationController
 
   def new
     @clinic = Clinic.new
-    @clinic.consultation_hours.build
+    @consultation_hours = @clinic.consultation_hours.build
     @genres = Genre.all
   end
 
