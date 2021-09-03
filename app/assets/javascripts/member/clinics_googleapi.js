@@ -3,9 +3,9 @@ function initMap(markerData) {
     let map;
     let marker = [];
     let infoWindow = [];
-  
+
     geocoder = new google.maps.Geocoder()
-    
+
     map = new google.maps.Map(document.getElementById('map'), {
       // コントローラーで定義した変数から緯度経度を呼び出し、マップの中心に表示
       center: {
@@ -14,28 +14,28 @@ function initMap(markerData) {
       },
       zoom: 15,
     });
-  
+
     // 繰り返し処理でマーカーと吹き出しを複数表示させる
     for (var i = 0; i < markerData.length; i++) {
       let id = markerData[i]['id']
-  
+
             // 各地点の緯度経度を算出
       markerLatLng = new google.maps.LatLng({
         lat: parseFloat(markerData[i]['latitude']),
         lng: parseFloat(markerData[i]['longitude'])
       });
-  
+
       // 各地点のマーカーを作成
       marker[i] = new google.maps.Marker({
         position: markerLatLng,
-        map: map  
+        map: map
       });
-  
+
       // マーカーにクリックイベントを追加
       markerEvent(i, markerData, marker, infoWindow, map);
     }
   }
-  
+
   // マーカーをクリックしたら吹き出しを表示
 function markerEvent(i, markerData, marker, infoWindow, map) {
   marker[i].addListener('click', function () {

@@ -16,7 +16,7 @@ development:
   database: sample_mysql_development
   pool: 5
   username: root
-  password:
+  password: shu420711
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -29,7 +29,7 @@ test:
   database: sample_mysql_test
   pool: 5
   username: root
-  password:
+  password: shu420711
   host: localhost
 
 
