@@ -3,6 +3,7 @@ json.array! @clinics do |clinic|
   json.name clinic.name
   json.doctor  clinic.doctor
   json.address  clinic.address
+  json.image_id clinic.image_id
   json.phone_number  clinic.phone_number
   json.official_site  clinic.official_site
   json.postcode  clinic.postcode
