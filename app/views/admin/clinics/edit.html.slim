@@ -59,14 +59,9 @@
         thead
           tr
             th 診療時間
-            th 月
-            th 火
-            th 水
-            th 木
-            th 金
-            th 土
-            th 日
-            th 祝
+            - week_ja_array.each do |day_of_week|
+              th 
+                = day_of_week
             th
             th
       
@@ -78,22 +73,10 @@
                   = f.select :start_time, time_list
                   | 〜
                   = f.select :finish_time, time_list
-                td 
-                  = f.select :mo_time, consultation_list
-                td
-                  = f.select :tu_time, consultation_list
-                td
-                  = f.select :we_time, consultation_list
-                td
-                  = f.select :th_time,  consultation_list
-                td
-                  = f.select :fr_time,  consultation_list
-                td
-                  = f.select :sa_time,  consultation_list
-                td
-                  = f.select :su_time,  consultation_list
-                td
-                  = f.select :ho_time,  consultation_list
+
+                - week_en_array.each do |day_of_week|
+                  td
+                    = f.select day_of_week, consultation_list
                 td
                   = f.submit "更新", class:"btn btn-warning"
                 td
@@ -106,24 +89,12 @@
                 = f.select :start_time, time_list
                 | 〜
                 = f.select :finish_time, time_list
-              td 
-                = f.select :mo_time,  consultation_list
-              td
-                = f.select :tu_time,  consultation_list
-              td
-                = f.select :we_time,  consultation_list
-              td
-                = f.select :th_time,  consultation_list
-              td
-                = f.select :fr_time,  consultation_list
-              td
-                = f.select :sa_time,  consultation_list
-              td
-                = f.select :su_time,  consultation_list
-              td
-                = f.select :ho_time,  consultation_list
 
-                =f.hidden_field :clinic_id, :value => @clinic.id
+              - week_en_array.each do |day_of_week|
+                td
+                  = f.select day_of_week, consultation_list
+
+              =f.hidden_field :clinic_id, :value => @clinic.id
                 
               td
                 = f.submit "追加", class:"btn btn-default"

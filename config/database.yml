@@ -32,7 +32,6 @@ test:
   password:
   host: localhost
 
-
 production:
   <<: *default
   database: <%= ENV['DB_DATABASE'] %>

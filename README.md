@@ -11,8 +11,8 @@
 
 ## 特に力を入れて取り組んだこと
   - Rspec (単体: model, controller / 結合: system）、一部機能はテスト駆動開発,テスト数 計160以上
-  - リファクタリング (メソッド化、deledateでメソッドの委譲)
-  - N+1問題の解消（全ページ解消済み）
+  - リファクタリング (メソッド化、delegateでメソッドの委譲)
+  - N+1問題の解消
   - 非同期通信(1.sidekiq使用、2.DOMをJavaScriptで取得しajaxでリクエストを送る。APIを作成しデータの更新)
   - チーム開発を意識したGitコマンド、GitHubの活用 （イシュー、プルリク、マージ）
 
@@ -60,6 +60,3 @@ https://docs.google.com/spreadsheets/d/1QON6Tq3UOt7xvWTvUil9pjH0jcYtZlt6tWFRD3Gq
 - MySQL2
 - Nginx、 Puma
 
-## About me
-新卒で3年3ヶ月間、医療機器メーカーにて医療機器の修理・販売・保守を行うサービスエンジニア（SE）として勤務してました。
-2020年7月からWebエンジニアを目指して勉強中です。
